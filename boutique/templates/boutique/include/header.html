@@ -1,0 +1,58 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg font-weight-light sticky-top">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'boutique/img/VA-logos/VA-icon-bright.jpg' %}" width="50" height="50" alt="">
+    </a>
+    <a class="navbar-brand" href="#">
+        Vivid Accessories </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Women
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for category in categories %}
+                    {% if category.women %}
+                    <a class="dropdown-item font-weight-lighter" href="#"><b>{{category.name}}</b></a>
+                        {% for subcategory in category.subcategory_set.all %}
+                        <a class="dropdown-item font-weight-lighter" href="#">&nbsp;&nbsp;{{subcategory.name}}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                    {% endif %}
+                    {% endfor %}
+                    <a class="dropdown-item font-weight-lighter" href="#"><b>Show All</b></a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Men
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for category in categories %}
+                    {% if category.men %}
+                    <a class="dropdown-item font-weight-lighter" href="#"><b>{{category.name}}</b></a>
+                        {% for subcategory in category.subcategory_set.all %}
+                        <a class="dropdown-item font-weight-lighter" href="#"> &nbsp; &nbsp;{{subcategory.name}}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                    {% endif %}
+                    {% endfor %}
+                    <a class="dropdown-item font-weight-lighter" href="#"><b>Show All</b></a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" id="search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
