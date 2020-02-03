@@ -1,0 +1,54 @@
+<div class="accordion row text-center mb-3" id="accordionPageMenu">
+
+    <div class="col-6">
+        <div class="" id="headingOne">
+            <button class="btn btn-link text-muted" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                Для женщин
+            </button>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
+            <div class="mt-2 mb-5">
+                {% for category in categories %}
+                <div class="vw-50">
+
+                    {% if category.women %}
+                    <a class="dropdown-item font-weight-lighter px-0" href="#"><b>{{category.name}}</b></a>
+                    {% for subcategory in category.subcategory_set.all %}
+                    <a class="dropdown-item font-weight-lighter px-0" href="#">{{subcategory.name}}</a>
+                    {% endfor %}
+                    <div class="dropdown-divider"></div>
+                    {% endif %}
+
+                </div>
+                {% endfor %}
+                <a class="dropdown-item font-weight-lighter" href="#"><b>Show All</b></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="" id="headingTwo">
+            <button class="btn btn-link text-muted" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo">
+                Для мужчин
+            </button>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPageMenu">
+            <div class="mt-2 mb-5">
+                {% for category in categories %}
+                {% if category.men %}
+                <a class="dropdown-item font-weight-lighter px-0" href="#"><b>{{category.name}}</b></a>
+                {% for subcategory in category.subcategory_set.all %}
+                <a class="dropdown-item font-weight-lighter px-0" href="#">{{subcategory.name}}</a>
+                {% endfor %}
+                <div class="dropdown-divider"></div>
+                {% endif %}
+                {% endfor %}
+                <a class="dropdown-item font-weight-lighter" href="#"><b>Show All</b></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+

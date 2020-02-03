@@ -1,0 +1,55 @@
+{% for category in categories %}
+<div class="mt-5 text-center">
+    {% if category.item_set.count != 0 %}
+    
+        <h3 class="mt-5">{{category}}</h3>
+
+        {% if category.subcategory_set %}
+        {% for subcategory in category.subcategory_set.all %}
+
+        {% if subcategory.item_set.count != 0 %}
+        <h5 class="mt-3">{{subcategory.name}}</h5>
+
+        <div class="d-flex flex-wrap justify-content-center">
+            {% for item in subcategory.item_set.all %}
+
+            <div class="card flex-fill" style="max-width: 270px; max-height: 600px">
+                <img class="card-img-top" src="{{item.image.url}}" alt="">
+                <div class="card-body text-left font-size-sm">
+                    <p class="card-title font-weight-light">{{item}}</p>
+                    <p class="card-text font-weight-lighter">&#8381;&nbsp;{{item.price}}<br>{{item.description}}</p>
+                </div>
+            </div>
+            {% empty %}
+            <small>Please wait for more...</small>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+        {% else %}
+
+        <div class="d-flex flex-wrap justify-content-center">
+            {% for item in category.item_set.all %}
+
+            <div class="card" style="width:250px">
+                <img class="card-img-top" width="250px" src="{{item.image.url}}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{item}}</h5>
+                    <p class="card-text">&#8381;&nbsp;{{item.price}}</p>
+                </div>
+            </div>
+
+            {% empty %}
+            <small>Please wait for more...</small>
+            {% endfor %}
+        </div>
+
+        {% endif %}
+
+    {% endif %}
+
+
+
+</div>
+{% endfor %}

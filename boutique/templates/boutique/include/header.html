@@ -2,10 +2,10 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg font-weight-light sticky-top">
     <a class="navbar-brand" href="#">
-        <img src="{% static 'boutique/img/VA-logos/VA-icon-bright.jpg' %}" width="50" height="50" alt="">
+        <img src="{% static 'boutique/img/logos/icon_bright.jpg' %}" width="50" height="50" alt="">
     </a>
-    <a class="navbar-brand" href="#">
-        Vivid Accessories </a>
+    <a class="navbar-brand font-weight-lighter" href="#">
+        boutique </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Women
+                    Для женщин
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
@@ -34,7 +34,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Men
+                    Для мужчин
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
@@ -50,9 +50,9 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" id="search-form">
+        <form class="form-inline my-2 my-lg-0" id="search-form-1">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
         </form>
     </div>
 </nav>
