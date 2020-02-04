@@ -4,47 +4,52 @@
 
 {% for category in categories %}
 {% if category.item_set.count > 0 %}
-<!-- if there's one or more items in this category, display this category, otherwise next category -->
+<!-- if there's no items in this category, skip to the next category -->
 
-<div class="mt-5 text-center">
-    <h3 class="mt-5">{{category}}</h3>
+<div class=" mt-5 text-center">
+    <h4 class="border-bottom">{{category}}</h4>
 
     {% if category.subcategory_set.count > 0 %}
     <!-- when this category has subcategories -->
 
-    <div>
+    <div class="container px-2">
         {% for subcategory in category.subcategory_set.all %}
         {% if subcategory.item_set.count > 0 %}
+        <!-- if there's no items under this subcategory, skip to the next subcategory -->
 
-        <div>
-            <h5 class="mt-3">{{subcategory.name}}</h5>
-            <div class="d-flex row">
-                {% for item in subcategory.item_set.all %}
+        <h6 class="mt-3 border-bottom border-light">{{subcategory.name}}</h6>
+        <div class="row  wow fadeIn">
+            {% for item in subcategory.item_set.all %}
 
-                <div class="col-sm">
-                    <div class="">
-                        <img class="" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
-                        <div class="text-left" style="font-size: 16px;">
-                            <p class="font-weight-light">{{item}}</p>
-                            {% if item.discount %}
-                            <p class="font-weight-lighter"><strike>&#8381;&nbsp;{{item.price}}</strike> <b
-                                    class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
-                                <small class="text-danger">(-{{item.discount}}%)</small>
-                            </p>
-                            {% else %}
-                            <p class="font-weight-lighter">&#8381;&nbsp;{{item.price}}</p>
+            <div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column">
+                <img class="justify-content-start" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
+                <div class="text-left p-1 mt-auto" style="font-size: 16px;">
+                    <div class="font-weight-light pt-2">
+                        <p class=" mb-1">{{item}}</p>
+                    </div>
 
-                            {% endif %}
-                        </div>
+                    <div class="font-weight-lighter">
+                        {% if item.discount %}
+
+                        <p>
+                            <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
+                            <b class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
+                            <small class="text-danger">(-{{item.discount}}%)</small>
+                        </p>
+
+                        {% else %}
+                        <p>&#8381;&nbsp;{{item.price}}</p>
+
+                        {% endif %}
                     </div>
                 </div>
-                {% empty %}
-                <small>Please wait for more...</small>
-
-                {% endfor %}
             </div>
+            {% empty %}
+            <small>Please wait for more...</small>
+
+            {% endfor %}
         </div>
-        
+
         {% endif %}
         {% endfor %}
     </div>
@@ -52,27 +57,42 @@
     {% else %}
     <!-- when this category does not have a subcategory -->
 
-    <div class="d-flex flex-wrap justify-content-center">
+    <div class="row">
         {% for item in category.item_set.all %}
 
-        <div class="col-sm">
+        <div class="col-6 col-md-4 col-lg-3 px-sm-1">
             <div class="">
+                <!-- a carousel for each item which has more than one image to show -->
                 <img class="" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
-                {% if item.image_2 %}
+                <!-- {% if item.image_2 %}
                 <img class="" src="{{item.image_2.url}}" width="100%" height="auto" alt="">
                 {% endif %}
                 {% if item.image_3 %}
                 <img class="" src="{{item.image_3.url}}" width="100%" height="auto" alt="">
                 {% endif %}
-                <div class="text-left" style="font-size: 16px;">
-                    <p class="font-weight-light">{{item}}</p>
+                {% if item.image_4 %}
+                <img class="" src="{{item.image_4.url}}" width="100%" height="auto" alt="">
+                {% endif %}
+                {% if item.image_5 %}
+                <img class="" src="{{item.image_5.url}}" width="100%" height="auto" alt="">
+                {% endif %} -->
+            </div>
+            <div class="text-left p-1 mt-auto" style="font-size: 16px;">
+                <div class="font-weight-light pt-2">
+                    <p class=" mb-1">{{item}}</p>
+                </div>
+
+                <div class="font-weight-lighter">
                     {% if item.discount %}
-                    <p class="font-weight-lighter"><strike>&#8381;&nbsp;{{item.price}}</strike> <b
-                            class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
+
+                    <p>
+                        <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
+                        <b class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
                         <small class="text-danger">(-{{item.discount}}%)</small>
                     </p>
+
                     {% else %}
-                    <p class="font-weight-lighter">&#8381;&nbsp;{{item.price}}</p>
+                    <p>&#8381;&nbsp;{{item.price}}</p>
 
                     {% endif %}
                 </div>
