@@ -1,0 +1,94 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+
+{% for category in categories %}
+{% if category.item_set.count > 0 %}
+<!-- if there's one or more items in this category, display this category, otherwise next category -->
+
+<div class="mt-5 text-center">
+    <h3 class="mt-5">{{category}}</h3>
+
+    {% if category.subcategory_set.count > 0 %}
+    <!-- when this category has subcategories -->
+
+    <div>
+        {% for subcategory in category.subcategory_set.all %}
+        {% if subcategory.item_set.count > 0 %}
+
+        <div>
+            <h5 class="mt-3">{{subcategory.name}}</h5>
+            <div class="d-flex row">
+                {% for item in subcategory.item_set.all %}
+
+                <div class="col-sm">
+                    <div class="">
+                        <img class="" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
+                        <div class="text-left" style="font-size: 16px;">
+                            <p class="font-weight-light">{{item}}</p>
+                            {% if item.discount %}
+                            <p class="font-weight-lighter"><strike>&#8381;&nbsp;{{item.price}}</strike> <b
+                                    class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
+                                <small class="text-danger">(-{{item.discount}}%)</small>
+                            </p>
+                            {% else %}
+                            <p class="font-weight-lighter">&#8381;&nbsp;{{item.price}}</p>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <small>Please wait for more...</small>
+
+                {% endfor %}
+            </div>
+        </div>
+        
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- when this category does not have a subcategory -->
+
+    <div class="d-flex flex-wrap justify-content-center">
+        {% for item in category.item_set.all %}
+
+        <div class="col-sm">
+            <div class="">
+                <img class="" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
+                {% if item.image_2 %}
+                <img class="" src="{{item.image_2.url}}" width="100%" height="auto" alt="">
+                {% endif %}
+                {% if item.image_3 %}
+                <img class="" src="{{item.image_3.url}}" width="100%" height="auto" alt="">
+                {% endif %}
+                <div class="text-left" style="font-size: 16px;">
+                    <p class="font-weight-light">{{item}}</p>
+                    {% if item.discount %}
+                    <p class="font-weight-lighter"><strike>&#8381;&nbsp;{{item.price}}</strike> <b
+                            class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
+                        <small class="text-danger">(-{{item.discount}}%)</small>
+                    </p>
+                    {% else %}
+                    <p class="font-weight-lighter">&#8381;&nbsp;{{item.price}}</p>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <small>Please wait for more...</small>
+
+        {% endfor %}
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endif %}
+{% endfor %}
+
+{% endblock content %}

@@ -36,10 +36,10 @@ class SubCategory(models.Model):
 class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(
-        SubCategory, on_delete=models.CASCADE, blank=True)
+        SubCategory, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=300, blank=True)
-    price = models.FloatField(default='0')
+    description = models.TextField(blank=True)
+    price = models.IntegerField(default='0')
     discount = models.IntegerField(null=True, blank=True)
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
@@ -55,3 +55,6 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+    def discounted_price(self):
+        return int(self.price * (100 - self.discount) * 0.01)

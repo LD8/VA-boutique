@@ -1,10 +1,10 @@
 {% load static %}
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg font-weight-light sticky-top">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{% url 'boutique:index' %}">
         <img src="{% static 'boutique/img/logos/icon_bright.jpg' %}" width="50" height="50" alt="">
     </a>
-    <a class="navbar-brand font-weight-lighter" href="#">
+    <a class="navbar-brand font-weight-lighter" href="{% url 'boutique:index' %}">
         boutique </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
