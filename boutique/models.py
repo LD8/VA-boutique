@@ -38,7 +38,7 @@ class SubCategory(models.Model):
 
 
 class Item(models.Model):
-    '''Item model with maximum 5 images uploaded'''
+    '''Each item represents a product'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(
         SubCategory, on_delete=models.CASCADE, null=True, blank=True)
@@ -49,12 +49,6 @@ class Item(models.Model):
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
-    image_1 = models.ImageField(upload_to='items/')
-    image_2 = models.ImageField(upload_to='items/', blank=True)
-    image_3 = models.ImageField(upload_to='items/', blank=True)
-    image_4 = models.ImageField(upload_to='items/', blank=True)
-    image_5 = models.ImageField(upload_to='items/', blank=True)
-
     class Meta:
         ordering = ['-uploaded_date']
 
@@ -64,6 +58,11 @@ class Item(models.Model):
     def discounted_price(self):
         '''to calculate the price after discount'''
         return int(self.price * (100 - self.discount) * 0.01)
+
+
+class ItemImage(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='itemimages', null=True, blank=True)
 
 
 def rotate_image(filepath):
@@ -89,21 +88,21 @@ def rotate_image(filepath):
         pass
 
 
-@receiver(post_save, sender=Item, dispatch_uid="update_image_item")
+@receiver(post_save, sender=ItemImage, dispatch_uid="update_image_item")
 def update_image(sender, instance, **kwargs):
-    '''iterate through the images uploaded to implement rotate function'''
-    dic = {
-        'image_1': instance.image_1,
-        'image_2': instance.image_2,
-        'image_3': instance.image_3,
-        'image_4': instance.image_4,
-        'image_5': instance.image_5,
-    }
+    '''to implement rotate function'''
+    # dic = {
+    #     'image_1': instance.image_1,
+    #     'image_2': instance.image_2,
+    #     'image_3': instance.image_3,
+    #     'image_4': instance.image_4,
+    #     'image_5': instance.image_5,
+    # }
     # probably there's a better way to iterate through the images in the model
     # what if there's more images to be iterate through?
-    for k, instanceImage in dic.items():
-        if instanceImage:
-            BASE_DIR = os.path.dirname(
-                os.path.dirname(os.path.abspath(__file__)))
-            fullpath = BASE_DIR + instanceImage.url
-            rotate_image(fullpath)
+# for k, instanceImage in dic.items():
+    if instance.image:
+        BASE_DIR = os.path.dirname(
+            os.path.dirname(os.path.abspath(__file__)))
+        fullpath = BASE_DIR + instance.image.url
+        rotate_image(fullpath)

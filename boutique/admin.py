@@ -1,7 +1,33 @@
 from django.contrib import admin
-from .models import Category, SubCategory, Item
+from .models import Category, SubCategory, Item, ItemImage
 
-# Register your models here.
-admin.site.register(Category)
-admin.site.register(Item)
-admin.site.register(SubCategory)
+
+class ItemImageInline(admin.TabularInline):
+    model = ItemImage
+
+
+class SubCategoryInline(admin.TabularInline):
+    model = SubCategory
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    inlines = [
+        SubCategoryInline,
+    ]
+
+
+@admin.register(Item)
+class ItemAdmin(admin.ModelAdmin):
+    inlines = [
+        ItemImageInline,
+    ]
+
+# class ItemInline(admin.TabularInline):
+#     model = Item
+
+# @admin.register(SubCategory)
+# class SubCategoryAdmin(admin.ModelAdmin):
+#     inlines = [
+#         ItemInline,
+#     ]

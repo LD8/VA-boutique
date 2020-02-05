@@ -22,7 +22,8 @@
             {% for item in subcategory.item_set.all %}
 
             <div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column">
-                <img class="justify-content-start" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
+                <img class="justify-content-start" src="{{item.itemimage_set.first.image.url}}" width="100%" height="auto"
+                alt="">
                 <div class="text-left p-1 mt-auto" style="font-size: 16px;">
                     <div class="font-weight-light pt-2">
                         <p class=" mb-1">{{item}}</p>
@@ -61,22 +62,7 @@
         {% for item in category.item_set.all %}
 
         <div class="col-6 col-md-4 col-lg-3 px-sm-1">
-            <div class="">
-                <!-- a carousel for each item which has more than one image to show -->
-                <img class="" src="{{item.image_1.url}}" width="100%" height="auto" alt="">
-                <!-- {% if item.image_2 %}
-                <img class="" src="{{item.image_2.url}}" width="100%" height="auto" alt="">
-                {% endif %}
-                {% if item.image_3 %}
-                <img class="" src="{{item.image_3.url}}" width="100%" height="auto" alt="">
-                {% endif %}
-                {% if item.image_4 %}
-                <img class="" src="{{item.image_4.url}}" width="100%" height="auto" alt="">
-                {% endif %}
-                {% if item.image_5 %}
-                <img class="" src="{{item.image_5.url}}" width="100%" height="auto" alt="">
-                {% endif %} -->
-            </div>
+            <img class="" src="{{item.itemimage_set.first.image.url}}" width="100%" height="auto" alt="">
             <div class="text-left p-1 mt-auto" style="font-size: 16px;">
                 <div class="font-weight-light pt-2">
                     <p class=" mb-1">{{item}}</p>

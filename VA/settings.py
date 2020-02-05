@@ -127,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # for image uplaoding
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 LOGIN_URL = 'users:login'
