@@ -91,16 +91,6 @@ def rotate_image(filepath):
 @receiver(post_save, sender=ItemImage, dispatch_uid="update_image_item")
 def update_image(sender, instance, **kwargs):
     '''to implement rotate function'''
-    # dic = {
-    #     'image_1': instance.image_1,
-    #     'image_2': instance.image_2,
-    #     'image_3': instance.image_3,
-    #     'image_4': instance.image_4,
-    #     'image_5': instance.image_5,
-    # }
-    # probably there's a better way to iterate through the images in the model
-    # what if there's more images to be iterate through?
-# for k, instanceImage in dic.items():
     if instance.image:
         BASE_DIR = os.path.dirname(
             os.path.dirname(os.path.abspath(__file__)))

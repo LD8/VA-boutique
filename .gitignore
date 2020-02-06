@@ -1,6 +1,7 @@
 # images folers
 img/
 images/
+media/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,0 +1,26 @@
+<div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column">
+    <img class="justify-content-start" src="{{item.itemimage_set.first.image.url}}" width="100%" height="auto"
+    alt="">
+    <div class="text-left p-1 mt-auto" style="font-size: 16px;">
+        <div class="font-weight-light pt-2">
+            <p class=" mb-1">{{item}}</p>
+        </div>
+
+        <div class="font-weight-lighter">
+            {% if item.discount %}
+
+            <p>
+                <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
+                <b class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
+                <small class="text-danger">(-{{item.discount}}%)</small>
+            </p>
+
+            {% else %}
+            <p>&#8381;&nbsp;{{item.price}}</p>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% empty %}
+<small>Please wait for more...</small>

@@ -23,11 +23,12 @@ class ItemAdmin(admin.ModelAdmin):
         ItemImageInline,
     ]
 
-# class ItemInline(admin.TabularInline):
-#     model = Item
+class ItemInline(admin.TabularInline):
+    model = Item
 
-# @admin.register(SubCategory)
-# class SubCategoryAdmin(admin.ModelAdmin):
-#     inlines = [
-#         ItemInline,
-#     ]
+@admin.register(SubCategory)
+class SubCategoryAdmin(admin.ModelAdmin):
+    inlines = [
+        ItemInline,
+    ]
+    exclude = ['item.category']
