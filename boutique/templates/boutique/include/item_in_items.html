@@ -1,9 +1,10 @@
 <div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column">
-    <img class="justify-content-start" src="{{item.itemimage_set.first.image.url}}" width="100%" height="auto"
-    alt="">
+    <a href="{% url 'boutique:item' item.pk %}">
+        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%"
+    alt=""></a>
     <div class="text-left p-1 mt-auto" style="font-size: 16px;">
         <div class="font-weight-light pt-2">
-            <p class=" mb-1">{{item}}</p>
+            <a href="{% url 'boutique:item' item.pk %}" class="text-dark mb-1">{{item}}</a>
         </div>
 
         <div class="font-weight-lighter">
@@ -22,5 +23,3 @@
         </div>
     </div>
 </div>
-{% empty %}
-<small>Please wait for more...</small>

@@ -21,14 +21,14 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
                     {% if category.women %}
-                    <a class="dropdown-item font-weight-lighter" href="#"><b>{{category.name}}</b></a>
+                    <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:category' 'women' category.pk %}"><b>{{category.name}}</b></a>
                         {% for subcategory in category.subcategory_set.all %}
                         <a class="dropdown-item font-weight-lighter" href="#">&nbsp;&nbsp;{{subcategory.name}}</a>
                         {% endfor %}
                         <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item font-weight-lighter" href="#"><b>Show All</b></a>
+                    <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'women' %}"><b>Show All</b></a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
                     {% if category.men %}
-                    <a class="dropdown-item font-weight-lighter" href="#"><b>{{category.name}}</b></a>
+                    <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'men' %}"><b>{{category.name}}</b></a>
                         {% for subcategory in category.subcategory_set.all %}
                         <a class="dropdown-item font-weight-lighter" href="#"> &nbsp; &nbsp;{{subcategory.name}}</a>
                         {% endfor %}

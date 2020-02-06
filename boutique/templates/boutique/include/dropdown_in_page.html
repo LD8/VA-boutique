@@ -22,7 +22,7 @@
 
                 </div>
                 {% endfor %}
-                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:women-all' %}"><b>Show All</b></a>
+                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'women' %}"><b>Show All</b></a>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
                 <div class="dropdown-divider"></div>
                 {% endif %}
                 {% endfor %}
-                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:men-all' %}"><b>Show All</b></a>
+                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'men' %}"><b>Show All</b></a>
             </div>
         </div>
     </div>

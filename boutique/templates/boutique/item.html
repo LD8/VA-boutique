@@ -1,0 +1,65 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+
+<!-- item -->
+<div class="mt-5 ">
+
+    <!-- item images -->
+    <div class="row">
+        <div class="col-12 col-sm-8">
+
+            {% include 'boutique/include/item_carousel.html' %}
+
+        </div>
+        <div class="pl-sm-0 col-12 col-sm-4 d-flex flex-wrap align-content-start">
+            {% for image in item.itemimage_set.all %}
+            <div class="col-4 
+            {% if item.itemimage_set.count > 3 %}
+            col-sm-6 
+            {% else %}
+            col-sm-8 
+            {% endif %} 
+            mt-2 px-1 mt-sm-0 pb-sm-2 pt-sm-0 mb-0">
+                <img src="{{image.image.url}}" alt="" class="col-12 p-0 rounded-sm shadow-sm">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- / item images -->
+
+    <!-- item words -->
+    <div class="text-left p-2 pl-3 mt-auto" style="font-size: 16px;">
+        <div class="font-weight-light pt-2">
+            <p class=" mb-1">{{item}}</p>
+        </div>
+
+        <!-- item price -->
+        <div class="font-weight-lighter">
+            {% if item.discount %}
+
+            <p>
+                <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
+                <b class="text-danger">&#8381;&nbsp;{{item.discounted_price}}</b>
+                <small class="text-danger">(-{{item.discount}}%)</small>
+            </p>
+
+            {% else %}
+            <p>&#8381;&nbsp;{{item.price}}</p>
+
+            {% endif %}
+        </div>
+        <!-- / item price -->
+
+        <div>
+            <p>{{item.description}}</p>
+        </div>
+
+    </div>
+    <!-- / item words -->
+
+</div>
+<!-- / item -->
+
+{% endblock content %}
