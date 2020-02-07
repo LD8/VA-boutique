@@ -13,9 +13,9 @@
                 <div class="">
 
                     {% if category.women %}
-                    <a class="dropdown-item font-weight-lighter px-0" href="#"><b>{{category.name}}</b></a>
+                    <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:category' 'women' category.pk %}"><b>{{category.name}}</b></a>
                     {% for subcategory in category.subcategory_set.all %}
-                    <a class="dropdown-item font-weight-lighter px-0" href="#">{{subcategory.name}}</a>
+                    <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:subcategory' 'women' category.pk subcategory.pk %}">{{subcategory.name}}</a>
                     {% endfor %}
                     <div class="dropdown-divider"></div>
                     {% endif %}
@@ -38,9 +38,9 @@
             <div class="mt-2 mb-5">
                 {% for category in categories %}
                 {% if category.men %}
-                <a class="dropdown-item font-weight-lighter px-0" href="#"><b>{{category.name}}</b></a>
+                <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:category' 'men' category.pk %}"><b>{{category.name}}</b></a>
                 {% for subcategory in category.subcategory_set.all %}
-                <a class="dropdown-item font-weight-lighter px-0" href="#">{{subcategory.name}}</a>
+                <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:subcategory' 'men' category.pk subcategory.pk %}">{{subcategory.name}}</a>
                 {% endfor %}
                 <div class="dropdown-divider"></div>
                 {% endif %}
