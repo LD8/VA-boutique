@@ -43,11 +43,40 @@
             transition: filter 1s;
 
         }
+
         img:hover {
             filter: brightness(80%);
         }
 
-        
+        .page-item:first-child .page-link {
+            border-radius: 5rem;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            padding-right: 25px;
+        }
+
+        .page-item:last-child .page-link {
+            border-radius: 5rem;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            padding-left: 25px;
+        }
+
+        ul.pagination>li.active>a.page-link {
+            background-color: rgb(181, 181, 181);
+            color: rgb(247, 247, 247);
+            border: none;
+        }
+
+        a.page-link {
+            background-color: rgb(255, 255, 255);
+            border: none;
+            color: grey;
+            padding: 2px 30px;
+            border-radius: 50px;
+        }
+
+
 
         @media only screen and (max-width: 1200px) {
 

@@ -24,6 +24,7 @@
                 {% endfor %}
             </div>
         </div>
+        
     </div>
 
     {% endif %}
@@ -86,7 +87,6 @@
 
             {% endif %}
             <!-- / this category has subcategories or not -->
-
         </div>
 
         {% endif %}
@@ -97,4 +97,5 @@
 {% endif %}
 <!-- / a subcategory specified or not -->
 
+{% include 'boutique/include/pagination.html' %}
 {% endblock content %}

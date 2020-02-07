@@ -70,7 +70,7 @@ class Item(models.Model):
         return int(self.price * (100 - self.discount) * 0.01)
 
     def get_item_url(self):
-        return reverse('boutique:item', kwargs={'item_pk': self.pk})
+        return reverse('boutique:item', kwargs={'pk': self.pk})
 
 
 
