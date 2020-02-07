@@ -20,7 +20,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
-                    {% if category.women %}
+                    {% if category.gender == 1 %}
                     <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:category' 'women' category.pk %}"><b>{{category.name}}</b></a>
                         {% for subcategory in category.subcategory_set.all %}
                         <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:subcategory' 'women' category.pk subcategory.pk%}">&nbsp;&nbsp;{{subcategory.name}}</a>
@@ -38,7 +38,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
-                    {% if category.men %}
+                    {% if category.gender == 2 %}
                     <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:category' 'men' category.pk %}"><b>{{category.name}}</b></a>
                         {% for subcategory in category.subcategory_set.all %}
                         <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:subcategory' 'men' category.pk subcategory.pk%}"> &nbsp; &nbsp;{{subcategory.name}}</a>

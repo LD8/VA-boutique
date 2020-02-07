@@ -7,8 +7,10 @@ import os
 
 class Category(models.Model):
     '''Category for men's and women's items'''
-    men = models.BooleanField()
-    women = models.BooleanField()
+    gender = models.IntegerField(choices=[
+        (1, 'Women'),
+        (2, 'Men'),
+    ], default=1)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300, blank=True)
     uploaded_date = models.DateTimeField(
@@ -18,7 +20,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     def __str__(self):
-        return ("Men's " + self.name) if self.men else ("Women's " + self.name)
+        return ("Men's " + self.name) if self.gender == 2 else ("Women's " + self.name)
 
 
 class SubCategory(models.Model):
@@ -34,7 +36,7 @@ class SubCategory(models.Model):
         verbose_name_plural = 'Sub-categories'
 
     def __str__(self):
-        return ("Men's " + self.name) if self.category.men else ("Women's " + self.name)
+        return ("Men's " + self.name) if self.category.gender == 2 else ("Women's " + self.name)
 
 
 class Item(models.Model):

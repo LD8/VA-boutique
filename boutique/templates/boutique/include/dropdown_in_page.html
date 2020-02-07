@@ -12,7 +12,7 @@
                 {% for category in categories %}
                 <div class="">
 
-                    {% if category.women %}
+                    {% if category.gender == 1 %}
                     <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:category' 'women' category.pk %}"><b>{{category.name}}</b></a>
                     {% for subcategory in category.subcategory_set.all %}
                     <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:subcategory' 'women' category.pk subcategory.pk %}">{{subcategory.name}}</a>
@@ -37,7 +37,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPageMenu">
             <div class="mt-2 mb-5">
                 {% for category in categories %}
-                {% if category.men %}
+                {% if category.gender == 2 %}
                 <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:category' 'men' category.pk %}"><b>{{category.name}}</b></a>
                 {% for subcategory in category.subcategory_set.all %}
                 <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:subcategory' 'men' category.pk subcategory.pk %}">{{subcategory.name}}</a>
