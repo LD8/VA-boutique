@@ -10,28 +10,27 @@ class IndexView(ListView):
     context_object_name = 'categories'
 
 
-class ItemListView(ListView):
+class CategoryListView(ListView):
     '''display a list of items'''
-    model = Item
+    model = Category
     template_name = 'boutique/items.html'
+    context_object_name = 'categories'
     # paginate_by = 12
 
     def get_queryset(self):
-        # get original queryset: Item.objects.all()
+        # get original queryset: Category.objects.all()
         qs = super().get_queryset()
 
-        # filter items: men/women
-        if self.kwargs['gender'] == 'women':
-            qs = qs.filter(category__gender=1)
-        elif self.kwargs['gender'] == 'men':
-            qs = qs.filter(category__gender=2)
+        # filter men/women
+        if self.kwargs.get('gender') == 'Women':
+            qs = qs.filter(gender=1) 
+        elif self.kwargs['gender'] == 'Men':
+            qs = qs.filter(gender=2)
 
         if self.kwargs.get('category_pk'):
-            qs = qs.filter(category=self.kwargs.get('category_pk'))
-            if self.kwargs.get('subcategory_pk'):
-                qs = qs.filter(subcategory=self.kwargs.get('subcategory_pk'))
+            qs = qs.filter(pk=self.kwargs.get('category_pk'))
 
-        # print(qs)
+        print('\nqs= ', qs, '\n')
         return qs
 
     def get_context_data(self, **kwargs):
@@ -39,17 +38,19 @@ class ItemListView(ListView):
         # add categories for navbar link texts
         context['categories'] = Category.objects.all()
 
-        if self.kwargs.get('gender') == 'women':
-            context['category_shown'] = Category.objects.filter(gender=1)
-        if self.kwargs.get('gender') == 'men':
-            context['category_shown'] = Category.objects.filter(gender=2)
+        if self.kwargs.get('subcategory_pk'):
+            context['subcategory_shown'] = get_object_or_404(
+                SubCategory, pk=self.kwargs.get('subcategory_pk'))
+            context['item_list'] = Item.objects.filter(subcategory=self.kwargs.get('subcategory_pk'))
+            print('\ncontext with subcat= ', context, '\n')
+            return context
+
+        context['category_shown'] = self.get_queryset()
 
         if self.kwargs.get('category_pk'):
-            context['category_shown']=get_object_or_404(Category, pk=self.kwargs.get('category_pk'))
-            if self.kwargs.get('subcategory_pk'):
-                context['subcategory_shown']=get_object_or_404(SubCategory, pk=self.kwargs.get('subcategory_pk'))
+            context['item_list'] = Item.objects.filter(category=self.kwargs.get('category_pk'))
 
-        print(context)
+        # print('\ncontext= ', context, '\n')
         return context
 
 
@@ -59,16 +60,17 @@ class ItemDetailView(DetailView):
     template_name = 'boutique/item.html'
     # context_object_name = 'item'
 
-    # def get_object(self):
-    #     obj = super().get_object()
-    #     obj = get_object_or_404(Item, pk=self.kwargs.get('item_pk'))
-    #     print(obj)
-    #     return obj
+    def get_object(self):
+        # why this doesn't work with `obj = super().get_object()` executed here????
+        obj = get_object_or_404(Item, pk=self.kwargs.get('item_pk'))
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     # add categories for navbar link texts
-    #     # context['categories'] = Category.objects.all()
-    #     print('123')
-    #     print(context)
-    #     return context
+        # print('\nget_queryset()= ', type(obj), obj.name, '\n')
+        return obj
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # add categories for navbar link texts
+        context['categories'] = Category.objects.all()
+
+        # print('\ncontext= ', context, '\n')
+        return context

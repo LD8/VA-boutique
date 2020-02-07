@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from PIL import Image, ExifTags
 from django.db import models
+from django.urls import reverse
 import os
 
 
@@ -20,7 +21,11 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     def __str__(self):
-        return ("Men's " + self.name) if self.gender == 2 else ("Women's " + self.name)
+        return self.get_gender_display() + ' ' + self.name
+
+    def get_category_url(self):
+        return reverse('boutique:category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
+        
 
 
 class SubCategory(models.Model):
@@ -36,7 +41,10 @@ class SubCategory(models.Model):
         verbose_name_plural = 'Sub-categories'
 
     def __str__(self):
-        return ("Men's " + self.name) if self.category.gender == 2 else ("Women's " + self.name)
+        return self.category.get_gender_display() + ' ' + self.name
+
+    def get_subcategory_url(self):
+        return reverse('boutique:subcategory', kwargs={'gender': self.category.get_gender_display(), 'category_pk': self.category.pk, 'subcategory_pk': self.pk})
 
 
 class Item(models.Model):
@@ -60,6 +68,10 @@ class Item(models.Model):
     def discounted_price(self):
         '''to calculate the price after discount'''
         return int(self.price * (100 - self.discount) * 0.01)
+
+    def get_item_url(self):
+        return reverse('boutique:item', kwargs={'item_pk': self.pk})
+
 
 
 class ItemImage(models.Model):

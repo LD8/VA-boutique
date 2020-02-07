@@ -10,19 +10,18 @@
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
             <div class="mt-2 mb-5">
                 {% for category in categories %}
-                <div class="">
-
-                    {% if category.gender == 1 %}
-                    <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:category' 'women' category.pk %}"><b>{{category.name}}</b></a>
-                    {% for subcategory in category.subcategory_set.all %}
-                    <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:subcategory' 'women' category.pk subcategory.pk %}">{{subcategory.name}}</a>
-                    {% endfor %}
-                    <div class="dropdown-divider"></div>
-                    {% endif %}
-
-                </div>
+                {% if category.gender == 1 %}
+                <a class="dropdown-item font-weight-lighter px-0"
+                    href="{{ category.get_category_url }}"><b>{{category.name}}</b></a>
+                {% for subcategory in category.subcategory_set.all %}
+                <a class="dropdown-item font-weight-lighter px-0"
+                    href="{{ subcategory.get_subcategory_url }}">{{subcategory.name}}</a>
                 {% endfor %}
-                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'women' %}"><b>Show All</b></a>
+                <div class="dropdown-divider"></div>
+                {% endif %}
+                {% endfor %}
+                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'women' %}"><b>Show
+                        All</b></a>
             </div>
         </div>
     </div>
@@ -38,17 +37,19 @@
             <div class="mt-2 mb-5">
                 {% for category in categories %}
                 {% if category.gender == 2 %}
-                <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:category' 'men' category.pk %}"><b>{{category.name}}</b></a>
+                <a class="dropdown-item font-weight-lighter px-0"
+                    href="{{ category.get_category_url }}"><b>{{category.name}}</b></a>
                 {% for subcategory in category.subcategory_set.all %}
-                <a class="dropdown-item font-weight-lighter px-0" href="{% url 'boutique:subcategory' 'men' category.pk subcategory.pk %}">{{subcategory.name}}</a>
+                <a class="dropdown-item font-weight-lighter px-0"
+                    href="{{ subcategory.get_subcategory_url }}">{{subcategory.name}}</a>
                 {% endfor %}
                 <div class="dropdown-divider"></div>
                 {% endif %}
                 {% endfor %}
-                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'men' %}"><b>Show All</b></a>
+                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'men' %}"><b>Show
+                        All</b></a>
             </div>
         </div>
     </div>
 
 </div>
-
