@@ -12,10 +12,10 @@
         
     {% else %}
 
-        <h4 class="mb-3 pb-1 border-bottom font-weight-light">{{subcategory_shown.category}}</h4>
+        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark" href="{{category_shown.get_category_url}}">{{subcategory_shown.category}}</a></h4>
 
         <div class="container px-2">
-            <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter">{{subcategory_shown.name}}</h6>
+            <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter"><a class="text-dark" href="{{subcategory_shown.get_subcategory_url}}">{{subcategory_shown.name}}</a></h6>
             <div class="row">
                 {% for item in item_list %}
 
@@ -36,15 +36,15 @@
     {% for category in category_shown %}
 
         <div class="mt-5 text-center mb-3 mb-md-5">
-        <!-- if there's only one category to be shown and there's no items in it -->
+        <!-- if there's only one category to be shown but no items in it -->
         {% if category.item_set.count == 0 and category_shown.count == 1 %}
 
                 <h4 class="mb-3 pb-1 text-muted border-bottom text-center font-weight-lighter">More {{category}} are coming...</h4>
 
         <!-- skip to the next category if there's no items in this category-->
-        {% elif category.item_set.count > 0 %}
-        
-            <h4 class="mb-3 pb-1 border-bottom font-weight-light">{{category}}</h4>
+        {% else %}
+        {% if category.item_set.count > 0  %}
+            <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark" href="{{category.get_category_url}}">{{category}}</a></h4>
 
             <!-- when this category has subcategories -->
             {% if category.subcategory_set.count > 0 %}
@@ -57,7 +57,7 @@
                         <!-- if there's no items under this subcategory, skip to the next subcategory -->
                         {% if subcategory.item_set.count > 0 %}
 
-                            <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter">{{subcategory.name}}</h6>
+                            <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter"><a class="text-dark" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
                             <div class="row">
                                 {% for item in subcategory.item_set.all %}
 
@@ -77,18 +77,21 @@
             <!-- when this category does not have a subcategory -->
             {% else %}
 
-                <div class="row">
-                    {% for item in category.item_set.all %}
+                <div class="container px-2">
+                    <div class="row">
+                        {% for item in category.item_set.all %}
 
-                        {% include 'boutique/include/item_in_items.html' %}
+                            {% include 'boutique/include/item_in_items.html' %}
 
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
 
             {% endif %}
             <!-- / this category has subcategories or not -->
         </div>
 
+        {% endif %}
         {% endif %}
         <!-- / if there's no items in this category, skip to the next category -->
     {% endfor %}
@@ -98,4 +101,9 @@
 <!-- / a subcategory specified or not -->
 
 {% include 'boutique/include/pagination.html' %}
+
+<hr class="mt-3">
+
+{% include 'boutique/include/before_footer.html' %}
+
 {% endblock content %}

@@ -31,8 +31,9 @@
             font-size: small;
         }
 
+        /* before_footer to display or not when on large screen */
         .dis-sm {
-            display: none;
+            display: block;
         }
 
         .dis-sm ul {
@@ -76,7 +77,14 @@
             border-radius: 50px;
         }
 
+        .breadcrumb {
+            background-color: transparent;
+            border-bottom: thick;
+        }
 
+        .breadcrumb-item+.breadcrumb-item::before {
+            content: '»';
+        }
 
         @media only screen and (max-width: 1200px) {
 
@@ -99,7 +107,7 @@
     <title>VA Boutique</title>
 </head>
 
-<body>
+<body class="d-flex flex-column">
 
     {% include 'boutique/include/header.html' %}
 
