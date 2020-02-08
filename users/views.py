@@ -1,3 +1,54 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import TemplateView, ListView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.contrib.auth import login
+from boutique.models import Category
 
-# Create your views here.
+
+class RegisterView(TemplateView):
+    '''Render registration page'''
+    template_name = 'registration/register.html'
+    form = UserCreationForm()
+
+    def get(self, *args, **kwargs):
+        context = {'form': self.form}
+        context['categories'] = Category.objects.all()
+        return render(self.request, self.template_name, context)
+
+    def post(self, *args, **kwargs):
+        self.form = UserCreationForm(data=self.request.POST)
+        if self.form.is_valid():
+            new_user = self.form.save()
+            login(request, new_user)
+            return redirect('boutique:index')
+
+        return render(self.request, self.template_name, {'form': self.form})
+
+
+# def register(request):
+#     '''registering a new account'''
+#     if request.method != 'POST':
+#         form = UserCreationForm()
+#     else:
+#         form = UserCreationForm(data=request.POST)
+#         if form.is_valid():
+#             new_user = form.save()
+#             login(request, new_user)
+#             return redirect('boutique:index')
+
+#     return render(request, 'registration/register.html', {'form': form})
+
+
+def profile(request):
+    '''render user's profile page'''
+    posts = request.user.post_set.all()
+    comments = request.user.comment_set.all()
+    comments_on_posts_not_authored_by_me = []
+    for comment in comments:
+        if comment.post not in posts:
+            comments_on_posts_not_authored_by_me.append(comment)
+    return render(request, 'users/profile.html', {
+        'posts': posts,
+        'comments': comments,
+        'other_comments': comments_on_posts_not_authored_by_me})

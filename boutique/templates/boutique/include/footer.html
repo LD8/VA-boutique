@@ -1,12 +1,56 @@
+{% load static %}
 <footer class="d-flex align-items-center py-1 flex-column shadow-lg">
-            
+    <div class="mt-4">
+        <img src="{% static 'boutique/img/logo-long-dark.png' %}" alt="" height="60px">
+    </div>
+    <div class="row mt-4 mb-3 w-100 text-capitalize">
+        
+        <div class="col-6 text-right">
+            <h6 class="mb-2 font-weight-light border-bottom border-light">About Us</h5>
+            <div class="col-12 px-0 font-weight-light">
+                <!-- <p class="mb-1">&nbsp;</p class="mb-0"> -->
+                <p class="mb-sm-0 mb-1"><a href="" class="text-muted">How to buy</a></p>
+                <p class="mb-sm-0 mb-1"><a href="" class="text-muted">Delivery and payment</a></p>
+                <p class="mb-sm-0 mb-1"><a href="" class="text-muted">About Us</a></p>
+
+            </div>
+        </div>
+        <div class="col-6">
+            <h6 class="mb-2 font-weight-light border-bottom border-light">Special Offers</h6>
+            <div class="col-12 px-0 font-weight-light">
+                <p class="mb-sm-0 mb-1"><a href="" class="text-muted">Promo</a></p>
+                <p class="mb-sm-0 mb-1"><a href="" class="text-muted">WOW</a></p>
+                <p class="mb-sm-0 mb-1"><a href="" class="text-muted">VIP Order</a></p>
+
+                <!-- {% for category in categories %}
+                {% if category.gender == 1 %}
+                <p class="mb-0"><a href="{{category.get_category_url}}" class="text-muted">{{category.name}}</a></p>
+                {% endif %}
+                {% endfor %}
+                <p class="mb-1 mt-2">Men</p>
+                {% for category in categories %}
+                {% if category.gender == 2 %}
+                <p class="mb-0"><a href="{{category.get_category_url}}" class="text-muted">{{category.name}}</a></p>
+                {% endif %}
+                {% endfor %} -->
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row mt-3 w-100">
+        <div class="col-6 text-muted text-right">+7 (925) 519-62-42</div>
+        <div class="col-6 text-muted">Opening hours: 24 / 7</div>
+    </div>
+
     <ul class="nav my-3 fa-2x">
-        <li class="nav-item"><a class="nav-link text-secondary" href="#" ><i class="fab fa-instagram"></i></a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="#"><i class="fab fa-whatsapp-square"></i></a></li>
-        <li class="nav-item"><a class="nav-link text-secondary" href="#"><i class="far fa-envelope"></i></a></li>
+        <li class="nav-item"><a class="nav-link text-black-50" href="#"><i class="fab fa-instagram"></i></a></li>
+        <li class="nav-item"><a class="nav-link text-black-50" href="#"><i class="fab fa-whatsapp"></i></a></li>
+        <li class="nav-item"><a class="nav-link text-black-50" href="#"><i class="far fa-envelope"></i></a></li>
     </ul>
     <div class="mb-2 text-muted text-center px-2">
-        <p>&copy; 2019 - 2020 <a href="#">VA BOUTIQUE</a> &nbsp; | &nbsp; DESIGN BY: <a href="http://github.com/LD8">DON LEE</a> &nbsp;</p>
+        <p><small>&copy; 2019 - 2020 <a href="{% url 'boutique:index' %}"  class="text-muted border-bottom">VA BOUTIQUE</a> &nbsp; | &nbsp; 
+            DESIGN BY: <a  class="text-muted border-bottom" href="http://github.com/LD8">DON LEE</a> &nbsp;</small></p>
     </div>
 
 </footer>

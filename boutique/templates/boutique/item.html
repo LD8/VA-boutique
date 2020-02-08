@@ -29,8 +29,8 @@
     <!-- /back button -->
 
     <!-- breadcrumb -->
-    <nav aria-label="breadcrumb border-bottom">
-        <ol class="breadcrumb px-1 font-weight-light">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb px-1 font-weight-light border-bottom border-light">
             <li class="breadcrumb-item"><a class="border-bottom text-dark"
                     href="{{item.category.get_category_url}}">{{item.category}}</a></li>
             {% if item.subcategory %}
@@ -46,37 +46,110 @@
     {% include 'boutique/include/item_carousel.html' %}
     <!-- /item images -->
 
-    <!-- item words -->
-    <div class="text-left p-2 mt-auto">
+    <!-- item information: title, price, wish, add to shopping bag, buy now -->
+    <div class="row text-left p-2 mt-auto">
 
-        <div class="pt-2 mt-3">
-            <p class="font-weight-light mb-1 text-capitalize">{{item}}</p>
+        <!-- item title, price, wish, description -->
+        <div class="col-12 col-lg-8">
+
+            <!-- item title -->
+            <div class="pt-2 my-3 d-flex align-items-center">
+                <h4 class="font-weight-light mb-1 text-capitalize">{{item}}</h4>
+                <!-- wish: a heart sign -->
+                <div class="ml-auto">
+                    <a href="#"><i class="far fa-heart fa-lg text-danger"></i></a>
+                </div>
+            </div>
+
+            <!-- item price -->
+            <div class="d-flex border-bottom">
+
+                <div class="font-weight-lighter ">
+                    {% if item.discount %}
+
+                    <p>
+                        <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
+                        <b class="text-danger"><i
+                                class="fas fa-tags"></i>&nbsp;&#8381;&nbsp;{{item.discounted_price}}</b>
+                        <small class="text-danger">(-{{item.discount}}%)</small>
+                    </p>
+
+                    {% else %}
+                    <p><i class="fas fa-tags text-muted"></i>&nbsp;&nbsp;&#8381;&nbsp;{{item.price}}</p>
+
+                    {% endif %}
+                </div>
+
+                
+
+            </div>
+            <!-- / item price -->
+
+            <!-- item description -->
+            <div class="font-weight-light my-4 text-justify" style="font-size: 16px">
+                {{item.description|linebreaks}}
+            </div>
+
         </div>
+        <!-- /item title, price, wish, description -->
 
-        <!-- item price -->
-        <div class="font-weight-lighter ">
-            {% if item.discount %}
+        <!-- shopping bag sign, buy now button -->
+        <div class="col-12 col-lg-4 mt-2">
 
-            <p>
-                <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
-                <b class="text-danger">&nbsp;&#8381;&nbsp;{{item.discounted_price}}</b>
-                <small class="text-danger">(-{{item.discount}}%)</small>
-            </p>
+            <a href="#" class="btn btn-outline-dark col-12 my-2 px-0 px-sm-3">
+                <div class="px-3 d-flex align-items-center">
+                    <div class="ml-auto">
+                        <span>Add to Bag</span> 
+                    </div>
+                    <div class="ml-auto">
+                        <i class="text-right fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+            </a>
 
-            {% else %}
-            <p>&#8381;&nbsp;{{item.price}}</p>
+            <a href="#" class="btn btn-dark col-12 my-2 px-0 px-sm-3">
+                <div class="px-3 d-flex align-items-center">
+                    <div class="ml-auto">
+                        <span class="text-center">Buy Now</span> 
+                    </div>
+                    <div class="ml-auto">
+                        <span><i class="far fa-paper-plane"></i></span> 
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
+                <div class="px-3 d-flex align-items-center">
+                    <div class="ml-auto">
+                        <span class="text-center">Delivery Policy</span> 
+                    </div>
+                    <div class="ml-auto">
+                        <span><i class="fas fa-truck-moving"></i></span> 
+                    </div>
+                </div>
+            </a>
+            
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
+                <div class="px-3 d-flex align-items-center">
+                    <div class="ml-auto">
+                        <span>Contact Directly</span> 
+                    </div>
+                    <div class="ml-auto">
+                        <span><i class="fas fa-phone-alt"></i></span> 
+                    </div>
+                </div>
+            </a>
 
-            {% endif %}
-        </div>
-        <!-- / item price -->
+            <!--             
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3"> Add to Shopping Bag <i class="text-right fas fa-shopping-bag"></i></a>
+            <a href="#" class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0"> Delivery Policy <i class="fas fa-truck-moving"></i></a>
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact Directly <i class="fas fa-phone-alt"></i></a> -->
 
-        <div class="font-weight-light">
-            {{item.description|linebreaks}}
         </div>
 
     </div>
-    <!-- / item words -->
 
+    <!-- /item information -->
 </div>
 <!-- / item -->
 

@@ -1,0 +1,53 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+<h2 class="font-weight-light">Welcome back {{ user.username|title }}!</h2>
+
+<div class="mb-5">
+    <h5>You have <span class="badge badge-pill badge-secondary">{{ posts.count }}</span> posts</h5>
+    <h5>You have <span class="badge badge-pill badge-secondary">{{ comments.count }}</span> comments</h5>
+</div>
+<div>
+    <h4 class="font-weight-light text-muted mb-3">Your <span class="badge badge-pill badge-secondary">{{ posts.count }}</span> posts and <span class="badge badge-pill badge-secondary">{{ comments.count }}</span> comments:</h4>
+    {% for post in posts %}
+    <div class="bg-white rounded-left shadow-lg p-3 mb-1 row">
+        <div class="col-md-7">
+            {% include 'forum/posts_brief.html' with topic=post.topic post=post num=500 %}
+        </div>
+
+        <div class="col-md-5">
+            <h5 class="font-weight-lighter border-bottom pb-2 text-muted">Your Comments</h5>
+            {% for comment in post.comment_set.all %}
+            {% if comment.post == post %}
+            {% include 'users/comments_in_profile.html' %}
+            {% endif %}
+            {% empty %}
+            <div>
+                <p class="text-muted mt-3">You haven't commented on this post yet...</p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <div class="mt-5">
+        <h4 class="font-weight-light text-muted mb-3">Your comments on other's posts:</h4>
+        {% for comment in other_comments %}
+        <div class="bg-white rounded-left shadow-lg p-3 mb-1 row">
+            <div class="col-md-7">
+                {% include 'forum/posts_brief.html' with topic=comment.post.topic post=comment.post num=200 %}
+            </div>
+            <div class="col-md-5">
+                {% include 'users/comments_in_profile.html' %}
+            </div>
+        </div>
+        {% empty %}
+        <div>
+            <p class="text-muted mt-3">You haven't commented on other's posts yet...</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

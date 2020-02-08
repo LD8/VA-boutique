@@ -9,13 +9,16 @@
     {% if subcategory_shown.item_set.count == 0 %}
 
         <h4 class="mb-3 pb-1 text-muted border-bottom text-center font-weight-lighter">More {{subcategory_shown}} are coming...</h4>
+        <p class="font-weight-lighter text-muted mb-5">Feel free to browse some other product</p>
         
     {% else %}
 
-        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark" href="{{category_shown.get_category_url}}">{{subcategory_shown.category}}</a></h4>
-
+        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark" href="{{subcategory_shown.category.get_category_url}}">{{subcategory_shown.category}}</a></h4>
         <div class="container px-2">
             <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter"><a class="text-dark" href="{{subcategory_shown.get_subcategory_url}}">{{subcategory_shown.name}}</a></h6>
+            <!-- {% if subcategory_shown.description %}
+                <p class="mt-n3 mb-4 px-3"><small class="font-weight-lighter">{{subcategory_shown.description}}</small></p>
+            {% endif %} -->
             <div class="row">
                 {% for item in item_list %}
 
@@ -25,9 +28,8 @@
             </div>
         </div>
         
-    </div>
-
     {% endif %}
+    </div>
 
 <!-- if no subcategory specified, only category/ies specified -->
 {% else %}
@@ -40,12 +42,15 @@
         {% if category.item_set.count == 0 and category_shown.count == 1 %}
 
                 <h4 class="mb-3 pb-1 text-muted border-bottom text-center font-weight-lighter">More {{category}} are coming...</h4>
+                <p class="font-weight-lighter text-muted mb-5">Feel free to browse some other product</p>
 
         <!-- skip to the next category if there's no items in this category-->
         {% else %}
         {% if category.item_set.count > 0  %}
             <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark" href="{{category.get_category_url}}">{{category}}</a></h4>
-
+            {% if category.description %}
+            <p class="mt-n2 mb-4 px-3"><small class="font-weight-lighter">{{category.description}}</small></p>
+            {% endif %}
             <!-- when this category has subcategories -->
             {% if category.subcategory_set.count > 0 %}
 
@@ -58,6 +63,9 @@
                         {% if subcategory.item_set.count > 0 %}
 
                             <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter"><a class="text-dark" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
+                            <!-- {% if subcategory.description %}
+                                <p class="mt-n3 mb-4 px-3"><small class="font-weight-lighter">{{subcategory.description}}</small></p>
+                            {% endif %} -->
                             <div class="row">
                                 {% for item in subcategory.item_set.all %}
 
