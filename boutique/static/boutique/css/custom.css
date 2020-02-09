@@ -1,3 +1,74 @@
+@charset "UTF-8";
+a.text-black-50:hover {
+  color: #f8b7a4 !important; }
 
+i.text-danger {
+  color: #e44a4a !important; }
+
+i.text-danger:hover {
+  color: #a00000 !important; }
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0; }
+
+footer {
+  position: sticky;
+  top: 100%;
+  background-color: #f1f0f0;
+  font-size: small; }
+
+/* before_footer to display or not when on large screen */
+.pre-footer {
+  display: block; }
+  .pre-footer ul {
+    list-style: none; }
+
+img {
+  transition: filter 1s; }
+  img:hover {
+    filter: brightness(80%); }
+
+.page-item:first-child .page-link {
+  border-radius: 5rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding-right: 25px; }
+
+.page-item:last-child .page-link {
+  border-radius: 5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  padding-left: 25px; }
+
+ul.pagination > li.active > a.page-link {
+  background-color: #f89d9d;
+  color: #f7f7f7;
+  border: none; }
+
+a.page-link {
+  background-color: white;
+  border: none;
+  color: grey;
+  padding: 2px 30px;
+  border-radius: 50px; }
+
+.breadcrumb {
+  background-color: transparent; }
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "»"; }
+
+@media only screen and (max-width: 1200px) {
+  #indexPageCarousel {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%; }
+
+  footer {
+    font-size: 12px; }
+
+  .dis-sm {
+    display: block; } }
 
 /*# sourceMappingURL=custom.css.map */

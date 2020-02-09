@@ -1,13 +1,14 @@
 {% load static %}
 
+{% include 'boutique/include/modal_in_nav.html' %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg font-weight-light sticky-top">
 
     <!-- Site Icon -->
-    <a class="navbar-brand" href="{% url 'boutique:index' %}">
+    <!-- <a class="navbar-brand mr-2" href="{% url 'boutique:index' %}">
         <img src="{% static 'boutique/img/logo-long-dark.png' %}" height="40" alt="site-icon">
-    </a>
-    <!-- <a class="navbar-brand font-weight-lighter" href="{% url 'boutique:index' %}">
-        boutique </a> -->
+    </a> -->
+    <a class="navbar-brand font-weight-lighter text-black-50" href="{% url 'boutique:index' %}"
+        style="font-family:cursive; font-size:32px">VA Boutique</a>
     <!-- /Site Icon -->
 
     <!-- Nav Button: appear on small screen -->
@@ -20,11 +21,11 @@
     <!-- Nav Elements: hidden on small screen -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <!-- Women/Men dropdown -->
-        <ul class="navbar-nav mr-auto" style="margin-bottom: -8px;">
+        <!-- Women/Men Category dropdown -->
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Для женщин
                 </a>
                 <div class="dropdown-menu border-white ml-lg-n4 px-2 text-center" aria-labelledby="navbarDropdown">
@@ -39,12 +40,13 @@
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item font-weight-light px-3" href="{% url 'boutique:show-all' 'Women' %}">Show All</a>
+                    <a class="dropdown-item font-weight-light px-3" href="{% url 'boutique:show-all' 'Women' %}">Show
+                        All</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Для мужчин
                 </a>
                 <div class="dropdown-menu border-white ml-lg-n3 px-2 text-center" aria-labelledby="navbarDropdown">
@@ -59,25 +61,30 @@
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item font-weight-light px-3" href="{% url 'boutique:show-all' 'Men' %}">Show All</a>
+                    <a class="dropdown-item font-weight-light px-3" href="{% url 'boutique:show-all' 'Men' %}">Show
+                        All</a>
                 </div>
             </li>
         </ul>
-        <!-- /Women/Men dropdown -->
+        <!-- /Women/Men Category dropdown -->
 
-        <!-- fa icons -->
-        <ul class="navbar-nav fa-lg my-3 my-sm-0 mb-sm-n1 ml-auto text-center">
-            <li class="nav-item"><a class="nav-link my-3 my-lg-0 py-0 text-black-50" href="#"><i class="fab fa-instagram"></i></a>
+        <!-- fa icons: instagram, whatsapp, email -->
+        <ul
+            class="navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center">
+            <li class="nav-item"><a class="nav-link text-black-50 ml-3" href="#instagramModal" data-toggle="modal"><i
+                        class="fab fa-instagram"></i></a>
             </li>
-            <li class="nav-item mx-4 mx-sm-0"><a class="nav-link py-0 text-black-50" href="#"><i class="fab fa-whatsapp"></i></a>
+            <li class="nav-item"><a class="nav-link text-black-50 px-5 px-lg-3" href="#whatsappModal"
+                    data-toggle="modal"><i class="fab fa-whatsapp"></i></a>
             </li>
-            <li class="nav-item"><a class="nav-link my-3 my-lg-0 py-0 text-black-50" href="#"><i class="far fa-envelope"></i></a>
+            <li class="nav-item"><a class="nav-link text-black-50 mr-3" href="#contactModal" data-toggle="modal"><i
+                        class="far fa-envelope"></i></a>
             </li>
         </ul>
         <!-- /fa icons -->
 
         <!-- Log in/Profile: dropdown if logged in -->
-        <ul class="navbar-nav ml-auto" style="margin-bottom: -8px;">
+        <ul class="navbar-nav ml-auto">
 
             {% if user.is_authenticated %}
 
@@ -89,16 +96,18 @@
                     <span class="pl-1">{{user.username}}'s</span></a>
                 <div class="dropdown-menu dropdown-menu-right border-white px-2" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item font-weight-light px-3 px-sm-1 btn btn-outline-success" href="#"><i
+                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#"><i
                             class="fas fa-heart text-danger"></i><span class="pl-3">My
                             Wish-list</span> </a>
                     <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#"><i
-                            class="fas fa-shopping-bag text-primary"></i><span class="pl-3 "> My Shopping Cart</span></a>
+                            class="fas fa-shopping-bag text-primary"></i><span class="pl-3 "> My Shopping
+                            Cart</span></a>
                     <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#"><i
                             class="fas fa-dolly text-info"></i><span class="pl-3 ">My Order</span></a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="nav-link font-weight-light pl-4 ml-3" href="#">Our Policy</a>
+                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#policyModalScrollable"
+                        data-toggle="modal"><i class="fas fa-truck-moving text-black-50 mr-2"></i> Our Policy</a>
                     <a class="dropdown-item font-weight-light px-3 px-sm-1" href="{% url 'users:logout' %}"><i
                             class="fas fa-sign-out-alt text-muted"></i><span class="pl-3 ">Log Out</span></a>
 
@@ -106,17 +115,19 @@
 
             </li>
 
+            <!-- No user logged in -->
             {% else %}
 
             <li class="nav-item">
-                <a class="nav-link font-weight-light pl-3 text-black-50 btn" href="{% url 'users:login' %}"><i
-                        class="fas fa-sign-in-alt fa-lg"></i><span class="pl-1">Войти</span></a>
+                <a class="nav-link font-weight-light text-black-50 btn" href="{% url 'users:login' %}">Войти</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link font-weight-light pl-3 text-black-50 btn" href="{% url 'users:register' %}">
-                    <i class="fas fa-user-tag"></i><span class="pl-1">Зарегистрироваться</span></a>
+                <a class="nav-link font-weight-light text-black-50 btn" href="{% url 'users:register' %}">
+                    Зарегистрироваться</a>
             </li>
+
             {% endif %}
+            <!-- /author is/not authenticated -->
 
         </ul>
         <!-- /Log in dropdown -->

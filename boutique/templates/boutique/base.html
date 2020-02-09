@@ -9,119 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- title icon -->
-    <link rel="shortcut icon" href="{% static 'boutique/img/icon.png' %}">
+    <link rel="icon" type="image/ico" href="{% static 'boutique/img/icon-bright.png' %}">
 
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="{% static 'boutique/css/fontawesome/all.css' %}">
+    <!-- fontawesome css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/fontawesome/all.css' %}">
 
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
+    
     <!-- customised css -->
-    <!-- <link rel="stylesheet" href="{% static 'boutique/css/custom.css' %}"> -->
-    <style>
-        a.text-black-50:hover {
-            color: rgb(248, 183, 164) !important;
-        }
-
-        i.text-danger {
-            color: rgb(228, 74, 74) !important;
-        }
-
-        i.text-danger:hover {
-            color: rgb(160, 0, 0) !important;
-        }
-
-        .navbar-brand {
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        footer {
-            position: sticky;
-            top: 100%;
-            background-color: rgb(241, 240, 240);
-            font-size: small;
-        }
-
-        /* before_footer to display or not when on large screen */
-        .dis-sm {
-            display: block;
-        }
-
-        .dis-sm ul {
-            list-style: none;
-        }
-
-        img {
-            transition: filter 1s;
-
-        }
-
-        img:hover {
-            filter: brightness(80%);
-        }
-
-        .page-item:first-child .page-link {
-            border-radius: 5rem;
-            border-top-right-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-            padding-right: 25px;
-        }
-
-        .page-item:last-child .page-link {
-            border-radius: 5rem;
-            border-top-left-radius: 1rem;
-            border-bottom-left-radius: 1rem;
-            padding-left: 25px;
-        }
-
-        /* ul.pagination>li>a.page-link {
-            color: rgb(153, 67, 67);
-        } */
-        
-        ul.pagination>li.active>a.page-link {
-            background-color: rgb(248, 157, 157);
-            color: rgb(247, 247, 247);
-            border: none;
-        }
-
-        a.page-link {
-            background-color: rgb(255, 255, 255);
-            border: none;
-            color: grey;
-            padding: 2px 30px;
-            border-radius: 50px;
-        }
-
-        .breadcrumb {
-            background-color: transparent;
-        }
-
-        .breadcrumb-item+.breadcrumb-item::before {
-            content: '»';
-        }
-
-        @media only screen and (max-width: 1200px) {
-
-            #indexPageCarousel {
-                width: 100vw;
-                margin-left: -50vw;
-                left: 50%;
-            }
-
-            footer {
-                font-size: 12px;
-            }
-
-            .dis-sm {
-                display: block;
-            }
-
-            /* ul.navbar-nav li.nav-item {
-                margin-left: auto;
-            } */
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
 
     <title>VA Boutique</title>
 </head>
@@ -131,7 +28,12 @@
     {% include 'boutique/include/header.html' %}
 
     <main class="container">
+        
         {% block content %}{% endblock content %}
+
+        <!-- Category list for women/men & Search Form -->
+        {% include 'boutique/include/before_footer.html' %}
+        
     </main>
 
     {% include 'boutique/include/footer.html' %}

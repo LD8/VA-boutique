@@ -1,0 +1,91 @@
+
+a.text-black-50:hover {
+  color: rgb(248, 183, 164) !important;
+}
+
+i.text-danger {
+  color: rgb(228, 74, 74) !important;
+}
+
+i.text-danger:hover {
+  color: rgb(160, 0, 0) !important;
+}
+
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+footer {
+  position: sticky;
+  top: 100%;
+  background-color: rgb(241, 240, 240);
+  font-size: small;
+}
+
+/* before_footer to display or not when on large screen */
+.pre-footer {
+  display: block;
+  ul {
+    list-style: none;
+  }
+}
+
+img {
+  transition: filter 1s;
+  &:hover {
+    filter: brightness(80%);
+  }
+}
+
+.page-item:first-child .page-link {
+  border-radius: 5rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding-right: 25px;
+}
+
+.page-item:last-child .page-link {
+  border-radius: 5rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  padding-left: 25px;
+}
+
+ul.pagination > li.active > a.page-link {
+  background-color: rgb(248, 157, 157);
+  color: rgb(247, 247, 247);
+  border: none;
+}
+
+a.page-link {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  color: grey;
+  padding: 2px 30px;
+  border-radius: 50px;
+}
+
+.breadcrumb {
+  background-color: transparent;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "»";
+}
+
+@media only screen and (max-width: 1200px) {
+  #indexPageCarousel {
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+  }
+
+  footer {
+    font-size: 12px;
+  }
+
+  .dis-sm {
+    display: block;
+  }
+}

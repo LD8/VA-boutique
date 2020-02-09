@@ -68,19 +68,17 @@
                     {% if item.discount %}
 
                     <p>
-                        <strike class="text-muted">&#8381;&nbsp;{{item.price}}</strike>
-                        <b class="text-danger"><i
-                                class="fas fa-tags"></i>&nbsp;&#8381;&nbsp;{{item.discounted_price}}</b>
-                        <small class="text-danger">(-{{item.discount}}%)</small>
+                        <strike class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price}}</strike>
+                        <b class="text-danger"><span class="mr-1">&#8381;</span>{{item.discounted_price}}</b>
+                        <small class="text-danger">(-{{item.discount}}%)<i
+                            class="fas fa-tags ml-2"></i></small>
                     </p>
 
                     {% else %}
-                    <p><i class="fas fa-tags text-muted"></i>&nbsp;&nbsp;&#8381;&nbsp;{{item.price}}</p>
+                    <p> <span class="mr-1">&#8381;</span>{{item.price}} <a href="#discountTagModal" data-toggle="modal"><i class="fas fa-tags text-danger ml-2"></i></a></p>
 
                     {% endif %}
                 </div>
-
-                
 
             </div>
             <!-- / item price -->
@@ -95,55 +93,11 @@
 
         <!-- shopping bag sign, buy now button -->
         <div class="col-12 col-lg-4 mt-2">
-
-            <a href="#" class="btn btn-outline-dark col-12 my-2 px-0 px-sm-3">
-                <div class="px-3 d-flex align-items-center">
-                    <div class="ml-auto">
-                        <span>Add to Bag</span> 
-                    </div>
-                    <div class="ml-auto">
-                        <i class="text-right fas fa-shopping-bag"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="btn btn-dark col-12 my-2 px-0 px-sm-3">
-                <div class="px-3 d-flex align-items-center">
-                    <div class="ml-auto">
-                        <span class="text-center">Buy Now</span> 
-                    </div>
-                    <div class="ml-auto">
-                        <span><i class="far fa-paper-plane"></i></span> 
-                    </div>
-                </div>
-            </a>
-            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
-                <div class="px-3 d-flex align-items-center">
-                    <div class="ml-auto">
-                        <span class="text-center">Delivery Policy</span> 
-                    </div>
-                    <div class="ml-auto">
-                        <span><i class="fas fa-truck-moving"></i></span> 
-                    </div>
-                </div>
-            </a>
-            
-            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
-                <div class="px-3 d-flex align-items-center">
-                    <div class="ml-auto">
-                        <span>Contact Directly</span> 
-                    </div>
-                    <div class="ml-auto">
-                        <span><i class="fas fa-phone-alt"></i></span> 
-                    </div>
-                </div>
-            </a>
-
-            <!--             
-            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3"> Add to Shopping Bag <i class="text-right fas fa-shopping-bag"></i></a>
+                        
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Shopping Bag </a>
             <a href="#" class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
-            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0"> Delivery Policy <i class="fas fa-truck-moving"></i></a>
-            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact Directly <i class="fas fa-phone-alt"></i></a> -->
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Delivery Policy</a>
+            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact Directly</a>
 
         </div>
 
@@ -154,6 +108,23 @@
 <!-- / item -->
 
 <hr class="mt-3">
-{% include 'boutique/include/before_footer.html' %}
 
+<!-- discountTagModal -->
+<div class="modal fade" id="discountTagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+        <div class="modal-content" style="height: 400px; width: 280px;">
+            <div class="modal-body text-center bg-discount-tag">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="mb-3 text-danger font-weight-light" style="line-height: 40px;">Register NOW for extra <u>5%</u> discount of ALL items!!!</h5>
+                <div style="height: 160px;"></div>
+                <a target="_blank" href="{% url 'users:register' %}" type="button"
+                    class="btn btn-danger font-weight-lighter align-self-end px-5">Sign In</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /discountTagModal -->
 {% endblock content %}
