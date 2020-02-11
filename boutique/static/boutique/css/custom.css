@@ -1,3 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Forum&display=swap");
+nav,
+.container,
+div.modal {
+  font-family: 'Forum', sans-serif; }
+
+.font-bigger {
+  font-size: large; }
+
+div.accordion a.dropdown-item {
+  padding-left: 5px;
+  padding-right: 5px; }
+
 a.text-black-50:hover {
   color: #f8b7a4 !important; }
 
@@ -12,10 +25,10 @@ i.text-danger:hover {
   padding-bottom: 0; }
 
 footer {
+  font-family: 'Forum', sans-serif;
   position: sticky;
   top: 100%;
-  background-color: #f1f0f0;
-  font-size: small; }
+  background-color: #f1f0f0; }
 
 /* before_footer to display or not when on large screen */
 .pre-footer {
@@ -59,9 +72,12 @@ a.page-link {
     left: 50%; }
 
   footer {
-    font-size: 12px; }
+    font-size: 16px; }
 
   .dis-sm {
     display: block; } }
+@media (max-height: 400px) {
+  #indexPageCarousel .carousel-item > img {
+    max-width: 300px; } }
 
 /*# sourceMappingURL=custom.css.map */

@@ -5,18 +5,18 @@
     {% if item.tag is not None %}
     <!-- if item has discount -->
     {% if item.discount_percentage > 0 %}
-    
+
     <p class="mb-1">
         <s class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price}}</s>
         <s class="text-muted mr-1"><span class="mr-1">&#8381;</span>{{item.discounted_price}}
-            <small class="text-muted mr-1 font-weight-lighter">(-{{item.discount_percentage}}%)</small></s>
+            <small class="text-muted mr-1">(-{{item.discount_percentage}}%)</small></s>
     </p>
-    <p class="mb-1">
-        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.final_price}}</b>
-        <small class="text-danger">(-{{item.total_discount_percentage}}%)</small>
+    <p class="mb-0">
+        <small class="text-danger">{{item.tag}}</small>
     </p>
     <p>
-        <small class="text-danger">{{item.tag}}</small>
+        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.final_price}}</b>
+        <small class="text-danger">(-{{item.total_discount_percentage}}%)</small>
     </p>
 
     {% else %}
@@ -97,19 +97,19 @@
 </div>
 
 <!-- discountTagModal -->
-<div class="modal fade" id="item{{item.pk}}discountTagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+<div class="modal fade" id="item{{item.pk}}discountTagModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
         <div class="modal-content" style="height: 400px; width: 280px;">
             <div class="modal-body text-center bg-discount-tag">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="mb-3 text-danger font-weight-light" style="line-height: 40px;">Register NOW for extra
-                    <u>{{item.tag.tag_discount_percentage}}%</u> discount of <u>ALL</u> tagged items!!!</h5>
+                <h5 class="mb-3 text-danger font-weight-light" style="line-height: 40px;">Join us NOW for extra
+                    <u>{{item.tag.tag_discount_percentage}}%</u> discount of this item and SO MUCH MORE!!!</h5>
                 <div style="height: 160px;"></div>
                 <a target="_blank" href="{% url 'users:register' %}" type="button"
-                    class="btn btn-danger font-weight-lighter align-self-end px-5">Sign In</a>
+                    class="btn btn-danger font-weight-lighter align-self-end px-5">Sign Up</a>
             </div>
         </div>
     </div>

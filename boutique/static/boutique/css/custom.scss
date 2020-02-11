@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Forum&display=swap'); //'Forum', cursive; 
+
+// @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300&display=swap'); //'Alegreya Sans', sans-serif; 
+// @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300|Forum&display=swap'); //'Forum', 'Alegreya Sans', sans-serif; 
+
+nav,
+.container,
+div.modal
+{
+  font-family: 'Forum', sans-serif;
+}
+
+.font-bigger {
+  font-size: large;
+}
+
+div.accordion a.dropdown-item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 a.text-black-50:hover {
   color: rgb(248, 183, 164) !important;
 }
@@ -16,10 +37,11 @@ i.text-danger:hover {
 }
 
 footer {
+  font-family: 'Forum', sans-serif;
   position: sticky;
   top: 100%;
   background-color: rgb(241, 240, 240);
-  font-size: small;
+
 }
 
 /* before_footer to display or not when on large screen */
@@ -65,8 +87,6 @@ a.page-link {
   border-radius: 50px;
 }
 
-
-
 @media only screen and (max-width: 1200px) {
   #indexPageCarousel {
     width: 100vw;
@@ -75,7 +95,7 @@ a.page-link {
   }
 
   footer {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .dis-sm {
@@ -83,3 +103,8 @@ a.page-link {
   }
 }
 
+@media (max-height: 400px) {
+  #indexPageCarousel .carousel-item > img {
+    max-width: 300px;
+  }
+}

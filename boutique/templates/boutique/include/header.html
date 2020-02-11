@@ -1,14 +1,14 @@
 {% load static %}
 
 {% include 'boutique/include/modal_in_nav.html' %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg font-weight-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg sticky-top">
 
     <!-- Site Icon -->
-    <!-- <a class="navbar-brand mr-2" href="{% url 'boutique:index' %}">
-        <img src="{% static 'boutique/img/logo-long-dark.png' %}" height="40" alt="site-icon">
-    </a> -->
-    <a class="navbar-brand font-weight-lighter text-black-50" href="{% url 'boutique:index' %}"
-        style="font-family:cursive; font-size:32px">VA Boutique</a>
+    <a class="navbar-brand mr-2" href="{% url 'boutique:index' %}">
+        <img src="{% static 'boutique/img/logo-nav-dark.png' %}" height="40" alt="site-icon">
+    </a>
+    <!-- <a class="navbar-brand text-black-50" href="{% url 'boutique:index' %}"
+        style="font-family:cursive; font-size:32px">VA Boutique</a> -->
     <!-- /Site Icon -->
 
     <!-- Nav Button: appear on small screen -->
@@ -19,49 +19,49 @@
     <!-- /Nav Button -->
 
     <!-- Nav Elements: hidden on small screen -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
 
         <!-- Women/Men Category dropdown -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown" role="button"
+                <a class="nav-link dropdown-toggle btn text-black-50 font-bigger" href="#" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Для женщин
                 </a>
-                <div class="dropdown-menu border-white ml-lg-n4 px-2 text-center" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu border-white ml-lg-n5 px-2 text-center" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
                     {% if category.gender == 1 %}
-                    <a class="dropdown-item font-weight-light"
+                    <a class="dropdown-item font-bigger"
                         href="{{ category.get_category_url }}">{{category.name|title}}</a>
                     {% for subcategory in category.subcategory_set.all %}
-                    <a class="dropdown-item font-weight-lighter"
+                    <a class="dropdown-item text-black-50"
                         href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
                     {% endfor %}
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item font-weight-light px-3" href="{% url 'boutique:show-all' 'Women' %}">Show
+                    <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'Women' %}">Show
                         All</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown" role="button"
+                <a class="nav-link dropdown-toggle btn text-black-50 font-bigger" href="#" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Для мужчин
                 </a>
-                <div class="dropdown-menu border-white ml-lg-n3 px-2 text-center" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu border-white ml-lg-n2 px-2 text-center" aria-labelledby="navbarDropdown">
                     {% for category in categories %}
                     {% if category.gender == 2 %}
-                    <a class="dropdown-item font-weight-light"
+                    <a class="dropdown-item font-bigger"
                         href="{{ category.get_category_url }}">{{category.name|title}}</a>
                     {% for subcategory in category.subcategory_set.all %}
-                    <a class="dropdown-item font-weight-lighter"
+                    <a class="dropdown-item text-black-50"
                         href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
                     {% endfor %}
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item font-weight-light px-3" href="{% url 'boutique:show-all' 'Men' %}">Show
+                    <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'Men' %}">Show
                         All</a>
                 </div>
             </li>
@@ -90,25 +90,25 @@
 
             <li class="nav-item dropdown">
 
-                <a class="nav-link dropdown-toggle text-capitalize btn" href="#" id="navbarDropdown" role="button"
+                <a class="nav-link dropdown-toggle btn text-black-50 font-bigger" href="#" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user border-bottom"></i>
-                    <span class="pl-1">{{user.username}}'s</span></a>
+                    <i class="fas fa-user fa-sm"></i>
+                    <span class="pl-1">{{user.username|title}}'s</span></a>
                 <div class="dropdown-menu dropdown-menu-right border-white px-2" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#"><i
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#"><i
                             class="fas fa-heart text-danger"></i><span class="pl-3">My
                             Wish-list</span> </a>
-                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#"><i
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#"><i
                             class="fas fa-shopping-bag text-primary"></i><span class="pl-3 "> My Shopping
                             Cart</span></a>
-                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#"><i
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#"><i
                             class="fas fa-dolly text-info"></i><span class="pl-3 ">My Order</span></a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="#policyModalScrollable"
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#policyModalScrollable"
                         data-toggle="modal"><i class="fas fa-truck-moving text-black-50 mr-2"></i> Our Policy</a>
-                    <a class="dropdown-item font-weight-light px-3 px-sm-1" href="{% url 'users:logout' %}"><i
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="{% url 'users:logout' %}"><i
                             class="fas fa-sign-out-alt text-muted"></i><span class="pl-3 ">Log Out</span></a>
 
                 </div>
@@ -119,10 +119,10 @@
             {% else %}
 
             <li class="nav-item">
-                <a class="nav-link font-weight-light text-black-50 btn" href="{% url 'users:login' %}">Войти</a>
+                <a class="nav-link text-black-50 text-black-50 btn" href="{% url 'users:login' %}">Войти</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link font-weight-light text-black-50 btn" href="{% url 'users:register' %}">
+                <a class="nav-link text-black-50 text-black-50 btn" href="{% url 'users:register' %}">
                     Зарегистрироваться</a>
             </li>
 

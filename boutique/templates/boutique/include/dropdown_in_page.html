@@ -1,55 +1,53 @@
 <div class="accordion row text-center mb-3" id="accordionPageMenu">
 
-    <div class="col-6">
+    <div class="col-6 px-0">
         <div class="" id="headingOne">
-            <button class="btn btn-link text-muted" type="button" data-toggle="collapse" data-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
+            <a class="btn border-bottom pb-0 text-black-50" type="button" data-toggle="collapse"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Для женщин
-            </button>
+            </a>
         </div>
         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
             <div class="mt-2 mb-5">
                 {% for category in categories %}
                 {% if category.gender == 1 %}
-                <a class="dropdown-item font-weight-lighter px-0"
-                    href="{{ category.get_category_url }}"><b>{{category.name|title}}</b></a>
+                <a class="dropdown-item" href="{{ category.get_category_url }}">{{category.name|title}}</a>
                 {% for subcategory in category.subcategory_set.all %}
-                <a class="dropdown-item font-weight-lighter px-0"
+                <a class="dropdown-item text-black-50"
                     href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
                 {% endfor %}
                 <div class="dropdown-divider"></div>
                 {% endif %}
                 {% endfor %}
-                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'Women' %}"><b>Show
-                        All</b></a>
+                <a class="dropdown-item" href="{% url 'boutique:show-all' 'Women' %}">Show
+                    All</a>
             </div>
         </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-6 px-0">
         <div class="" id="headingTwo">
-            <button class="btn btn-link text-muted" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="false" aria-controls="collapseTwo">
+            <a class="btn border-bottom pb-0 text-black-50" type="button" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 Для мужчин
-            </button>
+            </a>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPageMenu">
             <div class="mt-2 mb-5">
                 {% for category in categories %}
                 {% if category.gender == 2 %}
-                <a class="dropdown-item font-weight-lighter px-0"
-                    href="{{ category.get_category_url }}"><b>{{category.name|title}}</b></a>
+                <a class="dropdown-item " href="{{ category.get_category_url }}">{{category.name|title}}</a>
                 {% for subcategory in category.subcategory_set.all %}
-                <a class="dropdown-item font-weight-lighter px-0"
+                <a class="dropdown-item text-black-50"
                     href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
                 {% endfor %}
                 <div class="dropdown-divider"></div>
                 {% endif %}
                 {% endfor %}
-                <a class="dropdown-item font-weight-lighter" href="{% url 'boutique:show-all' 'Men' %}"><b>Show
-                        All</b></a>
+                <a class="dropdown-item" href="{% url 'boutique:show-all' 'Men' %}">Show
+                    All</a>
             </div>
         </div>
     </div>
- 
+
 </div>

@@ -39,7 +39,8 @@ class SubCategory(models.Model):
 
     class Meta():
         verbose_name = 'Sub-category'
-        verbose_name_plural = 'Sub-categories'
+        verbose_name_plural = 'Sub-categories' 
+        ordering = ['name']
 
     def __str__(self):
         return self.category.get_gender_display() + ' ' + self.name
@@ -69,7 +70,7 @@ class Item(models.Model):
     description = models.TextField(blank=True)
     price = models.IntegerField(default=0)
     discount_percentage = models.IntegerField(verbose_name='Discount Percentage', default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
-    tag = models.ForeignKey(Tag, on_delete=models.PROTECT, null=True, blank=True)
+    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=True)
     uploaded_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     class Meta:
