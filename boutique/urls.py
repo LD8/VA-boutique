@@ -6,6 +6,9 @@ urlpatterns = [
     # show index page
     path('', views.IndexView.as_view(), name='index'),
     
+    # search
+    path('search/', views.SearchView.as_view(), name='search'),
+
     # show a specific item
     path('item_<int:pk>/', views.ItemDetailView.as_view(), name='item'), 
     # for DetailView to work, either pass in <pk> or specify in CBV `pk_url_kwargs = 'item_pk'`

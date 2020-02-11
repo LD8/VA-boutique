@@ -1,8 +1,8 @@
 <div class="pre-footer my-4">
     {% include 'boutique/include/dropdown_in_page.html' %}
 
-    <form class="form-inline my-0 border-bottom" id="search-form-2">
-        <input class="form-control mr-sm-2 w-100 border-white text-center" type="search" placeholder="Search"
+    <form class="form-inline my-0 border-bottom" action="{% url 'boutique:search' %}" method="GET">
+        <input name="query" class="form-control mr-sm-2 w-100 border-white text-center" type="text" placeholder="Search"
             aria-label="Search">
     </form>
 </div>

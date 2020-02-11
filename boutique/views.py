@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from .models import Category, Item, SubCategory
+from .models import Category, Item, SubCategory, IndexCarousel
+# Q helps to search A or B at the same time
+from django.db.models import Q
 
 
 class IndexView(ListView):
@@ -8,6 +10,11 @@ class IndexView(ListView):
     model = Category
     template_name = 'boutique/index.html'
     context_object_name = 'categories'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['carousels'] = IndexCarousel.objects.all()
+        return context
 
 
 class CategoryListView(ListView):
@@ -75,3 +82,70 @@ class ItemDetailView(DetailView):
         context['categories'] = Category.objects.all()
         # print('\ncontext= ', context, '\n')
         return context
+
+
+class SearchView(ListView):
+    model = Category
+    template_name = 'boutique/search.html'
+    context_object_name = 'items'
+
+    def get_queryset(self):
+        query = self.kwargs['query']
+        items = Item.objects.filter(
+            Q(name__icontains=query) |
+            Q(category__icontains=query) |
+            Q(subcategory__icontains=query) |
+            Q(description__icontains=query))
+
+        return items
+    
+    def get(self, **kwargs):
+        pass
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context['search_result'] = self.get_queryset()
+        print(context)
+        return context
+
+
+
+# def search(request, query=None, topic_pk=None):
+#     # if no-input submission --> redirect to topics for users to browse
+#     if request.GET.get('query') == '':
+#         return redirect('forum:topics')
+
+#     # if user searching from nav bar, get the request query value stored properly
+#     if query == None:
+#         query = request.GET.get('query')
+
+#     # search through all Post objects, in titles and contents
+#     search_result_posts = Post.objects.filter(
+#         Q(title__icontains=query) |
+#         Q(content__icontains=query) |
+#         Q(date_added__icontains=query))
+
+#     # because there are only a few topics,
+#     # use filtered posts to determine topics for displaying in the sidebar
+#     search_result_topics = []
+#     for post in search_result_posts:
+#         if post.topic not in search_result_topics:
+#             search_result_topics.append(post.topic)
+
+#     # passing an empty topic if topic_pk=None
+#     search_result_topic = {}
+
+#     # if to check results in a specific topic
+#     if topic_pk != None:
+#         # make sure this topic exists and override the default value
+#         search_result_topic = get_object_or_404(Topic, pk=topic_pk)
+#         # search through all the posts in this topic, and override previous search_results_posts
+#         search_result_posts = search_result_topic.post_set.filter(
+#             Q(title__icontains=query) |
+#             Q(content__icontains=query))
+
+#     return render(request, 'forum/search.html', {
+#         'search_result_posts': search_result_posts,
+#         'search_result_topics': search_result_topics,
+#         'search_result_topic': search_result_topic,
+#         'query': query})

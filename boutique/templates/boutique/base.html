@@ -1,43 +1,20 @@
-{% load bootstrap4 %}
-{% load static %}
+{% extends 'boutique/ele.html' %}
 
-<html lang="en">
+{% block ele %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- title icon -->
-    <link rel="icon" type="image/ico" href="{% static 'boutique/img/icon-bright.png' %}">
+{% include 'boutique/include/header.html' %}
 
-    <!-- fontawesome css-->
-    <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/fontawesome/all.css' %}">
+<main class="container">
 
-    {% bootstrap_css %}
-    {% bootstrap_javascript jquery='full' %}
-    
-    <!-- customised css -->
-    <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
+    {% block content %}{% endblock content %}
 
-    <title>VA Boutique</title>
-</head>
+    <!-- Category list for women/men & Search Form -->
+    {% include 'boutique/include/before_footer.html' %}
 
-<body class="d-flex flex-column">
+</main>
 
-    {% include 'boutique/include/header.html' %}
+{% include 'boutique/include/footer.html' %}
 
-    <main class="container">
-        
-        {% block content %}{% endblock content %}
 
-        <!-- Category list for women/men & Search Form -->
-        {% include 'boutique/include/before_footer.html' %}
-        
-    </main>
-
-    {% include 'boutique/include/footer.html' %}
-
-</body>
-
-</html>
+{% endblock ele %}

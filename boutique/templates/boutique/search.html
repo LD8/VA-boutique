@@ -1,0 +1,16 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+
+<h1>search result</h1>
+{% for item in items %}
+
+<h4>{{item}}</h4>
+    
+{% endfor %}
+
+{% include 'boutique/include/pagination.html' %}
+
+<hr class="mt-3">
+
+{% endblock content %}

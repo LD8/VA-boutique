@@ -1,9 +1,11 @@
 from django.contrib import admin
-from .models import Category, SubCategory, Item, ItemImage
+from .models import Category, SubCategory, Item, ItemImage, Tag, IndexCarousel
 
 admin.site.site_header = 'VA-Boutique | Site Administration | Such Fun!!!'
 admin.site.index_title = 'Manage Administrators and upload/Update Items'
 admin.site.site_title = 'VA-Boutique'
+admin.site.register(Tag)
+admin.site.register(IndexCarousel)
 
 class ItemImageInline(admin.TabularInline):
     model = ItemImage
@@ -29,12 +31,12 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 # a bug of SubCategoryAdmin: force to complete all 3 of the item info before submission
-class ItemInline(admin.TabularInline):
-    model = Item
+# class ItemInline(admin.TabularInline):
+#     model = Item
 
-@admin.register(SubCategory)
-class SubCategoryAdmin(admin.ModelAdmin):
-    inlines = [
-        ItemInline,
-    ]
-    exclude = ['item.category']
+# @admin.register(SubCategory)
+# class SubCategoryAdmin(admin.ModelAdmin):
+#     inlines = [
+#         ItemInline,
+#     ]
+#     exclude = ['item.category']

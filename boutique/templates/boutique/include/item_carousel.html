@@ -1,4 +1,3 @@
-{% load range %}
 <div class="row">
 
     <div class="col-12 col-sm-8">
@@ -6,23 +5,16 @@
 
             <ol class="carousel-indicators">
                 {% for image in item.itemimage_set.all %}
-                {% if forloop.first %}
-                <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}" class="active"></li>
-                {% else %}
-                <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}"></li>
-                {% endif %}
+                <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}" 
+                        {% if forloop.first %} class="active" {% endif %}></li>
                 {% endfor %}
             </ol>
 
             <div class="carousel-inner shadow-lg rounded-sm">
 
-                <div class="carousel-item active">
-                    <img src="{{item.itemimage_set.first.image.url}}" class="d-block w-100" alt="...">
-                </div>
-
-                {% for image in item.itemimage_set.all|slice:"1:" %}
-                <div class="carousel-item">
-                    <img src="{{image.image.url}}" class="d-block w-100" alt="...">
+                {% for image in item.itemimage_set.all %}
+                <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                    <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}" class="d-block w-100" alt="..."></a>
                 </div>
                 {% endfor %}
 
@@ -52,7 +44,7 @@
         {% else %}
         col-sm-8 
         {% endif %} 
-        mt-3 px-1 mt-sm-0 pb-sm-2 pt-sm-0 mb-0">
+        mt-2 px-1 mt-sm-0 pb-sm-2 pt-sm-0 mb-0">
             <img src="{{image.image.url}}" alt="" class="col-12 p-0 rounded-sm shadow-sm"
                 data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}">
         </div>

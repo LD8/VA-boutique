@@ -1,0 +1,32 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- title icon -->
+    <link rel="icon" type="image/ico" href="{% static 'boutique/img/icon-bright.png' %}">
+
+    <!-- fontawesome css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/fontawesome/all.css' %}">
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    
+    <!-- customised css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
+
+    <title>VA Boutique</title>
+</head>
+
+<body class="d-flex flex-column">
+
+    {% block ele %}{% endblock ele %}
+
+</body>
+
+</html>
