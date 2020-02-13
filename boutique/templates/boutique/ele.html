@@ -9,11 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- title icon -->
-    <link rel="icon" type="image/ico" href="{% static 'boutique/img/icon-bright.png' %}">
+    <link rel="icon" type="image/gif/png" href="{% static 'boutique/img/icon-bright.png' %}">
 
-    <!-- fontawesome css-->
+    <!-- fontawesome css -->
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/fontawesome/all.css' %}">
-
+    <!-- <script src="https://kit.fontawesome.com/5b5c2e4b34.js" crossorigin="anonymous"></script> -->
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 
@@ -23,7 +23,7 @@
     <title>VA Boutique</title>
 </head>
 
-<body class="d-flex flex-column">
+<body id="bootstrap-override" class="d-flex flex-column">
 
     {% block ele %}{% endblock ele %}
 

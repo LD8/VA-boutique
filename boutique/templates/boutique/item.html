@@ -18,20 +18,24 @@
         <div class="col-12 col-md-8">
 
             <!-- item title -->
-            <div class="pt-2 my-3 d-flex align-items-center">
-                <h4 class="font-weight-light mb-1 text-capitalize">{{item|title}}</h4>
+            <div class="pt-2 my-3 d-flex align-items-start">
+                <h4 class="font-weight-light mb-1 text-capitalize">
+                    {% if item.brand.pk != 3 %}
+                    <p class="mb-2"><em><small>{{item.brand}}</small></em></p>
+                    {% endif %}
+                    {{item|title}}</a></h4>
                 <!-- wish: a heart sign -->
                 <div class="ml-auto">
-                    <a href="#"><i class="far fa-heart fa-lg text-danger"></i></a>
+                    <a href="#"><i class="far fa-heart fa-lg text-danger mt-1"></i></a>
                 </div>
             </div>
-            
+
             <!-- item price -->
             {% include 'boutique/include/item_price.html' %}
             <!-- / item price -->
-
+            <hr>
             <!-- item description -->
-            <div class="font-weight-light my-4 text-justify" style="font-size: 16px">
+            <div class="font-weight-light my-3 text-justify" style="font-size: 16px">
                 {{item.description|linebreaks}}
             </div>
 
@@ -41,7 +45,6 @@
 
         <!-- shopping bag sign, buy now button -->
         <div class="col-12 col-md-4 mt-2">
-
             <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
             <a href="#" class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
             <a href="#"
@@ -50,12 +53,11 @@
             <a href="#"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact
                 Directly</a>
-
         </div>
 
     </div>
-
     <!-- /item information -->
+
 </div>
 <!-- / item -->
 

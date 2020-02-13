@@ -1,0 +1,12 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+{% include 'boutique/include/filter_brand_price.html' %}
+
+{% for category in category_shown %}
+
+{% include 'boutique/include/show_all_and_show_category.html' %}
+{% endfor %}
+
+<hr class="mt-3">
+{% endblock content %}

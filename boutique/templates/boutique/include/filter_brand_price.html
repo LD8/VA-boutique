@@ -1,0 +1,67 @@
+<div class="d-flex mt-0">
+    <div class="filter-icon mr-auto">
+        <a class="text-black-50 btn cursor-pointer" onclick="history.back()"><i
+                class="fas fa-angle-double-left mr-3"></i>Go Back</a>
+    </div>
+    <div class="filter-icon ml-auto">
+        <a class="btn text-black-50 cursor-pointer" data-target="#filterModal" data-toggle="modal">Filters<i
+                class="fa fa-filter ml-3 fa-rotate-270"></i></a>
+    </div>
+</div>
+
+<!-- filters with category/subcategory/brands/gender/price -->
+<form action="{{category_selected.get_filter_category_url}}" method="GET">
+    <div class="form-row mt-1 mt-lg-2 px-0 mb-3">
+        <div class="form-gourp col-6 col-sm-3 mt-1 filter">
+            <select class="custom-select custom-select-sm" name="category_selected">
+                <option selected>Категория</option>
+                {% for category in categories %}
+                {% if category_selected == category.name %}
+                <option selected value="{{category_selected}}">{{category_selected}}</option>
+                {% else %}
+                <option value="{{category.name}}">{{category.name}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-gourp col-6 col-sm-3 mt-1 filter">
+            <select class="custom-select custom-select-sm" name="brand_selected">
+                <option selected>бренд</option>
+                {% for brand in brands %}
+                {% if brand_selected == brand.name %}
+                <option selected value="{{brand_selected}}">{{brand_selected}}</option>
+                {% else %}
+                <option value="{{brand.name}}">{{brand.name}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-gourp col-6 col-sm mt-1 filter">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
+                </div>
+                <input type="number" class="form-control form-control-sm" name="min_price" placeholder="min"
+                    value="{% if min_price %}{{min_price}}{% endif %}">
+            </div>
+        </div>
+        <div class="form-gourp col-6 col-sm mt-1 filter">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
+                </div>
+                <input type="number" class="form-control form-control-sm" name="max_price" placeholder="max"
+                    value="{% if max_price %}{{max_price}}{% endif %}">
+            </div>
+        </div>
+        <div class="form-gourp col-6 col-lg mt-1 filter">
+            <button type="submit"
+                class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">Apply
+                Filters</button>
+        </div>
+        <div class="form-gourp col-6 col-lg mt-1 filter">
+            <input type="reset" value="Clear Filters"
+                class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">
+        </div>
+    </div>
+</form>

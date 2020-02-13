@@ -20,14 +20,17 @@ class Category(models.Model):
 
     class Meta():
         verbose_name_plural = 'Categories'
-        ordering = ['name']
+        ordering = ['gender', 'name']
 
     def __str__(self):
         return self.name.capitalize() + ' for ' + self.get_gender_display()
 
     def get_category_url(self):
-        return reverse('boutique:category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
+        # return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
+        return reverse('boutique:show-category', kwargs={'category_pk': self.pk})
 
+    # def get_filter_category_url(self):
+    #     return reverse('boutique:filter-category', kwargs={'category_pk': self.pk})
 
 class SubCategory(models.Model):
     '''Sub-category for the categories (not mandatory)'''
@@ -39,19 +42,20 @@ class SubCategory(models.Model):
 
     class Meta():
         verbose_name = 'Sub-category'
-        verbose_name_plural = 'Sub-categories' 
+        verbose_name_plural = 'Sub-categories'
         ordering = ['name']
 
     def __str__(self):
         return self.category.get_gender_display() + ' ' + self.name
 
     def get_subcategory_url(self):
-        return reverse('boutique:subcategory', kwargs={'gender': self.category.get_gender_display(), 'category_pk': self.category.pk, 'subcategory_pk': self.pk})
+        return reverse('boutique:show-subcategory', kwargs={'subcategory_pk': self.pk})
 
 
 class Tag(models.Model):
     '''Items have tag will have according discount percentage'''
-    tag_discount_percentage = models.IntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
+    tag_discount_percentage = models.IntegerField(
+        default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
     slogan = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
@@ -62,16 +66,33 @@ class Tag(models.Model):
         return 'Purchase NOW for extra {}% off!'.format(self.tag_discount_percentage)
 
 
+class Brand(models.Model):
+    '''the brands of the items'''
+    name = models.CharField(max_length=50)
+    description = models.TextField(blank=True)
+
+    class Meta():
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
 class Item(models.Model):
     '''Each item represents a product'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True, blank=True)
+    subcategory = models.ForeignKey(
+        SubCategory, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
+    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=3)
     description = models.TextField(blank=True)
     price = models.IntegerField(default=0)
-    discount_percentage = models.IntegerField(verbose_name='Discount Percentage', default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
-    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=True)
-    uploaded_date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    discount_percentage = models.IntegerField(verbose_name='Discount Percentage', default=0, validators=[
+                                              MinValueValidator(0), MaxValueValidator(100)])
+    tag = models.ForeignKey(
+        Tag, on_delete=models.SET_NULL, null=True, blank=True)
+    uploaded_date = models.DateTimeField(
+        auto_now_add=True, null=True, blank=True)
 
     class Meta:
         ordering = ['-uploaded_date']
@@ -80,21 +101,21 @@ class Item(models.Model):
         return self.name
 
     @property
-    def discounted_price(self): # changed from get_discounted_price
+    def discounted_price(self):  # changed from get_discounted_price
         '''to calculate the price after discount'''
         return int(self.price * (100 - self.discount_percentage) * 0.01)
 
     @property
-    def final_price(self): # changed from get_final_price
+    def final_price(self):  # changed from get_final_price
         '''to calculate the tagged price 5% off'''
         return int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
-                    ) if self.tag else int(self.discounted_price)
+                   ) if self.tag else int(self.discounted_price)
 
     @property
     def total_discount_percentage(self):
         '''to calculate the total discount'''
         return (self.discount_percentage + self.tag.tag_discount_percentage
-                    ) if self.tag is not None else self.discount_percentage
+                ) if self.tag is not None else self.discount_percentage
 
     def get_item_url(self):
         return reverse('boutique:item', kwargs={'pk': self.pk})
@@ -108,7 +129,7 @@ class IndexCarousel(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     class Meta():
         verbose_name = 'Index Carousel'
         verbose_name_plural = 'Index Carousels'
@@ -142,7 +163,7 @@ def rotate_image(filepath):
         # cases: image don't have getexif
         pass
 
-# doc: pre_save and post_save: https://docs.djangoproject.com/en/3.0/ref/signals/#pre-save 
+# doc: pre_save and post_save: https://docs.djangoproject.com/en/3.0/ref/signals/#pre-save
 @receiver(post_save, sender=ItemImage, dispatch_uid="update_image_item")
 def update_image(sender, instance, **kwargs):
     '''to implement rotate function'''

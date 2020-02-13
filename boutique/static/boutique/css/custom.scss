@@ -1,13 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Forum&display=swap'); //'Forum', cursive; 
+@import url("https://fonts.googleapis.com/css?family=Forum&display=swap"); //'Forum', cursive;
 
-// @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300&display=swap'); //'Alegreya Sans', sans-serif; 
-// @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300|Forum&display=swap'); //'Forum', 'Alegreya Sans', sans-serif; 
+// @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300&display=swap'); //'Alegreya Sans', sans-serif;
+// @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300|Forum&display=swap'); //'Forum', 'Alegreya Sans', sans-serif;
 
+#bootstrap-override {
+  // make cursor become pointer on anchor tags
+  a.cursor-pointer {
+    cursor: pointer;
+  }
+
+  // filter form
+  .filter {
+    display: block;
+  }
+  .filter-icon {
+    display: none;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .filter {
+      display: none;
+    }
+    .filter-icon {
+      display: block;
+    }
+  }
+
+  // breadcrumb and back button 
+  .breadcrumb {
+    background-color: transparent;
+  }
+
+  .back-button {
+    display: block;
+  }
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: "»";
+  }
+
+  @media only screen and (max-width: 768px) {
+    .breadcrumb {
+      display: none;
+    }
+
+    .back-button {
+      display: block;
+    }
+  }
+}
 nav,
 .container,
-div.modal
-{
-  font-family: 'Forum', sans-serif;
+div.modal {
+  font-family: "Forum", sans-serif;
 }
 
 .font-bigger {
@@ -37,19 +81,10 @@ i.text-danger:hover {
 }
 
 footer {
-  font-family: 'Forum', sans-serif;
+  font-family: "Forum", sans-serif;
   position: sticky;
   top: 100%;
   background-color: rgb(241, 240, 240);
-
-}
-
-/* before_footer to display or not when on large screen */
-.pre-footer {
-  display: block;
-  ul {
-    list-style: none;
-  }
 }
 
 img {
@@ -59,6 +94,7 @@ img {
   }
 }
 
+// pagination
 .page-item:first-child .page-link {
   border-radius: 5rem;
   border-top-right-radius: 1rem;
@@ -87,6 +123,7 @@ a.page-link {
   border-radius: 50px;
 }
 
+// screen size < 1200px
 @media only screen and (max-width: 1200px) {
   #indexPageCarousel {
     width: 100vw;
@@ -97,14 +134,8 @@ a.page-link {
   footer {
     font-size: 16px;
   }
-
-  .dis-sm {
-    display: block;
-  }
 }
 
-@media (max-height: 400px) {
-  #indexPageCarousel .carousel-item > img {
-    max-width: 300px;
-  }
+// screen size < 800
+@media only screen and (max-width: 800px) {
 }

@@ -136,3 +136,66 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- filter modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <form action="{% url 'boutique:search' %}" method="GET">
+                    <div class="form-row mt-1 mt-lg-2 px-0 mb-4">
+                        <div class="form-gourp col-6 mt-1">
+                            <select class="custom-select custom-select-sm" name="category_selected">
+                                <option selected>{% if category_selected %}{{category_selected}}{% else %}Категория{% endif %}
+                                </option>
+                                {% for category in categories %}
+                                {% if category_selected == category.name %}
+                                {% else %}
+                                <option value="{{category.name}}">{{category.name|title}}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-gourp col-6 mt-1">
+                            <select class="custom-select custom-select-sm" name="brand_selcted">
+                                <option selected>{% if brand_selected %}{{brand_selected}}{% else %}бренд{% endif %}
+                                </option>
+                                {% for brand in brands %}
+                                {% if brand_selected == brand.name %}
+                                {% else %}
+                                <option value="{{brand.name}}">{{brand.name}}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-gourp col-6 mt-1">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
+                                </div>
+                                <input type="number" class="form-control form-control-sm" name="min_price" placeholder="min"
+                                    value="{% if min_price %}{{min_price}}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="form-gourp col-6 mt-1">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
+                                </div>
+                                <input type="number" class="form-control form-control-sm" name="min_price" placeholder="max"
+                                    value="{% if max_price %}{{max_price}}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg mt-1">
+                            <button type="submit" class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">Apply Filter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

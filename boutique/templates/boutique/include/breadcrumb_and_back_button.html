@@ -1,33 +1,10 @@
-<style>
-    .breadcrumb {
-        background-color: transparent;
-    }
 
-    .back-button {
-        display: block;
-    }
-
-    .breadcrumb-item+.breadcrumb-item::before {
-        content: "»";
-    }
-
-    @media only screen and (max-width: 769px) {
-        .breadcrumb {
-            display: none;
-        }
-
-        .back-button {
-            display: block;
-        }
-    }
-
-</style>
 
 <div class="d-flex align-items-center my-3">
     <!-- back button: only shown on small screen -->
     <div class="pr-1 pr-sm-3 border-right">
-        <button class="text-muted btn" onclick="history.back()"><i
-                class="fas fa-angle-double-left mr-3"></i>Go Back</button>
+        <a class="text-black-50 btn cursor-pointer" onclick="history.back()"><i
+                class="fas fa-angle-double-left mr-3"></i>Go Back</a>
     </div>
     <!-- /back button -->
 

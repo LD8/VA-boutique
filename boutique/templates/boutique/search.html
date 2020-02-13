@@ -2,15 +2,29 @@
 
 {% block content %}
 
-<h1>search result</h1>
-{% for item in items %}
+{% include 'boutique/include/filters.html' %}
+<div class="container px-2">
+    <p class="mb-3 mb-lg-4 mt-2 mt-lg-5 text-black-50 text-center border-bottom">- <em class="font-weight-bolder">
+            {% if query is not None %}{{query}}{% else %}Your filtered result{% endif %}</em> is
+        showing below -</p>
 
-<h4>{{item}}</h4>
-    
-{% endfor %}
+    <div class="row">
+        {% for item in item_list %}
 
-{% include 'boutique/include/pagination.html' %}
+        {% include 'boutique/include/item_in_items.html' %}
 
-<hr class="mt-3">
+        {% empty %}
+        <div class="mb-3 mb-lg-4 mt-5 text-black-50 text-center col-12">
+
+            <p class="mb-1 col-12">Oops...</p>
+            <p>No result of <em class="font-weight-bolder"> {{query}} </em> is showing please try a
+                different wording or browse from our categories </p>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+</div>
 
 {% endblock content %}

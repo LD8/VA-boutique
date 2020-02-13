@@ -13,13 +13,12 @@ urlpatterns = [
     path('item_<int:pk>/', views.ItemDetailView.as_view(), name='item'), 
     # for DetailView to work, either pass in <pk> or specify in CBV `pk_url_kwargs = 'item_pk'`
 
-    # show categories of products for men or women
-    path('<slug:gender>/', views.CategoryListView.as_view(), name='show-all'),
+    path('subcat_<int:subcategory_pk>/', views.CategoryListView.as_view(template_name="boutique/show_subcategory.html"), name='show-subcategory'),
+    path('subcat_<int:subcategory_pk>/filter/', views.FilterCategoryListView.as_view(), name='filter-subcategory'),
 
-    # show a specific category for men or women
-    path('<slug:gender>/cat_<int:category_pk>/', views.CategoryListView.as_view(), name='category'),
+    path('cat_<int:category_pk>/', views.CategoryListView.as_view(template_name="boutique/show_category.html"), name='show-category'),
+    path('cat_<int:category_pk>/filter/', views.FilterCategoryListView.as_view(), name='filter-category'),
 
-    # show a specific subcategory under a specific category for men or women
-    path('<slug:gender>/cat_<int:category_pk>/subcat_<int:subcategory_pk>/', views.CategoryListView.as_view(), name='subcategory'),
-
+    path('<slug:gender>/', views.CategoryListView.as_view(template_name="boutique/show_all.html"), name='show-all'),
+    path('<slug:gender>/filter/', views.FilterCategoryListView.as_view(template_name="boutique/show_all.html"), name='filter-all'),
 ]

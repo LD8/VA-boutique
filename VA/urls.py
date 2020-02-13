@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('boutique.urls')),
 ]
 
-# uploaded images url
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
+    # this basically tells 'urlpatterns' what media url to add and where media files are
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

@@ -1,11 +1,21 @@
 from django.contrib import admin
-from .models import Category, SubCategory, Item, ItemImage, Tag, IndexCarousel
+from .models import (
+    Category, 
+    SubCategory, 
+    Item,
+    ItemImage, 
+    Tag, 
+    IndexCarousel, 
+    Brand,
+    )
 
 admin.site.site_header = 'VA-Boutique | Site Administration | Such Fun!!!'
 admin.site.index_title = 'Manage Administrators and upload/Update Items'
 admin.site.site_title = 'VA-Boutique'
 admin.site.register(Tag)
 admin.site.register(IndexCarousel)
+admin.site.register(Brand)
+
 
 class ItemImageInline(admin.TabularInline):
     model = ItemImage
@@ -27,7 +37,6 @@ class ItemAdmin(admin.ModelAdmin):
     inlines = [
         ItemImageInline,
     ]
-
 
 
 # a bug of SubCategoryAdmin: force to complete all 3 of the item info before submission

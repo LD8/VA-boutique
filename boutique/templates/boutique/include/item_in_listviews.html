@@ -4,14 +4,17 @@
 
     <!-- image anchor -->
     <a href="{{ item.get_item_url }}">
-        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%"
-    alt=""></a>
+        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
     <!-- /image anchor -->
 
     <!-- item price tag -->
-    <div class="text-left p-1 mt-auto" style="font-size: 16px;">
+    <div class="text-left p-1 mb-auto" style="font-size: 16px;">
         <div class="font-weight-light pt-2">
-            <a href="{{ item.get_item_url }}" class="text-dark mb-1">{{item|title}}</a>
+            <a href="{{ item.get_item_url }}" class="text-dark mb-1">
+                {% if item.brand.pk != 3 %}
+                <p class="mb-0"><em>{{item.brand}}</em></p>
+                {% endif %}
+                {{item|title}}</a>
         </div>
 
         <div class="font-weight-lighter">
@@ -19,5 +22,5 @@
         </div>
     </div>
     <!-- /item price tag -->
-    
+
 </div>
