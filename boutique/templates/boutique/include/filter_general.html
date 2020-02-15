@@ -4,32 +4,50 @@
                 class="fas fa-angle-double-left mr-3"></i>Go Back</a>
     </div>
     <div class="filter-icon ml-auto">
-        <a class="btn text-black-50 cursor-pointer" data-target="#filterModal" data-toggle="modal">Filters<i
-                class="fa fa-filter ml-3 fa-rotate-270"></i></a>
+        <a class="btn text-black-50 cursor-pointer" data-target="#filterModal" data-toggle="modal">
+            Filters<i class="fa fa-filter ml-3 fa-rotate-270"></i>
+        </a>
     </div>
 </div>
 
-<!-- filters with category/subcategory/ -->
-<form action="{{category_selected.get_filter_category_url}}" method="GET">
+<!-- filters with sub/categoryies, brands, min_price, max_price -->
+<form action="{% url 'boutique:show-all' filter_context.gender %}" method="GET">
+    {% csrf_token%}
     <div class="form-row mt-1 mt-lg-2 px-0 mb-3">
         <div class="form-gourp col-6 col-sm-3 mt-1 filter">
             <select class="custom-select custom-select-sm" name="category_selected">
-                <option selected>Категория</option>
+                <option {% if not filter_context.category_selected %}selected{% endif %}>Категория</option>
+
                 {% for category in categories %}
-                {% if category_selected == category.name %}
-                <option selected value="{{category_selected}}">{{category_selected}}</option>
+                {% if category.gender == filter_context.gender_number %}
+
+                {% if filter_context.category_selected == category.name %}
+                <option selected value="{{category.name}}">» {{category.name}} «</option>
                 {% else %}
-                <option value="{{category.name}}">{{category.name}}</option>
+                <option value="{{category.name}}">» {{category.name}} «</option>
+                {% endif %}
+
+                {% for subcategory in category.subcategory_set.all %}
+                {% if filter_context.category_selected == subcategory.name %}
+                <option selected value="{{subcategory.name}}">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{subcategory.name}}</option>
+                {% else %}
+                <option value="{{subcategory.name}}">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{subcategory.name}}</option>
                 {% endif %}
                 {% endfor %}
+                
+                {% endif %}
+                {% endfor %}
+
             </select>
         </div>
         <div class="form-gourp col-6 col-sm-3 mt-1 filter">
             <select class="custom-select custom-select-sm" name="brand_selected">
-                <option selected>бренд</option>
+                <option {% if not filter_context.brand_selected %}selected{% endif %}>бренд</option>
                 {% for brand in brands %}
-                {% if brand_selected == brand.name %}
-                <option selected value="{{brand_selected}}">{{brand_selected}}</option>
+                {% if filter_context.brand_selected == brand.name %}
+                <option selected value="{{brand.name}}">{{brand.name}}</option>
                 {% else %}
                 <option value="{{brand.name}}">{{brand.name}}</option>
                 {% endif %}
@@ -42,7 +60,7 @@
                     <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
                 </div>
                 <input type="number" class="form-control form-control-sm" name="min_price" placeholder="min"
-                    value="{% if min_price %}{{min_price}}{% endif %}">
+                    value="{% if filter_context.min_price %}{{filter_context.min_price}}{% endif %}">
             </div>
         </div>
         <div class="form-gourp col-6 col-sm mt-1 filter">
@@ -51,7 +69,7 @@
                     <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
                 </div>
                 <input type="number" class="form-control form-control-sm" name="max_price" placeholder="max"
-                    value="{% if max_price %}{{max_price}}{% endif %}">
+                    value="{% if filter_context.max_price %}{{filter_context.max_price}}{% endif %}">
             </div>
         </div>
         <div class="form-gourp col-6 col-lg mt-1 filter">
@@ -60,8 +78,10 @@
                 Filters</button>
         </div>
         <div class="form-gourp col-6 col-lg mt-1 filter">
-            <input type="reset" value="Clear Filters"
+            <input type="reset" name="reset"
                 class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">
+                
         </div>
     </div>
 </form>
+<!-- /filters with sub/categoryies, brands, min_price, max_price -->

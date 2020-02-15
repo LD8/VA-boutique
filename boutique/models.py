@@ -2,9 +2,32 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from PIL import Image, ExifTags
 from django.db import models
+from django.db.models import Count, Q
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 import os
+
+
+class CategoryQuerySet(models.QuerySet):
+    def get_categories_with_item(self):
+        return self.annotate(Count('item')).exclude(item__count=0)
+
+    def get_categories_by_gender(self, gender):
+        if gender == 'Women':
+            return self.filter(gender=1)
+        if gender == 'Men':
+            return self.filter(gender=2)
+
+
+class CategoryManager(models.Manager):
+    def get_queryset(self):
+        return CategoryQuerySet(self.model, using=self._db)
+
+    def get_categories_with_item(self):
+        return self.get_queryset().get_categories_with_item()
+
+    def get_categories_by_gender(self, gender):
+        return self.get_queryset().get_category_by_gender(gender)
 
 
 class Category(models.Model):
@@ -18,6 +41,8 @@ class Category(models.Model):
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
+    objects = CategoryManager()
+
     class Meta():
         verbose_name_plural = 'Categories'
         ordering = ['gender', 'name']
@@ -26,11 +51,11 @@ class Category(models.Model):
         return self.name.capitalize() + ' for ' + self.get_gender_display()
 
     def get_category_url(self):
-        # return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
-        return reverse('boutique:show-category', kwargs={'category_pk': self.pk})
+        return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
 
-    # def get_filter_category_url(self):
-    #     return reverse('boutique:filter-category', kwargs={'category_pk': self.pk})
+    def get_filter_category_url(self):
+        return reverse('boutique:filter-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
+
 
 class SubCategory(models.Model):
     '''Sub-category for the categories (not mandatory)'''
@@ -49,7 +74,7 @@ class SubCategory(models.Model):
         return self.category.get_gender_display() + ' ' + self.name
 
     def get_subcategory_url(self):
-        return reverse('boutique:show-subcategory', kwargs={'subcategory_pk': self.pk})
+        return reverse('boutique:show-subcategory', kwargs={'gender': self.category.get_gender_display(), 'subcategory_pk': self.pk})
 
 
 class Tag(models.Model):
@@ -78,12 +103,45 @@ class Brand(models.Model):
         return self.name
 
 
+class ItemQuerySet(models.QuerySet):
+    def search(self, query=None):
+        qs = Item.objects.all()
+        query = query
+
+        def is_valid_queryparam(param):
+            '''check if the query parameter(the search input) is valid'''
+            return param is not '' and param is not None
+
+        # if type to search initially
+        if is_valid_queryparam(query):
+            qs = qs.filter(
+                Q(category__name__icontains=query) |
+                Q(category__description__icontains=query) |
+                Q(subcategory__name__icontains=query) |
+                Q(subcategory__description__icontains=query) |
+                Q(name__icontains=query) |
+                Q(brand__name__icontains=query) |
+                Q(description__icontains=query)
+            ).distinct()
+
+        print('\nfinal qs is as following: ', qs, '\n')
+        return qs
+
+
+class ItemManager(models.Manager):
+    def get_queryset(self):
+        return ItemQuerySet(self.model, using=self._db)
+
+    def search(self, query=None):
+        return self.get_queryset().search(query=query)
+
+
 class Item(models.Model):
     '''Each item represents a product'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(
         SubCategory, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=3)
     description = models.TextField(blank=True)
     price = models.IntegerField(default=0)
@@ -94,8 +152,10 @@ class Item(models.Model):
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
+    objects = ItemManager()
+
     class Meta:
-        ordering = ['-uploaded_date']
+        ordering = ['-uploaded_date', '-discount_percentage']
 
     def __str__(self):
         return self.name

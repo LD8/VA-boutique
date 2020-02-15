@@ -2,30 +2,11 @@
 
 {% block content %}
 
-<form action="#" method="GET">
-    <div class="form-row mt-1 mt-lg-2 px-0 mb-3 d-flex justify-content-center">
-        <div class="form-gourp col-9 col-md-5 mt-1">
-            <select class="custom-select custom-select-sm" name="category_selected">
-                <option selected>Выберите категорию</option>
-                {% for category in categories_shown %}
-                <option value="{{category.name}}">» {{category.name}} «</option>
-                {% for subcategory in category.subcategory_set.all %}
-                <option value="{{subcategory.name}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{subcategory.name}}</option>
-                {% endfor %}
-                {% endfor %}
-            </select>
-        </div>
-        <div class="form-gourp col-3 col-md-2 mt-1">
-            <button type="submit" class="btn btn-outline-secondary btn-sm col-12">Filter</button>
-        </div>
-    </div>
-</form>
-
+{% include 'boutique/include/filter_general.html' %}
 
 {% for category in categories_shown %}
 {% include 'boutique/include/show_all_and_show_category.html' %}
 {% endfor %}
-
 
 <hr class="mt-3">
 {% endblock content %}
