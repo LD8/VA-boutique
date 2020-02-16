@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
@@ -13,7 +13,7 @@ class RegisterView(TemplateView):
 
     def get(self, *args, **kwargs):
         context = {'form': self.form}
-        context['categories'] = Category.objects.all()
+        context['categories'] = Category.objects.get_categories_with_item()
         return render(self.request, self.template_name, context)
 
     def post(self, *args, **kwargs):
@@ -24,20 +24,6 @@ class RegisterView(TemplateView):
             return redirect('boutique:index')
 
         return render(self.request, self.template_name, {'form': self.form})
-
-
-# def register(request):
-#     '''registering a new account'''
-#     if request.method != 'POST':
-#         form = UserCreationForm()
-#     else:
-#         form = UserCreationForm(data=request.POST)
-#         if form.is_valid():
-#             new_user = form.save()
-#             login(request, new_user)
-#             return redirect('boutique:index')
-
-#     return render(request, 'registration/register.html', {'form': form})
 
 
 def profile(request):

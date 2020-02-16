@@ -1,0 +1,47 @@
+{% load static %}
+<style>
+    /* 
+    --- modal manager --- 
+    #
+    instagramModal
+    whatsappModal
+    contactModal
+    policyModalScrollable
+    itemImageModal
+    wishListSignUpModal
+
+    */
+    .modal-body {
+        border-radius: 5px;
+        border: none;
+    }
+    
+    .bg-instagram,
+    .bg-whatsapp,
+    .bg-contact,
+    .bg-discount-tag,
+    .bg-wishlist {
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .bg-instagram {
+        background-image:url("{% static 'boutique/img/bg-instagram.png' %}");
+    }
+
+    .bg-whatsapp {
+        background-image:url("{% static 'boutique/img/bg-whatsapp.png' %}");
+    }
+
+    .bg-contact {
+        background-image:url("{% static 'boutique/img/bg-contact.png' %}");
+    }
+
+    .bg-discount-tag {
+        background-image:url("{% static 'boutique/img/bg-discount-tag.png' %}");
+    }
+
+    .bg-wishlist {
+        background-image:url("{% static 'boutique/img/bg-wishlist.png' %}");
+    }
+</style>

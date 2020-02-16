@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     # VA apps
     'boutique',
     'users',
+    'wishlist',
+    'shopping',
 
     # third party apps
     'bootstrap4',

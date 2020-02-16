@@ -12,4 +12,5 @@ urlpatterns = [
 
     # user's profile page
     path('profile/', views.profile, name='profile'),
+    
 ]

@@ -13,9 +13,9 @@ class CategoryQuerySet(models.QuerySet):
         return self.annotate(Count('item')).exclude(item__count=0)
 
     def get_categories_by_gender(self, gender):
-        if gender == 'Women':
+        if gender == 'women':
             return self.filter(gender=1)
-        if gender == 'Men':
+        if gender == 'men':
             return self.filter(gender=2)
 
 
@@ -33,8 +33,8 @@ class CategoryManager(models.Manager):
 class Category(models.Model):
     '''Category for men's and women's items'''
     gender = models.IntegerField(choices=[
-        (1, 'Women'),
-        (2, 'Men'),
+        (1, 'women'),
+        (2, 'men'),
     ], default=1)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300, blank=True)
@@ -48,7 +48,7 @@ class Category(models.Model):
         ordering = ['gender', 'name']
 
     def __str__(self):
-        return self.name.capitalize() + ' for ' + self.get_gender_display()
+        return self.name.capitalize() + ' for ' + self.get_gender_display().capitalize()
 
     def get_category_url(self):
         return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
@@ -184,7 +184,8 @@ class Item(models.Model):
 class IndexCarousel(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='index_carousel_images')
+    image = models.ImageField(
+        upload_to='index_carousel_images', verbose_name='Image (Size: 2100 x 1400 px)')
     uploaded_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

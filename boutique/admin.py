@@ -38,8 +38,11 @@ class ItemAdmin(admin.ModelAdmin):
     inlines = [
         ItemImageInline,
     ]
-    list_display = ('name','brand','price','discount_percentage','tag','discounted_price','final_price','category','subcategory','description',)
-    search_fields = ['brand']
+    list_display = ('name','brand','price','discounted_price','final_price','discount_percentage','tag','category','subcategory')
+    search_fields = ['name']
+
+
+
 # a bug of SubCategoryAdmin: force to complete all 3 of the item info before submission
 # class ItemInline(admin.TabularInline):
 #     model = Item

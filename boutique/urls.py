@@ -12,10 +12,10 @@ urlpatterns = [
     path('item_<int:pk>/', views.ItemDetailView.as_view(), name='item'), 
     # for DetailView to work, either pass in <pk> or specify in CBV `pk_url_kwargs = 'item_pk'`
 
-    path('<slug:gender>/subcat_<int:subcategory_pk>/', views.CategoryListView.as_view(), name='show-subcategory'),
+    path('<str:gender>/subcat_<int:subcategory_pk>/', views.CategoryListView.as_view(), name='show-subcategory'),
 
-    path('<slug:gender>/cat_<int:category_pk>/', views.CategoryListView.as_view(), name='show-category'),
+    path('<str:gender>/cat_<int:category_pk>/', views.CategoryListView.as_view(), name='show-category'),
 
-    path('<slug:gender>/', views.CategoryListView.as_view(), name='show-all'),
-    path('show-all/', views.CategoryListView.as_view(), name='show-all'),
+    path('<str:gender>/', views.CategoryListView.as_view(), name='show-all'),
+    # path('show-all/', views.CategoryListView.as_view(), name='show-all'),
 ]

@@ -5,11 +5,85 @@
 <!-- item -->
 <div class="mt-3 ">
 
-    {% include 'boutique/include/breadcrumb_and_back_button.html' %}
+    <div class="d-flex align-items-center my-3">
+        <!-- back button: only shown on small screen -->
+        <div class="pr-1 pr-sm-3 border-right">
+            <a class="text-black-50 btn cursor-pointer" onclick="history.back()"><i
+                    class="fas fa-angle-double-left mr-3"></i>Go Back</a>
+        </div>
+        <!-- /back button -->
+    
+        <!-- breadcrumb -->
+        <nav aria-label="breadcrumb" class="pl-3 ml-1">
+            <ol class="breadcrumb px-1 mb-0 font-weight-light border-bottom border-light">
+                <li class="breadcrumb-item"><a class="border-bottom text-dark"
+                        href="{{item.category.get_category_url}}">{{item.category}}</a></li>
+                {% if item.subcategory %}
+                <li class="breadcrumb-item"><a class="border-bottom text-dark"
+                        href="{{item.subcategory.get_subcategory_url}}">{{item.subcategory.name}}</a></li>
+                {% endif %}
+                <li class="breadcrumb-item active" aria-current="page">{{item.name}}</li>
+            </ol>
+        </nav>
+        <!-- / breakcrumb -->
+    </div>
 
     <!-- item images and thumbnails -->
-    {% include 'boutique/include/item_carousel.html' %}
-    <!-- /item images -->
+    <div class="row">
+
+        <div class="col-12 col-sm-8">
+            <div id="item{{item.pk}}Carousel" class="carousel slide" data-ride="carousel">
+    
+                <ol class="carousel-indicators">
+                    {% for image in item.itemimage_set.all %}
+                    <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}" 
+                            {% if forloop.first %} class="active" {% endif %}></li>
+                    {% endfor %}
+                </ol>
+    
+                <div class="carousel-inner shadow-lg rounded-sm">
+    
+                    {% for image in item.itemimage_set.all %}
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}" class="d-block w-100" alt="..."></a>
+                    </div>
+                    {% endfor %}
+    
+                </div>
+    
+                {% if item.itemimage_set.count > 1 %}
+                <a class="carousel-control-prev" href="#item{{item.pk}}Carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#item{{item.pk}}Carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                {% endif %}
+    
+            </div>
+    
+        </div>
+    
+    
+        <div class="pl-sm-0 col-12 col-sm-4 d-flex flex-wrap align-content-start">
+            {% for image in item.itemimage_set.all %}
+            <div class="col-4 
+            {% if item.itemimage_set.count > 3 %}
+            col-sm-6 
+            {% else %}
+            col-sm-8 
+            {% endif %} 
+            mt-2 px-1 mt-sm-0 pb-sm-2 pt-sm-0 mb-0">
+                <img src="{{image.image.url}}" alt="" class="col-12 p-0 rounded-sm shadow-sm"
+                    data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}">
+            </div>
+            {% endfor %}
+        </div>
+    
+    </div>
+    <!-- /item images and thumbnails -->
 
     <!-- item information: title, price, wish, add to shopping bag, buy now -->
     <div class="row text-left p-2 mt-auto">
@@ -24,10 +98,16 @@
                     <p class="mb-2"><em><small>{{item.brand}}</small></em></p>
                     {% endif %}
                     {{item|title}}</a></h4>
-                <!-- wish: a heart sign -->
+
+                <!-- add to wish-list: a heart sign -->
                 <div class="ml-auto">
-                    <a href="#"><i class="far fa-heart fa-lg text-danger mt-1"></i></a>
+                    {% if user.is_authenticated %}
+                    <a href="{{user.wishlist.get_absolute_url}}"><i class="far fa-heart fa-lg text-danger mt-1"></i></a>
+                    {% else %}
+                    <a href="#wishListSignUpModal" data-toggle="modal"><i class="far fa-heart fa-lg text-danger mt-1"></i></a>
+                    {% endif %}
                 </div>
+
             </div>
 
             <!-- item price -->
@@ -68,10 +148,61 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered col-12 col-md-8 modal-lg" role="document">
         <div class="modal-content">
-            {% include 'boutique/include/item_image_modal_carousel.html' %}
+            <div class="col-12 px-0">
+                <div id="itemImage{{item.pk}}Carousel" class="carousel slide" data-ride="carousel">
+            
+                    <ol class="carousel-indicators">
+                        {% for image in item.itemimage_set.all %}
+                        <li data-target="#itemImage{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}" 
+                                {% if forloop.first %} class="active" {% endif %}></li>
+                        {% endfor %}
+                    </ol>
+            
+                    <div class="carousel-inner shadow-lg rounded-sm">
+            
+                        {% for image in item.itemimage_set.all %}
+                        <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                            <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}" class="d-block w-100" alt="..."></a>
+                        </div>
+                        {% endfor %}
+            
+                    </div>
+            
+                    {% if item.itemimage_set.count > 1 %}
+                    <a class="carousel-control-prev" href="#itemImage{{item.pk}}Carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#itemImage{{item.pk}}Carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                    {% endif %}
+            
+                </div>
+            
+            </div>
         </div>
     </div>
 </div>
 
+
+<!-- wish-list signup Modal -->
+<div class="modal fade" id="wishListSignUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center bg-wishlist">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="mb-3 text-danger font-weight-light">Sign up to activate your wish-list function! More discount available to you! And So Much more...</h5>
+                <div style="height: 150px"></div>
+                <a target="_blank" href="{% url 'users:register' %}" type="button"
+                    class="btn btn-danger font-weight-lighter align-self-end px-5">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}

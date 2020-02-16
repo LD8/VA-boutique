@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Forum&display=swap");
+/* -------- overriding bootstrap styles -------- */
 #bootstrap-override a.cursor-pointer {
   cursor: pointer; }
 #bootstrap-override .filter {
@@ -23,6 +24,7 @@
   #bootstrap-override .back-button {
     display: block; } }
 
+/* -------- end overriding bootstrap styles -------- */
 nav,
 .container,
 div.modal {

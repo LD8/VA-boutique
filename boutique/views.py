@@ -1,18 +1,17 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.shortcuts import render, get_object_or_404, Http404
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import Category, Item, SubCategory, IndexCarousel, Brand
 from django.db.models import Q, Count
 
 
-class IndexView(ListView):
+class IndexView(TemplateView):
     '''landing page'''
-    model = Category
     template_name = 'boutique/index.html'
-    context_object_name = 'categories'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['carousels'] = IndexCarousel.objects.all()
+        context['categories'] = Category.objects.get_categories_with_item()
         return context
 
 
@@ -35,7 +34,13 @@ class CategoryListView(ListView):
         self.min_price = request.GET.get('min_price')
         self.max_price = request.GET.get('max_price')
 
-        self.gender_number = 1 if gender == 'Women' else 2
+        if gender == 'women':
+            self.gender_number = 1
+        elif gender == 'men':
+            self.gender_number = 2
+        else:
+            raise Http404
+
         get_category_selected = Category.objects.filter(
             gender=self.gender_number, name__iexact=self.category_selected).first()
         category_selected_pk = get_category_selected.pk if get_category_selected else None
@@ -84,7 +89,7 @@ class CategoryListView(ListView):
 
         for item in Item.objects.filter(category__gender=self.gender_number):
             if int(min_price) <= item.final_price < int(max_price):
-                if brand_selected is None or brand_selected=='бренд' or item.brand.name == brand_selected:
+                if brand_selected is None or brand_selected == 'бренд' or item.brand.name == brand_selected:
                     items_validated.append(item)
                     if item.category not in categories_validated:
                         categories_validated.append(item.category)
@@ -99,7 +104,6 @@ class CategoryListView(ListView):
         context['brands'] = Brand.objects.all()
 
         cat_valid, subcat_valid, items_valid = self.get_validated_cats()
-
         context['filter_context'] = {
             'gender': self.gender,
             'gender_number': self.gender_number,
@@ -111,6 +115,7 @@ class CategoryListView(ListView):
             'subcategories_validated': subcat_valid,
             'items_validated': items_valid,
         }
+
         # print(context)
         return context
 
@@ -119,15 +124,10 @@ class ItemDetailView(DetailView):
     '''display an individual item'''
     model = Item
     template_name = 'boutique/item.html'
-    # no need to specify as default context_object_name depends on the model
-    # they are actually the same (with lower case first letter)
-    # context_object_name = 'item'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # add categories for navbar link texts
         context['categories'] = Category.objects.get_categories_with_item()
-        # print('\ncontext= ', context, '\n')
         return context
 
 

@@ -1,5 +1,6 @@
 {% load bootstrap4 %}
 {% load static %}
+{% load i18n %}
 
 <html lang="en">
 
@@ -19,6 +20,7 @@
 
     <!-- customised css -->
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
+    {% include 'boutique/include/modal_style.html' %}
 
     <title>VA Boutique</title>
 </head>
