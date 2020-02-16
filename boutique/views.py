@@ -15,6 +15,23 @@ class IndexView(TemplateView):
         return context
 
 
+class SalesListView(ListView):
+    model = Item
+    template_name = 'boutique/sales.html'
+    context_object_name = 'items'
+
+    def get_queryset(self):
+        return Item.objects.filter(
+            Q(discount_percentage__gt=0) |
+            Q(tag__tag_discount_percentage__gt=0)
+        ).order_by('-discount_percentage', '-tag__tag_discount_percentage')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.get_categories_with_item()
+        # print(context)
+        return context
+
 class CategoryListView(ListView):
     '''display a list of items'''
     model = Category

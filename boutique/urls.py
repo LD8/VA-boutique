@@ -6,6 +6,8 @@ urlpatterns = [
     # show index page
     path('', views.IndexView.as_view(), name='index'),
     
+    path('sales/', views.SalesListView.as_view(), name='sales'),
+    
     # general search, text input
     path('search/', views.SearchView.as_view(), name='search'),
 
@@ -18,4 +20,5 @@ urlpatterns = [
 
     path('<str:gender>/', views.CategoryListView.as_view(), name='show-all'),
     # path('show-all/', views.CategoryListView.as_view(), name='show-all'),
+    
 ]

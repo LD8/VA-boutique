@@ -3,6 +3,24 @@
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override a.cursor-pointer {
   cursor: pointer; }
+#bootstrap-override div.sales-cover {
+  background-image: url("../img/sales-cover.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 180px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw; }
+@media only screen and (min-width: 800px) {
+  #bootstrap-override div.sales-cover {
+    height: 300px; } }
+@media only screen and (max-width: 1200px) {
+  #bootstrap-override nav.navbar a.nav-link {
+    font-size: 18px; } }
 #bootstrap-override .filter {
   display: block; }
 #bootstrap-override .filter-icon {

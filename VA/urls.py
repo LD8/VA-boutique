@@ -5,10 +5,10 @@ from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 
 urlpatterns = [
+    path('', include('boutique.urls')),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
-    path('', include('boutique.urls')),
-    path('order/', include('order.urls')),
+    path('shopping/', include('shopping.urls')),
     path('wishlist/', include('wishlist.urls')),
 ]
 

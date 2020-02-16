@@ -3,13 +3,41 @@
 // @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300&display=swap'); //'Alegreya Sans', sans-serif;
 // @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:300|Forum&display=swap'); //'Forum', 'Alegreya Sans', sans-serif;
 
-
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override {
   // make cursor become pointer on anchor tags
   a.cursor-pointer {
     cursor: pointer;
   }
+
+  // sales page
+  div.sales-cover {
+    background-image: url("../img/sales-cover.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 180px;
+
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  @media only screen and (min-width: 800px) {
+    div.sales-cover {
+      height: 300px;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    nav.navbar a.nav-link {
+      font-size: 18px;
+    }
+  }
+
   
   // filter form
   .filter {
@@ -28,7 +56,7 @@
     }
   }
 
-  // breadcrumb and back button 
+  // breadcrumb and back button
   .breadcrumb {
     background-color: transparent;
   }
@@ -49,10 +77,8 @@
       display: block;
     }
   }
-  
 }
 /* -------- end overriding bootstrap styles -------- */
-
 
 nav,
 .container,
