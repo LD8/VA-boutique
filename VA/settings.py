@@ -32,13 +32,16 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # VA apps
-    'boutique',
+    'boutique.apps.BoutiqueConfig',
     'users',
     'wishlist',
-    'shopping',
+    'shopping.apps.ShoppingConfig',
 
     # third party apps
     'bootstrap4',
+
+    # debugging
+    'debug_toolbar',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,6 +56,10 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+
+    # debugging middleware
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -71,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'boutique.context_processors.category_context_processor',
             ],
         },
     },
@@ -133,3 +141,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 LOGIN_URL = 'users:login'
+
+# for Debug Toolbar to work
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

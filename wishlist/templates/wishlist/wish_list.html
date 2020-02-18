@@ -1,0 +1,64 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+<div class="">
+    <!-- back button: only shown on small screen -->
+    <div class="pr-1 pr-sm-3 mt-3">
+        <a class="text-black-50 btn btn-sm btn-outline-secondary cursor-pointer" onclick="history.back()"><i
+                class="fas fa-angle-double-left mr-3"></i>Go Back</a>
+    </div>
+    <!-- /back button -->
+    <h3 class="text-black-50 border-bottom text-center mt-3 pb-2 mb-0">My Wish List</h3>
+    <div class="row">
+
+        {% for item in wishlist.items.all %}
+        <div class="col-12 col-md-6 border-bottom mt-2 mt-md-3 pb-2 pb-md-3">
+            <div class="row">
+                <div class="col-5">
+                    <!-- image anchor -->
+                    <a href="{{ item.get_item_url }}">
+                        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+                    <!-- /image anchor -->
+                </div>
+                <div class="col-5 d-flex flex-column px-0">
+                    <!-- item price tag -->
+                    <div class="text-left " style="font-size: 15px;">
+                        <div class="">
+                            <a href="{{ item.get_item_url }}" class="text-dark">
+                                {% if item.brand.name != 'Other' %}
+                                <p class="mb-0"><em>{{item.brand}}</em></p>
+                                {% endif %}
+                                {{item|title}}</a>
+                        </div>
+                        <div class="mt-n1">
+                            {% include 'boutique/include/item_price.html' %}
+                        </div>
+                    </div>
+                    <!-- /item price tag -->
+                </div>
+                <div class="pl-1 col-2 d-flex flex-column justify-content-around">
+                    <a href="#" class="btn btn-sm btn-danger py-1 py-md-2"><i class="fas fa-shopping-bag fa-lg"></i></a>
+                    <a href="{% url 'wishlist:del-wish' item.pk %}" class="btn btn-sm mt-auto py-1 py-md-2 text-black-50 btn-outline-secondary"><i class="fas fa-trash fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-4 mt-lg-5 mx-0 row">
+        <a href="#"
+            class="col-12 col-md mx-1 btn btn-outline-dark mb-2 border-top-0 border-right-0 border-left-0">My
+            Shopping Bag</a>
+        <a href="#"
+            class="col-12 col-md mx-1 btn btn-outline-info mb-2 border-top-0 border-right-0 border-left-0">My
+            Orders</a>
+    </div>
+</div>
+
+{% endblock content %}

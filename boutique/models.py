@@ -1,16 +1,13 @@
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from PIL import Image, ExifTags
 from django.db import models
 from django.db.models import Count, Q
 from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
 import os
-
+from django.db.models import Prefetch
 
 class CategoryQuerySet(models.QuerySet):
     def get_categories_with_item(self):
-        return self.annotate(Count('item')).exclude(item__count=0)
+        return self.annotate(Count('item')).exclude(item__count=0).prefetch_related('subcategory_set')
 
     def get_categories_by_gender(self, gender):
         if gender == 'women':
@@ -53,9 +50,11 @@ class Category(models.Model):
     def get_category_url(self):
         return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
 
-    def get_filter_category_url(self):
-        return reverse('boutique:filter-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
-
+    def load_related_item(self):
+        return self.item_set.select_related('brand', 'tag')
+    
+    def load_related_subcategory(self):
+        return self.subcategory_set.all()
 
 class SubCategory(models.Model):
     '''Sub-category for the categories (not mandatory)'''
@@ -75,6 +74,9 @@ class SubCategory(models.Model):
 
     def get_subcategory_url(self):
         return reverse('boutique:show-subcategory', kwargs={'gender': self.category.get_gender_display(), 'subcategory_pk': self.pk})
+
+    def load_related_item(self):
+        return self.item_set.select_related('brand', 'tag')
 
 
 class Tag(models.Model):
@@ -134,21 +136,20 @@ class ItemManager(models.Manager):
 
     def search(self, query=None):
         return self.get_queryset().search(query=query)
-
+    
 
 class Item(models.Model):
     '''Each item represents a product'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(
-        SubCategory, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=100, unique=True)
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True, blank=True)
+    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=3)
+
+    name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     price = models.IntegerField(default=0)
     discount_percentage = models.IntegerField(verbose_name='Discount Percentage', default=0, validators=[
                                               MinValueValidator(0), MaxValueValidator(100)])
-    tag = models.ForeignKey(
-        Tag, on_delete=models.SET_NULL, null=True, blank=True)
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
@@ -200,36 +201,3 @@ class IndexCarousel(models.Model):
 class ItemImage(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='itemimages', null=True, blank=True)
-
-
-def rotate_image(filepath):
-    '''rotate images based on their original orientation, 
-    this solves the problem that uploaded images are in wrong orientation'''
-    try:
-        image = Image.open(filepath)
-        for orientation in ExifTags.TAGS.keys():
-            if ExifTags.TAGS[orientation] == 'Orientation':
-                break
-        exif = dict(image._getexif().items())
-
-        if exif[orientation] == 3:
-            image = image.rotate(180, expand=True)
-        elif exif[orientation] == 6:
-            image = image.rotate(270, expand=True)
-        elif exif[orientation] == 8:
-            image = image.rotate(90, expand=True)
-        image.save(filepath)
-        image.close()
-    except (AttributeError, KeyError, IndexError):
-        # cases: image don't have getexif
-        pass
-
-# doc: pre_save and post_save: https://docs.djangoproject.com/en/3.0/ref/signals/#pre-save
-@receiver(post_save, sender=ItemImage, dispatch_uid="update_image_item")
-def update_image(sender, instance, **kwargs):
-    '''to implement rotate function'''
-    if instance.image:
-        BASE_DIR = os.path.dirname(
-            os.path.dirname(os.path.abspath(__file__)))
-        fullpath = BASE_DIR + instance.image.url
-        rotate_image(fullpath)

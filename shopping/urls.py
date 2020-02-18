@@ -5,7 +5,7 @@ app_name = 'shopping'
 urlpatterns = [
 
     # shopping bag
-    path('shopping-bag/<str:slug>/', views.ShoppingBagView.as_view(), name='shopping-bag'),
+    # path('shopping-bag/<str:slug>/', views.ShoppingBagView.as_view(), name='shopping-bag'),
 
     
 ]

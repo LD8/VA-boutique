@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
-from boutique.models import Category
+from .models import Profile
 
 
+@method_decorator(login_required, name='dispatch')
 class RegisterView(TemplateView):
     '''Render registration page'''
     template_name = 'registration/register.html'
@@ -13,7 +17,6 @@ class RegisterView(TemplateView):
 
     def get(self, *args, **kwargs):
         context = {'form': self.form}
-        context['categories'] = Category.objects.get_categories_with_item()
         return render(self.request, self.template_name, context)
 
     def post(self, *args, **kwargs):
@@ -26,15 +29,14 @@ class RegisterView(TemplateView):
         return render(self.request, self.template_name, {'form': self.form})
 
 
-def profile(request):
-    '''render user's profile page'''
-    posts = request.user.post_set.all()
-    comments = request.user.comment_set.all()
-    comments_on_posts_not_authored_by_me = []
-    for comment in comments:
-        if comment.post not in posts:
-            comments_on_posts_not_authored_by_me.append(comment)
-    return render(request, 'users/profile.html', {
-        'posts': posts,
-        'comments': comments,
-        'other_comments': comments_on_posts_not_authored_by_me})
+class ProfileDetailView(DetailView):
+    model = Profile
+    template_name = 'users/profile.html'
+    query_pk_and_slug = True
+    
+
+class ProfileUpdateView(UpdateView):
+    model = Profile
+    fields = ['name', 'email', 'phone', 'city']
+    template_name = 'users/profile_update.html'
+    

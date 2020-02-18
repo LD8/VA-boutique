@@ -95,19 +95,20 @@
                     <i class="fas fa-user fa-sm"></i>
                     <span class="pl-1">{{user.username|title}}'s</span></a>
                 <div class="dropdown-menu dropdown-menu-right border-white px-2" aria-labelledby="navbarDropdown">
-
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#"><i
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="{{user.profile.get_absolute_url}}"><i
+                        class="fas fa-user fa-sm"></i><span class="pl-3"> My Profile</span> </a>
+                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="{{user.profile.wishlist.get_absolute_url}}"><i
                             class="fas fa-heart text-danger"></i><span class="pl-3">My
                             Wish-list</span> </a>
                     <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#"><i
                             class="fas fa-shopping-bag text-primary"></i><span class="pl-3 "> My Shopping
                             Cart</span></a>
                     <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#"><i
-                            class="fas fa-dolly text-info"></i><span class="pl-3 ">My Order</span></a>
+                            class="fas fa-dolly text-info"></i><span class="pl-3">My Orders</span></a>
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#policyModalScrollable"
-                        data-toggle="modal"><i class="fas fa-truck-moving text-black-50 mr-2"></i> Our Policy</a>
+                    <!-- <a class="dropdown-item text-black-50 px-3 px-sm-1" href="#policyModalScrollable"
+                        data-toggle="modal"><i class="fas fa-truck-moving text-black-50 mr-2"></i> Our Policy</a> -->
                     <a class="dropdown-item text-black-50 px-3 px-sm-1" href="{% url 'users:logout' %}"><i
                             class="fas fa-sign-out-alt text-muted"></i><span class="pl-3 ">Log Out</span></a>
 

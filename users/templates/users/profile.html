@@ -1,53 +1,33 @@
 {% extends 'boutique/base.html' %}
 
 {% block content %}
-<h2 class="font-weight-light">Welcome back {{ user.username|title }}!</h2>
 
-<div class="mb-5">
-    <h5>You have <span class="badge badge-pill badge-secondary">{{ posts.count }}</span> posts</h5>
-    <h5>You have <span class="badge badge-pill badge-secondary">{{ comments.count }}</span> comments</h5>
-</div>
-<div>
-    <h4 class="font-weight-light text-muted mb-3">Your <span class="badge badge-pill badge-secondary">{{ posts.count }}</span> posts and <span class="badge badge-pill badge-secondary">{{ comments.count }}</span> comments:</h4>
-    {% for post in posts %}
-    <div class="bg-white rounded-left shadow-lg p-3 mb-1 row">
-        <div class="col-md-7">
-            {% include 'forum/posts_brief.html' with topic=post.topic post=post num=500 %}
+<div class="mx-2 mx-lg-3 my-4 my-lg-5 text-black-50">
+    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50">Welcome back
+        {{ profile.user.username|title }}!</h3>
+    <div class="pt-2 px-2 row">
+        <div class="col-12 col-md-6">
+            <p>My Name: {{ profile.name }}</p>
+            <p>My Email: {{ profile.email }}</p>
         </div>
-
-        <div class="col-md-5">
-            <h5 class="font-weight-lighter border-bottom pb-2 text-muted">Your Comments</h5>
-            {% for comment in post.comment_set.all %}
-            {% if comment.post == post %}
-            {% include 'users/comments_in_profile.html' %}
-            {% endif %}
-            {% empty %}
-            <div>
-                <p class="text-muted mt-3">You haven't commented on this post yet...</p>
-            </div>
-            {% endfor %}
+        <div class="col-12 col-md-6">
+            <p>My Phone: {{ profile.phone }}</p>
+            <p>My City: {{ profile.city }}</p>
         </div>
-
     </div>
-    {% endfor %}
 
-    <div class="mt-5">
-        <h4 class="font-weight-light text-muted mb-3">Your comments on other's posts:</h4>
-        {% for comment in other_comments %}
-        <div class="bg-white rounded-left shadow-lg p-3 mb-1 row">
-            <div class="col-md-7">
-                {% include 'forum/posts_brief.html' with topic=comment.post.topic post=comment.post num=200 %}
-            </div>
-            <div class="col-md-5">
-                {% include 'users/comments_in_profile.html' %}
-            </div>
-        </div>
-        {% empty %}
-        <div>
-            <p class="text-muted mt-3">You haven't commented on other's posts yet...</p>
-        </div>
-        {% endfor %}
+    <div class="d-md-flex justify-content-end">
+        <a href="{% url 'users:profile-update' profile.pk profile.slug %}" class="col-12 col-md-4 mx-1 btn btn-sm btn-outline-secondary mb-2 border-top-0 border-right-0 border-left-0">Edit Profile</a>
     </div>
+
+    <div class="mt-3 mt-lg-5 mx-0 row">
+        <a href="{{ profile.wishlist.get_absolute_url }}" class="col-12 col-md mx-1 btn btn-sm btn-outline-danger mb-2 border-top-0 border-right-0 border-left-0">My Wish List</a>
+        <a href="#" class="col-12 col-md mx-1 btn btn-sm btn-outline-dark mb-2 border-top-0 border-right-0 border-left-0">My Shopping Bag</a>
+        <a href="#" class="col-12 col-md mx-1 btn btn-sm btn-outline-info mb-2 border-top-0 border-right-0 border-left-0">My Orders</a>
+    </div>
+
 </div>
+
+<hr class="">
 
 {% endblock content %}

@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% for message in messages %}
+<div class="alert alert-warning" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+
 <!-- item -->
 <div class="mt-3 ">
 
@@ -12,7 +18,7 @@
                     class="fas fa-angle-double-left mr-3"></i>Go Back</a>
         </div>
         <!-- /back button -->
-    
+
         <!-- breadcrumb -->
         <nav aria-label="breadcrumb" class="pl-3 ml-1">
             <ol class="breadcrumb px-1 mb-0 font-weight-light border-bottom border-light">
@@ -33,24 +39,25 @@
 
         <div class="col-12 col-sm-8">
             <div id="item{{item.pk}}Carousel" class="carousel slide" data-ride="carousel">
-    
+
                 <ol class="carousel-indicators">
                     {% for image in item.itemimage_set.all %}
-                    <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}" 
-                            {% if forloop.first %} class="active" {% endif %}></li>
+                    <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}"
+                        {% if forloop.first %} class="active" {% endif %}></li>
                     {% endfor %}
                 </ol>
-    
+
                 <div class="carousel-inner shadow-lg rounded-sm">
-    
+
                     {% for image in item.itemimage_set.all %}
                     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                        <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}" class="d-block w-100" alt="..."></a>
+                        <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}"
+                                class="d-block w-100" alt="..."></a>
                     </div>
                     {% endfor %}
-    
+
                 </div>
-    
+
                 {% if item.itemimage_set.count > 1 %}
                 <a class="carousel-control-prev" href="#item{{item.pk}}Carousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -61,12 +68,12 @@
                     <span class="sr-only">Next</span>
                 </a>
                 {% endif %}
-    
+
             </div>
-    
+
         </div>
-    
-    
+
+
         <div class="pl-sm-0 col-12 col-sm-4 d-flex flex-wrap align-content-start">
             {% for image in item.itemimage_set.all %}
             <div class="col-4 
@@ -81,7 +88,7 @@
             </div>
             {% endfor %}
         </div>
-    
+
     </div>
     <!-- /item images and thumbnails -->
 
@@ -102,9 +109,11 @@
                 <!-- add to wish-list: a heart sign -->
                 <div class="ml-auto">
                     {% if user.is_authenticated %}
-                    <a href="{{user.wishlist.get_absolute_url}}"><i class="far fa-heart fa-lg text-danger mt-1"></i></a>
+                    <a href="{% url 'wishlist:add-wish' item.pk %}"><i
+                            class="far fa-heart fa-lg text-danger mt-1"></i></a>
                     {% else %}
-                    <a href="#wishListSignUpModal" data-toggle="modal"><i class="far fa-heart fa-lg text-danger mt-1"></i></a>
+                    <a href="#wishListSignUpModal" data-toggle="modal"><i
+                            class="far fa-heart fa-lg text-danger mt-1"></i></a>
                     {% endif %}
                 </div>
 
@@ -150,37 +159,40 @@
         <div class="modal-content">
             <div class="col-12 px-0">
                 <div id="itemImage{{item.pk}}Carousel" class="carousel slide" data-ride="carousel">
-            
+
                     <ol class="carousel-indicators">
                         {% for image in item.itemimage_set.all %}
-                        <li data-target="#itemImage{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}" 
-                                {% if forloop.first %} class="active" {% endif %}></li>
+                        <li data-target="#itemImage{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}"
+                            {% if forloop.first %} class="active" {% endif %}></li>
                         {% endfor %}
                     </ol>
-            
+
                     <div class="carousel-inner shadow-lg rounded-sm">
-            
+
                         {% for image in item.itemimage_set.all %}
                         <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                            <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}" class="d-block w-100" alt="..."></a>
+                            <a href="#itemImageModal" data-toggle="modal"><img src="{{image.image.url}}"
+                                    class="d-block w-100" alt="..."></a>
                         </div>
                         {% endfor %}
-            
+
                     </div>
-            
+
                     {% if item.itemimage_set.count > 1 %}
-                    <a class="carousel-control-prev" href="#itemImage{{item.pk}}Carousel" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#itemImage{{item.pk}}Carousel" role="button"
+                        data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#itemImage{{item.pk}}Carousel" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#itemImage{{item.pk}}Carousel" role="button"
+                        data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
                     {% endif %}
-            
+
                 </div>
-            
+
             </div>
         </div>
     </div>
@@ -196,10 +208,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="mb-3 text-danger font-weight-light">Sign up to activate your wish-list function! More discount available to you! And So Much more...</h5>
-                <div style="height: 150px"></div>
-                <a target="_blank" href="{% url 'users:register' %}" type="button"
-                    class="btn btn-danger font-weight-lighter align-self-end px-5">Sign Up</a>
+                <h4 class="mb-3 text-danger font-weight-light">Sign up to activate your wish-list function! More
+                    discount available to you! And So Much more...</h5>
+                    <div style="height: 150px"></div>
+                    <a target="_blank" href="{% url 'users:register' %}" type="button"
+                        class="btn btn-danger font-weight-lighter align-self-end px-5">Sign Up</a>
             </div>
         </div>
     </div>

@@ -11,7 +11,6 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['carousels'] = IndexCarousel.objects.all()
-        context['categories'] = Category.objects.get_categories_with_item()
         return context
 
 
@@ -21,16 +20,11 @@ class SalesListView(ListView):
     context_object_name = 'items'
 
     def get_queryset(self):
-        return Item.objects.filter(
+        return Item.objects.select_related('tag').filter(
             Q(discount_percentage__gt=0) |
             Q(tag__tag_discount_percentage__gt=0)
         ).order_by('-discount_percentage', '-tag__tag_discount_percentage')
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.get_categories_with_item()
-        # print(context)
-        return context
+
 
 class CategoryListView(ListView):
     '''display a list of items'''
@@ -71,9 +65,8 @@ class CategoryListView(ListView):
         subcategory_pk = subcategory_selected_pk if subcategory_selected_pk else self.kwargs.get(
             'subcategory_pk')
 
-        
         # print('\nself.kwargs:\n', gender, category_pk, subcategory_pk)
-        
+
         if gender and not category_pk and not subcategory_pk:
             qs = qs.get_categories_by_gender(gender)
             # print('\nCategoryLV_qs_gender= ', '\n', qs, '\n', gender, '\n')
@@ -87,14 +80,14 @@ class CategoryListView(ListView):
         elif gender and subcategory_pk:
             qs = SubCategory.objects.annotate(Count('item')).exclude(
                 item__count=0).filter(pk=subcategory_pk)
-            self.context_object_name='subcategory_shown'
+            self.context_object_name = 'subcategory_shown'
             # print('\nCategoryLV_qs_sub_category= ', '\n', qs, '\n')
             return qs
 
     def get_validated_cats(self):
         categories_validated = []
         subcategories_validated = []
-        items_validated=[]
+        items_validated = []
 
         brand_selected = self.brand_selected
         min_price = self.min_price
@@ -104,7 +97,7 @@ class CategoryListView(ListView):
         if max_price == '' or max_price is None:
             max_price = 999999
 
-        for item in Item.objects.filter(category__gender=self.gender_number):
+        for item in Item.objects.select_related('category', 'subcategory', 'tag').filter(category__gender=self.gender_number):
             if int(min_price) <= item.final_price < int(max_price):
                 if brand_selected is None or brand_selected == 'бренд' or item.brand.name == brand_selected:
                     items_validated.append(item)
@@ -117,7 +110,6 @@ class CategoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.get_categories_with_item()
         context['brands'] = Brand.objects.all()
 
         cat_valid, subcat_valid, items_valid = self.get_validated_cats()
@@ -141,12 +133,7 @@ class ItemDetailView(DetailView):
     '''display an individual item'''
     model = Item
     template_name = 'boutique/item.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.get_categories_with_item()
-        return context
-
+    queryset = Item.objects.prefetch_related('itemimage_set')
 
 class SearchView(ListView):
     '''display search result from the search query input'''
@@ -163,7 +150,5 @@ class SearchView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.get_categories_with_item()
         context['query'] = self.query
-        print(context)
         return context
