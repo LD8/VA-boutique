@@ -2,6 +2,7 @@
 
 {% block content %}
 
+
 {% for message in messages %}
 <div class="alert alert-success" role="alert">
     {{ message }}
@@ -14,26 +15,27 @@
                 class="fas fa-angle-double-left mr-3"></i>Go Back</a>
     </div>
     <!-- /back button -->
-    <h3 class="text-black-50 border-bottom text-center mt-3 pb-2 mb-0">My Wish List</h3>
+    <h3 class="text-black-50 border-bottom text-center mt-3 pb-2 mb-0">My Shopping Bag</h3>
     <div class="row">
-        {% for item in wishlist.items.all %}
+        {{shopping_bag.get_order_items.count}}
+        {% for item in shopping_bag.get_order_items %}
         <div class="col-12 col-md-6 border-bottom mt-2 mt-md-3 pb-2 pb-md-3">
             <div class="row">
                 <div class="col-5">
                     <!-- image anchor -->
-                    <a href="{{ item.get_item_url }}">
-                        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+                    <a href="{{ item.item.get_item_url }}">
+                        <img class="rounded-sm" src="{{item.item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
                     <!-- /image anchor -->
                 </div>
                 <div class="col-5 d-flex flex-column px-0">
                     <!-- item price tag -->
                     <div class="text-left " style="font-size: 15px;">
                         <div class="">
-                            <a href="{{ item.get_item_url }}" class="text-dark">
-                                {% if item.brand.name != 'Other' %}
+                            <a href="{{ item.item.get_item_url }}" class="text-dark">
+                                {% if item.item.brand.name != 'Other' %}
                                 <p class="mb-0"><em>{{item.brand}}</em></p>
                                 {% endif %}
-                                {{item|title}}</a>
+                                {{item.item|title}}</a>
                         </div>
                         <div class="mt-n1">
                             {% include 'boutique/include/item_price.html' %}
@@ -52,10 +54,13 @@
 
     <div class="mt-3 mt-lg-5 mx-0 row">
         <a href="{{user.profile.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0"> My Profile</span> </a>
-        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-danger disabled">My Wish List</a>
-        <a href="{% url 'shopping:shopping-bag' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-secondary border-top-0 border-right-0 border-left-0">My Shopping Bag</a>
+        <a href="{{user.profile.wishlist.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">My Wish List</a>
+        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-secondary disabled">My Shopping Bag</a>
         <a href="{% url 'shopping:show-orders' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">My Orders</a>
     </div>
 </div>
+
+
+<hr class="">
 
 {% endblock content %}

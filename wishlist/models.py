@@ -25,20 +25,9 @@ class WishList(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        kwargs = {
-            'pk': self.pk,
-            'slug': self.slug,
-        }
-        return reverse('wishlist:wish-list', kwargs=kwargs)
+        return reverse('wishlist:wish-list', kwargs={'slug': self.slug,})
 
-    # def add_wish_url(self):
-    #     kwargs = {
-    #         'pk': self.pk,
-    #         'slug': self.slug,
-    #         'item_pk': item.pk,
-    #     }
 
-# to create a shopping_bag whenever a user is created
 @receiver(post_save, sender=Profile, dispatch_uid="create_user_wish_list")
 def create_wish_list(sender, instance, created, **kwargs):
     user_wish_list, created = WishList.objects.get_or_create(profile=instance)

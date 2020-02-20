@@ -116,7 +116,6 @@
                             class="far fa-heart fa-lg text-danger mt-1"></i></a>
                     {% endif %}
                 </div>
-
             </div>
 
             <!-- item price -->
@@ -130,16 +129,26 @@
 
         </div>
 
-        <!-- /item title, price, wish, description -->
 
         <!-- shopping bag sign, buy now button -->
         <div class="col-12 col-md-4 mt-2">
-            <a href="#" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
-            <a href="#" class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
-            <a href="#"
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'shopping:add-to-bag' item.pk %}" 
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
+             <a href="{% url 'shopping:buy-now-registered' item.pk %}" 
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
+            {% else %}
+            <a href="#wishListSignUpModal"  data-toggle="modal" 
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
+             <a href="{% url 'shopping:buy-now' item.pk %}" 
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
+            {% endif %}
+
+            <a href="#policyModalScrollable" data-toggle="modal"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Delivery
                 Policy</a>
-            <a href="#"
+            <a href="#whatsappModal" data-toggle="modal"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact
                 Directly</a>
         </div>
@@ -208,8 +217,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="mb-3 text-danger font-weight-light">Sign up to activate your wish-list function! More
-                    discount available to you! And So Much more...</h5>
+                <h4 class="mb-3 text-danger font-weight-light">Sign up to enjoy more discount and have your own Wish List, Shopping Bag, manage all of your orders! And So Much more...</h5>
                     <div style="height: 150px"></div>
                     <a target="_blank" href="{% url 'users:register' %}" type="button"
                         class="btn btn-danger font-weight-lighter align-self-end px-5">Sign Up</a>

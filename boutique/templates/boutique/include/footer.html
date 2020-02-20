@@ -1,5 +1,7 @@
 {% load static %}
 
+{% include 'boutique/include/modal_in_footer.html' %}
+
 <footer class="d-flex align-items-center py-1 flex-column shadow-lg">
 
     <!-- Logo -->
@@ -12,9 +14,9 @@
         <div class="col-6 text-right">
             <h6 class="mb-2 border-bottom border-light">About Us</h5>
             <div class="col-12 px-0">
-                <p class="mb-sm-0 mb-1"><a href="" class="text-black-50">How to buy</a></p>
-                <p class="mb-sm-0 mb-1"><a href="" class="text-black-50">Delivery and payment</a></p>
-                <p class="mb-sm-0 mb-1"><a href="" class="text-black-50">About Us</a></p>
+                <p class="mb-sm-0 mb-1"><a href="#howToBuyModal" data-toggle="modal" class="text-black-50">How to buy</a></p>
+                <p class="mb-sm-0 mb-1"><a href="#deliveryAndPaymentModal" data-toggle="modal" class="text-black-50">Delivery and payment</a></p>
+                <p class="mb-sm-0 mb-1"><a href="#aboutUsModal" data-toggle="modal" class="text-black-50">About Us</a></p>
             </div>
         </div>
         <div class="col-6">

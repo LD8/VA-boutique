@@ -1,0 +1,16 @@
+{% extends 'boutique/base.html' %}
+
+{% block content %}
+
+
+<div class="mt-3 mt-lg-5 mx-0 row">
+    <a href="{{user.profile.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0"> My Profile</span> </a>
+    <a href="{{user.profile.wishlist.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">My Wish List</a>
+    <a href="{% url 'shopping:shopping-bag' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-secondary border-top-0 border-right-0 border-left-0">My Shopping Bag</a>
+    <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-info disabled">My Orders</a>
+</div>
+
+
+<hr class="">
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+<!-- item info -->
+<div class="d-flex justify-content-center">
+    <div class="col-6 col-lg-3">
+        <!-- image anchor -->
+        <a href="{{ item.get_item_url }}">
+            <img class="rounded-sm mb-2" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+        <!-- /image anchor -->
+
+        <!-- item price tag -->
+        <div class="text-center" style="font-size: 20px;">
+            <div class="">
+                <a href="{{ item.get_item_url }}" class="mb-2 text-black-50">
+                    {% if item.brand.name != 'Other' %}
+                    <p class="mb-0"><em>{{item.brand}}</em></p>
+                    {% endif %}
+                    {{item|title}}</a>
+            </div>
+            <div class=" text-black-50">
+                <p><span class="mr-1">&#8381;</span>{{ item.final_price }}</p>
+            </div>
+        </div>
+        <!-- /item price tag -->
+    </div>
+</div>
+<!-- /item info -->
