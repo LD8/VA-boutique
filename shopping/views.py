@@ -14,7 +14,10 @@ def get_shopping_bag(request):
     profile = get_object_or_404(Profile, user=request.user)
     # get pending order as shopping_bag object
     shopping_bag, created = Order.objects.get_or_create(
-        is_ordered=False, profile=profile)
+        is_ordered=False, 
+        profile=profile, 
+        ref_number="{}'s shopping bag".format(request.user.username),
+        )
     return shopping_bag
 
 
@@ -61,6 +64,17 @@ class OrderListView(ListView):
 class OrderDetailView(ListView):
     model = Order
     template_name = 'shopping/order.html'
+    context_object_name = 'order'
+
+    def get_queryset(self):
+        qs = get_object_or_404(Order, pk=self.kwargs.get('pk'))
+        print(qs)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
 
 
 @login_required

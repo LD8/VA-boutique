@@ -36,10 +36,12 @@ class Order(models.Model):
         return self.items.all()
 
     def get_order_total(self):
-        return sum([item.item.final_price() for item in self.get_order_items])
+        return sum([item.item.final_price for item in self.get_order_items()])
 
     class Meta():
-        ordering = ['-active', '-date_ordered']
+        verbose_name = 'Registered Order'
+        verbose_name_plural = 'Registered Orders'
+        ordering = ['-is_ordered', '-active', '-date_ordered']
 
 class AnonymousOrder(models.Model):
     ref_number = models.CharField(max_length=15, blank=True, unique=True)

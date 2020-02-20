@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     # debugging
     'debug_toolbar',
     
+    # django add-in
+    'django.contrib.humanize',
+    
+    # django default
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

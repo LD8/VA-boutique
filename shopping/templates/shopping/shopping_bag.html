@@ -1,7 +1,28 @@
 {% extends 'boutique/base.html' %}
+{% load humanize %}
 
 {% block content %}
 
+<!-- confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="col-10 mr-auto ml-auto">
+                    <h6 class="text-black-50">Go checkout now? We will send an email to your personal
+                        stylist and she will contact you soon.</h6>
+                    <a href="{% url 'shopping:handle-order' %}" type="button"
+                        class="btn btn-outline-success col-12">Confirm</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% for message in messages %}
 <div class="alert alert-success" role="alert">
@@ -16,47 +37,65 @@
     </div>
     <!-- /back button -->
     <h3 class="text-black-50 border-bottom text-center mt-3 pb-2 mb-0">My Shopping Bag</h3>
-    <div class="row">
-        {{shopping_bag.get_order_items.count}}
-        {% for item in shopping_bag.get_order_items %}
-        <div class="col-12 col-md-6 border-bottom mt-2 mt-md-3 pb-2 pb-md-3">
-            <div class="row">
-                <div class="col-5">
-                    <!-- image anchor -->
-                    <a href="{{ item.item.get_item_url }}">
-                        <img class="rounded-sm" src="{{item.item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
-                    <!-- /image anchor -->
-                </div>
-                <div class="col-5 d-flex flex-column px-0">
-                    <!-- item price tag -->
-                    <div class="text-left " style="font-size: 15px;">
-                        <div class="">
-                            <a href="{{ item.item.get_item_url }}" class="text-dark">
-                                {% if item.item.brand.name != 'Other' %}
-                                <p class="mb-0"><em>{{item.brand}}</em></p>
-                                {% endif %}
-                                {{item.item|title}}</a>
-                        </div>
-                        <div class="mt-n1">
-                            {% include 'boutique/include/item_price.html' %}
-                        </div>
-                    </div>
-                    <!-- /item price tag -->
-                </div>
-                <div class="pl-1 col-2 d-flex flex-column justify-content-around">
-                    <a href="#" class="btn btn-sm btn-danger py-1 py-md-2"><i class="fas fa-shopping-bag fa-lg"></i></a>
-                    <a href="{% url 'wishlist:del-wish' item.pk %}" class="btn btn-sm mt-auto py-1 py-md-2 text-black-50 btn-outline-secondary"><i class="fas fa-trash fa-lg"></i></a>
-                </div>
-            </div>
+
+    {% for item in shopping_bag.get_order_items %}
+    <div class="col-12 col-md-8 border-bottom mt-2 mt-md-3 pb-2 pb-md-3 d-flex align-items-center pl-0 mr-auto ml-auto">
+        <div class="col-4 col-md-2 pl-0">
+            <!-- image anchor -->
+            <a href="{{ item.item.get_item_url }}">
+                <img class="rounded-sm shadow-sm" src="{{item.item.itemimage_set.first.image.url}}" width="100%"
+                    alt=""></a>
+            <!-- /image anchor -->
         </div>
-        {% endfor %}
+        <div class="col px-0 d-flex align-items-center ml-md-3" style="font-size: 15px;">
+            <!-- item price tag -->
+            <div class="col-6 px-0">
+                <a href="{{ item.item.get_item_url }}" class="text-black-50 ">
+                    {% if item.item.brand.name != 'Other' %}
+                    <p class="mb-0"><em>{{item.item.brand}}</em></p>
+                    {% endif %}
+                    {{item.item|title}}</a>
+            </div>
+            <div class="col-6">
+                <p class="mt-auto mb-auto"><span class="mr-1">&#8381;</span>{{ item.item.final_price|intcomma }}</p>
+            </div>
+
+            <!-- /item price tag -->
+        </div>
+        <div class="col-1">
+            <a href="{% url 'shopping:del-from-bag' item.pk %}" class="btn btn-sm mt-auto py-1 py-md-2 text-black-50"><i
+                    class="fas fa-trash fa-sm"></i></a>
+        </div>
     </div>
+    {% empty %}
+    <p class="text-center mt-3 text-black-50">Please add more items to your shpping bag :P</p>
+    {% endfor %}
+
+    <!-- Total Price and checkout -->
+    {% if shopping_bag.get_order_total != 0 %}
+    <div class="border-bottom pb-3">
+        <div class="d-flex col-8 ml-auto mr-auto">
+            <p class="ml-auto my-4">Total Price: <span
+                    class="mx-1">&#8381;</span>{{ shopping_bag.get_order_total|intcomma }}</p>
+        </div>
+        <div class="col-12 col-md-8 ml-auto mr-auto px-0">
+            <a href="#confirmationModal" data-toggle="modal" class="btn btn-sm btn-info col-12">Checkout</a>
+        </div>
+    </div>
+    {% endif %}
+    <!-- /Total Price -->
 
     <div class="mt-3 mt-lg-5 mx-0 row">
-        <a href="{{user.profile.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0"> My Profile</span> </a>
-        <a href="{{user.profile.wishlist.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">My Wish List</a>
-        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-secondary disabled">My Shopping Bag</a>
-        <a href="{% url 'shopping:show-orders' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">My Orders</a>
+        <a href="{{user.profile.get_absolute_url}}"
+            class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0"> My
+            Profile</span> </a>
+        <a href="{{user.profile.wishlist.get_absolute_url}}"
+            class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">My
+            Wish List</a>
+        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-dark disabled">My Shopping Bag</a>
+        <a href="{% url 'shopping:show-orders' %}"
+            class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">My
+            Orders</a>
     </div>
 </div>
 
