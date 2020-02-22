@@ -5,9 +5,15 @@
 
 <h3 class="my-3 my-md-4 pb-2 border-bottom text-center">BUY NOW!</h3>
 
-{% include 'shopping/buy_now_item.html' %}
+{% include 'shopping/include/buy_now_item.html' %}
 
-<form action="{% url 'shopping:buy-now' item.pk %}" class="border-top pt-4 col-12 col-md-6 mr-auto ml-auto" method="POST">
+<form action="
+{% if user.is_authenticated %}
+{% url 'shopping:buy-now-registered' item.pk %}
+{% else %}
+{% url 'shopping:buy-now-unregistered' item.pk %}
+{% endif %}
+" class="border-top pt-4 col-12 col-md-6 mr-auto ml-auto" method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
     <button type="submit" class="mt-3 btn btn-outline-info col-12 mb-5">Place Order</button>

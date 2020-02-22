@@ -11,4 +11,4 @@ class AnonymousOrderAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('ref_number', 'active', 'is_ordered',
-                    'profile', 'date_ordered')
+                    'profile', 'date_ordered', 'order_total')

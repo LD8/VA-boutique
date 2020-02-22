@@ -35,7 +35,8 @@ class Order(models.Model):
     def get_order_items(self):
         return self.items.all()
 
-    def get_order_total(self):
+    @property
+    def order_total(self):
         return sum([item.item.final_price for item in self.get_order_items()])
 
     class Meta():

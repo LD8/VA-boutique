@@ -10,7 +10,17 @@
     itemImageModal
     wishListSignUpModal
 
+    --- About Us Section ---
+    howToBuyModal
+    deliveryAndPaymentModal
+    aboutUsModal
+
+    --- Special Offer Section ---
+    promotionModal
+    wowModal
+    VIPModal
     */
+
     .modal-body {
         border-radius: 5px;
         border: none;
@@ -20,7 +30,10 @@
     .bg-whatsapp,
     .bg-contact,
     .bg-discount-tag,
-    .bg-wishlist {
+    .bg-wishlist,
+    .bg-promotion,
+    .bg-wow,
+    .bg-vip {
         background-size: cover;
         background-position: center;
     }
@@ -43,5 +56,17 @@
 
     .bg-wishlist {
         background-image:url("{% static 'boutique/img/bg-wishlist.png' %}");
+    }
+
+    .bg-promotion {
+        background-image:url("{% static 'boutique/img/bg-promotion.jpg' %}");
+    }
+
+    .bg-wow {
+        background-image:url("{% static 'boutique/img/bg-wow.jpg' %}");
+    }
+
+    .bg-vip {
+        background-image:url("{% static 'boutique/img/bg-vip.jpg' %}");
     }
 </style>

@@ -72,11 +72,11 @@
     {% endfor %}
 
     <!-- Total Price and checkout -->
-    {% if shopping_bag.get_order_total != 0 %}
+    {% if shopping_bag.items.count > 0 %}
     <div class="border-bottom pb-3">
         <div class="d-flex col-8 ml-auto mr-auto">
             <p class="ml-auto my-4">Total Price: <span
-                    class="mx-1">&#8381;</span>{{ shopping_bag.get_order_total|intcomma }}</p>
+                    class="mx-1">&#8381;</span>{{ shopping_bag.order_total|intcomma }}</p>
         </div>
         <div class="col-12 col-md-8 ml-auto mr-auto px-0">
             <a href="#confirmationModal" data-toggle="modal" class="btn btn-sm btn-info col-12">Checkout</a>

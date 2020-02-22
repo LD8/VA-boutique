@@ -71,11 +71,6 @@ class OrderDetailView(ListView):
         print(qs)
         return qs
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
-        return context
-
 
 @login_required
 def handle_order(request, **kwargs):
@@ -88,11 +83,13 @@ def handle_order(request, **kwargs):
     # send an email to admin
 
     messages.info(
-        request, 'Your order has been placed! Our staff will contact you within 24 hours. Or you can contact us directly: +7 (925) 519-62-42. Thank you!')
+        request, 'Your order has been placed! Our staff will \
+            contact you within 24 hours. Or you can contact us\
+                 directly: +7 (925) 519-62-42. Thank you!')
     return redirect('shopping:show-order', order.pk)
 
 
-def buy_now(request, **kwargs):
+def buy_now_unregistered(request, **kwargs):
     """ 
     place order without signing in:
     - fill in forms: email, name, city, phone number
@@ -112,28 +109,27 @@ def buy_now(request, **kwargs):
             new_order.ref_number = anonymous_ref_number_generator()
             new_order.save()
             # send email to the customer
+
+
             messages.info(request, 'Your order is being processed!')
-            return redirect('shopping:buy-now-order', item_pk, new_order.ref_number)
+            return redirect('shopping:unregister-ordered', item_pk, new_order.ref_number)
 
     # get an empty form to fill in
     form = AnonymousOrderForm()
     context = {
         'item': item_to_buy,
         'form': form, }
-    return render(request, 'shopping/templates/shopping/buy_now.html', context)
+    return render(request, 'shopping/buy_now.html', context)
 
 
-def buy_now_order(request, item_pk, order_ref_number):
+def unregister_ordered(request, item_pk, order_ref):
     """ 
-    Display the order just bought
+    Display the item just ordered
     """
-    item_ordered = get_object_or_404(Item, pk=item_pk)
-    new_order = get_object_or_404(AnonymousOrder, ref_number=order_ref_number)
-    context = {
-        'item': item_ordered,
-        'order': new_order,
-    }
-    return render(request, 'shopping/buy_now_order.html', context)
+    return render(request, 'shopping/unregistered_order.html', {
+        'item': get_object_or_404(Item, pk=item_pk),
+        'order_ref': order_ref,
+    })
 
 
 """ FOR REGISTERED USERS ONLY """
@@ -150,11 +146,15 @@ def buy_now_registered(request, **kwargs):
     profile = get_object_or_404(Profile, user=request.user)
 
     if request.method == 'POST':
-        form = ProfileForm(data=request.POST)
+        form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
+            # save profile
+            form.save()
             # create the order object
-            new_order = form.save(commit=False)
-            new_order.items.add(item_to_buy)
+            new_order = Order.objects.create(profile=profile)
+            # create OrderItem instance
+            new_order_item, created = OrderItem.objects.get_or_create(item=item_to_buy)
+            new_order.items.add(new_order_item)
             # generate the ref code
             new_order.ref_number = ref_number_generator()
             new_order.is_ordered = True
@@ -162,11 +162,11 @@ def buy_now_registered(request, **kwargs):
             new_order.save()
             # send email to the customer
             messages.info(request, 'Your order is being processed!')
-            return redirect('shopping:buy-now-order', item_pk, new_order.ref_number)
+            return redirect('shopping:show-order', new_order.pk)
 
     # get an empty form to fill in
-    form = ProfileForm()
+    form = ProfileForm(instance=profile)
     context = {
         'item': item_to_buy,
         'form': form, }
-    return render(request, 'shopping/templates/shopping/buy_now.html', context)
+    return render(request, 'shopping/buy_now.html', context)

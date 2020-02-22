@@ -13,9 +13,9 @@ urlpatterns = [
     # generate order ref, fill in forms, comfirm, sending an email to admin
     path('handle-order/', views.handle_order, name='handle-order'),
     # handle buy now and display buy now
-    path('handle-order/buy-now/<int:item_pk>/', views.buy_now, name='buy-now'),
+    path('handle-order/buy-now/<int:item_pk>/', views.buy_now_unregistered, name='buy-now-unregistered'),
     path('handle-order/buy-now/<int:item_pk>/registered/', views.buy_now_registered, name='buy-now-registered'),
-    path('handle-order/buy-now/<int:item_pk>/<str:order_ref_number>/', views.buy_now_order, name='buy-now-order'),
+    path('handle-order/buy-now/<int:item_pk>/<str:order_ref>', views.unregister_ordered, name='unregister-ordered'),
 
     # show all placed orders
     path('orders/', views.OrderListView.as_view(), name='show-orders'),

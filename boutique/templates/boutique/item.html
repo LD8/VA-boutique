@@ -4,7 +4,8 @@
 
 {% for message in messages %}
 <div class="alert alert-warning" role="alert">
-    {{ message }}
+    {{ message }} 
+    You can go to My <a href="{% url 'shopping:shopping-bag' %}">Shopping Bag</a> or My <a href="{% url 'wishlist:wish-list' user.profile.wishlist.slug %}">Wish List</a>.
 </div>
 {% endfor %}
 
@@ -141,7 +142,7 @@
             {% else %}
             <a href="#wishListSignUpModal"  data-toggle="modal" 
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
-             <a href="{% url 'shopping:buy-now' item.pk %}" 
+             <a href="{% url 'shopping:buy-now-unregistered' item.pk %}" 
                 class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
             {% endif %}
 

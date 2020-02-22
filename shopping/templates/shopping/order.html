@@ -2,7 +2,11 @@
 {% load humanize %}
 
 {% block content %}
-
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
 <div class="mb-5 col-lg-8 mr-auto ml-auto">
     <h4 class="mt-4 mt-md-5 mb-3 px-2">Order: {{order.ref_number}}</h4>
     <table class="table table-striped">
@@ -41,7 +45,7 @@
             </tr>
             <tr>
                 <th scope="row">Cost</th>
-                <td class="text-black-50"><span class="mr-1">&#8381;</span>{{order.get_order_total|intcomma}}</td>
+                <td class="text-black-50"><span class="mr-1">&#8381;</span>{{order.order_total|intcomma}}</td>
             </tr>
         </tbody>
     </table>
