@@ -1,4 +1,5 @@
 {% extends 'boutique/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -46,6 +47,10 @@
                     <a href="{% url 'wishlist:del-wish' item.pk %}" class="btn btn-sm mt-auto py-1 py-md-2 text-black-50"><i class="far fa-trash-alt fa-lg"></i></a>
                 </div>
             </div>
+        </div>
+        {% empty %}
+        <div class="container">
+            <p class="text-center mt-3 text-black-50">{% trans "Please add more items to your wish list" %}</p>
         </div>
         {% endfor %}
     </div>

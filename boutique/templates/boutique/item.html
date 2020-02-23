@@ -5,8 +5,7 @@
 
 {% for message in messages %}
 <div class="alert alert-warning" role="alert">
-    {{ message }} 
-    You can go to My <a href="{% url 'shopping:shopping-bag' %}">Shopping Bag</a> or My <a href="{% url 'wishlist:wish-list' user.profile.wishlist.slug %}">Wish List</a>.
+    {{ message }}
 </div>
 {% endfor %}
 
@@ -137,22 +136,20 @@
 
             {% if user.is_authenticated %}
             <a href="{% url 'shopping:add-to-bag' item.pk %}" 
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag</a>
              <a href="{% url 'shopping:buy-now-registered' item.pk %}" 
                 class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
             {% else %}
             <a href="#wishListSignUpModal"  data-toggle="modal" 
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag </a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag</a>
              <a href="{% url 'shopping:buy-now-unregistered' item.pk %}" 
                 class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
             {% endif %}
 
             <a href="#policyModalScrollable" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Delivery
-                Policy</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Delivery Policy</a>
             <a href="#whatsappModal" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact
-                Directly</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact Directly</a>
         </div>
 
     </div>

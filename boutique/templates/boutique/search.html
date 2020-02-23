@@ -1,10 +1,11 @@
 {% extends 'boutique/base.html' %}
-
+{% load i18n %}
 {% block content %}
 
 <div class="container px-2">
     <p class="mb-3 mb-lg-4 mt-2 mt-lg-5 text-black-50 text-center border-bottom">
-        - Your search result of <em class="font-weight-bolder">{{query}}</em> -</p>
+        - {% comment %}Translator: 'Your search result of ____blank' this text is displayed at the top of the search result page{% endcomment %}
+        {% trans "Your search result of" %} <em class="font-weight-bolder">{{query}}</em> -</p>
 
     <div class="row">
         {% for item in item_list %}
@@ -15,8 +16,12 @@
         <div class="mb-3 mb-lg-4 mt-5 text-black-50 text-center col-12">
 
             <p class="mb-1 col-12">Oops...</p>
-            <p>No result of <em class="font-weight-bolder"> {{query}} </em> is showing please try a
-                different wording or browse from our categories </p>
+            <p>
+            {% comment %}Translator: 'No result of ___blank is showing...'{% endcomment %}
+            {% trans "No result of" %} 
+            <em class="font-weight-bolder"> {{query}} </em> 
+            {% trans "is showing please try a different wording or browse from our categories" %} 
+            </p>
         </div>
         {% endfor %}
     </div>
@@ -24,7 +29,7 @@
 
 <div class="border-bottom text-black-50 mt-4 d-flex justify-content-center align-items-center">
     <p><i class="fas fa-angle-double-down fa-sm mr-3 mr-sm-5"></i></p>
-    <h5 class="mt-n2">And so much more</h5>
+    <h5 class="mt-n2">{% trans "And so much more" %}</h5>
     <p><i class="fas fa-angle-double-down fa-sm ml-3 ml-sm-5"></i></p>
 </div>
 {% endblock content %}

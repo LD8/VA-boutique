@@ -1,5 +1,5 @@
 {% extends 'boutique/base.html' %}
-{% load humanize %}
+{% load humanize i18n %}
 
 {% block content %}
 
@@ -68,7 +68,7 @@
         </div>
     </div>
     {% empty %}
-    <p class="text-center mt-3 text-black-50">Please add more items to your shpping bag :P</p>
+    <p class="text-center mt-3 text-black-50">{% trans "Please add more items to your shpping bag" %}</p>
     {% endfor %}
 
     <!-- Total Price and checkout -->

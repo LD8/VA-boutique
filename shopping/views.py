@@ -8,6 +8,7 @@ from django.contrib import messages
 from .extras import ref_number_generator, anonymous_ref_number_generator
 from .forms import AnonymousOrderForm, ProfileForm
 from boutique.models import Item
+from django.utils.translation import gettext_lazy as _
 
 
 def get_shopping_bag(request):
@@ -35,8 +36,8 @@ def add_to_bag(request, **kwargs):
     order_item, created = OrderItem.objects.get_or_create(item=item_to_order)
     shopping_bag.items.add(order_item)
     shopping_bag.save()
-    messages.info(request, 'Item has been added to your shopping bag!')
-    return redirect('boutique:item', kwargs.get('item_pk'))
+    messages.info(request, _('Item has been added to your shopping bag!'))
+    return redirect('shopping:shopping-bag')
 
 
 @login_required
@@ -45,7 +46,7 @@ def del_from_bag(request, **kwargs):
     order_item_to_del = get_object_or_404(
         OrderItem, pk=kwargs.get('order_item_pk'))
     shopping_bag.items.remove(order_item_to_del)
-    messages.info(request, 'Item has been removed from your shopping bag!')
+    messages.info(request, _('Item has been removed from your shopping bag!'))
     return redirect('shopping:shopping-bag')
 
 
@@ -83,9 +84,9 @@ def handle_order(request, **kwargs):
     # send an email to admin
 
     messages.info(
-        request, 'Your order has been placed! Our staff will \
+        request, _('Your order has been placed! Our staff will \
             contact you within 24 hours. Or you can contact us\
-                 directly: +7 (925) 519-62-42. Thank you!')
+                 directly: +7 (925) 519-62-42. Thank you!'))
     return redirect('shopping:show-order', order.pk)
 
 
@@ -111,7 +112,7 @@ def buy_now_unregistered(request, **kwargs):
             # send email to the customer
 
 
-            messages.info(request, 'Your order is being processed!')
+            messages.info(request, _('Your order is being processed!'))
             return redirect('shopping:unregister-ordered', item_pk, new_order.ref_number)
 
     # get an empty form to fill in
@@ -161,7 +162,7 @@ def buy_now_registered(request, **kwargs):
             new_order.active = True
             new_order.save()
             # send email to the customer
-            messages.info(request, 'Your order is being processed!')
+            messages.info(request, _('Your order is being processed!'))
             return redirect('shopping:show-order', new_order.pk)
 
     # get an empty form to fill in
