@@ -9,20 +9,13 @@
                 {% for category in categories %}
                 {% if category.gender == filter_context.gender_number %}
 
-                {% if filter_context.category_selected == category.name %}
-                <option selected value="{{category.name}}">» {{category.name}} «</option>
-                {% else %}
-                <option value="{{category.name}}">» {{category.name}} «</option>
-                {% endif %}
+                <option {% if filter_context.category_selected == category.name %}
+                selected {% endif %} value="{{category.name}}">» {{category.name}} «</option>
 
                 {% for subcategory in category.subcategory_set.all %}
-                {% if filter_context.category_selected == subcategory.name %}
-                <option selected value="{{subcategory.name}}">
+                <option {% if filter_context.category_selected == subcategory.name %}
+                selected {% endif %} value="{{subcategory.name}}">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{subcategory.name}}</option>
-                {% else %}
-                <option value="{{subcategory.name}}">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{subcategory.name}}</option>
-                {% endif %}
                 {% endfor %}
                 
                 {% endif %}

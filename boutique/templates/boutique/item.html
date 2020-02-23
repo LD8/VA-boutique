@@ -1,4 +1,5 @@
 {% extends 'boutique/base.html' %}
+{% load i18n %}
 
 {% block content %}
 
@@ -16,7 +17,7 @@
         <!-- back button: only shown on small screen -->
         <div class="pr-1 pr-sm-3 border-right">
             <a class="text-black-50 btn cursor-pointer" onclick="history.back()"><i
-                    class="fas fa-angle-double-left mr-3"></i>Go Back</a>
+                    class="fas fa-angle-double-left mr-3"></i>{% trans "Go Back" %}</a>
         </div>
         <!-- /back button -->
 

@@ -1,8 +1,9 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from PIL import Image, ExifTags
-from boutique.models import ItemImage
+from boutique.models import ItemImage, IndexCarousel
 import os
+
 
 def rotate_image(filepath):
     '''rotate images based on their original orientation, 
@@ -35,3 +36,18 @@ def update_image(sender, instance, **kwargs):
             os.path.dirname(os.path.abspath(__file__)))
         fullpath = BASE_DIR + instance.image.url
         rotate_image(fullpath)
+
+
+@receiver(post_delete, sender=ItemImage, dispatch_uid="delete_image_item")
+def delete_image(sender, instance, **kwargs):
+    '''to delete related image after the item is deleted'''
+    if instance.image:
+        BASE_DIR = os.path.dirname(
+            os.path.dirname(os.path.abspath(__file__)))
+        fullpath = BASE_DIR + instance.image.url
+        os.remove(fullpath)
+        print(fullpath, 'file removed')
+
+
+post_delete.connect(delete_image, sender=IndexCarousel,
+                    dispatch_uid="delete_image_caroucel")

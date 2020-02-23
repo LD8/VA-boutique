@@ -195,7 +195,7 @@ class IndexCarousel(models.Model):
     class Meta():
         verbose_name = 'Index Carousel'
         verbose_name_plural = 'Index Carousels'
-        ordering = ['-uploaded_date']
+        ordering = ['uploaded_date']
 
 
 class ItemImage(models.Model):

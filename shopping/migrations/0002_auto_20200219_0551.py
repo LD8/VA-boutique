@@ -61,11 +61,6 @@ class Migration(migrations.Migration):
             field=models.ManyToManyField(to='shopping.OrderItem'),
         ),
         migrations.AddField(
-            model_name='order',
-            name='profile',
-            field=models.ForeignKey(on_delete=models.SET(shopping.models.get_sentinel_user), to='users.Profile'),
-        ),
-        migrations.AddField(
             model_name='anonymousorder',
             name='item',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shopping.OrderItem'),

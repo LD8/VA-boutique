@@ -42,7 +42,7 @@
                     <!-- /item price tag -->
                 </div>
                 <div class="pl-1 col-2 d-flex flex-column justify-content-around">
-                    <a href="#" class="btn btn-sm btn-outline-danger py-1 py-md-2"><i class="fas fa-shopping-bag fa-lg"></i></a>
+                    <a href="{% url 'shopping:add-to-bag' item.pk %}" class="btn btn-sm btn-outline-danger py-1 py-md-2"><i class="fas fa-shopping-bag fa-lg"></i></a>
                     <a href="{% url 'wishlist:del-wish' item.pk %}" class="btn btn-sm mt-auto py-1 py-md-2 text-black-50"><i class="far fa-trash-alt fa-lg"></i></a>
                 </div>
             </div>
