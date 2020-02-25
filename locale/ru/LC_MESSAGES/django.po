@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-24 12:35+0800\n"
+"POT-Creation-Date: 2020-02-25 13:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -161,38 +161,53 @@ msgstr ""
 msgid "Clear Filter"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:15
-#: boutique/templates/boutique/include/footer.html:22
+#. Translators: footer, left column, title
+#: boutique/templates/boutique/include/footer.html:17
 msgid "About Us"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:18
-msgid "How to place order"
+#. Translators: footer, left column, popup window title
+#. Translators: left column, popup window title
+#: boutique/templates/boutique/include/footer.html:21
+#: boutique/templates/boutique/include/modal_in_footer.html:12
+msgid "VA Boutique"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:20
-msgid "Delivery and payment"
+#. Translators: footer, left column, popup window title
+#. Translators: left column, popup window title
+#: boutique/templates/boutique/include/footer.html:25
+#: boutique/templates/boutique/include/modal_in_footer.html:49
+msgid "Delivery and Payment"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:26
+#. Translators: footer, left column, popup window title
+#: boutique/templates/boutique/include/footer.html:28
+msgid "Products to Choose from"
+msgstr ""
+
+#. Translators: footer, right column, title
+#: boutique/templates/boutique/include/footer.html:34
 msgid "Special Offers"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:29
-msgid "Promo"
+#. Translators: footer, right column, popup window title
+#: boutique/templates/boutique/include/footer.html:39
+msgid "Promotions"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:31
-msgid "WOW"
+#. Translators: footer, right column, popup window title
+#: boutique/templates/boutique/include/footer.html:43
+msgid "ON SALE"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:33
+#. Translators: footer, right column, popup window title
+#: boutique/templates/boutique/include/footer.html:47
 #: vip/templates/vip/create_vip_order.html:30
 #: vip/templates/vip/vip_order.html:7
 msgid "VIP Order"
 msgstr ""
 
-#: boutique/templates/boutique/include/footer.html:42
+#: boutique/templates/boutique/include/footer.html:56
 msgid "Opening hours: 24/7"
 msgstr ""
 
@@ -245,7 +260,7 @@ msgstr "Войти"
 
 #: boutique/templates/boutique/include/header.html:122
 #: boutique/templates/boutique/include/item_price.html:117
-#: boutique/templates/boutique/item.html:218
+#: boutique/templates/boutique/item.html:223
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
@@ -258,6 +273,49 @@ msgstr ""
 msgid "discount of this item and SO MUCH MORE!!!"
 msgstr ""
 
+#. Translators: button text to close a popup window
+#: boutique/templates/boutique/include/modal_in_footer.html:35
+#: boutique/templates/boutique/include/modal_in_footer.html:88
+#: boutique/templates/boutique/include/modal_in_footer.html:117
+#: boutique/templates/boutique/item.html:263
+msgid "Close"
+msgstr ""
+
+#. Translators: left column, popup window title
+#: boutique/templates/boutique/include/modal_in_footer.html:103
+msgid "Products to choose from"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_footer.html:133
+msgid "Promotion plans available soon..."
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_footer.html:136
+msgid "Comming Soon"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_footer.html:151
+msgid "We are On Sale"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_footer.html:154
+msgid "Checkout Now"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_footer.html:169
+msgid "Place a VIP order"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_footer.html:170
+msgid "We will search it for you"
+msgstr ""
+
+#. Translators: VIP modal popup, press 'go vip' button goes to vip order page
+#.
+#: boutique/templates/boutique/include/modal_in_footer.html:176
+msgid "Go VIP"
+msgstr ""
+
 #: boutique/templates/boutique/include/modal_in_nav.html:12
 msgid "Stay tuned with our Instagram!!"
 msgstr ""
@@ -266,7 +324,7 @@ msgstr ""
 msgid "Follow Now!"
 msgstr ""
 
-#. Translators: text on whatsapp contact popup view
+#. Translators: text on whatsapp contact popup view, encouraging people to contact via whatsapp
 #: boutique/templates/boutique/include/modal_in_nav.html:33
 msgid "Contact your personal stylist NOW!"
 msgstr ""
@@ -274,14 +332,6 @@ msgstr ""
 #. Translators: text on email us
 #: boutique/templates/boutique/include/modal_in_nav.html:55
 msgid "Please email us for more information"
-msgstr ""
-
-#: boutique/templates/boutique/include/modal_in_nav.html:71
-msgid "Our Policy"
-msgstr ""
-
-#: boutique/templates/boutique/include/modal_in_nav.html:103
-msgid "Close"
 msgstr ""
 
 #: boutique/templates/boutique/item.html:133
@@ -294,15 +344,19 @@ msgstr ""
 msgid "Buy Now"
 msgstr ""
 
-#: boutique/templates/boutique/item.html:144
+#. Translators: item detail page, button text below 'BUY NOW'
+#: boutique/templates/boutique/item.html:146
+#: boutique/templates/boutique/item.html:239
 msgid "Delivery Policy"
 msgstr ""
 
-#: boutique/templates/boutique/item.html:146
+#. Translators: item detail page, button text below 'Delivery Policy'
+#: boutique/templates/boutique/item.html:150
 msgid "Contact Directly"
 msgstr ""
 
-#: boutique/templates/boutique/item.html:214
+#. Translators: popup window text when people try to click the heart(wish-list) button
+#: boutique/templates/boutique/item.html:219
 msgid ""
 "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, "
 "manage all of your orders! And So Much more..."
@@ -540,8 +594,8 @@ msgstr ""
 msgid "Your cell phone number"
 msgstr ""
 
-#: users/models.py:19 vip/models.py:10
-msgid "Which city are you in?"
+#: users/models.py:19
+msgid "What is your address"
 msgstr ""
 
 #: users/templates/registration/logged_out.html:7
@@ -603,7 +657,7 @@ msgid "My Phone"
 msgstr ""
 
 #: users/templates/users/profile.html:14
-msgid "My City"
+msgid "My Address"
 msgstr ""
 
 #: users/templates/users/profile.html:19
@@ -615,7 +669,11 @@ msgid "Please update your profile"
 msgstr ""
 
 #: users/views.py:83
-msgid "You have been successfully signed in"
+msgid "Please complete your profile information"
+msgstr ""
+
+#: vip/models.py:10
+msgid "What is your address?"
 msgstr ""
 
 #: vip/models.py:11

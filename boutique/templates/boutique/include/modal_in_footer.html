@@ -1,82 +1,120 @@
 {% load i18n %}
 
 <!-- LEFT COLUMN -->
-<!-- How to Buy Modal -->
-<div class="modal fade" id="howToBuyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- VA Boutique Modal -->
+<div class="modal fade" id="vaBoutiqueModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-lighter" id="exampleModalCenterTitle">Contact us for VIP orders!</h5>
+                <h5 class="modal-title font-weight-lighter" id="exampleModalCenterTitle">
+                    {% comment %}Translators: left column, popup window title {% endcomment %}
+                    {% trans "VA Boutique" %}
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body text-dark font-weight-light">
-                <h5>How to Buy:</h5>
-                <div class="pl-3">
-                    <p>1. xxxxxxxxxx</p>
-                    <p>2. xxxxxxxxxx</p>
-                    <p>3. xxxxxxxxxx</p>
-                </div>
+                <h5>Онлайн бутик VA</h5>
+                <p>это стильная одежда и аксессуары премиум качества по доступным ценам</p>
+                <h5>Наши преимущества</h5>
+                <ul>
+                    <li>Широкий ассортимент</li>
+                    <li>Возможность заказа товара который не представлен на сайте</li>
+                    <li>Бесплатная доставка</li>
+                    <li>Подарки и бонусы</li>
+                    <li>Скидки</li>
+                    <li>Соотношение цены и качества</li>
+                    <li>Отличное обслуживание</li>
+                </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-sm btn-secondary mr-auto" data-dismiss="modal">Close</button>
-
-                <button type="button" class="btn-sm btn-success">Email Now</button>
-                <button type="button" class="btn-sm btn-success">Call Now</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                    {% comment %}Translators: button text to close a popup window{% endcomment %}
+                    {% trans "Close" %}</button>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Delivery and payment Modal -->
-<div class="modal fade" id="deliveryAndPaymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="deliveryAndPaymentModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-lighter" id="exampleModalCenterTitle">Contact us for VIP orders!</h5>
+                <h5 class="modal-title font-weight-lighter" id="exampleModalScrollableTitle">
+                    {% comment %}Translators: left column, popup window title {% endcomment %}
+                    {% trans "Delivery and Payment" %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body text-dark font-weight-light">
-                <h5>Delivery and Payment:</h5>
-                <div class="pl-3">
-                    <p>1. xxxxxxxxxx</p>
-                    <p>2. xxxxxxxxxx</p>
-                    <p>3. xxxxxxxxxx</p>
-                </div>
+            <div class="modal-body">
+                <h5>Доставка</h5>
+                <ul>
+                    <li>
+                        Доставка по Москве - БЕСПЛАТНО! После оформления заказа наш менеджер свяжется с Вами для
+                        уточнения деталей и подтверждения адреса. Доставка осуществляется в течении трёх дней после
+                        оформления заказа.
+                    </li>
+                    <li>
+                        Если вы хотите самостоятельно забрать заказ вы подарим вам скидку 10% от суммы заказа. Адреса
+                        точек самовывоза уточняйте у нашего менеджера.
+                    </li>
+                    <li>
+                        Доставка по России - БЕСПЛАТНО! Сроки доставки почтой России зависит от удалённости Вашего
+                        региона. Доставка осуществляется с наложенным платежом.
+                    </li>
+                </ul>
+
+                <h5>Оплата</h5>
+                <ul>
+                    <li>
+                        Оплата наличными при доставке курьером
+                    </li>
+                    <li>
+                        Оплата переводом на карту Сбербанка
+                    </li>
+                    <li>
+                        При доставке почтой оплата осуществляется в отделении при получении товара
+                    </li>
+                </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-sm btn-secondary mr-auto" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                    {% comment %}Translators: button text to close a popup window{% endcomment %}
+                    {% trans "Close" %}</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- About Us Modal -->
-<div class="modal fade" id="aboutUsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
+
+<!-- Products to Choose From Modal -->
+<div class="modal fade" id="productsToChooseFromModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title font-weight-lighter" id="exampleModalCenterTitle">Contact us for VIP orders!</h5>
+                <h5 class="modal-title font-weight-lighter" id="exampleModalCenterTitle">
+                    {% comment %}Translators: left column, popup window title {% endcomment %}
+                    {% trans "Products to choose from" %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body text-dark font-weight-light">
-                <h5>About Us</h5>
-                <div class="pl-3">
-                    <p>1. xxxxxxxxxx</p>
-                    <p>2. xxxxxxxxxx</p>
-                    <p>3. xxxxxxxxxx</p>
+                <div class="pl-2">
+                    <p>Понравилось несколько товаров и не можете выбрать какой их них приобрести? Наш курьер привезёт до
+                        5ти понравившихся Вам товаров на выбор.</p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn-sm btn-secondary mr-auto" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                    {% comment %}Translators: button text to close a popup window{% endcomment %}
+                    {% trans "Close" %}</button>
             </div>
         </div>
     </div>
@@ -84,8 +122,8 @@
 
 <!-- RIGHT COLUMN -->
 <!-- Promotion Modal -->
-<div class="modal fade" id="promotionModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="promotionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center bg-promotion">
@@ -102,8 +140,8 @@
 </div>
 
 <!-- WOW Modal -->
-<div class="modal fade" id="wowModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="wowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center bg-wow">
@@ -120,8 +158,8 @@
 </div>
 
 <!-- VIP Modal -->
-<div class="modal fade" id="VIPModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="VIPModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center bg-vip">
@@ -133,7 +171,8 @@
                 <div style="height: 150px"></div>
                 <a target="_blank" href="{% url 'vip:vip-create-order' %}" type="button"
                     class="btn btn-danger btn-sm align-self-end px-4 px-md-5">
-                    {% comment %}Translators: VIP modal popup, press 'go vip' button goes to vip order page {% endcomment %}
+                    {% comment %}Translators: VIP modal popup, press 'go vip' button goes to vip order page
+                    {% endcomment %}
                     {% trans "Go VIP" %}!</a>
             </div>
         </div>

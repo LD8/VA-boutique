@@ -12,25 +12,39 @@
     <!-- About Us & Special Offer 2 columns in one row -->
     <div class="row mt-4 mb-3 w-100 text-capitalize">
         <div class="col-6 text-right">
-            <h6 class="mb-2 border-bottom border-light">{% trans "About Us" %}</h5>
+            <h6 class="mb-2 border-bottom border-light">
+                {% comment %}Translators: footer, left column, title{% endcomment %}
+                {% trans "About Us" %}</h5>
                 <div class="col-12 px-0">
-                    <p class="mb-sm-0 mb-1"><a href="#howToBuyModal" data-toggle="modal"
-                            class="text-black-50">{% trans "How to place order" %}</a></p>
+                    <p class="mb-sm-0 mb-1"><a href="#vaBoutiqueModal" data-toggle="modal" class="text-black-50">
+                            {% comment %}Translators: footer, left column, popup window title{% endcomment %}
+                            {% trans "VA Boutique" %}</a></p>
                     <p class="mb-sm-0 mb-1"><a href="#deliveryAndPaymentModal" data-toggle="modal"
-                            class="text-black-50">{% trans "Delivery and payment" %}</a></p>
-                    <p class="mb-sm-0 mb-1"><a href="#aboutUsModal" data-toggle="modal"
-                            class="text-black-50">{% trans "About Us" %}</a></p>
+                            class="text-black-50">
+                            {% comment %}Translators: footer, left column, popup window title{% endcomment %}
+                            {% trans "Delivery and Payment" %}</a></p>
+                    <p class="mb-sm-0 mb-1"><a href="#productsToChooseFromModal" data-toggle="modal" class="text-black-50">
+                            {% comment %}Translators: footer, left column, popup window title{% endcomment %}
+                            {% trans "Products to Choose from" %}</a></p>
                 </div>
         </div>
         <div class="col-6">
-            <h6 class="mb-2 border-bottom border-light">{% trans "Special Offers" %}</h6>
+            <h6 class="mb-2 border-bottom border-light">
+                {% comment %}Translators: footer, right column, title{% endcomment %}
+                {% trans "Special Offers" %}</h6>
             <div class="col-12 px-0">
                 <p class="mb-sm-0 mb-1"><a href="#promotionModal" data-toggle="modal"
-                        class="text-black-50">{% trans "Promotions" %}</a></p>
+                        class="text-black-50">
+                        {% comment %}Translators: footer, right column, popup window title{% endcomment %}
+                        {% trans "Promotions" %}</a></p>
                 <p class="mb-sm-0 mb-1"><a href="#wowModal" data-toggle="modal"
-                        class="text-black-50">{% trans "ON SALE" %}</a></p>
+                        class="text-black-50">
+                        {% comment %}Translators: footer, right column, popup window title{% endcomment %}
+                        {% trans "ON SALE" %}</a></p>
                 <p class="mb-sm-0 mb-1"><a href="#VIPModal" data-toggle="modal"
-                        class="text-black-50">{% trans "VIP Order" %}</a></p>
+                        class="text-black-50">
+                        {% comment %}Translators: footer, right column, popup window title{% endcomment %}
+                        {% trans "VIP Order" %}</a></p>
             </div>
         </div>
     </div>

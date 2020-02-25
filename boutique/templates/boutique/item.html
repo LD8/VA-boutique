@@ -129,21 +129,25 @@
         <div class="col-12 col-md-4 mt-2">
 
             {% if user.is_authenticated %}
-            <a href="{% url 'shopping:add-to-bag' item.pk %}" 
+            <a href="{% url 'shopping:add-to-bag' item.pk %}"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
-             <a href="{% url 'shopping:buy-now-registered' item.pk %}" 
+            <a href="{% url 'shopping:buy-now-registered' item.pk %}"
                 class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
             {% else %}
-            <a href="#wishListSignUpModal"  data-toggle="modal" 
+            <a href="#wishListSignUpModal" data-toggle="modal"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
-             <a href="{% url 'shopping:buy-now-unregistered' item.pk %}" 
+            <a href="{% url 'shopping:buy-now-unregistered' item.pk %}"
                 class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
             {% endif %}
 
             <a href="#policyModalScrollable" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">{% trans "Delivery Policy" %}</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
+                {% comment %}Translators: item detail page, button text below 'BUY NOW'{% endcomment %}
+                {% trans "Delivery Policy" %}</a>
             <a href="#whatsappModal" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">{% trans "Contact Directly" %}</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
+                {% comment %}Translators: item detail page, button text below 'Delivery Policy'{% endcomment %}
+                {% trans "Contact Directly" %}</a>
         </div>
 
     </div>
@@ -211,14 +215,56 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="mb-3 text-danger font-weight-light">
+                    {% comment %}Translators: popup window text when people try to click the heart(wish-list) button{% endcomment %}
                     {% trans "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, manage all of your orders! And So Much more..." %}
                 </h4>
-                    <div style="height: 150px"></div>
-                    <a target="_blank" href="{% url 'users:register' %}" type="button"
-                        class="btn btn-danger font-weight-lighter align-self-end px-5">{% trans "Sign Up" %}</a>
+                <div style="height: 150px"></div>
+                <a target="_blank" href="{% url 'users:register' %}" type="button"
+                    class="btn btn-danger font-weight-lighter align-self-end px-5">{% trans "Sign Up" %}</a>
             </div>
         </div>
     </div>
 </div>
+
+
+
+<!-- Policy Modal -->
+<div class="modal fade" id="policyModalScrollable" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">
+                    {% comment %}Translators: item detail page, button text below 'BUY NOW'{% endcomment %}
+                    {% trans "Delivery Policy" %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    БЕСПЛАТНО! После оформления заказа наш менеджер свяжется с Вами для уточнения
+                    деталей и подтверждения адреса. Доставка осуществляется в течении трёх дней после оформления заказа.
+                </p>
+
+                <p>
+                    Если вы хотите самостоятельно забрать ваш заказ вы подарим вам скидку 10% от суммы заказа. Адреса
+                    точек самовывоза уточняйте у нашего менеджера.
+                </p>
+
+                <p>
+                    БЕСПЛАТНО! Сроки доставки почтой России зависит от удалённости Вашего региона.
+                    Доставка осуществляется с наложенным платежом.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">
+                    {% comment %}Translators: button text to close a popup window{% endcomment %}
+                    {% trans "Close" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 {% endblock content %}
