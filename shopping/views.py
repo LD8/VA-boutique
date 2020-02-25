@@ -84,16 +84,14 @@ def handle_order(request, **kwargs):
     # send an email to admin
 
     messages.info(
-        request, _('Your order has been placed! Our staff will \
-            contact you within 24 hours. Or you can contact us\
-                 directly: +7 (925) 519-62-42. Thank you!'))
+        request, _('Your order has been placed! Our staff will contact you within 24 hours. Or you can contact us directly: +7 (925) 519-62-42. Thank you!'))
     return redirect('shopping:show-order', order.pk)
 
 
 def buy_now_unregistered(request, **kwargs):
     """ 
     place order without signing in:
-    - fill in forms: email, name, city, phone number
+    - fill in forms: email, name, address, phone number
     - new order obj: assign item, generate ref_number
     - send email to the customer and admin
     """
@@ -138,7 +136,7 @@ def unregister_ordered(request, item_pk, order_ref):
 def buy_now_registered(request, **kwargs):
     """ 
     place order for registered users:
-    - load/complete profile info: email, name, city, phone number
+    - load/complete profile info: email, name, address, phone number
     - new order obj: assign item to OrderItem, generate ref_number
     - send email to the customer and admin
     """

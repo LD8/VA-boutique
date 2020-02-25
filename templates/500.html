@@ -1,5 +1,6 @@
 {% extends 'boutique/base.html' %}
+{% load i18n %}
 
 {% block content %}
-<h4 class="py-4 font-weight-light">Oops! There has been an internal error. We are terribly sorry about that... (500)</h4>
+<h4 class="py-4 font-weight-light">{% trans "Oops! There has been an internal error. We are terribly sorry about that" %}... (500)</h4>
 {% endblock content %}

@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="pre-footer my-4">
     <div class="accordion row text-center mb-3" id="accordionPageMenu">
 
@@ -5,7 +7,7 @@
             <div class="" id="headingOne">
                 <a class="btn border-bottom pb-0 text-black-50 cursor-pointer" data-toggle="collapse"
                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Для женщин
+                    {% trans "Women" %}
                 </a>
             </div>
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
@@ -20,8 +22,7 @@
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item" href="{% url 'boutique:show-all' 'women' %}">Show
-                        All</a>
+                    <a class="dropdown-item" href="{% url 'boutique:show-all' 'women' %}">{% trans "Show All" %}</a>
                 </div>
             </div>
         </div>
@@ -30,7 +31,7 @@
             <div class="" id="headingTwo">
                 <a class="btn border-bottom pb-0 text-black-50 cursor-pointer" data-toggle="collapse"
                     data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Для мужчин
+                    {% trans "Men" %}
                 </a>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPageMenu">
@@ -45,8 +46,7 @@
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item" href="{% url 'boutique:show-all' 'men' %}">Show
-                        All</a>
+                    <a class="dropdown-item" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
     </div>
 
     <form class="form-inline my-0 border-bottom" action="{% url 'boutique:search' %}" method="GET">
-        <input name="query" class="form-control mr-sm-2 w-100 border-white text-center" type="text" placeholder="Search"
+        <input name="query" class="form-control mr-sm-2 w-100 border-white text-center" type="text" placeholder="{% trans 'Search' %}"
             aria-label="Search">
     </form>
 </div>

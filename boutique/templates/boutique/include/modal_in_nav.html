@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!-- Instagram Modal -->
 <div class="modal fade" id="instagramModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -7,10 +9,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="mb-3 text-warning font-weight-light">Stay tuned with our Instagram!!</h5>
+                <h5 class="mb-3 text-warning font-weight-light">{% trans "Stay tuned with our Instagram!!" %}</h5>
                 <div style="height: 150px"></div>
                 <a target="_blank" href="https://instagram.com/va_boutique_va" type="button"
-                    class="btn btn-warning font-weight-lighter align-self-end px-5">Follow Now!</a>
+                    class="btn btn-sm btn-warning font-weight-lighter align-self-end px-5">{% trans "Follow Now!" %}</a>
             </div>
         </div>
     </div>
@@ -26,10 +28,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="text-success font-weight-lighter">Contact your personal stylist NOW!</h5>
+                <h5 class="text-white font-weight-lighter">
+                    {% comment %}Translators: text on whatsapp contact popup view, encouraging people to contact via whatsapp{% endcomment %}
+                    {% trans "Contact your personal stylist NOW!" %}</h5>
                 <div style="height: 150px"></div>
                 <a target="_blank" href="https://web.whatsapp.com/" type="button"
-                    class="mt-3 font-weight-lighter btn btn-outline-success align-self-end border-top-0 border-right-0 border-left-0">+7
+                    class="mt-3 btn-sm font-weight-lighter btn px-3 btn-light align-self-end">+7
                     (925) 519-62-42</a>
             </div>
         </div>
@@ -42,25 +46,17 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title font-weight-lighter" id="exampleModalCenterTitle">Contact us for VIP orders!</h5>
+            <div class="modal-body text-center bg-contact">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <div class="modal-body text-dark font-weight-light">
-                <h6>There are several ways to place your order:</h6>
-                <div class="pl-3">
-                    <p>1. call our sales team directly</p>
-                    <p>2. contact our stylist on whatsapp</p>
-                    <p>3. Email us with your requests and our sales team will get back to you asap!</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-sm btn-secondary mr-auto" data-dismiss="modal">Close</button>
-
-                <button type="button" class="btn-sm btn-success">Email Now</button>
-                <button type="button" class="btn-sm btn-success">Call Now</button>
+                <h5 class="text-info font-weight-lighter">
+                    {% comment %}Translators: text on email us{% endcomment %}
+                    {% trans "Please email us for more information" %}</h5>
+                <div style="height: 150px"></div>
+                <a target="_blank" href="mailto:don_lee@me.com" type="button"
+                    class="mt-3 btn-sm font-weight-lighter btn btn-outline-info align-self-end">
+                    xxx@va-boutique.com</a>
             </div>
         </div>
     </div>
@@ -73,7 +69,7 @@
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Our Policy</h5>
+                <h5 class="modal-title" id="exampleModalScrollableTitle">{% trans "Our Policy" %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -105,7 +101,7 @@
                 eu feugiat pretium nibh ipsum consequat.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
             </div>
         </div>
     </div>

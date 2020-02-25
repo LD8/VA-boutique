@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save, post_delete
+from boutique.models import ItemImage, IndexCarousel
 from django.dispatch import receiver
 from PIL import Image, ExifTags
-from boutique.models import ItemImage, IndexCarousel
 import os
 
 

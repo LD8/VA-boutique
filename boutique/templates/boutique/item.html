@@ -3,12 +3,6 @@
 
 {% block content %}
 
-{% for message in messages %}
-<div class="alert alert-warning" role="alert">
-    {{ message }}
-</div>
-{% endfor %}
-
 <!-- item -->
 <div class="mt-3 ">
 
@@ -136,20 +130,20 @@
 
             {% if user.is_authenticated %}
             <a href="{% url 'shopping:add-to-bag' item.pk %}" 
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
              <a href="{% url 'shopping:buy-now-registered' item.pk %}" 
-                class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
             {% else %}
             <a href="#wishListSignUpModal"  data-toggle="modal" 
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">Add to Bag</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
              <a href="{% url 'shopping:buy-now-unregistered' item.pk %}" 
-                class="btn btn-dark col-12 my-2 px-0 px-sm-3">Buy Now</a>
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
             {% endif %}
 
             <a href="#policyModalScrollable" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Delivery Policy</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">{% trans "Delivery Policy" %}</a>
             <a href="#whatsappModal" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">Contact Directly</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">{% trans "Contact Directly" %}</a>
         </div>
 
     </div>
@@ -216,10 +210,12 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="mb-3 text-danger font-weight-light">Sign up to enjoy more discount and have your own Wish List, Shopping Bag, manage all of your orders! And So Much more...</h5>
+                <h4 class="mb-3 text-danger font-weight-light">
+                    {% trans "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, manage all of your orders! And So Much more..." %}
+                </h4>
                     <div style="height: 150px"></div>
                     <a target="_blank" href="{% url 'users:register' %}" type="button"
-                        class="btn btn-danger font-weight-lighter align-self-end px-5">Sign Up</a>
+                        class="btn btn-danger font-weight-lighter align-self-end px-5">{% trans "Sign Up" %}</a>
             </div>
         </div>
     </div>

@@ -1,3 +1,6 @@
+{% load i18n %}
+
+<!-- LEFT COLUMN -->
 <!-- How to Buy Modal -->
 <div class="modal fade" id="howToBuyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -79,6 +82,7 @@
     </div>
 </div>
 
+<!-- RIGHT COLUMN -->
 <!-- Promotion Modal -->
 <div class="modal fade" id="promotionModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -88,10 +92,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="mb-3 text-warning font-weight-light">Check out items on sale!!</h5>
+                <h5 class="mb-3 text-warning font-weight-light">{% trans "Promotion plans available soon..." %}</h5>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="https://instagram.com/va_boutique_va" type="button"
-                    class="btn btn-warning font-weight-lighter align-self-end px-5">Check Now!</a>
+                <a target="_blank" href="{% url 'boutique:sales' %}" type="button"
+                    class="btn btn-warning btn-sm align-self-end px-5">{% trans "Comming Soon" %}!</a>
             </div>
         </div>
     </div>
@@ -106,10 +110,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="mb-3 text-warning font-weight-light">WOW....</h5>
+                <h5 class="mb-3 text-warning font-weight-light">{% trans "We are On Sale" %}!!</h5>
                 <div style="height: 150px"></div>
                 <a target="_blank" href="{% url 'boutique:sales' %}" type="button"
-                    class="btn btn-warning font-weight-lighter align-self-end px-5">Check Now!</a>
+                    class="btn btn-warning btn-sm align-self-end px-5">{% trans "Checkout Now" %}!</a>
             </div>
         </div>
     </div>
@@ -124,10 +128,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="mb-3 text-warning font-weight-light">VIP order!</h5>
+                <h5 class="mb-1 text-danger">- {% trans "Place a VIP order" %}! -</h5>
+                <h5 class="mb-3 text-danger">{% trans "We will search it for you" %}</h5>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="https://instagram.com/va_boutique_va" type="button"
-                    class="btn btn-warning font-weight-lighter align-self-end px-5">Go VIP!</a>
+                <a target="_blank" href="{% url 'vip:vip-create-order' %}" type="button"
+                    class="btn btn-danger btn-sm align-self-end px-4 px-md-5">
+                    {% comment %}Translators: VIP modal popup, press 'go vip' button goes to vip order page {% endcomment %}
+                    {% trans "Go VIP" %}!</a>
             </div>
         </div>
     </div>

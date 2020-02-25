@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 {% include 'boutique/include/modal_in_footer.html' %}
 
@@ -12,19 +12,25 @@
     <!-- About Us & Special Offer 2 columns in one row -->
     <div class="row mt-4 mb-3 w-100 text-capitalize">
         <div class="col-6 text-right">
-            <h6 class="mb-2 border-bottom border-light">About Us</h5>
-            <div class="col-12 px-0">
-                <p class="mb-sm-0 mb-1"><a href="#howToBuyModal" data-toggle="modal" class="text-black-50">How to buy</a></p>
-                <p class="mb-sm-0 mb-1"><a href="#deliveryAndPaymentModal" data-toggle="modal" class="text-black-50">Delivery and payment</a></p>
-                <p class="mb-sm-0 mb-1"><a href="#aboutUsModal" data-toggle="modal" class="text-black-50">About Us</a></p>
-            </div>
+            <h6 class="mb-2 border-bottom border-light">{% trans "About Us" %}</h5>
+                <div class="col-12 px-0">
+                    <p class="mb-sm-0 mb-1"><a href="#howToBuyModal" data-toggle="modal"
+                            class="text-black-50">{% trans "How to place order" %}</a></p>
+                    <p class="mb-sm-0 mb-1"><a href="#deliveryAndPaymentModal" data-toggle="modal"
+                            class="text-black-50">{% trans "Delivery and payment" %}</a></p>
+                    <p class="mb-sm-0 mb-1"><a href="#aboutUsModal" data-toggle="modal"
+                            class="text-black-50">{% trans "About Us" %}</a></p>
+                </div>
         </div>
         <div class="col-6">
-            <h6 class="mb-2 border-bottom border-light">Special Offers</h6>
+            <h6 class="mb-2 border-bottom border-light">{% trans "Special Offers" %}</h6>
             <div class="col-12 px-0">
-                <p class="mb-sm-0 mb-1"><a href="#promotionModal" data-toggle="modal" class="text-black-50">Promo</a></p>
-                <p class="mb-sm-0 mb-1"><a href="#wowModal" data-toggle="modal" class="text-black-50">WOW</a></p>
-                <p class="mb-sm-0 mb-1"><a href="#VIPModal" data-toggle="modal" class="text-black-50">VIP Order</a></p>
+                <p class="mb-sm-0 mb-1"><a href="#promotionModal" data-toggle="modal"
+                        class="text-black-50">{% trans "Promotions" %}</a></p>
+                <p class="mb-sm-0 mb-1"><a href="#wowModal" data-toggle="modal"
+                        class="text-black-50">{% trans "ON SALE" %}</a></p>
+                <p class="mb-sm-0 mb-1"><a href="#VIPModal" data-toggle="modal"
+                        class="text-black-50">{% trans "VIP Order" %}</a></p>
             </div>
         </div>
     </div>
@@ -33,20 +39,28 @@
     <!-- Phone and Opening Hours -->
     <div class="row mt-3 w-100">
         <div class="col-6 text-muted text-right">+7 (925) 519-62-42</div>
-        <div class="col-6 text-muted">Opening hours: 24/7</div>
+        <div class="col-6 text-muted">{% trans "Opening hours: 24/7" %}</div>
     </div>
 
     <!-- fa icons -->
     <ul class="nav my-3 fa-2x">
-        <li class="nav-item"><a class="nav-link text-black-50" href="#instagramModal" data-toggle="modal"><i class="fab fa-instagram"></i></a></li>
-        <li class="nav-item"><a class="nav-link text-black-50" href="#whatsappModal" data-toggle="modal"><i class="fab fa-whatsapp"></i></a></li>
-        <li class="nav-item"><a class="nav-link text-black-50" href="#contactModal" data-toggle="modal"><i class="far fa-envelope"></i></a></li>
+        <li class="nav-item"><a class="nav-link text-black-50" href="#instagramModal" data-toggle="modal"><i
+                    class="fab fa-instagram"></i></a></li>
+        <li class="nav-item"><a class="nav-link text-black-50" href="#whatsappModal" data-toggle="modal"><i
+                    class="fab fa-whatsapp"></i></a></li>
+        <li class="nav-item"><a class="nav-link text-black-50" href="#contactModal" data-toggle="modal"><i
+                    class="far fa-envelope"></i></a></li>
     </ul>
 
     <!-- Acknowledgement -->
     <div class="mb-2 text-muted text-center px-2">
-        <p><small>&copy; 2019 - 2020 <a href="{% url 'boutique:index' %}"  class="text-muted border-bottom">VA BOUTIQUE</a> &nbsp; | &nbsp; 
-            DESIGN BY: <a  class="text-muted border-bottom" href="https://github.com/LD8">DON LEE</a> &nbsp;</small></p>
+        <p>
+            <small>&copy; 2019 - 2020
+                <a href="{% url 'boutique:index' %}" class="text-muted border-bottom">
+                    VA BOUTIQUE</a> &nbsp; | &nbsp; DESIGNED BY:
+                <a class="text-muted border-bottom" href="https://github.com/LD8">
+                    DON LEE</a> &nbsp;</small>
+        </p>
     </div>
 
 </footer>

@@ -4,14 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from .models import Profile
-# from .forms import UserLoginForm, UserRegisterForm
-# from django.contrib.auth import (
-#     authenticate,
-#     login,
-#     logout,
-# )
+# from .forms import UserLoginForm
+from django.contrib.auth import login
+# from django.contrib.auth import authenticate
+# from .forms import UserRegisterForm
+# from django.contrib.auth import logout
 
 
 # def login_view(request):
@@ -58,7 +58,7 @@ class ProfileDetailView(DetailView):
 @method_decorator(login_required, name='dispatch')
 class ProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['name', 'email', 'phone', 'city']
+    fields = ['name', 'email', 'phone', 'address']
     template_name = 'users/profile_update.html'
 
 # def logout_view(request):
@@ -80,6 +80,7 @@ class RegisterView(TemplateView):
         if self.form.is_valid():
             new_user = self.form.save()
             login(self.request, new_user)
+            messages.info(self.request, _("Please complete your profile information"))
             if next:
                 return redirect(next)
             return redirect('users:profile-update', new_user.profile.pk, new_user.profile.slug)

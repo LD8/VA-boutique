@@ -25,5 +25,4 @@ class WishList(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('wishlist:wish-list', kwargs={'slug': self.slug,})
-
+        return reverse('wishlist:wish-list', kwargs={'slug': self.slug, })

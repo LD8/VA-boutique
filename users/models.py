@@ -5,17 +5,19 @@ from django.dispatch import receiver
 from boutique.models import Item
 from django.utils.text import slugify
 from django.urls import reverse
+from django.utils.translation import gettext, gettext_lazy as _
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=True,
-                            verbose_name='Your name')
-    email = models.EmailField(max_length=100, blank=True)
+                            verbose_name=_('Your name'))
+    email = models.EmailField(max_length=100, blank=True, verbose_name=_("Your Email"))
     phone = models.IntegerField(
-        blank=True, null=True, verbose_name='Your cell phone number')
-    city = models.CharField(max_length=30, blank=True,
-                            verbose_name='Which city are you in?')
+        blank=True, null=True, verbose_name=_('Your cell phone number'))
+    address = models.CharField(max_length=100, blank=True,
+                            verbose_name=_('What is your address'))
+
     slug = models.SlugField()
 
     def __str__(self):

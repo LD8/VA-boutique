@@ -1,9 +1,11 @@
-from django.db import models
-from django.db.models import Count, Q
-from django.urls import reverse
 from django.core.validators import MinValueValidator, MaxValueValidator
-import os
+from django.utils.translation import gettext_lazy as _
+from django.db.models import Count, Q
 from django.db.models import Prefetch
+from django.urls import reverse
+from django.db import models
+import os
+
 
 class CategoryQuerySet(models.QuerySet):
     def get_categories_with_item(self):
@@ -33,15 +35,16 @@ class Category(models.Model):
         (1, 'women'),
         (2, 'men'),
     ], default=1)
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=300, blank=True)
+    name = models.CharField(max_length=100, verbose_name=_('Category Name'))
+    description = models.CharField(max_length=300, blank=True, verbose_name=_('Category Description'))
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
     objects = CategoryManager()
 
     class Meta():
-        verbose_name_plural = 'Categories'
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
         ordering = ['gender', 'name']
 
     def __str__(self):
@@ -52,21 +55,22 @@ class Category(models.Model):
 
     def load_related_item(self):
         return self.item_set.select_related('brand', 'tag')
-    
+
     def load_related_subcategory(self):
         return self.subcategory_set.all()
+
 
 class SubCategory(models.Model):
     '''Sub-category for the categories (not mandatory)'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=300, blank=True)
+    name = models.CharField(max_length=100, verbose_name=_('Sub-category Name'))
+    description = models.CharField(max_length=300, blank=True, verbose_name=_('Sub-category Description'))
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
     class Meta():
-        verbose_name = 'Sub-category'
-        verbose_name_plural = 'Sub-categories'
+        verbose_name = _('Sub-category')
+        verbose_name_plural = _('Sub-categories')
         ordering = ['name']
 
     def __str__(self):
@@ -82,8 +86,8 @@ class SubCategory(models.Model):
 class Tag(models.Model):
     '''Items have tag will have according discount percentage'''
     tag_discount_percentage = models.IntegerField(
-        default=0, validators=[MinValueValidator(1), MaxValueValidator(100)])
-    slogan = models.CharField(max_length=200, blank=True)
+        default=0, validators=[MinValueValidator(1), MaxValueValidator(100)], verbose_name=_('Tag (discount percentage)'))
+    slogan = models.CharField(max_length=200, blank=True, verbose_name=_('Slogan for tags'))
 
     def __str__(self):
         return self.slogan if self.slogan else self.slogan_default
@@ -95,8 +99,8 @@ class Tag(models.Model):
 
 class Brand(models.Model):
     '''the brands of the items'''
-    name = models.CharField(max_length=50)
-    description = models.TextField(blank=True)
+    name = models.CharField(max_length=50, verbose_name=_('Brand Name'))
+    description = models.TextField(blank=True, verbose_name=_('Brand Description'))
 
     class Meta():
         ordering = ['name']
@@ -126,7 +130,7 @@ class ItemQuerySet(models.QuerySet):
                 Q(description__icontains=query)
             ).distinct()
 
-        print('\nfinal qs is as following: ', qs, '\n')
+        # print('\nfinal qs is as following: ', qs, '\n')
         return qs
 
 
@@ -136,19 +140,21 @@ class ItemManager(models.Manager):
 
     def search(self, query=None):
         return self.get_queryset().search(query=query)
-    
+
 
 class Item(models.Model):
     '''Each item represents a product'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True, blank=True)
-    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=True)
+    subcategory = models.ForeignKey(
+        SubCategory, on_delete=models.CASCADE, null=True, blank=True)
+    tag = models.ForeignKey(
+        Tag, on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=3)
 
-    name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name=_('Item Name'))
+    description = models.TextField(blank=True, verbose_name=_('Item Description'))
     price = models.IntegerField(default=0)
-    discount_percentage = models.IntegerField(verbose_name='Discount Percentage', default=0, validators=[
+    discount_percentage = models.IntegerField(verbose_name=_('Discount Percentage'), default=0, validators=[
                                               MinValueValidator(0), MaxValueValidator(100)])
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
@@ -183,18 +189,18 @@ class Item(models.Model):
 
 
 class IndexCarousel(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
+    title = models.CharField(max_length=100, verbose_name=_('Carousel Title'))
+    description = models.TextField(verbose_name=_('Carousel Text'))
     image = models.ImageField(
-        upload_to='index_carousel_images', verbose_name='Image (Size: 2100 x 1400 px)')
+        upload_to='index_carousel_images', verbose_name=_('Image (Size: 2100 x 1400 px)'))
     uploaded_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
 
     class Meta():
-        verbose_name = 'Index Carousel'
-        verbose_name_plural = 'Index Carousels'
+        verbose_name = _('Index Carousel')
+        verbose_name_plural = _('Index Carousels')
         ordering = ['uploaded_date']
 
 

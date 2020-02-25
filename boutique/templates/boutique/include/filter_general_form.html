@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!-- filters with sub/categoryies, brands, min_price, max_price -->
 <form action="{% url 'boutique:show-all' filter_context.gender %}" method="GET">
     {% csrf_token%}
@@ -55,10 +57,10 @@
         </div>
         <div class="form-gourp col-6 col-lg mt-1 {{filter}}">
             <button type="submit"
-                class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">Filter!</button>
+                class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">{% trans "Filter" %}</button>
         </div>
         <div class="form-gourp col-6 col-lg mt-1 {{filter}}">
-            <a href="{% url 'boutique:show-all' filter_context.gender %}" class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">Clear Filter</a>
+            <a href="{% url 'boutique:show-all' filter_context.gender %}" class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">{% trans "Clear Filter" %}</a>
                 
         </div>
     </div>

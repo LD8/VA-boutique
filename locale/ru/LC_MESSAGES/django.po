@@ -8,66 +8,559 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-23 20:59+0800\n"
+"POT-Creation-Date: 2020-02-24 12:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Last-translators: FULL NAME <EMAIL@ADDRESS>\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: boutique/templates/boutique/item.html:19
+#: boutique/admin.py:13
+msgid "VA-Boutique | Site Administration | Such Fun!!!"
+msgstr ""
+
+#: boutique/admin.py:14
+msgid "Manage Administrators and Upload/Update Items"
+msgstr ""
+
+#: boutique/models.py:38
+#, fuzzy
+#| msgid "Category"
+msgid "Category Name"
+msgstr "Категория"
+
+#: boutique/models.py:39
+msgid "Category Description"
+msgstr ""
+
+#: boutique/models.py:46
+msgid "Category"
+msgstr "Категория"
+
+#: boutique/models.py:47
+#, fuzzy
+#| msgid "Category"
+msgid "Categories"
+msgstr "Категория"
+
+#: boutique/models.py:66
+#, fuzzy
+#| msgid "Category"
+msgid "Sub-category Name"
+msgstr "Категория"
+
+#: boutique/models.py:67
+#, fuzzy
+#| msgid "Category"
+msgid "Sub-category Description"
+msgstr "Категория"
+
+#: boutique/models.py:72
+#, fuzzy
+#| msgid "Category"
+msgid "Sub-category"
+msgstr "Категория"
+
+#: boutique/models.py:73
+msgid "Sub-categories"
+msgstr ""
+
+#: boutique/models.py:89
+msgid "Tag (discount percentage)"
+msgstr ""
+
+#: boutique/models.py:90
+msgid "Slogan for tags"
+msgstr ""
+
+#: boutique/models.py:102
+msgid "Brand Name"
+msgstr ""
+
+#: boutique/models.py:103
+msgid "Brand Description"
+msgstr ""
+
+#: boutique/models.py:154
+#, fuzzy
+#| msgid "Category"
+msgid "Item Name"
+msgstr "Категория"
+
+#: boutique/models.py:155 vip/templates/vip/vip_order.html:14
+msgid "Item Description"
+msgstr ""
+
+#: boutique/models.py:157
+msgid "Discount Percentage"
+msgstr ""
+
+#: boutique/models.py:192
+msgid "Carousel Title"
+msgstr ""
+
+#: boutique/models.py:193
+msgid "Carousel Text"
+msgstr ""
+
+#: boutique/models.py:195
+msgid "Image (Size: 2100 x 1400 px)"
+msgstr ""
+
+#: boutique/models.py:202
+msgid "Index Carousel"
+msgstr ""
+
+#: boutique/models.py:203
+msgid "Index Carousels"
+msgstr ""
+
+#: boutique/templates/boutique/include/before_footer.html:10
+#: boutique/templates/boutique/include/header.html:29
+msgid "Women"
+msgstr "Для женщин"
+
+#: boutique/templates/boutique/include/before_footer.html:25
+#: boutique/templates/boutique/include/before_footer.html:49
+#: boutique/templates/boutique/include/header.html:43
+#: boutique/templates/boutique/include/header.html:63
+msgid "Show All"
+msgstr ""
+
+#: boutique/templates/boutique/include/before_footer.html:34
+#: boutique/templates/boutique/include/header.html:49
+msgid "Men"
+msgstr "Для мужчин"
+
+#: boutique/templates/boutique/include/before_footer.html:57
+msgid "Search"
+msgstr ""
+
+#: boutique/templates/boutique/include/filter_general.html:5
+#: boutique/templates/boutique/item.html:13
+#: shopping/templates/shopping/shopping_bag.html:33
+#: users/templates/users/profile_update.html:13
+#: wishlist/templates/wishlist/wish_list.html:10
 msgid "Go Back"
 msgstr "Назад"
 
+#: boutique/templates/boutique/include/filter_general.html:9
+msgid "Filters"
+msgstr ""
+
+#: boutique/templates/boutique/include/filter_general_form.html:60
+msgid "Filter"
+msgstr ""
+
+#: boutique/templates/boutique/include/filter_general_form.html:63
+msgid "Clear Filter"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:15
+#: boutique/templates/boutique/include/footer.html:22
+msgid "About Us"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:18
+msgid "How to place order"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:20
+msgid "Delivery and payment"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:26
+msgid "Special Offers"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:29
+msgid "Promo"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:31
+msgid "WOW"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:33
+#: vip/templates/vip/create_vip_order.html:30
+#: vip/templates/vip/vip_order.html:7
+msgid "VIP Order"
+msgstr ""
+
+#: boutique/templates/boutique/include/footer.html:42
+msgid "Opening hours: 24/7"
+msgstr ""
+
+#: boutique/templates/boutique/include/header.html:97
+#: shopping/templates/shopping/order.html:71
+#: shopping/templates/shopping/orders.html:57
+#: shopping/templates/shopping/shopping_bag.html:87
+#: users/templates/users/profile.html:23
+#: wishlist/templates/wishlist/wish_list.html:54
+msgid "My Profile"
+msgstr ""
+
+#: boutique/templates/boutique/include/header.html:99
+#: shopping/templates/shopping/order.html:73
+#: shopping/templates/shopping/orders.html:59
+#: shopping/templates/shopping/shopping_bag.html:89
+#: users/templates/users/profile.html:24
+#: wishlist/templates/wishlist/wish_list.html:13
+#: wishlist/templates/wishlist/wish_list.html:55
+msgid "My Wish List"
+msgstr ""
+
+#: boutique/templates/boutique/include/header.html:101
+#: shopping/templates/shopping/order.html:75
+#: shopping/templates/shopping/orders.html:61
+#: shopping/templates/shopping/shopping_bag.html:36
+#: shopping/templates/shopping/shopping_bag.html:90
+#: users/templates/users/profile.html:25
+#: wishlist/templates/wishlist/wish_list.html:56
+msgid "My Shopping Bag"
+msgstr ""
+
+#: boutique/templates/boutique/include/header.html:103
+#: shopping/templates/shopping/order.html:77
+#: shopping/templates/shopping/orders.html:6
+#: shopping/templates/shopping/orders.html:62
+#: shopping/templates/shopping/shopping_bag.html:92
+#: users/templates/users/profile.html:26
+#: wishlist/templates/wishlist/wish_list.html:57
+msgid "My Orders"
+msgstr ""
+
+#: boutique/templates/boutique/include/header.html:109
+msgid "Log Out"
+msgstr ""
+
+#: boutique/templates/boutique/include/header.html:119
+msgid "Log In"
+msgstr "Войти"
+
+#: boutique/templates/boutique/include/header.html:122
+#: boutique/templates/boutique/include/item_price.html:117
+#: boutique/templates/boutique/item.html:218
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#. Translators: Join us NOW for extra ___blank percent discount of this iten...
+#: boutique/templates/boutique/include/item_price.html:112
+msgid "Join us NOW for extra"
+msgstr ""
+
+#: boutique/templates/boutique/include/item_price.html:114
+msgid "discount of this item and SO MUCH MORE!!!"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_nav.html:12
+msgid "Stay tuned with our Instagram!!"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_nav.html:15
+msgid "Follow Now!"
+msgstr ""
+
+#. Translators: text on whatsapp contact popup view
+#: boutique/templates/boutique/include/modal_in_nav.html:33
+msgid "Contact your personal stylist NOW!"
+msgstr ""
+
+#. Translators: text on email us
+#: boutique/templates/boutique/include/modal_in_nav.html:55
+msgid "Please email us for more information"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_nav.html:71
+msgid "Our Policy"
+msgstr ""
+
+#: boutique/templates/boutique/include/modal_in_nav.html:103
+msgid "Close"
+msgstr ""
+
+#: boutique/templates/boutique/item.html:133
+#: boutique/templates/boutique/item.html:138
+msgid "Add to Bag"
+msgstr ""
+
+#: boutique/templates/boutique/item.html:135
+#: boutique/templates/boutique/item.html:140
+msgid "Buy Now"
+msgstr ""
+
+#: boutique/templates/boutique/item.html:144
+msgid "Delivery Policy"
+msgstr ""
+
+#: boutique/templates/boutique/item.html:146
+msgid "Contact Directly"
+msgstr ""
+
+#: boutique/templates/boutique/item.html:214
+msgid ""
+"Sign up to enjoy more discount and have your own Wish List, Shopping Bag, "
+"manage all of your orders! And So Much more..."
+msgstr ""
+
 #. Translators: at the end of sales page, to encourage people to browse more
 #: boutique/templates/boutique/sales.html:17
-#: boutique/templates/boutique/search.html:34
+#: boutique/templates/boutique/search.html:32
 msgid "And so much more"
 msgstr "И много других товаров"
 
-#: boutique/templates/boutique/search.html:9
+#. Translators: 'Your search result of ____blank' this text is displayed at the top of the search result page
+#: boutique/templates/boutique/search.html:8
 msgid "Your search result of"
 msgstr ""
 
-#: boutique/templates/boutique/search.html:23
+#. Translators: 'No result of ___blank is showing...'
+#: boutique/templates/boutique/search.html:21
 msgid "No result of"
 msgstr ""
 
-#: boutique/templates/boutique/search.html:25
+#: boutique/templates/boutique/search.html:23
 msgid "is showing please try a different wording or browse from our categories"
 msgstr ""
 
-#: shopping/templates/shopping/shopping_bag.html:71
+#: shopping/forms.py:13
+msgid "Your full name"
+msgstr ""
+
+#: shopping/forms.py:14
+msgid "Where do you currently live?"
+msgstr ""
+
+#: shopping/forms.py:15
+msgid "Your phone number"
+msgstr ""
+
+#: shopping/forms.py:16 vip/models.py:8
+msgid "Your email"
+msgstr ""
+
+#. Translators: to describes whether the customer has placed the order or not?
+#: shopping/models.py:22
+msgid "Ordered?"
+msgstr ""
+
+#. Translators: The date the order was placed
+#. Translators: For unregistered users ordered date
+#: shopping/models.py:24 shopping/models.py:58
+msgid "Order Date"
+msgstr ""
+
+#: shopping/models.py:25 shopping/models.py:46
+msgid "Reference Number"
+msgstr ""
+
+#. Translators: to describe whether the items have been delivered and the money has been received
+#. Translators: For unregistered users  or not
+#: shopping/models.py:27 shopping/models.py:60
+msgid "Order Active?"
+msgstr ""
+
+#. Translators: For unregistered users name
+#: shopping/models.py:49
+msgid "My name"
+msgstr ""
+
+#: shopping/models.py:52
+msgid "My Location"
+msgstr ""
+
+#. Translators: For unregistered users phone number
+#: shopping/models.py:54
+msgid "My phone number"
+msgstr ""
+
+#. Translators: For unregistered users email
+#: shopping/models.py:56
+msgid "My email"
+msgstr ""
+
+#: shopping/templates/shopping/buy_now.html:6
+msgid "BUY NOW!"
+msgstr ""
+
+#: shopping/templates/shopping/buy_now.html:19
+#: vip/templates/vip/create_vip_order.html:38
+msgid "Place Order"
+msgstr ""
+
+#. Translators: 'Order' as a noun
+#: shopping/templates/shopping/order.html:9
+msgid "Order"
+msgstr ""
+
+#. Translators: Order table header, showing the status of the order
+#: shopping/templates/shopping/order.html:15
+#: shopping/templates/shopping/orders.html:10
+msgid "Status"
+msgstr ""
+
+#. Translators: The order status is 'processing'
+#: shopping/templates/shopping/order.html:20
+msgid "Processing"
+msgstr ""
+
+#. Translators: The order status is 'delivered'
+#: shopping/templates/shopping/order.html:24
+msgid "Delivered"
+msgstr ""
+
+#. Translators: Order table header, showing the reference number of the order
+#.
+#: shopping/templates/shopping/order.html:32
+msgid "Reference"
+msgstr ""
+
+#. Translators: Order table header, showing the 'date' of the order
+#: shopping/templates/shopping/order.html:38
+msgid "Date"
+msgstr ""
+
+#. Translators: Order table header, showing the 'items' of the order
+#.
+#: shopping/templates/shopping/order.html:45
+#: shopping/templates/shopping/orders.html:12
+msgid "Items"
+msgstr ""
+
+#. Translators: Order table header, showing the 'cost' of the order
+#.
+#: shopping/templates/shopping/order.html:60
+msgid "Cost"
+msgstr ""
+
+#: shopping/templates/shopping/orders.html:11
+msgid "Ref No"
+msgstr ""
+
+#: shopping/templates/shopping/orders.html:47
+msgid "Please place an order first..."
+msgstr ""
+
+#. Translators: Before the customer place an order, they have to confirm the order
+#: shopping/templates/shopping/shopping_bag.html:18
+msgid "Confirm to checkout now?"
+msgstr ""
+
+#: shopping/templates/shopping/shopping_bag.html:19
+msgid ""
+"The detail of the order will be sent to your personal email. And we will "
+"contact you soon."
+msgstr ""
+
+#: shopping/templates/shopping/shopping_bag.html:21
+msgid "Confirm Order"
+msgstr ""
+
+#: shopping/templates/shopping/shopping_bag.html:68
 msgid "Please add more items to your shpping bag"
 msgstr "Добавьте больше товаров в корзину"
 
+#: shopping/templates/shopping/shopping_bag.html:79
+msgid "Checkout"
+msgstr ""
+
+#. Translators: After customer ordered something
+#: shopping/templates/shopping/unregistered_order.html:8
+msgid "Congradulations"
+msgstr ""
+
+#. Translators: Order reference number
+#: shopping/templates/shopping/unregistered_order.html:15
+msgid "Order Ref Number"
+msgstr ""
+
+#: shopping/templates/shopping/unregistered_order.html:16
+msgid "Your purchase is being processed"
+msgstr ""
+
+#: shopping/templates/shopping/unregistered_order.html:17
+msgid ""
+"Please check your email for the detail of the purchase. Our specialst will "
+"contact you soon. Thanks"
+msgstr ""
+
 #: shopping/views.py:39
-#, fuzzy
-#| msgid "Please add more items to your shpping bag"
 msgid "Item has been added to your shopping bag!"
-msgstr "Добавьте больше товаров в корзину"
+msgstr ""
 
 #: shopping/views.py:49
-#, fuzzy
-#| msgid "Please add more items to your shpping bag"
 msgid "Item has been removed from your shopping bag!"
-msgstr "Добавьте больше товаров в корзину"
+msgstr ""
 
 #: shopping/views.py:87
 msgid ""
-"Your order has been placed! Our staff will             contact you within 24 "
-"hours. Or you can contact us                 directly: +7 (925) 519-62-42. "
-"Thank you!"
+"Your order has been placed! Our staff will contact you within 24 hours. Or "
+"you can contact us directly: +7 (925) 519-62-42. Thank you!"
 msgstr ""
 
-#: shopping/views.py:115 shopping/views.py:165
+#: shopping/views.py:113 shopping/views.py:163
 msgid "Your order is being processed!"
 msgstr ""
+
+#: templates/404.html:5
+msgid "Oops! You have requested a page that does not exist"
+msgstr ""
+
+#: templates/500.html:5
+msgid ""
+"Oops! There has been an internal error. We are terribly sorry about that"
+msgstr ""
+
+#: users/forms.py:17
+msgid "The username does not exist"
+msgstr ""
+
+#: users/forms.py:19
+msgid "Incorrect password"
+msgstr ""
+
+#: users/forms.py:23
+msgid "The user is not active, please contact admin..."
+msgstr ""
+
+#: users/models.py:14 vip/models.py:7
+msgid "Your name"
+msgstr ""
+
+#: users/models.py:15
+msgid "Your Email"
+msgstr ""
+
+#: users/models.py:17 vip/models.py:9
+msgid "Your cell phone number"
+msgstr ""
+
+#: users/models.py:19 vip/models.py:10
+msgid "Which city are you in?"
+msgstr ""
+
+#: users/templates/registration/logged_out.html:7
+msgid "Thanks for your visit"
+msgstr ""
+
+#: users/templates/registration/logged_out.html:8
+msgid "You have been successfully logged out"
+msgstr ""
+
+#: users/templates/registration/login.html:7
+msgid "Please Sign In"
+msgstr ""
+
+#: users/templates/registration/login.html:10
+#, fuzzy
+#| msgid "Sign Up"
+msgid "Sign In"
+msgstr "Зарегистрироваться"
 
 #: users/templates/registration/register.html:18
 msgid "Join us for so much more!"
@@ -91,7 +584,65 @@ msgstr ""
 msgid "Register"
 msgstr "Регистрация"
 
-#: wishlist/templates/wishlist/wish_list.html:53
+#: users/templates/users/profile.html:6
+msgid "Welcome back"
+msgstr ""
+
+#: users/templates/users/profile.html:9
+#, fuzzy
+#| msgid "Category"
+msgid "My Name"
+msgstr "Категория"
+
+#: users/templates/users/profile.html:10
+msgid "My Email"
+msgstr ""
+
+#: users/templates/users/profile.html:13
+msgid "My Phone"
+msgstr ""
+
+#: users/templates/users/profile.html:14
+msgid "My City"
+msgstr ""
+
+#: users/templates/users/profile.html:19
+msgid "Edit Profile"
+msgstr ""
+
+#: users/templates/users/profile_update.html:7
+msgid "Please update your profile"
+msgstr ""
+
+#: users/views.py:83
+msgid "You have been successfully signed in"
+msgstr ""
+
+#: vip/models.py:11
+msgid "Describe the item briefly"
+msgstr ""
+
+#: vip/models.py:12
+msgid "Upload a photo of the item"
+msgstr ""
+
+#: vip/models.py:13 vip/models.py:14
+msgid "Upload another photo of the item (optional)"
+msgstr ""
+
+#: vip/templates/vip/create_vip_order.html:33
+msgid ""
+"Please provide your information and the description of the item you'd like "
+"to purchase"
+msgstr ""
+
+#: vip/templates/vip/vip_order.html:13
+#, fuzzy
+#| msgid "Category"
+msgid "VIP Name"
+msgstr "Категория"
+
+#: wishlist/templates/wishlist/wish_list.html:48
 msgid "Please add more items to your wish list"
 msgstr "Добавь товары в список желаний"
 

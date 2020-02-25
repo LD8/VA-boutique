@@ -1,0 +1,21 @@
+{% extends 'boutique/base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="vip-cover shadow-lg mb-4 mb-md-5">
+    <h1 class="text-white shadow">{% trans "VIP Order" %}</h1>
+</div>
+<div class="mt-5 text-center mb-3 mb-md-5">
+    <h4 class="mb-3 pb-1 border-bottom font-weight-light">{{vip_order}}</h4>
+
+    <div class="container px-2">
+        <p>{% trans "VIP Name" %}: {{vip_order.name}}</p>
+        <p>{% trans "Item Description" %}: {{vip_order.item_description}}</p>
+        <img src="{{vip_order.item_image1.url}}" alt="" height="100px">
+        <img src="{{vip_order.item_image2.url}}" alt="" height="100px">
+        <img src="{{vip_order.item_image3.url}}" alt="" height="100px">
+    </div>
+    
+</div>
+{% endblock content %}

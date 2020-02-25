@@ -1,13 +1,13 @@
 {% extends 'boutique/base.html' %}
-{% load bootstrap4 %}
+{% load bootstrap4 i18n %}
 
 {% block content %}
 
 <form class="form bg-white p-3 shadow-lg mb-3" action="{% url 'users:login' %}" method="POST">
-    <h3 class="my-3 my-sm-5 text-left font-weight-light text-black-50 border-bottom py-2">Please Sign In</h3>
+    <h3 class="my-3 my-sm-5 text-left font-weight-light text-black-50 border-bottom py-2">{% trans "Please Sign In" %}</h3>
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button name="submit" class="px-5 mt-3 mb-4 btn btn-outline-info">Sign In</button>
+    <button name="submit" class="px-5 mt-3 mb-4 btn btn-outline-info">{% trans "Sign In" %}</button>
     <input type="hidden" name="next" value="{% url 'boutique:index' %}">
 </form>
 

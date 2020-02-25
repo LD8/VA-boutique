@@ -1,38 +1,48 @@
 {% extends 'boutique/base.html' %}
-{% load humanize %}
+{% load humanize i18n %}
 
 {% block content %}
-{% for message in messages %}
-<div class="alert alert-success" role="alert">
-    {{ message }}
-</div>
-{% endfor %}
+
 <div class="mb-5 col-lg-8 mr-auto ml-auto">
-    <h4 class="mt-4 mt-md-5 mb-3 px-2">Order: {{order.ref_number}}</h4>
+    <h4 class="mt-4 mt-md-5 mb-3 px-2">
+        {% comment %}Translators: 'Order' as a noun {% endcomment %}
+        {% trans "Order" %}: {{order.ref_number}}</h4>
     <table class="table table-striped">
         <tbody>
             <tr>
-                <th scope="row">Status</th>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the status of the order {% endcomment %}
+                    {% trans "Status" %}</th>
                 <td>
                     {% if order.active %}
-                    <i class="text-info fas fa-truck-loading shadow-sm"></i><span
-                        class="text-info ml-2">Processing</span>
+                    <i class="text-info fas fa-truck-loading shadow-sm"></i><span class="text-info ml-2">
+                        {% comment %}Translators: The order status is 'processing' {% endcomment %}
+                        {% trans "Processing" %}</span>
                     {% else %}
-                    <i class="text-success far fa-check-square shadow-sm"></i><span
-                        class="text-success ml-2">Delivered</span>
+                    <i class="text-success far fa-check-square shadow-sm"></i><span class="text-success ml-2">
+                        {% comment %}Translators: The order status is 'delivered' {% endcomment %}
+                        {% trans "Delivered" %}</span>
                     {% endif %}
                 </td>
             </tr>
             <tr>
-                <th scope="row">Reference</th>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the reference number of the order
+                    {% endcomment %}
+                    {% trans "Reference" %}</th>
                 <td class="">{{order.ref_number}}</td>
             </tr>
             <tr>
-                <th scope="row">Date</th>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the 'date' of the order {% endcomment %}
+                    {% trans "Date" %}</th>
                 <td>{{order.date_ordered}}</td>
             </tr>
             <tr>
-                <th scope="row">Items</th>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the 'items' of the order
+                    {% endcomment %}
+                    {% trans "Items" %}</th>
                 <td class="d-flex flex-wrap">
                     {% for item in order.items.all %}
                     <!-- image anchor -->
@@ -44,7 +54,10 @@
                 </td>
             </tr>
             <tr>
-                <th scope="row">Cost</th>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the 'cost' of the order
+                    {% endcomment %}
+                    {% trans "Cost" %}</th>
                 <td class="text-black-50"><span class="mr-1">&#8381;</span>{{order.order_total|intcomma}}</td>
             </tr>
         </tbody>
@@ -55,17 +68,13 @@
 
 <div class="mt-3 mt-lg-5 mx-0 row">
     <a href="{{user.profile.get_absolute_url}}"
-        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0"> My
-        Profile</span> </a>
+        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0">{% trans "My Profile" %}</span> </a>
     <a href="{{user.profile.wishlist.get_absolute_url}}"
-        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">My Wish
-        List</a>
+        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">{% trans "My Wish List" %}</a>
     <a href="{% url 'shopping:shopping-bag' %}"
-        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-dark border-top-0 border-right-0 border-left-0">My
-        Shopping Bag</a>
+        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-dark border-top-0 border-right-0 border-left-0">{% trans "My Shopping Bag" %}1</a>
     <a href="{% url 'shopping:show-orders' %}"
-        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">My
-        Orders</a>
+        class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">{% trans "My Orders" %}</a>
 </div>
 
 <hr class="">

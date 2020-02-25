@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
 from .models import (
     Category, 
@@ -9,8 +10,8 @@ from .models import (
     Brand,
     )
 
-admin.site.site_header = 'VA-Boutique | Site Administration | Such Fun!!!'
-admin.site.index_title = 'Manage Administrators and upload/Update Items'
+admin.site.site_header = _('VA-Boutique | Site Administration | Such Fun!!!')
+admin.site.index_title = _('Manage Administrators and Upload/Update Items')
 admin.site.site_title = 'VA-Boutique'
 admin.site.register(Tag)
 admin.site.register(IndexCarousel)

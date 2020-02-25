@@ -1,32 +1,21 @@
 {% extends 'boutique/base.html' %}
-{% load bootstrap4 %}
+{% load bootstrap4 i18n %}
 
 {% block content %}
 
-{% for message in messages %}
-<div class="alert alert-success" role="alert">
-    {{ message }}
-</div>
-{% endfor %}
-
-<h3 class="my-3 my-md-4 pb-2 border-bottom text-center">Congradulations!</h3>
+<h3 class="my-3 my-md-4 pb-2 border-bottom text-center">
+    {% comment %}Translators: After customer ordered something {% endcomment %}
+    {% trans "Congradulations" %}!</h3>
 
 {% include 'shopping/include/buy_now_item.html' %}
 <div class=" col-12 col-lg-7 p-4 mr-auto ml-auto text-center mb-5">
     
-    <h5 class="border-bottom pb-2">Order Ref Number: <span class="text-info">{{order_ref}}</span></h5>
-    <p>Your purchase is being processed. <br>Please check your email for the detail of the purchase. Our specialst will contact you soon. Thanks!</p>
+    <h5 class="border-bottom pb-2">
+        {% comment %}Translators: Order reference number {% endcomment %}
+        {% trans "Order Ref Number" %}: <span class="text-info">{{order_ref}}</span></h5>
+    <p>{% trans "Your purchase is being processed" %}. <br>
+        {% trans "Please check your email for the detail of the purchase. Our specialst will contact you soon. Thanks" %}!</p>
 </div>
-<!-- Detail of the order -->
-<!-- <div class="border rounded-lg col-10 col-md-5 p-4 mr-auto ml-auto text-center mb-5">
-    <p class="border-bottom pb-3"><b>Order reference number: </b> <br> <u>{{ order.ref_number }}</u></p>
-    <p class="border-bottom pb-3"><b>Order date: </b> <br> {{ order.date_ordered }}</p>
-    <p class="border-bottom pb-3"><b>Customer name:</b> <br> {{ order.customer_name }}</p>
-    <p class="border-bottom pb-3"><b>Customer location:</b> <br> {{ order.customer_location }}</p>
-    <p class="border-bottom pb-3"><b>Customer phone: </b><br> {{ order.customer_phone }}</p>
-    <p><b>Customer email:</b> <br> {{ order.customer_email }}</p>
-</div> -->
-<!-- /Detail of the order -->
 
 <hr class="">
 

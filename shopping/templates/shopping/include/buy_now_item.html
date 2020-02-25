@@ -1,3 +1,4 @@
+{% load humanize i18n %}
 <!-- item info -->
 <div class="d-flex justify-content-center">
     <div class="col-6 col-lg-3">
@@ -16,7 +17,7 @@
                     {{item|title}}</a>
             </div>
             <div class=" text-black-50">
-                <p><span class="mr-1">&#8381;</span>{{ item.final_price }}</p>
+                <p><span class="mr-1">&#8381;</span>{{ item.final_price|intcomma }}</p>
             </div>
         </div>
         <!-- /item price tag -->

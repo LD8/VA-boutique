@@ -1,11 +1,12 @@
+{% load i18n %}
 <div class="d-flex mt-0">
     <div class="filter-icon mr-auto">
         <a class="text-black-50 btn cursor-pointer" onclick="history.back()"><i
-                class="fas fa-angle-double-left mr-3"></i>Go Back</a>
+                class="fas fa-angle-double-left mr-3"></i>{% trans "Go Back" %}</a>
     </div>
     <div class="filter-icon ml-auto">
         <a class="btn text-black-50 cursor-pointer" data-target="#filterModal" data-toggle="modal">
-            Filters<i class="fa fa-filter ml-3 fa-rotate-270"></i>
+            {% trans "Filters" %}<i class="fa fa-filter ml-3 fa-rotate-270"></i>
         </a>
     </div>
 </div>

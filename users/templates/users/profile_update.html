@@ -1,15 +1,16 @@
 {% extends 'boutique/base.html' %}
-{% load bootstrap4 %}
+{% load bootstrap4 i18n %}
+
 {% block content %}
 
 <div class="mx-2 mx-lg-3 my-4 my-lg-5 text-black-50">
-    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50">Please update your profile!</h3>
+    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50">{% trans "Please update your profile" %}!</h3>
     <form action="{% url 'users:profile-update' profile.pk profile.slug %}" method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="d-flex align-items-center my-5">
             <a class="text-black-50 btn btn-outline-secondary cursor-pointer btn-sm" onclick="history.back()"><i
-                class="fas fa-angle-double-left mr-2"></i>Go Back</a>
+                class="fas fa-angle-double-left mr-2"></i>{% trans "Go Back" %}</a>
             <input type="submit" value="Update" class="ml-auto btn btn-sm btn-info px-4">
         </div>
     </form>

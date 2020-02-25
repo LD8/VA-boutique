@@ -10,12 +10,18 @@
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
                 <a href="
                 {% if forloop.counter == 1 %}
-                {% url 'boutique:sales' %}
+                {% url 'boutique:show-all' 'women' %}
                 {% endif %}
                 {% if forloop.counter == 2 %}
-                
+                {% url 'boutique:sales' %}
                 {% endif %}
                 {% if forloop.counter == 3 %}
+                
+                {% endif %}
+                {% if forloop.counter == 4 %}
+                
+                {% endif %}
+                {% if forloop.counter == 5 %}
                 
                 {% endif %}
                 "><img src="{{carousel.image.url}}" class="d-block w-100" alt="..."></a>
