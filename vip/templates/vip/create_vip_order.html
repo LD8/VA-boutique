@@ -31,7 +31,7 @@
 
     <div class="px-2">
         <p>{% trans "Please provide your information and the description of the item you'd like to purchase" %}.</p>
-        <form method="POST" action="#"
+        <form method="POST" action="{% url 'vip:create-vip-order' %}"
             class="border-top pt-4 col-12 col-md-8 col-lg-6 mr-auto ml-auto">
             {% csrf_token %}
             {% bootstrap_form form %}

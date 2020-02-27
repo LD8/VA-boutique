@@ -13,8 +13,12 @@
         <p>{% trans "VIP Name" %}: {{vip_order.name}}</p>
         <p>{% trans "Item Description" %}: {{vip_order.item_description}}</p>
         <img src="{{vip_order.item_image1.url}}" alt="" height="100px">
+        {% if vip_order.item_image2 %}
         <img src="{{vip_order.item_image2.url}}" alt="" height="100px">
+        {% endif %}
+        {% if vip_order.item_image3 %}
         <img src="{{vip_order.item_image3.url}}" alt="" height="100px">
+        {% endif %}
     </div>
     
 </div>

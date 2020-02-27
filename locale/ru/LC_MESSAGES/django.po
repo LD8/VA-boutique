@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-25 13:00+0800\n"
+"POT-Creation-Date: 2020-02-25 14:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -36,7 +36,7 @@ msgstr "Категория"
 
 #: boutique/models.py:39
 msgid "Category Description"
-msgstr ""
+msgstr "Описание категории"
 
 #: boutique/models.py:46
 msgid "Category"
@@ -46,29 +46,29 @@ msgstr "Категория"
 #, fuzzy
 #| msgid "Category"
 msgid "Categories"
-msgstr "Категория"
+msgstr "Kатегории"
 
 #: boutique/models.py:66
 #, fuzzy
 #| msgid "Category"
 msgid "Sub-category Name"
-msgstr "Категория"
+msgstr "Название подкатегории"
 
 #: boutique/models.py:67
 #, fuzzy
 #| msgid "Category"
 msgid "Sub-category Description"
-msgstr "Категория"
+msgstr "Описание подкатегории"
 
 #: boutique/models.py:72
 #, fuzzy
 #| msgid "Category"
 msgid "Sub-category"
-msgstr "Категория"
+msgstr "Подкатегория"
 
 #: boutique/models.py:73
 msgid "Sub-categories"
-msgstr ""
+msgstr "Подкатегории"
 
 #: boutique/models.py:89
 msgid "Tag (discount percentage)"
@@ -80,37 +80,37 @@ msgstr ""
 
 #: boutique/models.py:102
 msgid "Brand Name"
-msgstr ""
+msgstr "Название Бренда"
 
 #: boutique/models.py:103
 msgid "Brand Description"
-msgstr ""
+msgstr "Описание бренда"
 
 #: boutique/models.py:154
 #, fuzzy
 #| msgid "Category"
 msgid "Item Name"
-msgstr "Категория"
+msgstr "Наименование товара"
 
 #: boutique/models.py:155 vip/templates/vip/vip_order.html:14
 msgid "Item Description"
-msgstr ""
+msgstr "Описание товара"
 
 #: boutique/models.py:157
 msgid "Discount Percentage"
-msgstr ""
+msgstr "Процент скидки"
 
 #: boutique/models.py:192
 msgid "Carousel Title"
-msgstr ""
+msgstr "Название карусели"
 
 #: boutique/models.py:193
 msgid "Carousel Text"
-msgstr ""
+msgstr "Текст"
 
 #: boutique/models.py:195
 msgid "Image (Size: 2100 x 1400 px)"
-msgstr ""
+msgstr "Изображение"
 
 #: boutique/models.py:202
 msgid "Index Carousel"
@@ -130,7 +130,7 @@ msgstr "Для женщин"
 #: boutique/templates/boutique/include/header.html:43
 #: boutique/templates/boutique/include/header.html:63
 msgid "Show All"
-msgstr ""
+msgstr "Показать все товары"
 
 #: boutique/templates/boutique/include/before_footer.html:34
 #: boutique/templates/boutique/include/header.html:49
@@ -139,7 +139,7 @@ msgstr "Для мужчин"
 
 #: boutique/templates/boutique/include/before_footer.html:57
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: boutique/templates/boutique/include/filter_general.html:5
 #: boutique/templates/boutique/item.html:13
@@ -151,20 +151,20 @@ msgstr "Назад"
 
 #: boutique/templates/boutique/include/filter_general.html:9
 msgid "Filters"
-msgstr ""
+msgstr "Фильтры"
 
 #: boutique/templates/boutique/include/filter_general_form.html:60
 msgid "Filter"
-msgstr ""
+msgstr "Фильтр"
 
 #: boutique/templates/boutique/include/filter_general_form.html:63
 msgid "Clear Filter"
-msgstr ""
+msgstr "Сбросить фильтр"
 
 #. Translators: footer, left column, title
 #: boutique/templates/boutique/include/footer.html:17
 msgid "About Us"
-msgstr ""
+msgstr "О нас"
 
 #. Translators: footer, left column, popup window title
 #. Translators: left column, popup window title
@@ -178,22 +178,22 @@ msgstr ""
 #: boutique/templates/boutique/include/footer.html:25
 #: boutique/templates/boutique/include/modal_in_footer.html:49
 msgid "Delivery and Payment"
-msgstr ""
+msgstr "Доставка и оплата"
 
 #. Translators: footer, left column, popup window title
 #: boutique/templates/boutique/include/footer.html:28
 msgid "Products to Choose from"
-msgstr ""
+msgstr "Товары на выбор"
 
 #. Translators: footer, right column, title
 #: boutique/templates/boutique/include/footer.html:34
 msgid "Special Offers"
-msgstr ""
+msgstr "Промо"
 
 #. Translators: footer, right column, popup window title
 #: boutique/templates/boutique/include/footer.html:39
 msgid "Promotions"
-msgstr ""
+msgstr "Акции"
 
 #. Translators: footer, right column, popup window title
 #: boutique/templates/boutique/include/footer.html:43
@@ -205,11 +205,11 @@ msgstr ""
 #: vip/templates/vip/create_vip_order.html:30
 #: vip/templates/vip/vip_order.html:7
 msgid "VIP Order"
-msgstr ""
+msgstr "VIP заказ"
 
 #: boutique/templates/boutique/include/footer.html:56
 msgid "Opening hours: 24/7"
-msgstr ""
+msgstr "Часы работы 24/7"
 
 #: boutique/templates/boutique/include/header.html:97
 #: shopping/templates/shopping/order.html:71
@@ -218,7 +218,7 @@ msgstr ""
 #: users/templates/users/profile.html:23
 #: wishlist/templates/wishlist/wish_list.html:54
 msgid "My Profile"
-msgstr ""
+msgstr "Мой профиль"
 
 #: boutique/templates/boutique/include/header.html:99
 #: shopping/templates/shopping/order.html:73
@@ -228,7 +228,7 @@ msgstr ""
 #: wishlist/templates/wishlist/wish_list.html:13
 #: wishlist/templates/wishlist/wish_list.html:55
 msgid "My Wish List"
-msgstr ""
+msgstr "Мой лист желаний"
 
 #: boutique/templates/boutique/include/header.html:101
 #: shopping/templates/shopping/order.html:75
@@ -238,7 +238,7 @@ msgstr ""
 #: users/templates/users/profile.html:25
 #: wishlist/templates/wishlist/wish_list.html:56
 msgid "My Shopping Bag"
-msgstr ""
+msgstr "Моя корзина"
 
 #: boutique/templates/boutique/include/header.html:103
 #: shopping/templates/shopping/order.html:77
@@ -248,11 +248,11 @@ msgstr ""
 #: users/templates/users/profile.html:26
 #: wishlist/templates/wishlist/wish_list.html:57
 msgid "My Orders"
-msgstr ""
+msgstr "Мои заказы"
 
 #: boutique/templates/boutique/include/header.html:109
 msgid "Log Out"
-msgstr ""
+msgstr "Выйти"
 
 #: boutique/templates/boutique/include/header.html:119
 msgid "Log In"
@@ -267,11 +267,11 @@ msgstr "Зарегистрироваться"
 #. Translators: Join us NOW for extra ___blank percent discount of this iten...
 #: boutique/templates/boutique/include/item_price.html:112
 msgid "Join us NOW for extra"
-msgstr ""
+msgstr "Присоединяйся к нам"
 
 #: boutique/templates/boutique/include/item_price.html:114
 msgid "discount of this item and SO MUCH MORE!!!"
-msgstr ""
+msgstr "и получи скидку на данный и много других товаров"
 
 #. Translators: button text to close a popup window
 #: boutique/templates/boutique/include/modal_in_footer.html:35
@@ -279,36 +279,36 @@ msgstr ""
 #: boutique/templates/boutique/include/modal_in_footer.html:117
 #: boutique/templates/boutique/item.html:263
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #. Translators: left column, popup window title
 #: boutique/templates/boutique/include/modal_in_footer.html:103
 msgid "Products to choose from"
-msgstr ""
+msgstr "Товары на выбор"
 
 #: boutique/templates/boutique/include/modal_in_footer.html:133
 msgid "Promotion plans available soon..."
-msgstr ""
+msgstr "Скоро..."
 
 #: boutique/templates/boutique/include/modal_in_footer.html:136
 msgid "Comming Soon"
-msgstr ""
+msgstr "Скоро..."
 
 #: boutique/templates/boutique/include/modal_in_footer.html:151
 msgid "We are On Sale"
-msgstr ""
+msgstr "Распродажа"
 
 #: boutique/templates/boutique/include/modal_in_footer.html:154
 msgid "Checkout Now"
-msgstr ""
+msgstr "Купить сейчас"
 
 #: boutique/templates/boutique/include/modal_in_footer.html:169
 msgid "Place a VIP order"
-msgstr ""
+msgstr "Отправить VIP заказ"
 
 #: boutique/templates/boutique/include/modal_in_footer.html:170
 msgid "We will search it for you"
-msgstr ""
+msgstr "Мы найдём это для Вас"
 
 #. Translators: VIP modal popup, press 'go vip' button goes to vip order page
 #.
@@ -318,7 +318,7 @@ msgstr ""
 
 #: boutique/templates/boutique/include/modal_in_nav.html:12
 msgid "Stay tuned with our Instagram!!"
-msgstr ""
+msgstr "Подписываетесь на наш Instagram"
 
 #: boutique/templates/boutique/include/modal_in_nav.html:15
 msgid "Follow Now!"
@@ -327,33 +327,33 @@ msgstr ""
 #. Translators: text on whatsapp contact popup view, encouraging people to contact via whatsapp
 #: boutique/templates/boutique/include/modal_in_nav.html:33
 msgid "Contact your personal stylist NOW!"
-msgstr ""
+msgstr "Свяжитесь с Вашим персональным менеджером сейчас!"
 
 #. Translators: text on email us
 #: boutique/templates/boutique/include/modal_in_nav.html:55
 msgid "Please email us for more information"
-msgstr ""
+msgstr "Напишите нам для более подробной информации"
 
 #: boutique/templates/boutique/item.html:133
 #: boutique/templates/boutique/item.html:138
 msgid "Add to Bag"
-msgstr ""
+msgstr "Добавить в корзину"
 
 #: boutique/templates/boutique/item.html:135
 #: boutique/templates/boutique/item.html:140
 msgid "Buy Now"
-msgstr ""
+msgstr "Купить сейчас"
 
 #. Translators: item detail page, button text below 'BUY NOW'
 #: boutique/templates/boutique/item.html:146
 #: boutique/templates/boutique/item.html:239
 msgid "Delivery Policy"
-msgstr ""
+msgstr "Доставка"
 
 #. Translators: item detail page, button text below 'Delivery Policy'
 #: boutique/templates/boutique/item.html:150
 msgid "Contact Directly"
-msgstr ""
+msgstr "Свяжитесь с нами"
 
 #. Translators: popup window text when people try to click the heart(wish-list) button
 #: boutique/templates/boutique/item.html:219
@@ -361,6 +361,8 @@ msgid ""
 "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, "
 "manage all of your orders! And So Much more..."
 msgstr ""
+"Зарегистрируйтесь для получения специальных скидок  и участия в наших промо "
+"акциях!"
 
 #. Translators: at the end of sales page, to encourage people to browse more
 #: boutique/templates/boutique/sales.html:17
@@ -371,149 +373,151 @@ msgstr "И много других товаров"
 #. Translators: 'Your search result of ____blank' this text is displayed at the top of the search result page
 #: boutique/templates/boutique/search.html:8
 msgid "Your search result of"
-msgstr ""
+msgstr "Результат поиска по запросу"
 
 #. Translators: 'No result of ___blank is showing...'
 #: boutique/templates/boutique/search.html:21
 msgid "No result of"
-msgstr ""
+msgstr "Ничего не найдено по запросу"
 
 #: boutique/templates/boutique/search.html:23
 msgid "is showing please try a different wording or browse from our categories"
-msgstr ""
+msgstr "Пожалуйста, попробуйте найти товар в категориях"
 
 #: shopping/forms.py:13
 msgid "Your full name"
-msgstr ""
+msgstr "Имя"
 
 #: shopping/forms.py:14
 msgid "Where do you currently live?"
-msgstr ""
+msgstr "Адрес"
 
 #: shopping/forms.py:15
 msgid "Your phone number"
-msgstr ""
+msgstr "Телефон"
 
 #: shopping/forms.py:16 vip/models.py:8
 msgid "Your email"
-msgstr ""
+msgstr "Электронная почта"
 
 #. Translators: to describes whether the customer has placed the order or not?
 #: shopping/models.py:22
 msgid "Ordered?"
-msgstr ""
+msgstr "Заказано"
 
 #. Translators: The date the order was placed
 #. Translators: For unregistered users ordered date
 #: shopping/models.py:24 shopping/models.py:58
 msgid "Order Date"
-msgstr ""
+msgstr "Дата заказа"
 
 #: shopping/models.py:25 shopping/models.py:46
 msgid "Reference Number"
-msgstr ""
+msgstr "Номер заказа"
 
 #. Translators: to describe whether the items have been delivered and the money has been received
 #. Translators: For unregistered users  or not
 #: shopping/models.py:27 shopping/models.py:60
 msgid "Order Active?"
-msgstr ""
+msgstr "Активный заказ"
 
 #. Translators: For unregistered users name
 #: shopping/models.py:49
 msgid "My name"
-msgstr ""
+msgstr "Имя"
 
 #: shopping/models.py:52
 msgid "My Location"
-msgstr ""
+msgstr "Адрес"
 
 #. Translators: For unregistered users phone number
 #: shopping/models.py:54
 msgid "My phone number"
-msgstr ""
+msgstr "Номер телефона"
 
 #. Translators: For unregistered users email
 #: shopping/models.py:56
 msgid "My email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: shopping/templates/shopping/buy_now.html:6
 msgid "BUY NOW!"
-msgstr ""
+msgstr "Купить сейчас!"
 
 #: shopping/templates/shopping/buy_now.html:19
 #: vip/templates/vip/create_vip_order.html:38
 msgid "Place Order"
-msgstr ""
+msgstr "Разместить заказ"
 
 #. Translators: 'Order' as a noun
 #: shopping/templates/shopping/order.html:9
 msgid "Order"
-msgstr ""
+msgstr "Заказ"
 
 #. Translators: Order table header, showing the status of the order
 #: shopping/templates/shopping/order.html:15
 #: shopping/templates/shopping/orders.html:10
 msgid "Status"
-msgstr ""
+msgstr "Статус заказа"
 
 #. Translators: The order status is 'processing'
 #: shopping/templates/shopping/order.html:20
 msgid "Processing"
-msgstr ""
+msgstr "Обрабатывается"
 
 #. Translators: The order status is 'delivered'
 #: shopping/templates/shopping/order.html:24
 msgid "Delivered"
-msgstr ""
+msgstr "Доставлено"
 
 #. Translators: Order table header, showing the reference number of the order
 #.
 #: shopping/templates/shopping/order.html:32
 msgid "Reference"
-msgstr ""
+msgstr "Номер заказа"
 
 #. Translators: Order table header, showing the 'date' of the order
 #: shopping/templates/shopping/order.html:38
 msgid "Date"
-msgstr ""
+msgstr "Дата"
 
 #. Translators: Order table header, showing the 'items' of the order
 #.
 #: shopping/templates/shopping/order.html:45
 #: shopping/templates/shopping/orders.html:12
 msgid "Items"
-msgstr ""
+msgstr "Товары"
 
 #. Translators: Order table header, showing the 'cost' of the order
 #.
 #: shopping/templates/shopping/order.html:60
 msgid "Cost"
-msgstr ""
+msgstr "Итого"
 
 #: shopping/templates/shopping/orders.html:11
 msgid "Ref No"
-msgstr ""
+msgstr "Номер заказа"
 
 #: shopping/templates/shopping/orders.html:47
 msgid "Please place an order first..."
-msgstr ""
+msgstr "Выберите товар"
 
 #. Translators: Before the customer place an order, they have to confirm the order
 #: shopping/templates/shopping/shopping_bag.html:18
 msgid "Confirm to checkout now?"
-msgstr ""
+msgstr "Подтвердите покупку"
 
 #: shopping/templates/shopping/shopping_bag.html:19
 msgid ""
 "The detail of the order will be sent to your personal email. And we will "
 "contact you soon."
 msgstr ""
+"Спасибо за покупку! Наш менеджер свяжется с вами в ближайшее время для "
+"уточнения деталей заказа."
 
 #: shopping/templates/shopping/shopping_bag.html:21
 msgid "Confirm Order"
-msgstr ""
+msgstr "Подтвердите покупку"
 
 #: shopping/templates/shopping/shopping_bag.html:68
 msgid "Please add more items to your shpping bag"
@@ -521,94 +525,87 @@ msgstr "Добавьте больше товаров в корзину"
 
 #: shopping/templates/shopping/shopping_bag.html:79
 msgid "Checkout"
-msgstr ""
+msgstr "Купить"
 
 #. Translators: After customer ordered something
 #: shopping/templates/shopping/unregistered_order.html:8
 msgid "Congradulations"
-msgstr ""
+msgstr "Благодарим за покупку!"
 
 #. Translators: Order reference number
 #: shopping/templates/shopping/unregistered_order.html:15
 msgid "Order Ref Number"
-msgstr ""
+msgstr "Номер заказа"
 
 #: shopping/templates/shopping/unregistered_order.html:16
 msgid "Your purchase is being processed"
-msgstr ""
+msgstr "Ваша покупка обрабатывается"
 
 #: shopping/templates/shopping/unregistered_order.html:17
 msgid ""
 "Please check your email for the detail of the purchase. Our specialst will "
 "contact you soon. Thanks"
 msgstr ""
+"Спасибо за покупку! Наш менеджер свяжется с вами в ближайшее время для "
+"уточнения деталей заказа."
 
 #: shopping/views.py:39
 msgid "Item has been added to your shopping bag!"
-msgstr ""
+msgstr "Товар добавлен в корзину!"
 
 #: shopping/views.py:49
 msgid "Item has been removed from your shopping bag!"
-msgstr ""
+msgstr "Товар удалён из корзины"
 
 #: shopping/views.py:87
 msgid ""
 "Your order has been placed! Our staff will contact you within 24 hours. Or "
 "you can contact us directly: +7 (925) 519-62-42. Thank you!"
 msgstr ""
+"Спасибо! Ваш заказ принят! Наш менеджер свяжется с Вами в ближайшее время!"
 
 #: shopping/views.py:113 shopping/views.py:163
 msgid "Your order is being processed!"
-msgstr ""
+msgstr "Ваш заказ принят!"
 
 #: templates/404.html:5
 msgid "Oops! You have requested a page that does not exist"
-msgstr ""
+msgstr "Страница не существует"
 
 #: templates/500.html:5
 msgid ""
 "Oops! There has been an internal error. We are terribly sorry about that"
 msgstr ""
-
-#: users/forms.py:17
-msgid "The username does not exist"
-msgstr ""
-
-#: users/forms.py:19
-msgid "Incorrect password"
-msgstr ""
-
-#: users/forms.py:23
-msgid "The user is not active, please contact admin..."
-msgstr ""
+"Ошибка страницы. Приносим вам своих извинения за доставленные неудобства. "
+"Для заказа свяжите с нашим менеджером по телефону +79255196242"
 
 #: users/models.py:14 vip/models.py:7
 msgid "Your name"
-msgstr ""
+msgstr "Имя"
 
 #: users/models.py:15
 msgid "Your Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: users/models.py:17 vip/models.py:9
 msgid "Your cell phone number"
-msgstr ""
+msgstr "Номер телефона"
 
 #: users/models.py:19
 msgid "What is your address"
-msgstr ""
+msgstr "Адрес"
 
 #: users/templates/registration/logged_out.html:7
 msgid "Thanks for your visit"
-msgstr ""
+msgstr "Спасибо! До новых встреч!"
 
 #: users/templates/registration/logged_out.html:8
 msgid "You have been successfully logged out"
-msgstr ""
+msgstr "Вы успешно вышли из системы"
 
 #: users/templates/registration/login.html:7
 msgid "Please Sign In"
-msgstr ""
+msgstr "Войти"
 
 #: users/templates/registration/login.html:10
 #, fuzzy
@@ -622,7 +619,7 @@ msgstr "Присоединяйся к нам"
 
 #: users/templates/registration/register.html:20
 msgid " Get your own personal stylist!"
-msgstr ""
+msgstr "Получше  консультацию по стилю от Вашего персонального менеджера!"
 
 #: users/templates/registration/register.html:22
 msgid " Enjoy special discount for ALL tagged items!"
@@ -633,6 +630,8 @@ msgid ""
 " Have your own wish-list and shopping bag to track the items you are "
 "interested in!"
 msgstr ""
+"Добавляйте понравившиеся товары в список желаний и получайте персональные "
+"скидки!"
 
 #: users/templates/registration/register.html:29
 msgid "Register"
@@ -640,7 +639,7 @@ msgstr "Регистрация"
 
 #: users/templates/users/profile.html:6
 msgid "Welcome back"
-msgstr ""
+msgstr "С возвращением!"
 
 #: users/templates/users/profile.html:9
 #, fuzzy
@@ -650,49 +649,49 @@ msgstr "Категория"
 
 #: users/templates/users/profile.html:10
 msgid "My Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: users/templates/users/profile.html:13
 msgid "My Phone"
-msgstr ""
+msgstr "Номер телефона"
 
 #: users/templates/users/profile.html:14
 msgid "My Address"
-msgstr ""
+msgstr "Адрес"
 
 #: users/templates/users/profile.html:19
 msgid "Edit Profile"
-msgstr ""
+msgstr "Редактировать профиль"
 
 #: users/templates/users/profile_update.html:7
 msgid "Please update your profile"
-msgstr ""
+msgstr "Пожалуйста обновите ваш профиль "
 
 #: users/views.py:83
 msgid "Please complete your profile information"
-msgstr ""
+msgstr "Укажите персональную информацию"
 
 #: vip/models.py:10
 msgid "What is your address?"
-msgstr ""
+msgstr "Адрес"
 
 #: vip/models.py:11
 msgid "Describe the item briefly"
-msgstr ""
+msgstr "Опишите товар"
 
 #: vip/models.py:12
 msgid "Upload a photo of the item"
-msgstr ""
+msgstr "Загрузите фотографию"
 
 #: vip/models.py:13 vip/models.py:14
 msgid "Upload another photo of the item (optional)"
-msgstr ""
+msgstr "Загрузите фотографию"
 
 #: vip/templates/vip/create_vip_order.html:33
 msgid ""
 "Please provide your information and the description of the item you'd like "
 "to purchase"
-msgstr ""
+msgstr "Пожалуйста, заполните анкету для размещения VIP заказа  "
 
 #: vip/templates/vip/vip_order.html:13
 #, fuzzy
@@ -706,14 +705,25 @@ msgstr "Добавь товары в список желаний"
 
 #: wishlist/views.py:24
 msgid "The item is already in your wish-list!"
-msgstr ""
+msgstr "Данный товар уже добавлен"
 
 #: wishlist/views.py:29
 msgid "Item added to wish-list!"
-msgstr ""
+msgstr "Товар добавлен в список ваших желаний"
 
 #: wishlist/views.py:39
 #, fuzzy
 #| msgid "Please add more items to your shpping bag"
 msgid "Item removed from your wish list!"
 msgstr "Добавьте больше товаров в корзину"
+
+#~ msgid "The username does not exist"
+#~ msgstr "Наверное имя пользователя"
+
+#~ msgid "Incorrect password"
+#~ msgstr "Неверный пароль"
+
+#~ msgid "The user is not active, please contact admin..."
+#~ msgstr ""
+#~ "Пользователь неактивен. Пожалуйста, свяжитесь с нами по телефону "
+#~ "+79255196242"

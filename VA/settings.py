@@ -125,8 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-# LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'ru'
+LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -149,7 +149,19 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = 'users:login'
 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'order@va-boutique.com'
+EMAIL_HOST_PASSWORD = 'Aleks01082012'
+DEFAULT_FROM_EMAIL = 'VA-Boutique <{}>'.format(EMAIL_HOST_USER)
+
+
 # for Debug Toolbar to work
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
