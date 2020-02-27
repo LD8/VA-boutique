@@ -3,23 +3,26 @@
 
 {% block content %}
 
-<div class="vip-cover shadow-lg mb-4 mb-md-5">
-    <h1 class="text-white shadow">{% trans "VIP Order" %}</h1>
-</div>
+{% include 'vip/include/vip_order_style.html' %}
+
+<div class="vip-cover shadow-lg mb-4 mb-md-5"></div>
 <div class="mt-5 text-center mb-3 mb-md-5">
     <h4 class="mb-3 pb-1 border-bottom font-weight-light">{{vip_order}}</h4>
 
-    <div class="container px-2">
-        <p>{% trans "VIP Name" %}: {{vip_order.name}}</p>
-        <p>{% trans "Item Description" %}: {{vip_order.item_description}}</p>
-        <img src="{{vip_order.item_image1.url}}" alt="" height="100px">
-        {% if vip_order.item_image2 %}
-        <img src="{{vip_order.item_image2.url}}" alt="" height="100px">
-        {% endif %}
-        {% if vip_order.item_image3 %}
-        <img src="{{vip_order.item_image3.url}}" alt="" height="100px">
-        {% endif %}
+    <div class="container px-2 text-black-50 mb-5">
+        <div><small>{% trans "VIP Name" %}<br></small><p>{{vip_order.name}}</p></div>
+        <div class="mb-4 d-flex justify-content-center flex-wrap">
+            <img class="shadow-sm rounded-sm border mx-1 my-1" src="{{vip_order.item_image1.url}}" alt="VIP order image 1" height="100px">
+            {% if vip_order.item_image2 %}
+            <img class="shadow-sm rounded-sm border mx-1 my-1" src="{{vip_order.item_image2.url}}" alt="VIP order image 2" height="100px">
+            {% endif %}
+            {% if vip_order.item_image3 %}
+            <img class="shadow-sm rounded-sm border mx-1 my-1" src="{{vip_order.item_image3.url}}" alt="VIP order image 3" height="100px">
+            {% endif %}
+        </div>
+        <div><small>{% trans "Item Description" %}<br></small><p>{{vip_order.item_description}}</p></div>
     </div>
-    
 </div>
+
+<hr>
 {% endblock content %}

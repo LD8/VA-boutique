@@ -15,11 +15,12 @@ urlpatterns = [
     # handle buy now and display buy now
     path('handle-order/buy-now/<int:item_pk>/', views.buy_now_unregistered, name='buy-now-unregistered'),
     path('handle-order/buy-now/<int:item_pk>/registered/', views.buy_now_registered, name='buy-now-registered'),
-    path('handle-order/buy-now/<int:item_pk>/<str:order_ref>', views.unregister_ordered, name='unregister-ordered'),
+    # show unregistered order
+    path('orders/unregistered-user/<str:ref>/', views.show_unregistered_order, name='show-unregistered-order'),
 
     # show all placed orders
     path('orders/', views.OrderListView.as_view(), name='show-orders'),
     # a placed order detail page
-    path('orders/<int:pk>/', views.OrderDetailView.as_view(), name='show-order'),
+    path('orders/<str:ref>/', views.show_registered_order, name='show-order'),
 
 ]

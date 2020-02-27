@@ -8,6 +8,9 @@ from .models import Order
 def create_shopping_bag(sender, instance, created, **kwargs):
     if created:
         shopping_bag = Order.objects.create(
-            profile=instance.profile, 
-            ref_number="{}'s shopping bag".format(instance.profile.user.username.capitalize()),
-            )
+            profile=instance.profile,
+            ref_number="{}'s shopping bag".format(
+                instance.profile.user.username.capitalize()),
+        )
+
+

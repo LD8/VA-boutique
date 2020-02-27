@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-25 14:34+0800\n"
+"POT-Creation-Date: 2020-02-27 16:32+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -92,7 +92,7 @@ msgstr "Описание бренда"
 msgid "Item Name"
 msgstr "Наименование товара"
 
-#: boutique/models.py:155 vip/templates/vip/vip_order.html:14
+#: boutique/models.py:155 vip/templates/vip/vip_order.html:23
 msgid "Item Description"
 msgstr "Описание товара"
 
@@ -201,9 +201,8 @@ msgid "ON SALE"
 msgstr ""
 
 #. Translators: footer, right column, popup window title
-#: boutique/templates/boutique/include/footer.html:47
-#: vip/templates/vip/create_vip_order.html:30
-#: vip/templates/vip/vip_order.html:7
+#: boutique/templates/boutique/include/footer.html:47 vip/models.py:24
+#: vip/templates/vip/create_vip_order.html:10
 msgid "VIP Order"
 msgstr "VIP заказ"
 
@@ -215,7 +214,7 @@ msgstr "Часы работы 24/7"
 #: shopping/templates/shopping/order.html:71
 #: shopping/templates/shopping/orders.html:57
 #: shopping/templates/shopping/shopping_bag.html:87
-#: users/templates/users/profile.html:23
+#: users/templates/users/profile.html:24
 #: wishlist/templates/wishlist/wish_list.html:54
 msgid "My Profile"
 msgstr "Мой профиль"
@@ -224,7 +223,7 @@ msgstr "Мой профиль"
 #: shopping/templates/shopping/order.html:73
 #: shopping/templates/shopping/orders.html:59
 #: shopping/templates/shopping/shopping_bag.html:89
-#: users/templates/users/profile.html:24
+#: users/templates/users/profile.html:25
 #: wishlist/templates/wishlist/wish_list.html:13
 #: wishlist/templates/wishlist/wish_list.html:55
 msgid "My Wish List"
@@ -235,7 +234,7 @@ msgstr "Мой лист желаний"
 #: shopping/templates/shopping/orders.html:61
 #: shopping/templates/shopping/shopping_bag.html:36
 #: shopping/templates/shopping/shopping_bag.html:90
-#: users/templates/users/profile.html:25
+#: users/templates/users/profile.html:26
 #: wishlist/templates/wishlist/wish_list.html:56
 msgid "My Shopping Bag"
 msgstr "Моя корзина"
@@ -245,7 +244,7 @@ msgstr "Моя корзина"
 #: shopping/templates/shopping/orders.html:6
 #: shopping/templates/shopping/orders.html:62
 #: shopping/templates/shopping/shopping_bag.html:92
-#: users/templates/users/profile.html:26
+#: users/templates/users/profile.html:27
 #: wishlist/templates/wishlist/wish_list.html:57
 msgid "My Orders"
 msgstr "Мои заказы"
@@ -396,7 +395,7 @@ msgstr "Адрес"
 msgid "Your phone number"
 msgstr "Телефон"
 
-#: shopping/forms.py:16 vip/models.py:8
+#: shopping/forms.py:16 vip/models.py:15
 msgid "Your email"
 msgstr "Электронная почта"
 
@@ -421,6 +420,18 @@ msgstr "Номер заказа"
 msgid "Order Active?"
 msgstr "Активный заказ"
 
+#: shopping/models.py:40
+#, fuzzy
+#| msgid "Register"
+msgid "Registered Order"
+msgstr "зарегистрированный заказ"
+
+#: shopping/models.py:41
+#, fuzzy
+#| msgid "Register"
+msgid "Registered Orders"
+msgstr "зарегистрированные заказы"
+
 #. Translators: For unregistered users name
 #: shopping/models.py:49
 msgid "My name"
@@ -440,44 +451,62 @@ msgstr "Номер телефона"
 msgid "My email"
 msgstr "Электронная почта"
 
+#: shopping/models.py:69
+#, fuzzy
+#| msgid "Confirm Order"
+msgid "Anonymous Order"
+msgstr "незарегистрированный заказ"
+
+#: shopping/models.py:70
+#, fuzzy
+#| msgid "My Orders"
+msgid "Anonymous Orders"
+msgstr "незарегистрированные заказы"
+
 #: shopping/templates/shopping/buy_now.html:6
 msgid "BUY NOW!"
 msgstr "Купить сейчас!"
 
 #: shopping/templates/shopping/buy_now.html:19
-#: vip/templates/vip/create_vip_order.html:38
+#: vip/templates/vip/create_vip_order.html:18
 msgid "Place Order"
 msgstr "Разместить заказ"
 
 #. Translators: 'Order' as a noun
 #: shopping/templates/shopping/order.html:9
+#: shopping/templates/shopping/unregistered_order.html:9
 msgid "Order"
 msgstr "Заказ"
 
 #. Translators: Order table header, showing the status of the order
 #: shopping/templates/shopping/order.html:15
 #: shopping/templates/shopping/orders.html:10
+#: shopping/templates/shopping/unregistered_order.html:15
 msgid "Status"
 msgstr "Статус заказа"
 
 #. Translators: The order status is 'processing'
 #: shopping/templates/shopping/order.html:20
+#: shopping/templates/shopping/unregistered_order.html:20
 msgid "Processing"
 msgstr "Обрабатывается"
 
 #. Translators: The order status is 'delivered'
 #: shopping/templates/shopping/order.html:24
+#: shopping/templates/shopping/unregistered_order.html:24
 msgid "Delivered"
 msgstr "Доставлено"
 
 #. Translators: Order table header, showing the reference number of the order
 #.
 #: shopping/templates/shopping/order.html:32
+#: shopping/templates/shopping/unregistered_order.html:32
 msgid "Reference"
 msgstr "Номер заказа"
 
 #. Translators: Order table header, showing the 'date' of the order
 #: shopping/templates/shopping/order.html:38
+#: shopping/templates/shopping/unregistered_order.html:38
 msgid "Date"
 msgstr "Дата"
 
@@ -485,12 +514,14 @@ msgstr "Дата"
 #.
 #: shopping/templates/shopping/order.html:45
 #: shopping/templates/shopping/orders.html:12
+#: shopping/templates/shopping/unregistered_order.html:45
 msgid "Items"
 msgstr "Товары"
 
 #. Translators: Order table header, showing the 'cost' of the order
 #.
 #: shopping/templates/shopping/order.html:60
+#: shopping/templates/shopping/unregistered_order.html:56
 msgid "Cost"
 msgstr "Итого"
 
@@ -523,50 +554,38 @@ msgstr "Подтвердите покупку"
 msgid "Please add more items to your shpping bag"
 msgstr "Добавьте больше товаров в корзину"
 
+#: shopping/templates/shopping/shopping_bag.html:75
+msgid "Total Price"
+msgstr "Итоговая цена"
+
 #: shopping/templates/shopping/shopping_bag.html:79
 msgid "Checkout"
 msgstr "Купить"
 
-#. Translators: After customer ordered something
-#: shopping/templates/shopping/unregistered_order.html:8
-msgid "Congradulations"
-msgstr "Благодарим за покупку!"
-
-#. Translators: Order reference number
-#: shopping/templates/shopping/unregistered_order.html:15
-msgid "Order Ref Number"
-msgstr "Номер заказа"
-
-#: shopping/templates/shopping/unregistered_order.html:16
-msgid "Your purchase is being processed"
-msgstr "Ваша покупка обрабатывается"
-
-#: shopping/templates/shopping/unregistered_order.html:17
-msgid ""
-"Please check your email for the detail of the purchase. Our specialst will "
-"contact you soon. Thanks"
-msgstr ""
-"Спасибо за покупку! Наш менеджер свяжется с вами в ближайшее время для "
-"уточнения деталей заказа."
-
-#: shopping/views.py:39
+#: shopping/views.py:41
 msgid "Item has been added to your shopping bag!"
 msgstr "Товар добавлен в корзину!"
 
-#: shopping/views.py:49
+#: shopping/views.py:51
 msgid "Item has been removed from your shopping bag!"
 msgstr "Товар удалён из корзины"
 
-#: shopping/views.py:87
+#: shopping/views.py:84
 msgid ""
 "Your order has been placed! Our staff will contact you within 24 hours. Or "
 "you can contact us directly: +7 (925) 519-62-42. Thank you!"
 msgstr ""
 "Спасибо! Ваш заказ принят! Наш менеджер свяжется с Вами в ближайшее время!"
 
-#: shopping/views.py:113 shopping/views.py:163
-msgid "Your order is being processed!"
+#: shopping/views.py:109
+msgid "your order is being processed! please check youring processed!"
 msgstr "Ваш заказ принят!"
+
+#: shopping/views.py:183
+msgid ""
+"Your order is being processed! Please check your profile or your email for "
+"the details of the order."
+msgstr ""
 
 #: templates/404.html:5
 msgid "Oops! You have requested a page that does not exist"
@@ -579,7 +598,7 @@ msgstr ""
 "Ошибка страницы. Приносим вам своих извинения за доставленные неудобства. "
 "Для заказа свяжите с нашим менеджером по телефону +79255196242"
 
-#: users/models.py:14 vip/models.py:7
+#: users/models.py:14 vip/models.py:14
 msgid "Your name"
 msgstr "Имя"
 
@@ -587,13 +606,25 @@ msgstr "Имя"
 msgid "Your Email"
 msgstr "Электронная почта"
 
-#: users/models.py:17 vip/models.py:9
+#: users/models.py:17 vip/models.py:16
 msgid "Your cell phone number"
 msgstr "Номер телефона"
 
 #: users/models.py:19
 msgid "What is your address"
 msgstr "Адрес"
+
+#: users/models.py:24
+#, fuzzy
+#| msgid "My Profile"
+msgid "Profile"
+msgstr "профиль"
+
+#: users/models.py:25
+#, fuzzy
+#| msgid "My Profile"
+msgid "Profiles"
+msgstr "профили"
 
 #: users/templates/registration/logged_out.html:7
 msgid "Thanks for your visit"
@@ -639,27 +670,21 @@ msgstr "Регистрация"
 
 #: users/templates/users/profile.html:6
 msgid "Welcome back"
-msgstr "С возвращением!"
+msgstr "С возвращением "
 
-#: users/templates/users/profile.html:9
-#, fuzzy
-#| msgid "Category"
-msgid "My Name"
-msgstr "Категория"
-
-#: users/templates/users/profile.html:10
+#: users/templates/users/profile.html:11
 msgid "My Email"
 msgstr "Электронная почта"
 
-#: users/templates/users/profile.html:13
+#: users/templates/users/profile.html:14
 msgid "My Phone"
 msgstr "Номер телефона"
 
-#: users/templates/users/profile.html:14
+#: users/templates/users/profile.html:15
 msgid "My Address"
 msgstr "Адрес"
 
-#: users/templates/users/profile.html:19
+#: users/templates/users/profile.html:20
 msgid "Edit Profile"
 msgstr "Редактировать профиль"
 
@@ -671,23 +696,41 @@ msgstr "Пожалуйста обновите ваш профиль "
 msgid "Please complete your profile information"
 msgstr "Укажите персональную информацию"
 
-#: vip/models.py:10
+#: vip/models.py:11
+#, fuzzy
+#| msgid "Order Ref Number"
+msgid "VIP Order Number"
+msgstr "Номер заказа"
+
+#: vip/models.py:12
+#, fuzzy
+#| msgid "Order Active?"
+msgid "VIP Order Active?"
+msgstr "Активный заказ"
+
+#: vip/models.py:17
 msgid "What is your address?"
 msgstr "Адрес"
 
-#: vip/models.py:11
+#: vip/models.py:18
 msgid "Describe the item briefly"
 msgstr "Опишите товар"
 
-#: vip/models.py:12
+#: vip/models.py:19
 msgid "Upload a photo of the item"
 msgstr "Загрузите фотографию"
 
-#: vip/models.py:13 vip/models.py:14
+#: vip/models.py:20 vip/models.py:21
 msgid "Upload another photo of the item (optional)"
 msgstr "Загрузите фотографию"
 
-#: vip/templates/vip/create_vip_order.html:33
+#: vip/models.py:25
+#, fuzzy
+#| msgid "VIP Order"
+msgid "VIP Orders"
+msgstr "VIP заказ"
+
+#: vip/templates/vip/create_vip_order.html:13
 msgid ""
 "Please provide your information and the description of the item you'd like "
 "to purchase"
@@ -698,6 +741,10 @@ msgstr "Пожалуйста, заполните анкету для разме�
 #| msgid "Category"
 msgid "VIP Name"
 msgstr "Категория"
+
+#: vip/views.py:37
+msgid "Thanks for your purchase, we will contact you soon!"
+msgstr ""
 
 #: wishlist/templates/wishlist/wish_list.html:48
 msgid "Please add more items to your wish list"
@@ -716,6 +763,58 @@ msgstr "Товар добавлен в список ваших желаний"
 #| msgid "Please add more items to your shpping bag"
 msgid "Item removed from your wish list!"
 msgstr "Добавьте больше товаров в корзину"
+
+#, fuzzy, python-brace-format
+#~| msgid ""
+#~| "Hi {username},\n"
+#~| "\n"
+#~| "Thank you for the order. We will contact you shortly.\n"
+#~| "Your order number is: {ref}\n"
+#~| "Checkout your order: {order_link}\n"
+#~| "\n"
+#~| "Ваш VA-Boutique\n"
+#~ msgid ""
+#~ "Hi {username},\n"
+#~ "\n"
+#~ "Thank you for the order. We will contact you shortly.\n"
+#~ "Your order number is: {ref}\n"
+#~ "Checkout your order: {order_link}\n"
+#~ "\n"
+#~ "Yours, VA-Boutique\n"
+#~ msgstr ""
+#~ "Здравствуйте {username},\n"
+#~ "\n"
+#~ "Спасибо за заказ! Наш менеджер свяжется с Вами в течении 24 часов.\n"
+#~ "Номер Вашего заказа: {ref}\n"
+#~ "Посмотреть Ваш заказ: {order_link}\n"
+#~ "\n"
+#~ "Ваш VA-Boutique\n"
+
+#, fuzzy
+#~| msgid "Order Ref Number"
+#~ msgid "A new order has been placed ref number {}"
+#~ msgstr "Номер заказа"
+
+#~ msgid "Congradulations"
+#~ msgstr "Благодарим за покупку!"
+
+#~ msgid "Order Ref Number"
+#~ msgstr "Номер заказа"
+
+#~ msgid "Your purchase is being processed"
+#~ msgstr "Ваша покупка обрабатывается"
+
+#~ msgid ""
+#~ "Please check your email for the detail of the purchase. Our specialst "
+#~ "will contact you soon. Thanks"
+#~ msgstr ""
+#~ "Спасибо за покупку! Наш менеджер свяжется с вами в ближайшее время для "
+#~ "уточнения деталей заказа."
+
+#, fuzzy
+#~| msgid "Category"
+#~ msgid "My Name"
+#~ msgstr "Имя"
 
 #~ msgid "The username does not exist"
 #~ msgstr "Наверное имя пользователя"

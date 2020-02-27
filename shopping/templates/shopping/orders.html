@@ -17,7 +17,7 @@
 
         <!-- order activity -->
         <div class="col-2 col-md-1 text-center">
-            <a href="{% url 'shopping:show-order' order.pk %}">
+            <a href="{% url 'shopping:show-order' order.ref_number %}">
                 {% if order.active %}
                 <i class="text-info fas fa-truck-loading fa-lg shadow-sm"></i>
                 {% else %}
@@ -27,7 +27,7 @@
         </div>
         <!-- /order activity -->
 
-        <div class="col-4 col-md-3"><a href="{% url 'shopping:show-order' order.pk %}"
+        <div class="col-4 col-md-3"><a href="{% url 'shopping:show-order' order.ref_number %}"
                 class="text-black-50"><u>{{order.ref_number}}</u></a></div>
 
         <div class="col-6 col-md-7 d-flex flex-wrap px-0 border-top-0 px-0">

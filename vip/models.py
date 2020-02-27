@@ -23,10 +23,10 @@ class VipOrder(models.Model):
     class Meta():
         verbose_name = _('VIP Order')
         verbose_name_plural = _('VIP Orders')
-        ordering = ['-date_created']
+        ordering = [ '-active', '-date_created']
 
     def __str__(self):
-        return "VIP Order No. {}".format(self.ref_number)
+        return "Номер заказа: {}".format(self.ref_number)
 
     # def get_absolute_url(self):
     #     return reverse('vip:vip-order', kwargs={'slug': self.slug,})

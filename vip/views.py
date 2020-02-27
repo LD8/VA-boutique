@@ -18,10 +18,12 @@ def vip_ref_number_generator():
 
 def create_vip_order(request, **kwargs):
     
+    # form = VipOrderForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
-        form = VipOrderForm(data=request.POST)
+        form = VipOrderForm(request.POST, request.FILES)
         print('form filled with POST data')
         print(form.is_valid())
+        print(form.errors)
         if form.is_valid():
             new_vip_order = form.save(commit=False)
             print('order created')
@@ -34,6 +36,7 @@ def create_vip_order(request, **kwargs):
             messages.info(request, _(
                 "Thanks for your purchase, we will contact you soon!"))
             return redirect('vip:vip-order', new_vip_order.pk)
+   
 
     form = VipOrderForm()
     print('form initiated')

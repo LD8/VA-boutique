@@ -10,10 +10,10 @@
     <table class="table table-striped">
         <tbody>
             <tr>
-                <th scope="row">
+                <th scope="row" class="w-25">
                     {% comment %}Translators: Order table header, showing the status of the order {% endcomment %}
                     {% trans "Status" %}</th>
-                <td>
+                <td class="">
                     {% if order.active %}
                     <i class="text-info fas fa-truck-loading shadow-sm"></i><span class="text-info ml-2">
                         {% comment %}Translators: The order status is 'processing' {% endcomment %}
@@ -36,7 +36,7 @@
                 <th scope="row">
                     {% comment %}Translators: Order table header, showing the 'date' of the order {% endcomment %}
                     {% trans "Date" %}</th>
-                <td>{{order.date_ordered}}</td>
+                <td>{{order.date_ordered|date:'d-m-Y H:i'}}</td>
             </tr>
             <tr>
                 <th scope="row">

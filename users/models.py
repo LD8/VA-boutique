@@ -20,6 +20,10 @@ class Profile(models.Model):
 
     slug = models.SlugField()
 
+    class Meta():
+        verbose_name = _('Profile')
+        verbose_name_plural = _('Profiles')
+
     def __str__(self):
         return self.profile_name
 

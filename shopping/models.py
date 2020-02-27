@@ -37,8 +37,8 @@ class Order(models.Model):
         return sum([item.item.final_price for item in self.get_order_items()])
 
     class Meta():
-        verbose_name = 'Registered Order'
-        verbose_name_plural = 'Registered Orders'
+        verbose_name = _('Registered Order')
+        verbose_name_plural = _('Registered Orders')
         ordering = ['-is_ordered', '-active', '-date_ordered']
 
 
@@ -66,5 +66,6 @@ class AnonymousOrder(models.Model):
         return reverse('shopping:buy-now-order', self.item.pk, self.ref_number)
 
     class Meta():
-        verbose_name = 'Anonymous Order'
+        verbose_name = _('Anonymous Order')
+        verbose_name_plural = _('Anonymous Orders')
         ordering = ['-active', '-date_ordered']

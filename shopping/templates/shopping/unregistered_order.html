@@ -1,21 +1,68 @@
 {% extends 'boutique/base.html' %}
-{% load bootstrap4 i18n %}
+{% load humanize i18n %}
 
 {% block content %}
 
-<h3 class="my-3 my-md-4 pb-2 border-bottom text-center">
-    {% comment %}Translators: After customer ordered something {% endcomment %}
-    {% trans "Congradulations" %}!</h3>
+<div class="mb-5 col-lg-8 mr-auto ml-auto">
+    <h4 class="mt-4 mt-md-5 mb-3 px-2">
+        {% comment %}Translators: 'Order' as a noun {% endcomment %}
+        {% trans "Order" %}: {{order.ref_number}}</h4>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th scope="row" class="w-25">
+                    {% comment %}Translators: Order table header, showing the status of the order {% endcomment %}
+                    {% trans "Status" %}</th>
+                <td class="">
+                    {% if order.active %}
+                    <i class="text-info fas fa-truck-loading shadow-sm"></i><span class="text-info ml-2">
+                        {% comment %}Translators: The order status is 'processing' {% endcomment %}
+                        {% trans "Processing" %}</span>
+                    {% else %}
+                    <i class="text-success far fa-check-square shadow-sm"></i><span class="text-success ml-2">
+                        {% comment %}Translators: The order status is 'delivered' {% endcomment %}
+                        {% trans "Delivered" %}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the reference number of the order
+                    {% endcomment %}
+                    {% trans "Reference" %}</th>
+                <td class="">{{order.ref_number}}</td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the 'date' of the order {% endcomment %}
+                    {% trans "Date" %}</th>
+                <td>{{order.date_ordered|date:'d-m-Y H:i'}}</td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the 'items' of the order
+                    {% endcomment %}
+                    {% trans "Items" %}</th>
+                <td class="d-flex flex-wrap">
+                    <a href="{{ order.item.get_item_url }}" class="pb-1 col-4 col-md-2 px-0 pr-1 pr-md-2">
+                        <img class="rounded-sm shadow-sm" src="{{order.item.itemimage_set.first.image.url}}" width="100%"
+                            alt="{{order.item.name}}"></a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    {% comment %}Translators: Order table header, showing the 'cost' of the order
+                    {% endcomment %}
+                    {% trans "Cost" %}</th>
+                <td class="text-black-50"><span class="mr-1">&#8381;</span>
+                    {{order.item.discounted_price|intcomma}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-{% include 'shopping/include/buy_now_item.html' %}
-<div class=" col-12 col-lg-7 p-4 mr-auto ml-auto text-center mb-5">
-    
-    <h5 class="border-bottom pb-2">
-        {% comment %}Translators: Order reference number {% endcomment %}
-        {% trans "Order Ref Number" %}: <span class="text-info">{{order_ref}}</span></h5>
-    <p>{% trans "Your purchase is being processed" %}. <br>
-        {% trans "Please check your email for the detail of the purchase. Our specialst will contact you soon. Thanks" %}!</p>
 </div>
+
 
 <hr class="">
 
