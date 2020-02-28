@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # third party apps
     'bootstrap4',
+    'mailer',
 
     # debugging
     'debug_toolbar',
@@ -152,7 +153,8 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'users:login'
 
 # Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'mailer.backend.DbBackend'
 
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.mail.ru'

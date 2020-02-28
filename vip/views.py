@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import CreateView, DetailView
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import VipOrder
 from .forms import VipOrderForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from shopping.extras import mail_order_detail
 
 from random import choice
 from string import ascii_uppercase
@@ -17,45 +17,32 @@ def vip_ref_number_generator():
 
 
 def create_vip_order(request, **kwargs):
-    
-    # form = VipOrderForm(request.POST or None, request.FILES or None)
-    if request.method == 'POST':
-        form = VipOrderForm(request.POST, request.FILES)
-        print('form filled with POST data')
-        print(form.is_valid())
-        print(form.errors)
-        if form.is_valid():
-            new_vip_order = form.save(commit=False)
-            print('order created')
-            new_vip_order.active = True
-            print('order activated')
-            new_vip_order.ref_number = vip_ref_number_generator()
-            print('order ref number generated')
-            new_vip_order.save()
-            print('order saved')
-            messages.info(request, _(
-                "Thanks for your purchase, we will contact you soon!"))
-            return redirect('vip:vip-order', new_vip_order.pk)
-   
+    form = VipOrderForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        new_vip_order = form.save(commit=False)
+        new_vip_order.active = True
+        new_vip_order.ref_number = vip_ref_number_generator()
+        new_vip_order.save()
 
-    form = VipOrderForm()
-    print('form initiated')
+        # send email to the customer
+        kwargs = {
+            'new_order_username': 'VIP {}'.format(new_vip_order.name.capitalize()),
+            'new_order_ref_number': new_vip_order.ref_number,
+            'new_order_item_names': new_vip_order.item_description,
+            'customer_email': new_vip_order.email,
+            'new_order_link': request.build_absolute_uri(
+                    reverse('vip:vip-order', kwargs={'ref': new_vip_order.ref_number})),
+        }
+        mail_order_detail(**kwargs)
+
+        messages.info(request, _(
+            "Thanks for your purchase, we will contact you soon!"))
+        return redirect('vip:vip-order', new_vip_order.ref_number)
+   
     return render(request, "vip/create_vip_order.html", {'form': form})
 
 
-# class VipOrderCreateView(CreateView):
-#     model = VipOrder
-#     template_name = 'vip/create_vip_order.html'
-#     fields = ['name', 'email', 'phone', 'address', 'item_description',
-#               'item_image1', 'item_image2', 'item_image3']
-
-#     def post(self, *args, **kwargs):
-#         super().post(*args, **kwargs)
-#         # return redirect('vip:vip-order')
-#         print(kwargs)
-
-
-class VipOrderDetailView(DetailView):
-    model = VipOrder
-    template_name = 'vip/vip_order.html'
-    context_object_name = 'vip_order'
+def show_vip_order(request, ref):
+    """ Display a VIP order """
+    vip_order = get_object_or_404(VipOrder, ref_number=ref)
+    return render(request, 'vip/vip_order.html', {'vip_order': vip_order})

@@ -28,9 +28,6 @@ class VipOrder(models.Model):
     def __str__(self):
         return "Номер заказа: {}".format(self.ref_number)
 
-    # def get_absolute_url(self):
-    #     return reverse('vip:vip-order', kwargs={'slug': self.slug,})
-
 
 
 @receiver(post_delete, sender=VipOrder, dispatch_uid="delete_vip_order_image")

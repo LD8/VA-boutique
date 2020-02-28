@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-27 16:32+0800\n"
+"POT-Creation-Date: 2020-02-28 23:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -550,7 +550,7 @@ msgstr ""
 msgid "Confirm Order"
 msgstr "Подтвердите покупку"
 
-#: shopping/templates/shopping/shopping_bag.html:68
+#: shopping/templates/shopping/shopping_bag.html:68 shopping/views.py:76
 msgid "Please add more items to your shpping bag"
 msgstr "Добавьте больше товаров в корзину"
 
@@ -562,30 +562,25 @@ msgstr "Итоговая цена"
 msgid "Checkout"
 msgstr "Купить"
 
-#: shopping/views.py:41
+#: shopping/views.py:39
 msgid "Item has been added to your shopping bag!"
 msgstr "Товар добавлен в корзину!"
 
-#: shopping/views.py:51
+#: shopping/views.py:49
 msgid "Item has been removed from your shopping bag!"
 msgstr "Товар удалён из корзины"
 
-#: shopping/views.py:84
-msgid ""
-"Your order has been placed! Our staff will contact you within 24 hours. Or "
-"you can contact us directly: +7 (925) 519-62-42. Thank you!"
-msgstr ""
-"Спасибо! Ваш заказ принят! Наш менеджер свяжется с Вами в ближайшее время!"
-
-#: shopping/views.py:109
-msgid "your order is being processed! please check youring processed!"
-msgstr "Ваш заказ принят!"
-
-#: shopping/views.py:183
+#: shopping/views.py:94 shopping/views.py:190
 msgid ""
 "Your order is being processed! Please check your profile or your email for "
 "the details of the order."
-msgstr ""
+msgstr "Ваша покупка обрабатывается! "
+
+#: shopping/views.py:129
+#, fuzzy
+#| msgid "Your purchase is being processed"
+msgid "Your order is being processed!"
+msgstr "Ваша покупка обрабатывается!"
 
 #: templates/404.html:5
 msgid "Oops! You have requested a page that does not exist"
@@ -742,9 +737,9 @@ msgstr "Пожалуйста, заполните анкету для разме�
 msgid "VIP Name"
 msgstr "Категория"
 
-#: vip/views.py:37
+#: vip/views.py:40
 msgid "Thanks for your purchase, we will contact you soon!"
-msgstr ""
+msgstr "Спасибо за покупку! Вы свяжемся с Вами в ближайшее время!"
 
 #: wishlist/templates/wishlist/wish_list.html:48
 msgid "Please add more items to your wish list"
@@ -763,6 +758,15 @@ msgstr "Товар добавлен в список ваших желаний"
 #| msgid "Please add more items to your shpping bag"
 msgid "Item removed from your wish list!"
 msgstr "Добавьте больше товаров в корзину"
+
+#~ msgid ""
+#~ "Your order has been placed! Our staff will contact you within 24 hours. "
+#~ "Or you can contact us directly: +7 (925) 519-62-42. Thank you!"
+#~ msgstr ""
+#~ "Спасибо! Ваш заказ принят! Наш менеджер свяжется с Вами в ближайшее время!"
+
+#~ msgid "your order is being processed! please check youring processed!"
+#~ msgstr "Ваш заказ принят!"
 
 #, fuzzy, python-brace-format
 #~| msgid ""
@@ -800,9 +804,6 @@ msgstr "Добавьте больше товаров в корзину"
 
 #~ msgid "Order Ref Number"
 #~ msgstr "Номер заказа"
-
-#~ msgid "Your purchase is being processed"
-#~ msgstr "Ваша покупка обрабатывается"
 
 #~ msgid ""
 #~ "Please check your email for the detail of the purchase. Our specialst "

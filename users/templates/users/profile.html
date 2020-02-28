@@ -5,12 +5,12 @@
 <div class="mx-2 mx-lg-3 my-4 my-lg-5 text-black-50">
     <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50">{% trans "Welcome back" %}{{ profile.user.username|title }}!</h3>
     <div class="pt-2 px-2 row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
             {% comment %} Translators: displaying profile 'My Name' {% endcomment %}
             <p>Имя: {{ profile.name }}</p>
             <p>{% trans "My Email" %}: {{ profile.email }}</p>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
             <p>{% trans "My Phone" %}: {{ profile.phone }}</p>
             <p>{% trans "My Address" %}: {{ profile.address }}</p>
         </div>
