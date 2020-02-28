@@ -28,7 +28,7 @@ def mail_order_detail(new_order_username, new_order_ref_number, new_order_link, 
         ref=new_order_ref_number,
         order_link=new_order_link,
     )
-    msg_to_va = 'Order No.: {ref}\nUser: {username}\nOrdered Item: {itemname}\nOrder Link: {order_link}\n'.format(
+    msg_to_va = 'Order No.: {ref}\nUser: {username}\nOrdered Items: {itemname}\nOrder Link: {order_link}\n'.format(
         ref=new_order_ref_number,
         username=new_order_username,
         itemname=new_order_item_names,

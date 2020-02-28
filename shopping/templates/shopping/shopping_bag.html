@@ -17,7 +17,7 @@
                         {% comment %}Translators: Before the customer place an order, they have to confirm the order{% endcomment %}
                         {% trans "Confirm to checkout now?" %} <br>
                         {% trans "The detail of the order will be sent to your personal email. And we will contact you soon." %}.</h6>
-                    <a href="{% url 'shopping:handle-order' %}" type="button"
+                    <a href="{% url 'shopping:handle-order' %}" onclick="this.disabled=true;"
                         class="btn btn-outline-success col-12">{% trans "Confirm Order" %}</a>
 
                 </div>
