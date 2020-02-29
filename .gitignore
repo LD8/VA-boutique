@@ -1,7 +1,9 @@
 # images folers
-img/
 images/
 media/
+
+# migrations
+__copies__/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
