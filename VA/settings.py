@@ -118,7 +118,7 @@ else:
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'va',
         'USER': 'va_db_admin',
-        'PASSWORD': 'va_db_admin!@#password',
+        'PASSWORD': 'VA_db_admin!@#password',
         'HOST': 'localhost',
         'PORT': '',
     }

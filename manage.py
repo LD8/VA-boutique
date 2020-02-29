@@ -5,6 +5,11 @@ import sys
 
 
 def main():
+
+    from dotenv import load_dotenv
+    project_folder = os.path.expanduser('~/VA-boutique')
+    load_dotenv(os.path.join(project_folder, '.env'))
+    
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'VA.settings')
     try:
         from django.core.management import execute_from_command_line
