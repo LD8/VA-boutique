@@ -30,13 +30,12 @@ if DEBUG:
 
 # production setting
 else:
-    SECRET_KEY = os.environ['SECRET_KEY']
+    SECRET_KEY = os.getenv('SECRET_KEY')
     ALLOWED_HOSTS = ['va-boutique.com', '5.63.152.4', 'localhost']
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     # SECURE_HSTS_SECONDS = 600 #https://docs.djangoproject.com/en/3.0/ref/middleware/#http-strict-transport-security
-
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
@@ -116,8 +115,12 @@ if DEBUG:
 else:
     DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'VA',
+        'USER': 'VAadmin',
+        'PASSWORD': 'VAadmin',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
