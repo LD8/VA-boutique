@@ -26,7 +26,7 @@
 
     {% csrf_token %}
     {% bootstrap_form form %}
-    <button name="submit"  onclick="this.disabled=true,this.form.submit();" class="px-5 mt-3 mb-4 btn btn-outline-info">{% trans "Register" %}</button>
+    <button name="submit" class="px-5 mt-3 mb-4 btn btn-outline-info">{% trans "Register" %}</button>
 </form>
 
 {% endblock content %}

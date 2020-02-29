@@ -159,7 +159,7 @@ msgstr "Фильтр"
 
 #: boutique/templates/boutique/include/filter_general_form.html:63
 msgid "Clear Filter"
-msgstr "Сбросить фильтр"
+msgstr "Сбросить"
 
 #. Translators: footer, left column, title
 #: boutique/templates/boutique/include/footer.html:17
@@ -574,7 +574,7 @@ msgstr "Товар удалён из корзины"
 msgid ""
 "Your order is being processed! Please check your profile or your email for "
 "the details of the order."
-msgstr "Ваша покупка обрабатывается! "
+msgstr "Ваша покупка обрабатывается! Детали Вашего заказа отправлены на Ваш электронный адрес а также доступны в личном кабинете."
 
 #: shopping/views.py:129
 #, fuzzy
