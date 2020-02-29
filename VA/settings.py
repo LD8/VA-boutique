@@ -31,7 +31,7 @@ if DEBUG:
 # production setting
 else:
     SECRET_KEY = os.environ['SECRET_KEY']
-    ALLOWED_HOSTS = ['5.63.152.4', 'localhost']
+    ALLOWED_HOSTS = ['va-boutique.com', '5.63.152.4', 'localhost']
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -54,9 +54,6 @@ INSTALLED_APPS = [
     'bootstrap4',
     'mailer',
 
-    # debugging
-    'debug_toolbar',
-    
     # django add-in
     'django.contrib.humanize',
     
@@ -68,6 +65,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+if DEBUG:
+    INSTALLED_APPS += 'debug_toolbar'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -107,8 +106,15 @@ WSGI_APPLICATION = 'VA.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -175,10 +181,8 @@ EMAIL_HOST_USER = 'order@va-boutique.com'
 EMAIL_HOST_PASSWORD = 'Amadel2020'
 DEFAULT_FROM_EMAIL = 'VA-Boutique <{}>'.format(EMAIL_HOST_USER)
 
-
-# for Debug Toolbar to work
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-
-# security
+if DEBUG:
+    # for Debug Toolbar to work
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
