@@ -14,9 +14,9 @@ if DEBUG:
 else:
     SECRET_KEY = os.getenv('SECRET_KEY')
     ALLOWED_HOSTS = ['va-boutique.com', '5.63.152.4', 'localhost']
-    # SECURE_SSL_REDIRECT = True
-    # SESSION_COOKIE_SECURE = True
-    # CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
     # SECURE_HSTS_SECONDS = 600 #https://docs.djangoproject.com/en/3.0/ref/middleware/#http-strict-transport-security
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
