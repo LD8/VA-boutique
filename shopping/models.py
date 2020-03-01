@@ -22,7 +22,7 @@ class Order(models.Model):
     is_ordered = models.BooleanField(default=False, verbose_name=_("Ordered?"))
     # Translators: The date the order was placed
     date_ordered = models.DateTimeField(auto_now=True, verbose_name=_("Order Date"))
-    ref_number = models.CharField(max_length=15, blank=True, verbose_name=_("Reference Number"))
+    ref_number = models.CharField(max_length=30, blank=True, verbose_name=_("Reference Number"))
     # Translators: to describe whether the items have been delivered and the money has been received
     active = models.BooleanField(default=False, verbose_name=_("Order Active?"))
 
@@ -43,7 +43,7 @@ class Order(models.Model):
 
 
 class AnonymousOrder(models.Model):
-    ref_number = models.CharField(max_length=15, blank=True, unique=True, verbose_name=_("Reference Number"))
+    ref_number = models.CharField(max_length=50, blank=True, unique=True, verbose_name=_("Reference Number"))
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     # Translators: For unregistered users name
     customer_name = models.CharField(max_length=50, verbose_name=_('My name'))

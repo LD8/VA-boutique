@@ -8,13 +8,13 @@ from django.dispatch import receiver
 import os
 
 class VipOrder(models.Model):
-    ref_number = models.CharField(max_length=15, blank=True, unique=True, verbose_name=_("VIP Order Number"))
+    ref_number = models.CharField(max_length=50, blank=True, unique=True, verbose_name=_("VIP Order Number"))
     active = models.BooleanField(default=False, verbose_name=_("VIP Order Active?"))
     date_created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100, verbose_name=_('Your name'))
     email = models.EmailField(max_length=100, verbose_name=_('Your email'))
-    phone = models.IntegerField(verbose_name=_('Your cell phone number'))
-    address = models.CharField(max_length=30, verbose_name=_('What is your address?'))
+    phone = models.CharField(max_length=50, verbose_name=_('Your cell phone number'))
+    address = models.CharField(max_length=50, verbose_name=_('What is your address?'))
     item_description = models.TextField(verbose_name=_("Describe the item briefly"))
     item_image1 = models.ImageField(upload_to='vip_order', verbose_name=_("Upload a photo of the item"))
     item_image2 = models.ImageField(upload_to='vip_order', blank=True, null=True, verbose_name=_("Upload another photo of the item (optional)"))

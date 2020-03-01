@@ -11,7 +11,7 @@ from users.models import Profile
 class WishList(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     items = models.ManyToManyField(Item)
-    slug = models.SlugField(max_length=20, default='', editable=False)
+    slug = models.SlugField(max_length=50, default='', editable=False)
 
     def __str__(self):
         return self.name
