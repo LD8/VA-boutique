@@ -156,7 +156,7 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'users:login'
 
 # Email settings
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MAILER_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'mailer.backend.DbBackend'
 
 EMAIL_USE_SSL = True
