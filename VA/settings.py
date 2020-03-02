@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'VA.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if DEBUG:
+if not os.environ.get('USE_PROD_DB', None):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
