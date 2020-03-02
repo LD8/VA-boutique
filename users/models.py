@@ -13,7 +13,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=100, blank=True,
                             verbose_name=_('Your name'))
     email = models.EmailField(max_length=100, blank=True, verbose_name=_("Your Email"))
-    phone = models.IntegerField(
+    phone = models.CharField(max_length=50,
         blank=True, null=True, verbose_name=_('Your cell phone number'))
     address = models.CharField(max_length=100, blank=True,
                             verbose_name=_('What is your address'))

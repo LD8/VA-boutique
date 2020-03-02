@@ -51,7 +51,7 @@ class AnonymousOrder(models.Model):
     customer_location = models.CharField(
         max_length=50, verbose_name=_('My Location'))
     # Translators: For unregistered users phone number
-    customer_phone = models.IntegerField(verbose_name=_('My phone number'))
+    customer_phone = models.CharField(max_length=50, verbose_name=_('My phone number'))
     # Translators: For unregistered users email
     customer_email = models.EmailField(max_length=100, verbose_name=_('My email'))
     # Translators: For unregistered users ordered date

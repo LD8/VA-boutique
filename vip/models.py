@@ -13,7 +13,7 @@ class VipOrder(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100, verbose_name=_('Your name'))
     email = models.EmailField(max_length=100, verbose_name=_('Your email'))
-    phone = models.CharField(max_length=50, verbose_name=_('Your cell phone number'))
+    phone = models.CharField(max_length=100, verbose_name=_('Your cell phone number'))
     address = models.CharField(max_length=50, verbose_name=_('What is your address?'))
     item_description = models.TextField(verbose_name=_("Describe the item briefly"))
     item_image1 = models.ImageField(upload_to='vip_order', verbose_name=_("Upload a photo of the item"))
