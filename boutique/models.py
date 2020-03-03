@@ -108,6 +108,10 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def item_numbers_under_this_brand(self):
+        return self.item_set.count()
+
 
 class ItemQuerySet(models.QuerySet):
     def search(self, query=None):

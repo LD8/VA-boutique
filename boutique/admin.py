@@ -18,7 +18,7 @@ admin.site.register(IndexCarousel)
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'pk')
+    list_display = ('name', 'item_numbers_under_this_brand')
 
 class ItemImageInline(admin.TabularInline):
     model = ItemImage
