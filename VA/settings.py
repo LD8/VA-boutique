@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # third party apps
     'bootstrap4',
     'mailer',
+    'dbbackup',
 
     # django add-in
     'django.contrib.humanize',
@@ -63,10 +64,9 @@ if not os.environ.get('USE_PROD_DB', None):
     MIDDLEWARE += 'debug_toolbar.middleware.DebugToolbarMiddleware',
     # for Debug Toolbar to work
     INTERNAL_IPS = ['127.0.0.1']
-else:
-    INSTALLED_APPS += 'dbbackup',
-    DBBACKUP_STORAGE = 'dbbackup.storage.FileSystemStorage'
-    DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
+
+DBBACKUP_STORAGE = 'dbbackup.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
 
 ROOT_URLCONF = 'VA.urls'
 
