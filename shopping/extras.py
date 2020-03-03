@@ -45,7 +45,7 @@ def mail_order_detail(new_order_username, new_order_ref_number, new_order_link, 
         'НОВЫЙ ЗАКАЗ {}'.format(new_order_ref_number),
         msg_to_va,
         va_email,
-        ['va@va-boutique.com']
+        ['order@va-boutique.com']
     )
 
     send_mass_mail((email_to_customer, email_to_va), fail_silently=False)
