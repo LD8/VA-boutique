@@ -266,11 +266,11 @@ msgstr "Зарегистрироваться"
 #. Translators: Join us NOW for extra ___blank percent discount of this iten...
 #: boutique/templates/boutique/include/item_price.html:112
 msgid "Join us NOW for extra"
-msgstr "Присоединяйся к нам"
+msgstr "Присоединяйся к нам и получи скидку"
 
 #: boutique/templates/boutique/include/item_price.html:114
 msgid "discount of this item and SO MUCH MORE!!!"
-msgstr "и получи скидку на данный и много других товаров"
+msgstr " на данный и много других товаров"
 
 #. Translators: button text to close a popup window
 #: boutique/templates/boutique/include/modal_in_footer.html:35
