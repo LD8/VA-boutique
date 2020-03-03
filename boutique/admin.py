@@ -15,8 +15,10 @@ admin.site.index_title = _('Manage Administrators and Upload/Update Items')
 admin.site.site_title = 'VA-Boutique'
 admin.site.register(Tag)
 admin.site.register(IndexCarousel)
-admin.site.register(Brand)
 
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name', 'pk')
 
 class ItemImageInline(admin.TabularInline):
     model = ItemImage
