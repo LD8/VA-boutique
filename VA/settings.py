@@ -65,7 +65,7 @@ if not os.environ.get('USE_PROD_DB', None):
     INTERNAL_IPS = ['127.0.0.1']
 else:
     INSTALLED_APPS += 'dbbackup',
-    DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+    DBBACKUP_STORAGE = 'dbbackup.storage.FileSystemStorage'
     DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
 
 ROOT_URLCONF = 'VA.urls'
