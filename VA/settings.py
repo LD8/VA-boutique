@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 
 # development setting
-if DEBUG:
+if not os.environ.get('USE_PROD_DB', None):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = '&gfm96b4n&a8i@7io^zheq)kzjd3k@vd(#(mp-*vw_kg_fr_hy'
     ALLOWED_HOSTS = ['localhost', '5.63.152.4']
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -57,11 +58,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if DEBUG:
+if not os.environ.get('USE_PROD_DB', None):
     INSTALLED_APPS += 'debug_toolbar',
     MIDDLEWARE += 'debug_toolbar.middleware.DebugToolbarMiddleware',
     # for Debug Toolbar to work
     INTERNAL_IPS = ['127.0.0.1']
+else:
+    INSTALLED_APPS += 'dbbackup',
+    DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+    DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
 
 ROOT_URLCONF = 'VA.urls'
 
@@ -100,7 +105,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'va',
             'USER': 'va_db_admin',
-            'PASSWORD': 'VA_db_admin!@#password',
+            'PASSWORD': os.environ.get('DB_PASSWD'),
             'HOST': 'localhost',
             'PORT': '',
         }
@@ -129,7 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-if DEBUG:
+if not os.environ.get('USE_PROD_DB', None):
     LANGUAGE_CODE = 'en-us'
 else:
     LANGUAGE_CODE = 'ru'
