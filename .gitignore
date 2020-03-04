@@ -2,8 +2,11 @@
 images/
 media/
 
-# migrations
+# backups
 __copies__/
+__web_backup__/
+
+migrations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

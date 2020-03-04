@@ -2,27 +2,35 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# always False when pushing to Git
 DEBUG = False
 
-# development setting
+# local/dev setting
 if not os.environ.get('USE_PROD_DB', None):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = '&gfm96b4n&a8i@7io^zheq)kzjd3k@vd(#(mp-*vw_kg_fr_hy'
     ALLOWED_HOSTS = ['localhost', '5.63.152.4']
 
-# production setting
+# server/prod setting
 else:
     SECRET_KEY = os.getenv('SECRET_KEY')
-    ALLOWED_HOSTS = ['va-boutique.com', 'www.va-boutique.com', '5.63.152.4', 'localhost']
+
+    ALLOWED_HOSTS = [
+        'va-boutique.com',
+        'www.va-boutique.com', 
+        '5.63.152.4', 
+        'localhost',
+    ]
+
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     # SECURE_HSTS_SECONDS = 600 #https://docs.djangoproject.com/en/3.0/ref/middleware/#http-strict-transport-security
+
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Application definition
-
 INSTALLED_APPS = [
     # VA apps
     'boutique.apps.BoutiqueConfig',
@@ -34,7 +42,9 @@ INSTALLED_APPS = [
     # third party apps
     'bootstrap4',
     'mailer',
-    'dbbackup',
+
+    # backup db and static and media folders
+    'django_archive', 
 
     # django add-in
     'django.contrib.humanize',
@@ -65,9 +75,6 @@ if not os.environ.get('USE_PROD_DB', None):
     # for Debug Toolbar to work
     INTERNAL_IPS = ['127.0.0.1']
 
-DBBACKUP_STORAGE = 'dbbackup.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': '/var/backups'}
-
 ROOT_URLCONF = 'VA.urls'
 
 TEMPLATES = [
@@ -90,26 +97,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'VA.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-# if not os.environ.get('USE_PROD_DB', None):
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# Database settings
+if not os.environ.get('USE_PROD_DB', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
-# else:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'va',
-#         'USER': 'va_db_admin',
-#         'PASSWORD': os.environ.get('DB_PASSWD'),
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'va',
+            'USER': 'va_db_admin',
+            'PASSWORD': os.environ.get('DB_PASSWD'),
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 
 # Password validation
@@ -162,7 +168,7 @@ LOGIN_URL = 'users:login'
 
 # Email settings
 EMAIL_BACKEND = 'mailer.backend.DbBackend'
-MAILER_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# MAILER_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.mail.ru'
