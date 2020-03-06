@@ -9,6 +9,7 @@ __web_backup__/
 # misc
 fontawesome/
 migrations/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
