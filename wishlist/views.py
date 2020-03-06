@@ -21,12 +21,12 @@ def add_wish(request, **kwargs):
     item_to_add = get_object_or_404(Item, pk=kwargs.get('item_pk'))
     wish_list = get_object_or_404(WishList, profile=request.user.profile)
     if item_to_add in wish_list.items.all():
-        messages.info(request, _("The item is already in your wish-list!"))
+        messages.warning(request, _("The item is already in your wish-list!"))
         return redirect('boutique:item', kwargs.get('item_pk'))
     else:
         wish_list.items.add(item_to_add)
         wish_list.save()
-        messages.info(request, _("Item added to wish-list!"))
+        messages.success(request, _("Item added to wish-list!"))
         return redirect('wishlist:wish-list', wish_list.slug)
 
 
@@ -36,6 +36,6 @@ def del_wish(request, **kwargs):
     item_to_del = wish_list.items.get(pk=kwargs.get('item_pk'))
     if item_to_del:
         wish_list.items.remove(item_to_del)
-        messages.info(request, _("Item removed from your wish list!"))
+        messages.error(request, _("Item removed from your wish list!"))
 
     return redirect('wishlist:wish-list', wish_list.slug)

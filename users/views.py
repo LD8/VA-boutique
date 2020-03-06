@@ -80,7 +80,7 @@ class RegisterView(TemplateView):
         if self.form.is_valid():
             new_user = self.form.save()
             login(self.request, new_user)
-            messages.info(self.request, _("Please complete your profile information"))
+            messages.warning(self.request, _("Please complete your profile information"))
             if next:
                 return redirect(next)
             return redirect('users:profile-update', new_user.profile.pk, new_user.profile.slug)

@@ -35,7 +35,7 @@ def create_vip_order(request, **kwargs):
         }
         mail_order_detail(**kwargs)
 
-        messages.info(request, _(
+        messages.success(request, _(
             "Thanks for your purchase, we will contact you soon!"))
         return redirect('vip:vip-order', new_vip_order.ref_number)
    

@@ -36,7 +36,7 @@ def add_to_bag(request, **kwargs):
     order_item, created = OrderItem.objects.get_or_create(item=item_to_order)
     shopping_bag.items.add(order_item)
     shopping_bag.save()
-    messages.info(request, _('Item has been added to your shopping bag!'))
+    messages.success(request, _('Item has been added to your shopping bag!'))
     return redirect('shopping:shopping-bag')
 
 
@@ -46,7 +46,7 @@ def del_from_bag(request, **kwargs):
     order_item_to_del = get_object_or_404(
         OrderItem, pk=kwargs.get('order_item_pk'))
     shopping_bag.items.remove(order_item_to_del)
-    messages.info(request, _('Item has been removed from your shopping bag!'))
+    messages.error(request, _('Item has been removed from your shopping bag!'))
     return redirect('shopping:shopping-bag')
 
 
@@ -71,7 +71,7 @@ def show_registered_order(request, ref):
 
     # authentication: user should be the owner of the profile to view their order
     if order.profile != request.user.profile:
-        messages.info(request, 'Сожалею! Вы не можете видеть заказы другого участника ...')
+        messages.error(request, 'Сожалею! Вы не можете видеть заказы другого участника ...')
         raise Http404
     return render(request, 'shopping/order.html', {'order': order})
 
@@ -80,7 +80,7 @@ def show_registered_order(request, ref):
 def handle_order(request, **kwargs):
     order = get_shopping_bag(request)
     if order.items.count == 0:
-        messages.info(request, _('Please add more items to your shpping bag'))
+        messages.warning(request, _('Please add more items to your shpping bag'))
         return redirect('shopping:shopping-bag')
     order.ref_number = ref_number_generator()
     order.is_ordered = True
