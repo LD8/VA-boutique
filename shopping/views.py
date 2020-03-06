@@ -64,7 +64,14 @@ class OrderListView(ListView):
 def show_registered_order(request, ref):
     """ Display an order placed by a registered user """
     order = get_object_or_404(Order, ref_number=ref)
-    if order.profile != request.user.profile or not request.user.is_superuser:
+    
+    # fast track to superuser
+    if request.user.is_superuser:
+        return render(request, 'shopping/order.html', {'order': order})
+
+    # authentication: user should be the owner of the profile to view their order
+    if order.profile != request.user.profile:
+        messages.info(request, 'Сожалею! Вы не можете видеть заказы другого участника ...')
         raise Http404
     return render(request, 'shopping/order.html', {'order': order})
 
