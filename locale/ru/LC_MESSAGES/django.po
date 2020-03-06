@@ -29,7 +29,6 @@ msgid "Manage Administrators and Upload/Update Items"
 msgstr ""
 
 #: boutique/models.py:38
-#, fuzzy
 #| msgid "Category"
 msgid "Category Name"
 msgstr "Категория"
@@ -43,25 +42,21 @@ msgid "Category"
 msgstr "Категория"
 
 #: boutique/models.py:47
-#, fuzzy
 #| msgid "Category"
 msgid "Categories"
 msgstr "Kатегории"
 
 #: boutique/models.py:66
-#, fuzzy
 #| msgid "Category"
 msgid "Sub-category Name"
 msgstr "Название подкатегории"
 
 #: boutique/models.py:67
-#, fuzzy
 #| msgid "Category"
 msgid "Sub-category Description"
 msgstr "Описание подкатегории"
 
 #: boutique/models.py:72
-#, fuzzy
 #| msgid "Category"
 msgid "Sub-category"
 msgstr "Подкатегория"
@@ -87,7 +82,6 @@ msgid "Brand Description"
 msgstr "Описание бренда"
 
 #: boutique/models.py:154
-#, fuzzy
 #| msgid "Category"
 msgid "Item Name"
 msgstr "Наименование товара"
@@ -421,13 +415,11 @@ msgid "Order Active?"
 msgstr "Активный заказ"
 
 #: shopping/models.py:40
-#, fuzzy
 #| msgid "Register"
 msgid "Registered Order"
 msgstr "зарегистрированный заказ"
 
 #: shopping/models.py:41
-#, fuzzy
 #| msgid "Register"
 msgid "Registered Orders"
 msgstr "зарегистрированные заказы"
@@ -452,13 +444,11 @@ msgid "My email"
 msgstr "Электронная почта"
 
 #: shopping/models.py:69
-#, fuzzy
 #| msgid "Confirm Order"
 msgid "Anonymous Order"
 msgstr "незарегистрированный заказ"
 
 #: shopping/models.py:70
-#, fuzzy
 #| msgid "My Orders"
 msgid "Anonymous Orders"
 msgstr "незарегистрированные заказы"
@@ -577,7 +567,6 @@ msgid ""
 msgstr "Ваша покупка обрабатывается! Детали Вашего заказа отправлены на Ваш электронный адрес а также доступны в личном кабинете."
 
 #: shopping/views.py:129
-#, fuzzy
 #| msgid "Your purchase is being processed"
 msgid "Your order is being processed!"
 msgstr "Ваша покупка обрабатывается!"
@@ -610,13 +599,11 @@ msgid "What is your address"
 msgstr "Адрес"
 
 #: users/models.py:24
-#, fuzzy
 #| msgid "My Profile"
 msgid "Profile"
 msgstr "профиль"
 
 #: users/models.py:25
-#, fuzzy
 #| msgid "My Profile"
 msgid "Profiles"
 msgstr "профили"
@@ -634,7 +621,6 @@ msgid "Please Sign In"
 msgstr "Войти"
 
 #: users/templates/registration/login.html:10
-#, fuzzy
 #| msgid "Sign Up"
 msgid "Sign In"
 msgstr "Зарегистрироваться"
@@ -692,13 +678,11 @@ msgid "Please complete your profile information"
 msgstr "Укажите персональную информацию"
 
 #: vip/models.py:11
-#, fuzzy
 #| msgid "Order Ref Number"
 msgid "VIP Order Number"
 msgstr "Номер заказа"
 
 #: vip/models.py:12
-#, fuzzy
 #| msgid "Order Active?"
 msgid "VIP Order Active?"
 msgstr "Активный заказ"
@@ -720,7 +704,6 @@ msgid "Upload another photo of the item (optional)"
 msgstr "Загрузите фотографию"
 
 #: vip/models.py:25
-#, fuzzy
 #| msgid "VIP Order"
 msgid "VIP Orders"
 msgstr "VIP заказ"
@@ -732,7 +715,6 @@ msgid ""
 msgstr "Пожалуйста, заполните анкету для размещения VIP заказа  "
 
 #: vip/templates/vip/vip_order.html:13
-#, fuzzy
 #| msgid "Category"
 msgid "VIP Name"
 msgstr "Категория"
@@ -754,7 +736,6 @@ msgid "Item added to wish-list!"
 msgstr "Товар добавлен в список ваших желаний"
 
 #: wishlist/views.py:39
-#, fuzzy
 #| msgid "Please add more items to your shpping bag"
 msgid "Item removed from your wish list!"
 msgstr "Добавьте больше товаров в корзину"
