@@ -9,7 +9,8 @@ import os
 
 class CategoryQuerySet(models.QuerySet):
     def get_categories_with_item(self):
-        return self.annotate(Count('item')).exclude(item__count=0).prefetch_related('subcategory_set')
+        return self.annotate(Count('item')).prefetch_related('subcategory_set')
+        # return self.annotate(Count('item')).exclude(item__count=0).prefetch_related('subcategory_set')
 
     def get_categories_by_gender(self, gender):
         if gender == 'women':

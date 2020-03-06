@@ -6,6 +6,8 @@ media/
 __copies__/
 __web_backup__/
 
+# misc
+fontawesome/
 migrations/
 
 # Byte-compiled / optimized / DLL files

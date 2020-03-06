@@ -4,7 +4,7 @@
 #bootstrap-override a.cursor-pointer {
   cursor: pointer; }
 #bootstrap-override div.sales-cover {
-  background-image: url("../img/sales-cover.png");
+  background-image: url("../img/sales-cover.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -29,7 +29,10 @@
   #bootstrap-override .filter {
     display: none; }
   #bootstrap-override .filter-icon {
-    display: block; } }
+    display: block; }
+  #bootstrap-override .dropdown-menu {
+    max-height: 600px;
+    overflow-y: scroll; } }
 #bootstrap-override .breadcrumb {
   background-color: transparent; }
 #bootstrap-override .back-button {
@@ -50,6 +53,9 @@ div.modal {
 
 .font-bigger {
   font-size: large; }
+
+.font-smaller {
+  font-size: small; }
 
 div.accordion a.dropdown-item {
   padding-left: 5px;

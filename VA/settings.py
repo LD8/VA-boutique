@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # always False when pushing to Git
-DEBUG = False
+DEBUG = True
 
 # local/dev setting
 if not os.environ.get('USE_PROD_DB', None):
@@ -144,6 +144,7 @@ if not os.environ.get('USE_PROD_DB', None):
 else:
     LANGUAGE_CODE = 'ru'
 
+LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True

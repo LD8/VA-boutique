@@ -12,7 +12,7 @@
   }
   // sales page
   div.sales-cover {
-    background-image: url("../img/sales-cover.png");
+    background-image: url("../img/sales-cover.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -53,6 +53,10 @@
     .filter-icon {
       display: block;
     }
+    .dropdown-menu{
+      max-height: 600px;
+      overflow-y: scroll;
+   }
   }
 
   // breadcrumb and back button
@@ -87,6 +91,10 @@ div.modal {
 
 .font-bigger {
   font-size: large;
+}
+
+.font-smaller {
+  font-size: small;
 }
 
 div.accordion a.dropdown-item {

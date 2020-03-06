@@ -3,12 +3,14 @@
 
 {% block content %}
 <div class="sales-cover shadow-lg mb-4 mb-md-5"></div>
-<div class="row">
-    {% for item in items %}
+<div class="container px-2">
+    <div class="row">
+        {% for item in items %}
 
-    {% include 'boutique/include/item_in_listviews.html' %}
+        {% include 'boutique/include/item_in_listviews.html' %}
 
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
 <div class="border-bottom text-black-50 mt-4 mt-lg-5 d-flex justify-content-center align-items-center">
     <p><i class="fas fa-angle-double-down fa-sm mr-3 mr-sm-5"></i></p>
