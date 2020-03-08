@@ -54,17 +54,24 @@
         <p class="mt-n2 mb-4 px-3"><small class="font-weight-lighter">{{category.description}}</small></p>
         {% endif %} -->
         <div class="row">
-            {% for item in category.item_set.all|slice:":8" %}
+            {% if show_all_cat_items_flag %}
 
-            {% include 'boutique/include/item_in_listviews.html' %}
-
-            {% endfor %}
-
-            {% if category.item_set.count > 8 %}
-            <a href="{{category.get_category_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm">
-                »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
-            {% endif %}
+                {% for item in category.item_set.all %}
+                {% include 'boutique/include/item_in_listviews.html' %}
+                {% endfor %}
             
+            {% else %}
+
+                {% for item in category.item_set.all|slice:":8" %}
+                {% include 'boutique/include/item_in_listviews.html' %}
+                {% endfor %}
+
+                {% if category.item_set.count > 8 %}
+                <a href="{{category.get_category_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm">
+                    »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
+                {% endif %}
+
+            {% endif }
         </div>
     </div>
 
