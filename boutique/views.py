@@ -44,7 +44,7 @@ def show_category(request, pk):
         'categories_shown': cat_queryset.prefetch_related('subcategory_set__item_set'),
         'filters': {'category': cat, },
         'brands': get_brands(cat.item_set),
-        'show_all_cat_items_flag': True if cat.subcatgory_set.count() == 0 else False,
+        'show_all_cat_items_flag': True if cat.subcategory_set.count() == 0 else False,
     }
     return render(request, 'boutique/show_all.html', context)
 
