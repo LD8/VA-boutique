@@ -126,7 +126,6 @@ class SubCategory(models.Model):
 
     def get_subcategory_url(self):
         return reverse('boutique:show-subcategory', kwargs={'pk': self.pk})
-        # return reverse('boutique:show-subcategory', kwargs={'gender': self.category.get_gender_display(), 'subcategory_pk': self.pk})
 
 
 class Tag(models.Model):
@@ -164,14 +163,7 @@ class Brand(models.Model):
 class ItemQuerySet(models.QuerySet):
     def search(self, query=None):
         qs = Item.objects.all()
-        query = query
-
-        def is_valid_queryparam(param):
-            '''check if the query parameter(the search input) is valid'''
-            return param is not '' and param is not None
-
-        # if type to search initially
-        if is_valid_queryparam(query):
+        if query is not '' and query is not None:
             qs = qs.filter(
                 Q(category__name__icontains=query) |
                 Q(category__description__icontains=query) |
@@ -181,8 +173,6 @@ class ItemQuerySet(models.QuerySet):
                 Q(brand__name__icontains=query) |
                 Q(description__icontains=query)
             ).distinct()
-
-        # print('\nfinal qs is as following: ', qs, '\n')
         return qs
 
 
@@ -204,7 +194,11 @@ class Item(models.Model):
         Tag, on_delete=models.SET_NULL, null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=7)
 
-    # ----- Unique Attributes ----- #
+    # ----- status ----- #
+    in_stock = models.BooleanField(default=True, verbose_name=_(
+        'In Stock (untick when out of stock)'))
+
+    # ----- Attributes ----- #
     name = models.CharField(max_length=100, unique=True,
                             verbose_name=_('Item Name'))
     description = models.TextField(
@@ -213,7 +207,7 @@ class Item(models.Model):
         auto_now_add=True, null=True, blank=True)
 
     # ----- price section ----- #
-    price = models.IntegerField(default=0)
+    price = models.IntegerField(default=0, verbose_name=_('Original Price'))
     discount_percentage = models.IntegerField(
         verbose_name=_('Discount Percentage'), default=0, validators=[
             MinValueValidator(0), MaxValueValidator(100)])
@@ -223,44 +217,27 @@ class Item(models.Model):
         verbose_name=_('Total Discount Percentage (Calculated automatically)'), blank=True, null=True)
     final_price = models.IntegerField(
         verbose_name=_('Final Price (Calculated automatically)'), blank=True, null=True)
-    
+
     # ----- object manager ----- #
     objects = ItemManager()
 
     class Meta:
-        ordering = ['-uploaded_date', '-discount_percentage']
+        ordering = ['-in_stock', '-uploaded_date', '-discount_percentage']
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.discounted_price = int(self.price * (100 - self.discount_percentage) * 0.01)
+        self.discounted_price = int(
+            self.price * (100 - self.discount_percentage) * 0.01)
         self.total_discount_percentage = int(self.discount_percentage + self.tag.tag_discount_percentage
-                ) if self.tag else self.discount_percentage
-        self.final_price = self.price * self.total_discount_percentage
-        # self.final_price = int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
-        #                        ) if self.tag else self.discounted_price
+                                             ) if self.tag else self.discount_percentage
+        self.final_price = int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
+                               ) if self.tag else self.discounted_price
         super().save(*args, **kwargs)
 
     def get_item_url(self):
         return reverse('boutique:item', kwargs={'pk': self.pk})
-
-    # @property
-    # def discounted_price(self):  # changed from get_discounted_price
-    #     '''to calculate the price after discount'''
-    #     return int(self.price * (100 - self.discount_percentage) * 0.01)
-
-    # @property
-    # def final_price(self):  # changed from get_final_price
-    #     '''to calculate the tagged price 5% off'''
-    #     return int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
-    #                ) if self.tag else int(self.discounted_price)
-
-    # @property
-    # def total_discount_percentage(self):
-    #     '''to calculate the total discount'''
-    #     return (self.discount_percentage + self.tag.tag_discount_percentage
-    #             ) if self.tag is not None else self.discount_percentage
 
 
 class IndexCarousel(models.Model):

@@ -1,8 +1,13 @@
 {% load i18n %}
 
 <!-- filters with brands, min_price, max_price -->
-<form action="{% url 'boutique:filter' pk=filters.subcategory.pk %}" method="GET">
-    {% csrf_token%}
+<form action="
+    {% if filters.subcategory %}
+        {% url 'boutique:filter' pk=filters.subcategory.pk %}
+    {% else %}
+        {% url 'boutique:filter-all' %}
+    {% endif %}" method="GET">{% csrf_token%}
+
     <div class="form-row px-0 mb-4">
 
         <!-- brand -->

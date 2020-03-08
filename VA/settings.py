@@ -10,7 +10,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if not os.environ.get('USE_PROD_DB', None):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = '&gfm96b4n&a8i@7io^zheq)kzjd3k@vd(#(mp-*vw_kg_fr_hy'
-    ALLOWED_HOSTS = ['localhost', '5.63.152.4']
+    ALLOWED_HOSTS = [
+        'localhost', 
+        '5.63.152.4',
+    ]
 
 # server/prod setting
 else:

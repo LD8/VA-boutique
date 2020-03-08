@@ -27,8 +27,14 @@ class SalesListView(ListView):
 
 
 def show_all(request, gender):
-    context = {'categories_shown': Category.objects.get_categories_by_gender(gender).annotate(
-        Count('item')).exclude(item__count=0).prefetch_related('subcategory_set__item_set')}
+    context = {
+        'categories_shown': Category.objects.get_categories_by_gender(gender).annotate(
+            Count('item')).exclude(item__count=0).prefetch_related('subcategory_set__item_set'),
+        'brands': Brand.objects.annotate(
+            brand_pk=F('pk'),
+            brand_name=F('name')).values(
+            'brand_pk', 'brand_name').order_by('brand_name')
+    }
     return render(request, 'boutique/show_all.html', context)
 
 
@@ -39,21 +45,18 @@ def show_category(request, pk):
 
 
 def show_subcategory(request, pk):
-    context = {'subcategories_shown': SubCategory.objects.filter(
-        pk=pk).select_related('category')}
-
     subcategory = SubCategory.objects.get(pk=pk)
 
-    context['filters'] = {
-        'subcategory': subcategory,
-        'brand_pk': None,
-        'min_price': None,
-        'max_price': None,
+    context = {
+        'subcategories_shown': SubCategory.objects.filter(pk=pk).select_related('category'),
+        'filters': {
+            'subcategory': subcategory,
+            'brand_pk': None,
+            'min_price': None,
+            'max_price': None,
+        },
+        'brands': get_brands(subcategory.item_set.all())
     }
-
-    context['brands'] = get_brands(subcategory.item_set.all())
-
-    print(context)
     return render(request, 'boutique/show_subcategory.html', context)
 
 
@@ -69,8 +72,6 @@ def get_brands(item_queryset):
 
 def filter_item(request, pk=None, **kwargs):
     """ Page shows filtered items """
-    print(request.GET)
-    print(kwargs)
     sub_pk = pk
     brand_pk = request.GET.get('brand_pk')
     min_price = request.GET.get('min_price')
@@ -86,9 +87,10 @@ def filter_item(request, pk=None, **kwargs):
 
     # initialise queryset: items
     if sub_pk:
-        subcategory = get_object_or_404(SubCategory, pk=sub_pk)
-        items = subcategory.item_set.all()
+        # subcategory = get_object_or_404(SubCategory, pk=sub_pk)
+        subcategory = SubCategory.objects.get(pk=sub_pk)
         context['filters']['subcategory'] = subcategory
+        items = subcategory.item_set.all()
     else:
         items = Item.objects.all()
 
@@ -96,7 +98,7 @@ def filter_item(request, pk=None, **kwargs):
     context['brands'] = get_brands(items)
 
     if brand_pk:
-        items = items.filter(brand__pk=brand_pk).select_related('brand')
+        items = items.filter(brand__pk=brand_pk)
 
     if min_price:
         if request.user.is_authenticated:
@@ -110,8 +112,7 @@ def filter_item(request, pk=None, **kwargs):
         else:
             items = items.filter(discounted_price__lte=max_price)
 
-    context['items'] = items.prefetch_related('itemimage_set')
-    print(context)
+    context['items'] = items
     return render(request, 'boutique/filtered_items.html', context)
 
 
@@ -138,113 +139,4 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['query'] = self.query
-        return context
-        raise Http404
-
-
-# class SubCategoryListView(ListView):
-#     model = SubCategory
-#     template_name = 'boutique/show_subcategory.html'
-
-
-class CategoryListView(ListView):
-    '''display a list of items'''
-    model = Category
-    # paginate_by = 1
-    template_name = 'boutique/show_category.html'
-    context_object_name = 'category_shown'
-
-    def get_queryset(self):
-        qs = super().get_queryset().get_categories_with_item()
-        self.gender = self.kwargs.get('gender')  # reuse in context
-        gender = self.gender
-        request = self.request
-
-        # fetch filter-form data
-        self.category_selected = request.GET.get('category_selected')
-        self.brand_selected = request.GET.get('brand_selected')
-        self.min_price = request.GET.get('min_price')
-        self.max_price = request.GET.get('max_price')
-
-        if gender == 'women':
-            self.gender_number = 1
-        elif gender == 'men':
-            self.gender_number = 2
-        else:
-            raise Http404
-
-        get_category_selected = Category.objects.filter(
-            gender=self.gender_number, name__iexact=self.category_selected).first()
-        category_selected_pk = get_category_selected.pk if get_category_selected else None
-
-        get_subcategory_selected = SubCategory.objects.filter(
-            category__gender=self.gender_number, name__iexact=self.category_selected).first()
-        subcategory_selected_pk = get_subcategory_selected.pk if get_subcategory_selected else None
-
-        category_pk = category_selected_pk if category_selected_pk else self.kwargs.get(
-            'category_pk')
-        subcategory_pk = subcategory_selected_pk if subcategory_selected_pk else self.kwargs.get(
-            'subcategory_pk')
-
-        # print('\nself.kwargs:\n', gender, category_pk, subcategory_pk)
-
-        if gender and not category_pk and not subcategory_pk:
-            qs = qs.get_categories_by_gender(gender)
-            # print('\nCategoryLV_qs_gender= ', '\n', qs, '\n', gender, '\n')
-            return qs
-
-        elif gender and category_pk:
-            qs = qs.filter(pk=category_pk)
-            # print('\nCategoryLV_qs_category= ', '\n', qs, '\n')
-            return qs
-
-        elif gender and subcategory_pk:
-            qs = SubCategory.objects.annotate(Count('item')).exclude(
-                item__count=0).filter(pk=subcategory_pk)
-            self.context_object_name = 'subcategory_shown'
-            # print('\nCategoryLV_qs_sub_category= ', '\n', qs, '\n')
-            return qs
-
-    def get_validated_cats(self):
-        categories_validated = []
-        subcategories_validated = []
-        items_validated = []
-
-        brand_selected = self.brand_selected
-        min_price = self.min_price
-        if min_price == '' or min_price is None:
-            min_price = 0
-        max_price = self.max_price
-        if max_price == '' or max_price is None:
-            max_price = 999999
-
-        for item in Item.objects.select_related('category', 'subcategory', 'tag').filter(category__gender=self.gender_number):
-            if int(min_price) <= item.final_price < int(max_price):
-                if brand_selected is None or brand_selected == 'бренд' or item.brand.name == brand_selected:
-                    items_validated.append(item)
-                    if item.category not in categories_validated:
-                        categories_validated.append(item.category)
-                    if item.subcategory not in subcategories_validated:
-                        subcategories_validated.append(item.subcategory)
-
-        return categories_validated, subcategories_validated, items_validated
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['brands'] = Brand.objects.all()
-
-        cat_valid, subcat_valid, items_valid = self.get_validated_cats()
-        context['filter_context'] = {
-            'gender': self.gender,
-            'gender_number': self.gender_number,
-            'category_selected': self.category_selected,
-            'brand_selected': self.brand_selected,
-            'min_price': self.min_price,
-            'max_price': self.max_price,
-            'categories_validated': cat_valid,
-            'subcategories_validated': subcat_valid,
-            'items_validated': items_valid,
-        }
-
-        # print(context)
         return context

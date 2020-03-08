@@ -1,6 +1,10 @@
 {% extends 'boutique/base.html' %}
 {% load i18n %}
+
 {% block content %}
+
+{% include 'boutique/include/filter_icon.html' %}
+{% include 'boutique/include/filter_form.html' with filter='filter' %}
 
 {% for category in categories_shown %}
 <!-- wrapper for each category -->
@@ -63,6 +67,8 @@
 <!-- / wrapper for each category -->
 {% endfor %}
 <!-- /end categories forloop -->
+
+{% include 'boutique/include/to_top_btn.html' %}
 
 <hr class="mt-3">
 {% endblock content %}

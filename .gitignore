@@ -8,6 +8,7 @@ __web_backup__/
 
 # misc
 fontawesome/
+webfonts/
 migrations/
 .vscode/
 

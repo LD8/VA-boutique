@@ -29,6 +29,13 @@
         <!-- / breakcrumb -->
     </div>
 
+    <!-- message if out of stock -->
+    {% if not item.in_stock %}
+    <div class="alert alert-secondary" role="alert">
+        {% trans "This item is out of stock. But luckily, we have many other products for you to browse." %}
+    </div>
+    {% endif %}
+
     <!-- item images and thumbnails -->
     <div class="row">
 
@@ -126,15 +133,15 @@
         <div class="col-12 col-md-4 mt-2">
 
             {% if user.is_authenticated %}
-            <a href="{% url 'shopping:add-to-bag' item.pk %}"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
-            <a href="{% url 'shopping:buy-now-registered' item.pk %}"
-                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
+            <a href="{% url 'shopping:add-to-bag' item.pk %}" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3
+                {% if not item.in_stock %} disabled {% endif %}">{% trans "Add to Bag" %}</a>
+            <a href="{% url 'shopping:buy-now-registered' item.pk %}" class="btn btn-dark col-12 my-2 px-0 px-sm-3
+                {% if not item.in_stock %} disabled {% endif %}">{% trans "Buy Now" %}</a>
             {% else %}
             <a href="#wishListSignUpModal" data-toggle="modal"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
-            <a href="{% url 'shopping:buy-now-unregistered' item.pk %}"
-                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
+            <a href="{% url 'shopping:buy-now-unregistered' item.pk %}" class="btn btn-dark col-12 my-2 px-0 px-sm-3
+                {% if not item.in_stock %} disabled {% endif %}">{% trans "Buy Now" %}</a>
             {% endif %}
 
             <a href="#policyModalScrollable" data-toggle="modal"
@@ -212,7 +219,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="mb-3 text-danger font-weight-light">
-                    {% comment %}Translators: popup window text when people try to click the heart(wish-list) button{% endcomment %}
+                    {% comment %}Translators: popup window text when people try to click the heart(wish-list)
+                    button{% endcomment %}
                     {% trans "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, manage all of your orders! And So Much more..." %}
                 </h4>
                 <div style="height: 150px"></div>

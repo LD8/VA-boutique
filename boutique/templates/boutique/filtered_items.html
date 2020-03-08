@@ -7,18 +7,19 @@
     <div class="container px-2">
 
         {% if filters.subcategory %}
-        <h6 class="my-3 pb-1 border-bottom font-weight-lighter text-left">
+        <h4 class="my-3 pb-1 border-bottom font-weight-lighter text-left">
             {% comment %}Translators: title of filtered result page, following by the subcategory name{% endcomment %}
             {% trans "Filtered" %}
-            <a class="text-dark" href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a></h6>
+            <a class="text-dark" href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a></h4>
         {% else %}
-        <h6 class="my-3 pb-1 border-bottom font-weight-lighter text-left">
+        <h4 class="my-3 pb-1 border-bottom font-weight-lighter text-left">
             {% comment %}Translators: title of filtered result page for filtering everything{% endcomment %}
-            {% trans "Filtered all products" %}
-        </h6>
+            {{filters.brand.brand_name}}
+        </h4>
+        <p>{% trans "You can also choose a category in the menu bar" %}</p>
         {% endif %}
 
-        {% include 'boutique/include/filter_general.html' %}
+        {% include 'boutique/include/filter_form.html' with filter='' %}
 
         <div class="row mb-5">
             {% for item in items %}
@@ -27,11 +28,8 @@
 
             {% endfor %}
         </div>
-
-        <div class="d-flex">
-            <a href="#top" class="btn btn-sm btn-outline-dark border mt-n5 mb-5 ml-auto text-black-50">
-                <i class="fas fa-angle-double-up px-0 py-3"></i></a>
-        </div>
+        
+        {% include 'boutique/include/to_top_btn.html' %}
     </div>
 
 </div>
