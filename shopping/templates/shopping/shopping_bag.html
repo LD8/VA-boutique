@@ -47,16 +47,11 @@
         <div class="col px-0 d-flex align-items-center ml-md-3" style="font-size: 15px;">
             <!-- item price tag -->
             <div class="col-6 px-0">
-                <a href="{{ item.item.get_item_url }}" class="text-black-50 ">
-                    {% if item.item.brand.name != 'Other' %}
-                    <p class="mb-0"><em>{{item.item.brand}}</em></p>
-                    {% endif %}
-                    {{item.item|title}}</a>
+                <a href="{{ item.item.get_item_url }}" class="text-black-50">{{item.item}}</a>
             </div>
             <div class="col-6">
                 <p class="mt-auto mb-auto"><span class="mr-1">&#8381;</span>{{ item.item.final_price|intcomma }}</p>
             </div>
-
             <!-- /item price tag -->
         </div>
         <div class="col-1">

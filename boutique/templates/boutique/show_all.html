@@ -1,0 +1,68 @@
+{% extends 'boutique/base.html' %}
+{% load i18n %}
+{% block content %}
+
+{% for category in categories_shown %}
+<!-- wrapper for each category -->
+<div class="mt-4 mt-lg-5 text-center mb-3 mb-md-5">
+
+    <!-- when this category has subcategories -->
+    {% if category.subcategory_set.count > 0 %}
+
+    <!-- subcategory iteration -->
+    {% for subcategory in category.subcategory_set.all %}
+
+    <div class="container px-2">
+        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark"
+                href="{{category.get_category_url}}">{{category.name}}</a></h4>
+        <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter"><a class="text-dark"
+                href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
+        <!-- {% if subcategory.description %}
+                <p class="mt-n3 mb-4 px-3"><small class="font-weight-lighter">{{subcategory.description}}</small></p>
+                {% endif %} -->
+        <div class="row mb-5">
+            {% for item in subcategory.item_set.all|slice:":8" %}
+
+            {% include 'boutique/include/item_in_listviews.html' %}
+
+            {% endfor %}
+            <a href="{{subcategory.get_subcategory_url}}" class="btn btn-sm btn-dark w-100 mt-1 mb-5">
+                »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
+
+        </div>
+    </div>
+
+    {% endfor %}
+    <!-- / subcategory iteration -->
+
+    <!-- when this category does not have a subcategory -->
+    {% else %}
+
+    <div class="container px-2">
+        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark"
+                href="{{category.get_category_url}}">{{category.name}}</a></h4>
+        <!-- show description if there is one -->
+        <!-- {% if category.description %}
+        <p class="mt-n2 mb-4 px-3"><small class="font-weight-lighter">{{category.description}}</small></p>
+        {% endif %} -->
+        <div class="row">
+            {% for item in category.item_set.all|slice:":8" %}
+
+            {% include 'boutique/include/item_in_listviews.html' %}
+
+            {% endfor %}
+            <a href="{{category.get_category_url}}" class="btn btn-sm btn-dark w-100 mt-1 mb-5">
+                »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
+        </div>
+    </div>
+
+    {% endif %}
+    <!-- / this category has subcategories or not -->
+
+</div>
+<!-- / wrapper for each category -->
+{% endfor %}
+<!-- /end categories forloop -->
+
+<hr class="mt-3">
+{% endblock content %}

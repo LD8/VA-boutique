@@ -24,12 +24,8 @@
                 <div class="col-5 d-flex flex-column px-0">
                     <!-- item price tag -->
                     <div class="text-left " style="font-size: 15px;">
-                        <div class="">
-                            <a href="{{ item.get_item_url }}" class="text-dark">
-                                {% if item.brand.name != 'Other' %}
-                                <p class="mb-0"><em>{{item.brand}}</em></p>
-                                {% endif %}
-                                {{item|title}}</a>
+                        <div>
+                            <a href="{{ item.get_item_url }}" class="text-dark">{{item}}</a>
                         </div>
                         <div class="">
                             {% include 'boutique/include/item_price.html' %}

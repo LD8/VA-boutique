@@ -1,10 +1,11 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.translation import gettext_lazy as _
-from django.db.models import Count, Q
+from django.db.models import Count, Q, F
 from django.db.models import Prefetch
 from django.urls import reverse
 from django.db import models
 import os
+from django.db.models import prefetch_related_objects
 
 
 class CategoryQuerySet(models.QuerySet):
@@ -14,8 +15,25 @@ class CategoryQuerySet(models.QuerySet):
     def get_categories_by_gender(self, gender):
         if gender == 'women':
             return self.filter(gender=1)
-        if gender == 'men':
+        elif gender == 'men':
             return self.filter(gender=2)
+        else:
+            return self.all()
+
+    def get_category_brands(self, pk):
+        # brands_pk: a flat list of brand pks in a category
+        brands_set = self.filter(pk=pk)[0].item_set.order_by().annotate(
+            brand_pk=F('brand__pk'),
+            brand_name=F('brand__name')).values(
+            'brand_pk', 'brand_name').distinct().order_by('brand_name')
+        # a list of brand names
+        return brands
+
+    def load_related_subcategory(self):
+        return self.subcategory_set.all()
+
+    def load_related_item(self):
+        return self.item_set.all()
 
 
 class CategoryManager(models.Manager):
@@ -26,7 +44,16 @@ class CategoryManager(models.Manager):
         return self.get_queryset().get_categories_with_item()
 
     def get_categories_by_gender(self, gender):
-        return self.get_queryset().get_category_by_gender(gender)
+        return self.get_queryset().get_categories_by_gender(gender)
+
+    def get_category_brands(self, pk):
+        return self.get_queryset().get_category_brands(pk)
+
+    def load_related_subcategory(self):
+        return self.get_queryset().load_related_subcategory()
+
+    def load_related_item(self):
+        return self.get_queryset().load_related_item()
 
 
 class Category(models.Model):
@@ -36,7 +63,8 @@ class Category(models.Model):
         (2, 'men'),
     ], default=1)
     name = models.CharField(max_length=100, verbose_name=_('Category Name'))
-    description = models.CharField(max_length=300, blank=True, verbose_name=_('Category Description'))
+    description = models.CharField(
+        max_length=300, blank=True, verbose_name=_('Category Description'))
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
@@ -48,25 +76,45 @@ class Category(models.Model):
         ordering = ['gender', 'name']
 
     def __str__(self):
-        return self.name.capitalize() + ' for ' + self.get_gender_display().capitalize()
+        return '{} for {}'.format(self.name, self.get_gender_display())
 
     def get_category_url(self):
-        return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
+        return reverse('boutique:show-category', kwargs={'pk': self.pk})
+        # return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
+
+
+class SubCategoryQuerySet(models.QuerySet):
+    def get_subcategories_with_item(self):
+        return self.annotate(Count('item')).exclude(item__count=0).prefetch_related('item_set', 'category')
 
     def load_related_item(self):
-        return self.item_set.select_related('brand', 'tag')
+        items = self.item_set.all()
+        prefetch_related_objects(items, 'itemimage_set')
+        return items
 
-    def load_related_subcategory(self):
-        return self.subcategory_set.all()
+
+class SubCategoryManager(models.Manager):
+    def get_queryset(self):
+        return SubCategoryQuerySet(self.model, using=self._db)
+
+    def get_subcategories_with_item(self):
+        return self.get_queryset().get_subcategories_with_item()
+
+    def load_related_item(self):
+        return self.get_queryset().load_related_item()
 
 
 class SubCategory(models.Model):
     '''Sub-category for the categories (not mandatory)'''
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, verbose_name=_('Sub-category Name'))
-    description = models.CharField(max_length=300, blank=True, verbose_name=_('Sub-category Description'))
+    name = models.CharField(
+        max_length=100, verbose_name=_('Sub-category Name'))
+    description = models.CharField(
+        max_length=300, blank=True, verbose_name=_('Sub-category Description'))
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
+
+    objects = SubCategoryManager()
 
     class Meta():
         verbose_name = _('Sub-category')
@@ -77,17 +125,16 @@ class SubCategory(models.Model):
         return self.category.get_gender_display() + ' ' + self.name
 
     def get_subcategory_url(self):
-        return reverse('boutique:show-subcategory', kwargs={'gender': self.category.get_gender_display(), 'subcategory_pk': self.pk})
-
-    def load_related_item(self):
-        return self.item_set.select_related('brand', 'tag')
+        return reverse('boutique:show-subcategory', kwargs={'pk': self.pk})
+        # return reverse('boutique:show-subcategory', kwargs={'gender': self.category.get_gender_display(), 'subcategory_pk': self.pk})
 
 
 class Tag(models.Model):
     '''Items have tag will have according discount percentage'''
     tag_discount_percentage = models.IntegerField(
         default=0, validators=[MinValueValidator(1), MaxValueValidator(100)], verbose_name=_('Tag (discount percentage)'))
-    slogan = models.CharField(max_length=200, blank=True, verbose_name=_('Slogan for tags'))
+    slogan = models.CharField(
+        max_length=200, blank=True, verbose_name=_('Slogan for tags'))
 
     def __str__(self):
         return self.slogan if self.slogan else self.slogan_default
@@ -100,7 +147,8 @@ class Tag(models.Model):
 class Brand(models.Model):
     '''the brands of the items'''
     name = models.CharField(max_length=50, verbose_name=_('Brand Name'))
-    description = models.TextField(blank=True, verbose_name=_('Brand Description'))
+    description = models.TextField(
+        blank=True, verbose_name=_('Brand Description'))
 
     class Meta():
         ordering = ['name']
@@ -148,21 +196,35 @@ class ItemManager(models.Manager):
 
 class Item(models.Model):
     '''Each item represents a product'''
+    # ----- ForeignKeys ----- #
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(
         SubCategory, on_delete=models.CASCADE, null=True, blank=True)
     tag = models.ForeignKey(
         Tag, on_delete=models.SET_NULL, null=True, blank=True)
-    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=3)
+    brand = models.ForeignKey(Brand, on_delete=models.PROTECT, default=7)
 
-    name = models.CharField(max_length=100, unique=True, verbose_name=_('Item Name'))
-    description = models.TextField(blank=True, verbose_name=_('Item Description'))
-    price = models.IntegerField(default=0)
-    discount_percentage = models.IntegerField(verbose_name=_('Discount Percentage'), default=0, validators=[
-                                              MinValueValidator(0), MaxValueValidator(100)])
+    # ----- Unique Attributes ----- #
+    name = models.CharField(max_length=100, unique=True,
+                            verbose_name=_('Item Name'))
+    description = models.TextField(
+        blank=True, verbose_name=_('Item Description'))
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
+    # ----- price section ----- #
+    price = models.IntegerField(default=0)
+    discount_percentage = models.IntegerField(
+        verbose_name=_('Discount Percentage'), default=0, validators=[
+            MinValueValidator(0), MaxValueValidator(100)])
+    discounted_price = models.IntegerField(
+        verbose_name=_('Discounted Price (Calculated automatically)'), blank=True, null=True)
+    total_discount_percentage = models.IntegerField(
+        verbose_name=_('Total Discount Percentage (Calculated automatically)'), blank=True, null=True)
+    final_price = models.IntegerField(
+        verbose_name=_('Final Price (Calculated automatically)'), blank=True, null=True)
+    
+    # ----- object manager ----- #
     objects = ItemManager()
 
     class Meta:
@@ -171,25 +233,34 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
-    @property
-    def discounted_price(self):  # changed from get_discounted_price
-        '''to calculate the price after discount'''
-        return int(self.price * (100 - self.discount_percentage) * 0.01)
-
-    @property
-    def final_price(self):  # changed from get_final_price
-        '''to calculate the tagged price 5% off'''
-        return int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
-                   ) if self.tag else int(self.discounted_price)
-
-    @property
-    def total_discount_percentage(self):
-        '''to calculate the total discount'''
-        return (self.discount_percentage + self.tag.tag_discount_percentage
-                ) if self.tag is not None else self.discount_percentage
+    def save(self, *args, **kwargs):
+        self.discounted_price = int(self.price * (100 - self.discount_percentage) * 0.01)
+        self.total_discount_percentage = int(self.discount_percentage + self.tag.tag_discount_percentage
+                ) if self.tag else self.discount_percentage
+        self.final_price = self.price * self.total_discount_percentage
+        # self.final_price = int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
+        #                        ) if self.tag else self.discounted_price
+        super().save(*args, **kwargs)
 
     def get_item_url(self):
         return reverse('boutique:item', kwargs={'pk': self.pk})
+
+    # @property
+    # def discounted_price(self):  # changed from get_discounted_price
+    #     '''to calculate the price after discount'''
+    #     return int(self.price * (100 - self.discount_percentage) * 0.01)
+
+    # @property
+    # def final_price(self):  # changed from get_final_price
+    #     '''to calculate the tagged price 5% off'''
+    #     return int(self.price * (100 - self.discount_percentage - self.tag.tag_discount_percentage) * 0.01
+    #                ) if self.tag else int(self.discounted_price)
+
+    # @property
+    # def total_discount_percentage(self):
+    #     '''to calculate the total discount'''
+    #     return (self.discount_percentage + self.tag.tag_discount_percentage
+    #             ) if self.tag is not None else self.discount_percentage
 
 
 class IndexCarousel(models.Model):

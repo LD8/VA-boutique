@@ -1,68 +1,59 @@
 {% load i18n %}
 
-<!-- filters with sub/categoryies, brands, min_price, max_price -->
-<form action="{% url 'boutique:show-all' filter_context.gender %}" method="GET">
+<!-- filters with brands, min_price, max_price -->
+<form action="{% url 'boutique:filter' pk=filters.subcategory.pk %}" method="GET">
     {% csrf_token%}
-    <div class="form-row mt-1 mt-lg-2 px-0 mb-3">
-        <div class="form-gourp col-6 col-sm-3 mt-1 {{filter}}">
-            <select class="custom-select custom-select-sm" name="category_selected">
-                <option {% if not filter_context.category_selected %}selected{% endif %}>Категория</option>
+    <div class="form-row px-0 mb-4">
 
-                {% for category in categories %}
-                {% if category.gender == filter_context.gender_number %}
-
-                <option {% if filter_context.category_selected == category.name %}
-                selected {% endif %} value="{{category.name}}">» {{category.name}} «</option>
-
-                {% for subcategory in category.subcategory_set.all %}
-                <option {% if filter_context.category_selected == subcategory.name %}
-                selected {% endif %} value="{{subcategory.name}}">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{subcategory.name}}</option>
-                {% endfor %}
-                
-                {% endif %}
-                {% endfor %}
-
-            </select>
-        </div>
-        <div class="form-gourp col-6 col-sm-3 mt-1 {{filter}}">
-            <select class="custom-select custom-select-sm" name="brand_selected">
-                <option {% if not filter_context.brand_selected %}selected{% endif %}>бренд</option>
+        <!-- brand -->
+        <div class="form-gourp col-12 col-sm mt-1 {{filter}} pl-lg-0">
+            <select class="custom-select custom-select-sm" name="brand_pk">
+                <option selected value="">{% trans "All Brands" %}</option>
                 {% for brand in brands %}
-                {% if filter_context.brand_selected == brand.name %}
-                <option selected value="{{brand.name}}">{{brand.name}}</option>
+                {% if filters.brand_pk == brand.brand_pk|stringformat:"i" %}
+                <option selected value="{{brand.brand_pk}}">{{brand.brand_name}}</option>
                 {% else %}
-                <option value="{{brand.name}}">{{brand.name}}</option>
+                <option value="{{brand.brand_pk}}">{{brand.brand_name}}</option>
                 {% endif %}
                 {% endfor %}
             </select>
         </div>
+
+        <!-- min_price -->
         <div class="form-gourp col-6 col-sm mt-1 {{filter}}">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
                 </div>
                 <input type="number" class="form-control form-control-sm" name="min_price" placeholder="min"
-                    value="{% if filter_context.min_price %}{{filter_context.min_price}}{% endif %}">
+                    value="{% if filters.min_price %}{{filters.min_price}}{% endif %}">
             </div>
         </div>
+
+        <!-- max_price -->
         <div class="form-gourp col-6 col-sm mt-1 {{filter}}">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
                 </div>
                 <input type="number" class="form-control form-control-sm" name="max_price" placeholder="max"
-                    value="{% if filter_context.max_price %}{{filter_context.max_price}}{% endif %}">
+                    value="{% if filters.max_price %}{{filters.max_price}}{% endif %}">
             </div>
         </div>
-        <div class="form-gourp col-6 col-lg mt-1 {{filter}}">
+
+        <!-- submit -->
+        <div class="form-gourp col-12 col-lg mt-1 {{filter}} pr-lg-0">
             <button type="submit" onclick="this.disabled=true,this.form.submit();"
-                class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">{% trans "Filter" %}</button>
+                class="btn btn-secondary btn-sm col-12">
+                {% trans "Filter" %}</button>
         </div>
-        <div class="form-gourp col-6 col-lg mt-1 {{filter}}">
-            <a href="{% url 'boutique:show-all' filter_context.gender %}" class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">{% trans "Clear Filter" %}</a>
-                
-        </div>
+
+        <!-- reset -->
+        <!-- <div class="form-gourp col-6 col-lg mt-1 {{filter}}">
+            <a href="#"
+                class="btn btn-outline-secondary btn-sm col-12 border-top-0 border-left-0 border-right-0">{% trans "Clear Filter" %}</a>
+        </div> -->
+
     </div>
 </form>
-<!-- /filters with sub/categoryies, brands, min_price, max_price -->
+<!-- /filters with brands, min_price, max_price -->

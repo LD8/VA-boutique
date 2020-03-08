@@ -10,11 +10,8 @@
     <!-- item price tag -->
     <div class="text-left p-1 mb-auto" style="font-size: 16px;">
         <div class="font-weight-light pt-2">
-            <a href="{{ item.get_item_url }}" class="text-dark mb-1">
-                {% if item.brand.name != 'Other' %}
-                <p class="mb-0"><em>{{item.brand}}</em></p>
-                {% endif %}
-                {{item|title}}</a>
+            <!-- no brand is displayed anymore -->
+            <a href="{{ item.get_item_url }}" class="text-dark mb-1">{{item}}</a>
         </div>
 
         <div class="mb-3">

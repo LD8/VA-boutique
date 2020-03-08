@@ -1,5 +1,9 @@
 {% load static %}
 <style>
+    html {
+        scroll-behavior: smooth;
+    }
+
     /* 
     --- modal manager --- 
     #
@@ -25,7 +29,7 @@
         border-radius: 5px;
         border: none;
     }
-    
+
     .bg-instagram,
     .bg-whatsapp,
     .bg-contact,
@@ -37,7 +41,7 @@
         background-size: cover;
         background-position: center;
     }
-    
+
     .bg-instagram {
         background-image:url("{% static 'boutique/img/bg-instagram.png' %}");
     }

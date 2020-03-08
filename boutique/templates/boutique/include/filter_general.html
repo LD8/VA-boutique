@@ -1,4 +1,18 @@
 {% load i18n %}
+
+<!-- filter modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                {% include 'boutique/include/filter_general_form.html' with filter='' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="d-flex mt-0">
     <div class="filter-icon mr-auto">
         <a class="text-black-50 btn cursor-pointer" onclick="history.back()"><i

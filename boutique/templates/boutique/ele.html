@@ -14,11 +14,12 @@
     <!-- fontawesome css -->
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/fontawesome/all.css' %}"> -->
     <!-- <script src="https://kit.fontawesome.com/5b5c2e4b34.js" crossorigin="anonymous"></script> -->
-    <script type="text/javascript"> (function () {
+    <script type="text/javascript">
+        (function () {
             var css = document.createElement('link');
             css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css';
-            css.rel = 'stylesheet'; 
-            css.type = 'text/css'; 
+            css.rel = 'stylesheet';
+            css.type = 'text/css';
             document.getElementsByTagName('head')[0].appendChild(css);
         })(); 
     </script>
@@ -29,12 +30,12 @@
     <!-- customised css -->
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
     {% include 'boutique/include/modal_style.html' %}
-
+    
     <title>VA Boutique</title>
 </head>
 
 <body id="bootstrap-override" class="d-flex flex-column">
-
+    <a id="top"></a>
     {% block ele %}{% endblock ele %}
 
 </body>

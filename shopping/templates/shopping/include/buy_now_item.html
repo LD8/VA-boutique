@@ -9,12 +9,8 @@
 
         <!-- item price tag -->
         <div class="text-center" style="font-size: 20px;">
-            <div class="">
-                <a href="{{ item.get_item_url }}" class="mb-2 text-black-50">
-                    {% if item.brand.name != 'Other' %}
-                    <p class="mb-0"><em>{{item.brand}}</em></p>
-                    {% endif %}
-                    {{item|title}}</a>
+            <div>
+                <a href="{{ item.get_item_url }}" class="mb-2 text-black-50">{{item}}</a>
             </div>
             <div class=" text-black-50">
                 <p><span class="mr-1">&#8381;</span>{{ item.final_price|intcomma }}</p>
