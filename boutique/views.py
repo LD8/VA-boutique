@@ -28,8 +28,7 @@ class SalesListView(ListView):
 
 def show_all(request, gender):
     context = {
-        'categories_shown': Category.objects.get_categories_by_gender(gender).annotate(
-            Count('item')).exclude(item__count=0).prefetch_related('subcategory_set__item_set'),
+        'categories_shown': Category.objects.get_categories_by_gender(gender).get_categories_with_item().prefetch_related('subcategory_set__item_set'),
         'brands': Brand.objects.annotate(
             brand_pk=F('pk'),
             brand_name=F('name')).values(
@@ -39,40 +38,38 @@ def show_all(request, gender):
 
 
 def show_category(request, pk):
-    context = {'categories_shown': Category.objects.filter(
-        pk=pk).prefetch_related('subcategory_set', 'item_set')}
+    cat_queryset = Category.objects.filter(pk=pk)
+    cat = cat_queryset.first()
+    context = {
+        'categories_shown': cat_queryset.prefetch_related('subcategory_set__item_set'),
+        'filters': {'category': cat, },
+        'brands': get_brands(cat.item_set),
+    }
     return render(request, 'boutique/show_all.html', context)
 
 
 def show_subcategory(request, pk):
-    subcategory = SubCategory.objects.get(pk=pk)
-
+    subcategory = get_object_or_404(SubCategory, pk=pk)
     context = {
         'subcategories_shown': SubCategory.objects.filter(pk=pk).select_related('category'),
-        'filters': {
-            'subcategory': subcategory,
-            'brand_pk': None,
-            'min_price': None,
-            'max_price': None,
-        },
-        'brands': get_brands(subcategory.item_set.all())
+        'filters': {'subcategory': subcategory, },
+        'brands': get_brands(subcategory.item_set.all()),
     }
     return render(request, 'boutique/show_subcategory.html', context)
 
 
 def get_brands(item_queryset):
     """ Get all brands of items """
-    brands_dict = item_queryset.order_by().annotate(
+    brands_dict_lst = item_queryset.order_by().annotate(
         brand_pk=F('brand__pk'),
         brand_name=F('brand__name')).values(
             'brand_pk', 'brand_name').distinct().order_by('brand_name')
     # Output: <ItemQuerySet [{'brand_pk': 4, 'brand_name': 'Dior'}, {...}, ...]>
-    return brands_dict
+    return brands_dict_lst
 
 
-def filter_item(request, pk=None, **kwargs):
+def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
     """ Page shows filtered items """
-    sub_pk = pk
     brand_pk = request.GET.get('brand_pk')
     min_price = request.GET.get('min_price')
     max_price = request.GET.get('max_price')
@@ -87,18 +84,24 @@ def filter_item(request, pk=None, **kwargs):
 
     # initialise queryset: items
     if sub_pk:
-        # subcategory = get_object_or_404(SubCategory, pk=sub_pk)
-        subcategory = SubCategory.objects.get(pk=sub_pk)
+        subcategory = get_object_or_404(SubCategory, pk=sub_pk)
         context['filters']['subcategory'] = subcategory
-        items = subcategory.item_set.all()
+        items = subcategory.item_set.select_related('brand')
+    elif cat_pk:
+        category = get_object_or_404(Category, pk=cat_pk)
+        context['filters']['category'] = category
+        items = category.item_set.select_related('brand')
     else:
-        items = Item.objects.all()
+        items = Item.objects.select_related('brand')
 
     # It's important to insert 'brands' in context now to get all brands
     context['brands'] = get_brands(items)
 
     if brand_pk:
         items = items.filter(brand__pk=brand_pk)
+        if not sub_pk:
+            # if user filtered from show-all page, no subcat selected
+            context['brand_selected_from_all'] = Brand.objects.get(pk=brand_pk).name
 
     if min_price:
         if request.user.is_authenticated:

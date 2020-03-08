@@ -3,7 +3,9 @@
 <!-- filters with brands, min_price, max_price -->
 <form action="
     {% if filters.subcategory %}
-        {% url 'boutique:filter' pk=filters.subcategory.pk %}
+        {% url 'boutique:filter-sub' sub_pk=filters.subcategory.pk %}
+    {% elif filters.category %}
+        {% url 'boutique:filter-cat' cat_pk=filters.category.pk %}
     {% else %}
         {% url 'boutique:filter-all' %}
     {% endif %}" method="GET">{% csrf_token%}
@@ -47,9 +49,9 @@
         </div>
 
         <!-- submit -->
-        <div class="form-gourp col-12 col-lg mt-1 {{filter}} pr-lg-0">
+        <div class="form-gourp col-12 col-lg mt-3 {{filter}} pr-lg-0 mt-lg-1">
             <button type="submit" onclick="this.disabled=true,this.form.submit();"
-                class="btn btn-secondary btn-sm col-12">
+                class="col-12 btn btn-sm btn-outline-dark py-0 py-lg-1">
                 {% trans "Filter" %}</button>
         </div>
 

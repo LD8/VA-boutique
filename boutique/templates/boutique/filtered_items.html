@@ -1,5 +1,6 @@
 {% extends 'boutique/base.html' %}
 {% load i18n %}
+
 {% block content %}
 
 <div class="mt-4 mt-lg-5 text-center mb-3 mb-md-5">
@@ -7,16 +8,21 @@
     <div class="container px-2">
 
         {% if filters.subcategory %}
-        <h4 class="my-3 pb-1 border-bottom font-weight-lighter text-left">
-            {% comment %}Translators: title of filtered result page, following by the subcategory name{% endcomment %}
-            {% trans "Filtered" %}
-            <a class="text-dark" href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a></h4>
-        {% else %}
-        <h4 class="my-3 pb-1 border-bottom font-weight-lighter text-left">
-            {% comment %}Translators: title of filtered result page for filtering everything{% endcomment %}
-            {{filters.brand.brand_name}}
+        <h4 class="my-3 pb-1 border-bottom font-weight-lighter">
+            {% comment %}Translators: title of filtered result page, following by the category/subcategory name{% endcomment %}
+            {% trans "Filtered " %}
+            <a class="text-black-50 font-italic border-bottom" href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a>
         </h4>
-        <p>{% trans "You can also choose a category in the menu bar" %}</p>
+        {% elif filters.category %}
+        <h4 class="my-3 pb-1 border-bottom font-weight-lighter">
+            {% trans "Filtered " %}
+            <a class="text-black-50 font-italic border-bottom" href="{{filters.category.get_subcategory_url}}">{{filters.category.name}}</a>
+        </h4>
+        {% else %}
+        <h3 class="my-3 pb-1 border-bottom font-weight-lighter">
+            <span class="font-italic">{{brand_selected_from_all}}</span> 
+        </h3>
+        <!-- <p class="text-black-50">{% trans "You can also choose a category in the menu bar" %}</p> -->
         {% endif %}
 
         {% include 'boutique/include/filter_form.html' with filter='' %}
@@ -26,13 +32,16 @@
 
             {% include 'boutique/include/item_in_listviews.html' %}
 
+            {% empty %}
+            <p class="text-black-50 col-12">{% trans "More products comming soon..." %}</p>
             {% endfor %}
         </div>
-        
+
         {% include 'boutique/include/to_top_btn.html' %}
     </div>
 
 </div>
 
-<hr class="mt-3">
+{% include 'boutique/include/before_before_footer.html' %}
+
 {% endblock content %}
