@@ -26,10 +26,9 @@
                 <p class="mt-n3 mb-4 px-3"><small class="font-weight-lighter">{{subcategory.description}}</small></p>
                 {% endif %} -->
         <div class="row mb-5">
+
             {% for item in subcategory.item_set.all|slice:":8" %}
-
-            {% include 'boutique/include/item_in_listviews.html' %}
-
+                {% include 'boutique/include/item_in_listviews.html' %}
             {% endfor %}
 
             {% if subcategory.item_set.count > 8 %}
@@ -57,13 +56,13 @@
             {% if show_all_cat_items_flag %}
 
                 {% for item in category.item_set.all %}
-                {% include 'boutique/include/item_in_listviews.html' %}
+                    {% include 'boutique/include/item_in_listviews.html' %}
                 {% endfor %}
             
             {% else %}
 
                 {% for item in category.item_set.all|slice:":8" %}
-                {% include 'boutique/include/item_in_listviews.html' %}
+                    {% include 'boutique/include/item_in_listviews.html' %}
                 {% endfor %}
 
                 {% if category.item_set.count > 8 %}
@@ -71,7 +70,7 @@
                     »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
                 {% endif %}
 
-            {% endif }
+            {% endif %}
         </div>
     </div>
 
