@@ -1,11 +1,22 @@
-<!-- display each item in its own box -->
-<div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column 
-    {% if not item.in_stock %} not-in-stock {% endif %}">
+{% load i18n %}
 
+<!-- display each item in its own box -->
+<div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column">
+
+    {% if not item.in_stock %}
+    <div class="ribbon-holder">
+        <div class="ribbon ribbon-holder rounded-sm py-1"><span class="ml-2">{% trans "Sold Out" %}</span></div>
+        <!-- image anchor -->
+        <a href="{{ item.get_item_url }}">
+            <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+        <!-- /image anchor -->
+    </div>
+    {% else %}
     <!-- image anchor -->
     <a href="{{ item.get_item_url }}">
         <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
     <!-- /image anchor -->
+    {% endif %}
 
     <!-- item price tag -->
     <div class="text-left p-1 mb-auto" style="font-size: 16px;">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-09 01:17+0800\n"
+"POT-Creation-Date: 2020-03-09 02:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -301,6 +301,12 @@ msgstr "Войти"
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
+#: boutique/templates/boutique/include/item_in_listviews.html:30
+#, fuzzy
+#| msgid "Log Out"
+msgid "Sold Out"
+msgstr "Выйти"
+
 #. Translators: Join us NOW for extra ___blank percent discount of this iten...
 #: boutique/templates/boutique/include/item_price.html:112
 msgid "Join us NOW for extra"
@@ -421,8 +427,8 @@ msgstr "Ничего не найдено по запросу"
 msgid "is showing please try a different wording or browse from our categories"
 msgstr "Пожалуйста, попробуйте найти товар в категориях"
 
-#: boutique/templates/boutique/show_all.html:35
-#: boutique/templates/boutique/show_all.html:60
+#: boutique/templates/boutique/show_all.html:36
+#: boutique/templates/boutique/show_all.html:70
 msgid "more"
 msgstr ""
 

@@ -4,8 +4,28 @@
         scroll-behavior: smooth;
     }
 
-    .not-in-stock {
-        opacity: 0.6;
+    .ribbon-holder {
+        overflow: hidden;
+        position: relative
+    }
+
+    .ribbon {
+        position: absolute;
+        background: rgba(139, 10, 1, 0.7);
+        color: white;
+        /* box-shadow: -2px 2px #888888; */
+        font-size: 15px;
+        /* transform: rotate(-45deg); */
+        text-align: left;
+        top: 18px;
+        right: -36px;
+        width: 110px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .ribbon {
+            font-size: 12px;
+        }
     }
 
     /* 
