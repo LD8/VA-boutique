@@ -10,25 +10,6 @@
         {% url 'boutique:filter-all' %}
     {% endif %}" method="GET">{% csrf_token%}
 
-    {% if not filter %}
-    <div class="">
-        {% if filters.subcategory %}
-        <h6 class="my-2 font-weight-lighter">
-            {% comment %}Translators: title of filter pop up window, 'filter' as a verb here{% endcomment %}
-            {% trans "Filter " %}
-            <a class="text-black-50 font-italic border-bottom" href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a>
-        </h6>
-        {% elif filters.category %}
-        <h6 class="my-2 font-weight-lighter">
-            {% comment %}Translators: title of filter pop up window, 'filter' as a verb here{% endcomment %}
-            {% trans "Filter " %}
-            <a class="text-black-50 font-italic border-bottom" href="{{filters.category.get_subcategory_url}}">{{filters.category.name}}</a>
-        </h6>
-        {% else %}
-        <span class="font-italic">{{brand_selected_from_all}}</span> 
-        {% endif %}
-    </div>
-    {% endif %}
     <div class="form-row px-0 mb-4">
         <!-- brand -->
         <div class="form-gourp col-12 col-sm mt-1 {{filter}} pl-lg-0">
