@@ -7,25 +7,24 @@
     {% if item.tag is not None %}
     <!-- if item has discount -->
     {% if item.discount_percentage > 0 %}
-
     <p class="mb-1">
-        <s class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price|intcomma }}</s>
-        <s class="text-muted mr-1"><span class="mr-1">&#8381;</span>{{item.discounted_price|intcomma }}
+        <s class="text-muted mr-2"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</s>
+        <s class="text-muted mr-1"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.discounted_price|intcomma }}
             <small class="text-muted mr-1">(-{{item.discount_percentage}}%)</small></s>
     </p>
     <p class="mb-0">
         <small class="text-danger">{{item.tag}}</small>
     </p>
     <p class="mb-0">
-        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.final_price|intcomma }}</b>
+        <b class="text-danger mr-1"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-danger"></i></span>{{item.final_price|intcomma }}</b>
         <small class="text-danger">(-{{item.total_discount_percentage}}%)</small>
     </p>
 
     {% else %}
 
     <p class="mb-0">
-        <s class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price|intcomma }}</s>
-        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.final_price|intcomma }}</b>
+        <s class="text-muted mr-2"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</s>
+        <b class="text-danger mr-1"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-danger"></i></span>{{item.final_price|intcomma }}</b>
         <small class="text-danger">(-{{item.total_discount_percentage}}%)</small>
     </p>
 
@@ -37,14 +36,14 @@
     {% if item.discount_percentage > 0 %}
 
     <p class="mb-0">
-        <s class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price|intcomma }}</s>
-        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.final_price|intcomma }}</b>
+        <s class="text-muted mr-2"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</s>
+        <b class="text-danger mr-1"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-danger"></i></span>{{item.final_price|intcomma }}</b>
         <small class="text-danger">(-{{item.discount_percentage}}%)</small>
     </p>
 
     {% else %}
 
-    <p class="mb-0"><span class="mr-1">&#8381;</span>{{item.price|intcomma }}</p>
+    <p class="mb-0"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</p>
 
     {% endif %}
     <!-- /if item has/not discount -->
@@ -59,8 +58,8 @@
     {% if item.discount_percentage > 0 %}
 
     <p class="mb-0">
-        <s class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price|intcomma }}</s>
-        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.discounted_price|intcomma }}</b>
+        <s class="text-muted mr-2"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</s>
+        <b class="text-danger mr-1"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-danger"></i></span>{{item.discounted_price|intcomma }}</b>
         <small class="text-danger">(-{{item.discount_percentage}}%)</small>
         <a href="#item{{item.pk}}discountTagModal" data-toggle="modal"><i class="fas fa-tags text-danger ml-2"></i></a>
     </p>
@@ -68,7 +67,7 @@
     {% else %}
 
     <p class="mb-0">
-        <span class="mr-1">&#8381;</span>{{item.price|intcomma }}
+        <span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}
         <a href="#item{{item.pk}}discountTagModal" data-toggle="modal"><i class="fas fa-tags text-danger ml-2"></i></a>
     </p>
 
@@ -80,14 +79,14 @@
     {% if item.discount_percentage > 0 %}
 
     <p class="mb-0">
-        <s class="text-muted mr-2"><span class="mr-1">&#8381;</span>{{item.price|intcomma }}</s>
-        <b class="text-danger mr-1"><span class="mr-1">&#8381;</span>{{item.discounted_price|intcomma }}</b>
+        <s class="text-muted mr-2"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</s>
+        <b class="text-danger mr-1"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-danger"></i></span>{{item.discounted_price|intcomma }}</b>
         <small class="text-danger">(-{{item.discount_percentage}}%)</small>
     </p>
 
     {% else %}
 
-    <p class="mb-0"><span class="mr-1">&#x20bd;</span>{{item.price|intcomma }}</p>
+    <p class="mb-0"><span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>{{item.price|intcomma }}</p>
 
     {% endif %}
     <!-- /if item has/not discount -->

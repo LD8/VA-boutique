@@ -2,18 +2,24 @@
 
 {% block content %}
 
-{% include 'boutique/include/filter_icon.html' %}
+<div class="mt-3">
+    {% include 'boutique/include/filter_icon.html' %}
+</div>
 
 <div class="mt-4 mt-lg-5 text-center mb-3 mb-md-5">
     <!-- subcategory iteration -->
     {% for subcategory in subcategories_shown %}
 
     <div class="container px-2">
-        <h6 class="mb-1 pb-1 border-bottom font-weight-light">
-            <a class="text-black-50" href="{{subcategory.category.get_category_url}}">
-                {{subcategory.category.name}}</a></h6>
-        <h4 class="mt-1 pb-2 font-weight-lighter text-dark">
-            {{subcategory.name}}</h4>
+        <!-- title block -->
+        <div class="mb-3">
+            <h6 class="mb-1 pb-1 border-bottom font-weight-light">
+                <a class="text-black-50" href="{{subcategory.category.get_category_url}}">
+                    {{subcategory.category.name}}</a></h6>
+            <h4 class="mt-1 pb-2 font-weight-lighter text-dark">
+                {{subcategory.name}}</h4>
+        </div>
+        <!-- / title block -->
 
         {% include 'boutique/include/filter_form.html' with filter='filter' %}
 
@@ -22,10 +28,9 @@
         {% endif %}
 
         <div class="row mb-5">
+            
             {% for item in subcategory.item_set.all %}
-
             {% include 'boutique/include/item_in_listviews.html' %}
-
             {% endfor %}
 
         </div>

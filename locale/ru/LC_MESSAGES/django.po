@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-09 02:49+0800\n"
+"POT-Creation-Date: 2020-03-09 15:50+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,16 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
-
-#: __copies__/filter_general_form copy.html:60
-#: boutique/templates/boutique/include/filter_form.html:55
-msgid "Filter"
-msgstr "Фильтр"
-
-#: __copies__/filter_general_form copy.html:63
-#: boutique/templates/boutique/include/filter_form.html:61
-msgid "Clear Filter"
-msgstr "Сбросить"
 
 #: boutique/admin.py:13
 msgid "VA-Boutique | Site Administration | Such Fun!!!"
@@ -99,10 +89,8 @@ msgid "Item Description"
 msgstr "Описание товара"
 
 #: boutique/models.py:210
-#, fuzzy
-#| msgid "Total Price"
 msgid "Original Price"
-msgstr "Итоговая цена"
+msgstr "Цена"
 
 #: boutique/models.py:212
 msgid "Discount Percentage"
@@ -143,18 +131,12 @@ msgstr ""
 #. Translators: title of filtered result page, following by the category/subcategory name
 #: boutique/templates/boutique/filtered_items.html:13
 #: boutique/templates/boutique/filtered_items.html:18
-#, fuzzy
-#| msgid "Filter"
 msgid "Filtered "
-msgstr "Фильтр"
+msgstr "Результат фильтра "
 
-#: boutique/templates/boutique/filtered_items.html:25
-msgid "You can also choose a category in the menu bar"
-msgstr ""
-
-#: boutique/templates/boutique/filtered_items.html:36
+#: boutique/templates/boutique/filtered_items.html:35
 msgid "More products comming soon..."
-msgstr ""
+msgstr "Больше товаров в ближайшее время"
 
 #. Translators: at the end of sales page, to encourage people to browse more
 #: boutique/templates/boutique/include/before_before_footer.html:6
@@ -183,9 +165,23 @@ msgstr "Для мужчин"
 msgid "Search"
 msgstr "Поиск"
 
+#. Translators: title of filter pop up window, 'filter' as a verb here
 #: boutique/templates/boutique/include/filter_form.html:18
+#: boutique/templates/boutique/include/filter_form.html:24
+msgid "Filter "
+msgstr "Фильтр"
+
+#: boutique/templates/boutique/include/filter_form.html:36
 msgid "All Brands"
-msgstr ""
+msgstr "Все бренды"
+
+#: boutique/templates/boutique/include/filter_form.html:75
+msgid "Filter"
+msgstr "Фильтр"
+
+#: boutique/templates/boutique/include/filter_form.html:81
+msgid "Clear Filter"
+msgstr "Сбросить"
 
 #: boutique/templates/boutique/include/filter_icon.html:18
 #: boutique/templates/boutique/item.html:13
@@ -214,7 +210,7 @@ msgstr ""
 #. Translators: footer, left column, popup window title
 #. Translators: left column, popup window title
 #: boutique/templates/boutique/include/footer.html:25
-#: boutique/templates/boutique/include/modal_in_footer.html:49
+#: boutique/templates/boutique/include/modal_in_footer.html:48
 msgid "Delivery and Payment"
 msgstr "Доставка и оплата"
 
@@ -296,71 +292,71 @@ msgid "Log In"
 msgstr "Войти"
 
 #: boutique/templates/boutique/include/header.html:133
-#: boutique/templates/boutique/include/item_price.html:117
+#: boutique/templates/boutique/include/item_price.html:116
 #: boutique/templates/boutique/item.html:228
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
-#: boutique/templates/boutique/include/item_in_listviews.html:30
-#, fuzzy
-#| msgid "Log Out"
+#: boutique/templates/boutique/include/item_in_listviews.html:8
 msgid "Sold Out"
-msgstr "Выйти"
+msgstr "Продано"
 
 #. Translators: Join us NOW for extra ___blank percent discount of this iten...
-#: boutique/templates/boutique/include/item_price.html:112
+#: boutique/templates/boutique/include/item_price.html:111
 msgid "Join us NOW for extra"
 msgstr "Присоединяйся к нам и получи скидку"
 
-#: boutique/templates/boutique/include/item_price.html:114
+#: boutique/templates/boutique/include/item_price.html:113
 msgid "discount of this item and SO MUCH MORE!!!"
 msgstr " на данный и много других товаров"
 
 #. Translators: button text to close a popup window
-#: boutique/templates/boutique/include/modal_in_footer.html:35
-#: boutique/templates/boutique/include/modal_in_footer.html:88
-#: boutique/templates/boutique/include/modal_in_footer.html:117
+#: boutique/templates/boutique/include/modal_in_footer.html:34
+#: boutique/templates/boutique/include/modal_in_footer.html:87
+#: boutique/templates/boutique/include/modal_in_footer.html:115
 #: boutique/templates/boutique/item.html:268
 msgid "Close"
 msgstr "Закрыть"
 
 #. Translators: left column, popup window title
-#: boutique/templates/boutique/include/modal_in_footer.html:103
+#: boutique/templates/boutique/include/modal_in_footer.html:101
 msgid "Products to choose from"
 msgstr "Товары на выбор"
 
-#: boutique/templates/boutique/include/modal_in_footer.html:133
+#: boutique/templates/boutique/include/modal_in_footer.html:131
 msgid "Promotion plans available soon..."
 msgstr "Скоро..."
 
-#: boutique/templates/boutique/include/modal_in_footer.html:136
+#: boutique/templates/boutique/include/modal_in_footer.html:134
 msgid "Comming Soon"
 msgstr "Скоро..."
 
-#: boutique/templates/boutique/include/modal_in_footer.html:151
+#: boutique/templates/boutique/include/modal_in_footer.html:149
 msgid "We are On Sale"
 msgstr "Распродажа"
 
-#: boutique/templates/boutique/include/modal_in_footer.html:154
+#: boutique/templates/boutique/include/modal_in_footer.html:152
 msgid "Checkout Now"
 msgstr "Купить сейчас"
 
-#: boutique/templates/boutique/include/modal_in_footer.html:169
+#: boutique/templates/boutique/include/modal_in_footer.html:167
 msgid "Place a VIP order"
 msgstr "Отправить VIP заказ"
 
-#: boutique/templates/boutique/include/modal_in_footer.html:170
+#: boutique/templates/boutique/include/modal_in_footer.html:168
 msgid "We will search it for you"
-msgstr "Мы найдём это для Вас"
+msgstr ""
+"Ищите определенный товар, но он не представлен на нашем сайте?  Пришлите нам "
+"фото и мы найдём его специально для Вас!"
 
 #. Translators: VIP modal popup, press 'go vip' button goes to vip order page
-#: boutique/templates/boutique/include/modal_in_footer.html:175
+#: boutique/templates/boutique/include/modal_in_footer.html:173
 msgid "Go VIP"
 msgstr ""
 
 #: boutique/templates/boutique/include/modal_in_nav.html:12
 msgid "Stay tuned with our Instagram!!"
-msgstr "Подписываетесь на наш Instagram"
+msgstr "Подписывайтесь на наш Instagram"
 
 #: boutique/templates/boutique/include/modal_in_nav.html:15
 msgid "Follow Now!"
@@ -380,7 +376,7 @@ msgstr "Напишите нам для более подробной инфор�
 msgid ""
 "This item is out of stock. But luckily, we have many other products for you "
 "to browse."
-msgstr ""
+msgstr "Данный товар распродан. Вы можете купить его под заказ со скидкой 15%"
 
 #: boutique/templates/boutique/item.html:137
 #: boutique/templates/boutique/item.html:142
@@ -427,10 +423,10 @@ msgstr "Ничего не найдено по запросу"
 msgid "is showing please try a different wording or browse from our categories"
 msgstr "Пожалуйста, попробуйте найти товар в категориях"
 
-#: boutique/templates/boutique/show_all.html:36
-#: boutique/templates/boutique/show_all.html:70
+#: boutique/templates/boutique/show_all.html:47
+#: boutique/templates/boutique/show_all.html:81
 msgid "more"
-msgstr ""
+msgstr "больше"
 
 #: shopping/forms.py:13
 msgid "Your full name"
@@ -666,11 +662,11 @@ msgstr "Спасибо! До новых встреч!"
 msgid "You have been successfully logged out"
 msgstr "Вы успешно вышли из системы"
 
-#: users/templates/registration/login.html:7
+#: users/templates/registration/login.html:9
 msgid "Please Sign In"
 msgstr "Войти"
 
-#: users/templates/registration/login.html:10
+#: users/templates/registration/login.html:12
 msgid "Sign In"
 msgstr "Зарегистрироваться"
 
@@ -678,15 +674,15 @@ msgstr "Зарегистрироваться"
 msgid "Join us for so much more!"
 msgstr "Присоединяйся к нам"
 
-#: users/templates/registration/register.html:20
+#: users/templates/registration/register.html:22
 msgid " Get your own personal stylist!"
 msgstr "Получше  консультацию по стилю от Вашего персонального менеджера!"
 
-#: users/templates/registration/register.html:22
+#: users/templates/registration/register.html:26
 msgid " Enjoy special discount for ALL tagged items!"
 msgstr "Получи скидку на товары отмеченные ярлыком"
 
-#: users/templates/registration/register.html:24
+#: users/templates/registration/register.html:31
 msgid ""
 " Have your own wish-list and shopping bag to track the items you are "
 "interested in!"
@@ -694,7 +690,7 @@ msgstr ""
 "Добавляйте понравившиеся товары в список желаний и получайте персональные "
 "скидки!"
 
-#: users/templates/registration/register.html:29
+#: users/templates/registration/register.html:39
 msgid "Register"
 msgstr "Регистрация"
 

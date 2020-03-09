@@ -55,7 +55,7 @@ div.modal {
   font-size: large; }
 
 .font-smaller {
-  font-size: small; }
+  font-size: 20px; }
 
 div.accordion a.dropdown-item {
   padding-left: 5px;

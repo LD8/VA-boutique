@@ -95,7 +95,7 @@
     <!-- /item images and thumbnails -->
 
     <!-- item information: title, price, wish, add to shopping bag, buy now -->
-    <div class="row text-left p-2 mt-auto">
+    <div class="row text-left p-2 mt-auto mb-5">
 
         <!-- item title, price, wish, description -->
         <div class="col-12 col-md-8">
@@ -133,15 +133,15 @@
         <div class="col-12 col-md-4 mt-2">
 
             {% if user.is_authenticated %}
-            <a href="{% url 'shopping:add-to-bag' item.pk %}" class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3
-                {% if not item.in_stock %} disabled {% endif %}">{% trans "Add to Bag" %}</a>
-            <a href="{% url 'shopping:buy-now-registered' item.pk %}" class="btn btn-dark col-12 my-2 px-0 px-sm-3
-                {% if not item.in_stock %} disabled {% endif %}">{% trans "Buy Now" %}</a>
+            <a href="{% url 'shopping:add-to-bag' item.pk %}"
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
+            <a href="{% url 'shopping:buy-now-registered' item.pk %}"
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
             {% else %}
             <a href="#wishListSignUpModal" data-toggle="modal"
                 class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
-            <a href="{% url 'shopping:buy-now-unregistered' item.pk %}" class="btn btn-dark col-12 my-2 px-0 px-sm-3
-                {% if not item.in_stock %} disabled {% endif %}">{% trans "Buy Now" %}</a>
+            <a href="{% url 'shopping:buy-now-unregistered' item.pk %}"
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
             {% endif %}
 
             <a href="#policyModalScrollable" data-toggle="modal"

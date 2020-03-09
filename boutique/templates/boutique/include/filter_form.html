@@ -10,8 +10,26 @@
         {% url 'boutique:filter-all' %}
     {% endif %}" method="GET">{% csrf_token%}
 
+    {% if not filter %}
+    <div class="">
+        {% if filters.subcategory %}
+        <h6 class="my-2 font-weight-lighter">
+            {% comment %}Translators: title of filter pop up window, 'filter' as a verb here{% endcomment %}
+            {% trans "Filter " %}
+            <a class="text-black-50 font-italic border-bottom" href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a>
+        </h6>
+        {% elif filters.category %}
+        <h6 class="my-2 font-weight-lighter">
+            {% comment %}Translators: title of filter pop up window, 'filter' as a verb here{% endcomment %}
+            {% trans "Filter " %}
+            <a class="text-black-50 font-italic border-bottom" href="{{filters.category.get_subcategory_url}}">{{filters.category.name}}</a>
+        </h6>
+        {% else %}
+        <span class="font-italic">{{brand_selected_from_all}}</span> 
+        {% endif %}
+    </div>
+    {% endif %}
     <div class="form-row px-0 mb-4">
-
         <!-- brand -->
         <div class="form-gourp col-12 col-sm mt-1 {{filter}} pl-lg-0">
             <select class="custom-select custom-select-sm" name="brand_pk">
@@ -30,7 +48,8 @@
         <div class="form-gourp col-6 col-sm mt-1 {{filter}}">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
+                    <div class="input-group-text text-black-50 py-0 px-2"><small><i
+                                class="fas fa-ruble-sign fa-xs text-black-50"></i></small></div>
                 </div>
                 <input type="number" class="form-control form-control-sm" name="min_price" placeholder="min"
                     value="{% if filters.min_price %}{{filters.min_price}}{% endif %}">
@@ -41,7 +60,8 @@
         <div class="form-gourp col-6 col-sm mt-1 {{filter}}">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text text-black-50 py-0 px-2"><small>₽</small></div>
+                    <div class="input-group-text text-black-50 py-0 px-2"><small><i
+                                class="fas fa-ruble-sign fa-xs text-black-50"></i></small></div>
                 </div>
                 <input type="number" class="form-control form-control-sm" name="max_price" placeholder="max"
                     value="{% if filters.max_price %}{{filters.max_price}}{% endif %}">

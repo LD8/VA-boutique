@@ -9,22 +9,47 @@
         position: relative
     }
 
+    a.text-dark:hover {
+        color: rgb(248, 183, 164) !important;
+    }
+
+    /* horizontal ribbon
     .ribbon {
         position: absolute;
-        background: rgba(139, 10, 1, 0.7);
+        background: rgba(139, 1, 1, 0.829);
         color: white;
-        /* box-shadow: -2px 2px #888888; */
+        box-shadow: -1px 1px 4px grey;
         font-size: 15px;
-        /* transform: rotate(-45deg); */
         text-align: left;
         top: 18px;
         right: -36px;
         width: 110px;
+    } 
+    */
+
+    /* angled ribbon */
+    .ribbon {
+        position: absolute;
+        background: rgba(139, 1, 1, 0.829);
+        color: white;
+        box-shadow: 0px 0px 6px grey;
+        font-size: 14px;
+        transform: rotate(45deg);
+        text-align: center;
+        top: 20px;
+        right: -55px;
+        width: 180px;
+        padding: 4px 0;
     }
 
     @media only screen and (max-width: 768px) {
         .ribbon {
             font-size: 12px;
+            box-shadow: 0px 0px 5px grey;
+            top: 13px;
+            right: -38px;
+            width: 120px;
+            padding: 2px 0;
         }
     }
 
@@ -67,7 +92,7 @@
     }
 
     .bg-instagram {
-        background-image:url("{% static 'boutique/img/bg-instagram.png' %}");
+        background-image:url("{% static 'boutique/img/bg-instagram.jpg' %}");
     }
 
     .bg-whatsapp {

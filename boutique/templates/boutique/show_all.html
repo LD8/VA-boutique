@@ -18,21 +18,32 @@
     {% for subcategory in category.subcategory_set.all %}
 
     <div class="container px-2">
-        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark"
-                href="{{category.get_category_url}}">{{category.name}}</a></h4>
-        <h6 class="my-3 pb-1 border-bottom border-light font-weight-lighter"><a class="text-dark"
-                href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
-        <!-- {% if subcategory.description %}
+        <!-- title block -->
+        <div class="mb-3">
+            <h4 class="mb-1 pb-1 border-bottom border-dark font-weight-light">
+                {% if filters.category %}
+                <span class="text-black-50">{{category.name}}</span>
+                {% else %}
+                <a class="text-dark" href="{{category.get_category_url}}">{{category.name}}</a>
+                {% endif %}
+            </h4>
+            <h6 class="mt-1 pb-2 font-weight-lighter text-dark"><a class="text-dark border-bottom px-3"
+                    href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
+            <!-- {% if subcategory.description %}
                 <p class="mt-n3 mb-4 px-3"><small class="font-weight-lighter">{{subcategory.description}}</small></p>
                 {% endif %} -->
+        </div>
+        <!-- / title block -->
+        
         <div class="row mb-5">
 
             {% for item in subcategory.item_set.all|slice:":8" %}
-                {% include 'boutique/include/item_in_listviews.html' %}
+            {% include 'boutique/include/item_in_listviews.html' %}
             {% endfor %}
 
             {% if subcategory.item_set.count > 8 %}
-            <a href="{{subcategory.get_subcategory_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm">
+            <a href="{{subcategory.get_subcategory_url}}"
+                class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm">
                 »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
             {% endif %}
 
@@ -55,20 +66,20 @@
         <div class="row">
             {% if show_all_cat_items_flag %}
 
-                {% for item in category.item_set.all %}
-                    {% include 'boutique/include/item_in_listviews.html' %}
-                {% endfor %}
-            
+            {% for item in category.item_set.all %}
+            {% include 'boutique/include/item_in_listviews.html' %}
+            {% endfor %}
+
             {% else %}
 
-                {% for item in category.item_set.all|slice:":8" %}
-                    {% include 'boutique/include/item_in_listviews.html' %}
-                {% endfor %}
+            {% for item in category.item_set.all|slice:":8" %}
+            {% include 'boutique/include/item_in_listviews.html' %}
+            {% endfor %}
 
-                {% if category.item_set.count > 8 %}
-                <a href="{{category.get_category_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm">
-                    »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
-                {% endif %}
+            {% if category.item_set.count > 8 %}
+            <a href="{{category.get_category_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm">
+                »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
+            {% endif %}
 
             {% endif %}
         </div>
