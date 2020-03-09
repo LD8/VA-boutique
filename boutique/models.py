@@ -222,7 +222,7 @@ class Item(models.Model):
     objects = ItemManager()
 
     class Meta:
-        ordering = ['-in_stock', '-total_discount_percentage', '-uploaded_date']
+        ordering = ['-uploaded_date']
 
     def __str__(self):
         return self.name

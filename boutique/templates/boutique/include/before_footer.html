@@ -10,7 +10,7 @@
                     {% trans "Women" %}
                 </a>
             </div>
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
+            <div id="collapseOne" class="collapse {% if filters %} show {% endif %}" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
                 <div class="mt-2 mb-5">
                     {% for category in categories %}
                     {% if category.gender == 1 %}
