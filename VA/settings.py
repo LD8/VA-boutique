@@ -2,7 +2,7 @@ from django.contrib.messages import constants as messages
 import os
 
 # always False when pushing to Git
-DEBUG = False
+DEBUG = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

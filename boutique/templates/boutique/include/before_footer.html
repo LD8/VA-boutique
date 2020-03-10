@@ -1,17 +1,18 @@
 {% load i18n %}
 
 <div class="pre-footer my-4">
-    <div class="accordion d-flex justify-content-center text-center mb-3" id="accordionPageMenu">
+    <div class="accordion d-flex justify-content-center text-center mb-3 wow pulse" id="accordionPageMenu">
 
         <div class="col-6 px-0 ml-4">
             <div class="" id="headingOne">
-                <a class="btn border-bottom pb-0 text-black-50 cursor-pointer collapse.shwo" data-toggle="collapse"
+                <a class="btn border-bottom pb-0 text-black-50 cursor-pointer" data-toggle="collapse"
                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     {% trans "Women" %}
                 </a>
             </div>
             <div id="collapseOne" class="collapse {% if filters %} show {% endif %}" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
-                <div class="mt-2 mb-5 wow fadeInLeft">
+            <!-- <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionPageMenu"> -->
+                <div class="mt-2 mb-5">
                     {% for category in categories %}
                     {% if category.gender == 1 %}
                     <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
@@ -35,7 +36,7 @@
                 </a>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPageMenu">
-                <div class="mt-2 mb-5 wow fadeInRight">
+                <div class="mt-2 mb-5">
                     {% for category in categories %}
                     {% if category.gender == 2 %}
                     <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
@@ -53,7 +54,7 @@
 
     </div>
 
-    <form class="form-inline my-0 border-bottom" action="{% url 'boutique:search' %}" method="GET">
+    <form class="form-inline my-0 border-bottom wow fadeInDown" action="{% url 'boutique:search' %}" method="GET">
         <input name="query" class="form-control mr-sm-2 w-100 border-white text-center" type="text" placeholder="{% trans 'Search' %}"
             aria-label="Search">
     </form>

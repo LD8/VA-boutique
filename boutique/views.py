@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, Http404
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import Category, Item, SubCategory, IndexCarousel, Brand
 from django.db.models import F, Q, Count
+from datetime import datetime, timedelta
 
 
 class IndexView(TemplateView):
@@ -11,6 +12,26 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['carousels'] = IndexCarousel.objects.all()
+        return context
+
+
+class NewListView(ListView):
+    model = Item
+    template_name = 'boutique/new.html'
+    context_object_name = 'items'
+
+    def get_queryset(self):
+        qs = Item.objects.filter(uploaded_date__lte=datetime.now()-timedelta(days=30)).order_by('-uploaded_date')[:31]
+        if qs.count() < 30:
+            qs = Item.objects.all()[:31]
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['meta'] = {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        }
         return context
 
 

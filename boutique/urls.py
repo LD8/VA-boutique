@@ -8,6 +8,8 @@ urlpatterns = [
     
     path('sales/', views.SalesListView.as_view(), name='sales'),
     
+    path('new/', views.NewListView.as_view(), name='new'),
+
     # general search, text input
     path('search/', views.SearchView.as_view(), name='search'),
 

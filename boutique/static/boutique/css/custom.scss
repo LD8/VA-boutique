@@ -18,8 +18,9 @@
     cursor: pointer;
   }
   // sales page
-  div.sales-cover {
-    background-image: url("../img/sales-cover.jpg");
+  // new items cover
+  div.sales-cover,
+  div.new-cover {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,9 +33,16 @@
     margin-left: -50vw;
     margin-right: -50vw;
   }
+  div.sales-cover {
+    background-image: url("../img/sales-cover.jpg");
+  }
+  div.new-cover {
+    background-image: url("../img/new-cover.jpg");
+  }
 
   @media only screen and (min-width: 800px) {
-    div.sales-cover {
+    div.sales-cover,
+    div.new-cover {
       height: 300px;
     }
   }
