@@ -40,8 +40,7 @@
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item px-3 font-smaller"
-                        href="{% url 'boutique:show-all' 'women' %}">{% trans "Show All" %}</a>
+                    <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'women' %}">{% trans "Show All" %}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -61,7 +60,7 @@
                     <div class="dropdown-divider"></div>
                     {% endif %}
                     {% endfor %}
-                    <a class="dropdown-item px-3 font-smaller" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
+                    <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
                 </div>
             </li>
         </ul>

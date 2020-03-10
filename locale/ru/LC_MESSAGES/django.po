@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-09 15:50+0800\n"
+"POT-Creation-Date: 2020-03-10 13:55+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -151,13 +151,13 @@ msgstr "Для женщин"
 
 #: boutique/templates/boutique/include/before_footer.html:25
 #: boutique/templates/boutique/include/before_footer.html:49
-#: boutique/templates/boutique/include/header.html:44
-#: boutique/templates/boutique/include/header.html:64
+#: boutique/templates/boutique/include/header.html:43
+#: boutique/templates/boutique/include/header.html:63
 msgid "Show All"
 msgstr "Показать все товары"
 
 #: boutique/templates/boutique/include/before_footer.html:34
-#: boutique/templates/boutique/include/header.html:50
+#: boutique/templates/boutique/include/header.html:49
 msgid "Men"
 msgstr "Для мужчин"
 
@@ -165,25 +165,29 @@ msgstr "Для мужчин"
 msgid "Search"
 msgstr "Поиск"
 
-#. Translators: title of filter pop up window, 'filter' as a verb here
-#: boutique/templates/boutique/include/filter_form.html:18
-#: boutique/templates/boutique/include/filter_form.html:24
-msgid "Filter "
-msgstr "Фильтр"
+#: boutique/templates/boutique/include/carousel.html:28
+msgid "Cover photo "
+msgstr "Фото на обложке"
 
-#: boutique/templates/boutique/include/filter_form.html:36
+#: boutique/templates/boutique/include/filter_form.html:17
 msgid "All Brands"
 msgstr "Все бренды"
 
-#: boutique/templates/boutique/include/filter_form.html:75
+#: boutique/templates/boutique/include/filter_form.html:56
 msgid "Filter"
 msgstr "Фильтр"
 
-#: boutique/templates/boutique/include/filter_form.html:81
+#: boutique/templates/boutique/include/filter_form.html:62
 msgid "Clear Filter"
 msgstr "Сбросить"
 
-#: boutique/templates/boutique/include/filter_icon.html:18
+#. Translators: title of filter pop up window, 'filter' as a verb here
+#: boutique/templates/boutique/include/filter_icon.html:13
+#: boutique/templates/boutique/include/filter_icon.html:20
+msgid "Filter "
+msgstr "Фильтр"
+
+#: boutique/templates/boutique/include/filter_icon.html:39
 #: boutique/templates/boutique/item.html:13
 #: shopping/templates/shopping/shopping_bag.html:33
 #: users/templates/users/profile_update.html:13
@@ -191,7 +195,7 @@ msgstr "Сбросить"
 msgid "Go Back"
 msgstr "Назад"
 
-#: boutique/templates/boutique/include/filter_icon.html:23
+#: boutique/templates/boutique/include/filter_icon.html:44
 msgid "Filters"
 msgstr "Фильтры"
 
@@ -244,7 +248,7 @@ msgstr "VIP заказ"
 msgid "Opening hours: 24/7"
 msgstr "Часы работы 24/7"
 
-#: boutique/templates/boutique/include/header.html:100
+#: boutique/templates/boutique/include/header.html:99
 #: shopping/templates/shopping/order.html:71
 #: shopping/templates/shopping/orders.html:57
 #: shopping/templates/shopping/shopping_bag.html:82
@@ -253,7 +257,7 @@ msgstr "Часы работы 24/7"
 msgid "My Profile"
 msgstr "Мой профиль"
 
-#: boutique/templates/boutique/include/header.html:104
+#: boutique/templates/boutique/include/header.html:103
 #: shopping/templates/shopping/order.html:73
 #: shopping/templates/shopping/orders.html:59
 #: shopping/templates/shopping/shopping_bag.html:84
@@ -263,7 +267,7 @@ msgstr "Мой профиль"
 msgid "My Wish List"
 msgstr "Мой лист желаний"
 
-#: boutique/templates/boutique/include/header.html:108
+#: boutique/templates/boutique/include/header.html:107
 #: shopping/templates/shopping/order.html:75
 #: shopping/templates/shopping/orders.html:61
 #: shopping/templates/shopping/shopping_bag.html:36
@@ -273,7 +277,7 @@ msgstr "Мой лист желаний"
 msgid "My Shopping Bag"
 msgstr "Моя корзина"
 
-#: boutique/templates/boutique/include/header.html:112
+#: boutique/templates/boutique/include/header.html:111
 #: shopping/templates/shopping/order.html:77
 #: shopping/templates/shopping/orders.html:6
 #: shopping/templates/shopping/orders.html:62
@@ -283,23 +287,28 @@ msgstr "Моя корзина"
 msgid "My Orders"
 msgstr "Мои заказы"
 
-#: boutique/templates/boutique/include/header.html:118
+#: boutique/templates/boutique/include/header.html:117
 msgid "Log Out"
 msgstr "Выйти"
 
-#: boutique/templates/boutique/include/header.html:129
+#: boutique/templates/boutique/include/header.html:128
 msgid "Log In"
 msgstr "Войти"
 
-#: boutique/templates/boutique/include/header.html:133
+#: boutique/templates/boutique/include/header.html:132
 #: boutique/templates/boutique/include/item_price.html:116
-#: boutique/templates/boutique/item.html:228
+#: boutique/templates/boutique/item.html:181
 msgid "Sign Up"
 msgstr "Зарегистрироваться"
 
 #: boutique/templates/boutique/include/item_in_listviews.html:8
 msgid "Sold Out"
 msgstr "Продано"
+
+#: boutique/templates/boutique/include/item_in_listviews.html:11
+#: boutique/templates/boutique/include/item_in_listviews.html:17
+msgid "An image of and a link to "
+msgstr "Изображение и ссылка на"
 
 #. Translators: Join us NOW for extra ___blank percent discount of this iten...
 #: boutique/templates/boutique/include/item_price.html:111
@@ -314,7 +323,7 @@ msgstr " на данный и много других товаров"
 #: boutique/templates/boutique/include/modal_in_footer.html:34
 #: boutique/templates/boutique/include/modal_in_footer.html:87
 #: boutique/templates/boutique/include/modal_in_footer.html:115
-#: boutique/templates/boutique/item.html:268
+#: boutique/templates/boutique/item.html:221
 msgid "Close"
 msgstr "Закрыть"
 
@@ -378,30 +387,45 @@ msgid ""
 "to browse."
 msgstr "Данный товар распродан. Вы можете купить его под заказ со скидкой 15%"
 
-#: boutique/templates/boutique/item.html:137
-#: boutique/templates/boutique/item.html:142
+#: boutique/templates/boutique/item.html:56
+#: shopping/templates/shopping/include/buy_now_item.html:7
+#: shopping/templates/shopping/order.html:51
+#: shopping/templates/shopping/orders.html:38
+#: shopping/templates/shopping/shopping_bag.html:44
+#: shopping/templates/shopping/unregistered_order.html:49
+#: wishlist/templates/wishlist/wish_list.html:21
+msgid "An image of "
+msgstr "Изображение"
+
+#: boutique/templates/boutique/item.html:87
+msgid "An image thumbnail of "
+msgstr "Миниатюра изображения"
+
+#: boutique/templates/boutique/item.html:136
+#: boutique/templates/boutique/item.html:141
 msgid "Add to Bag"
 msgstr "Добавить в корзину"
 
-#: boutique/templates/boutique/item.html:139
-#: boutique/templates/boutique/item.html:144
+#: boutique/templates/boutique/item.html:138
+#: boutique/templates/boutique/item.html:143
+#: shopping/templates/shopping/include/buy_now_item.html:7
 msgid "Buy Now"
 msgstr "Купить сейчас"
 
 #. Translators: item detail page, button text below 'BUY NOW'
-#: boutique/templates/boutique/item.html:150
-#: boutique/templates/boutique/item.html:244
+#: boutique/templates/boutique/item.html:149
+#: boutique/templates/boutique/item.html:197
 msgid "Delivery Policy"
 msgstr "Доставка"
 
 #. Translators: item detail page, button text below 'Delivery Policy'
-#: boutique/templates/boutique/item.html:154
+#: boutique/templates/boutique/item.html:153
 msgid "Contact Directly"
 msgstr "Свяжитесь с нами"
 
 #. Translators: popup window text when people try to click the heart(wish-list)
 #. button
-#: boutique/templates/boutique/item.html:224
+#: boutique/templates/boutique/item.html:177
 msgid ""
 "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, "
 "manage all of your orders! And So Much more..."
@@ -423,8 +447,8 @@ msgstr "Ничего не найдено по запросу"
 msgid "is showing please try a different wording or browse from our categories"
 msgstr "Пожалуйста, попробуйте найти товар в категориях"
 
-#: boutique/templates/boutique/show_all.html:47
-#: boutique/templates/boutique/show_all.html:81
+#: boutique/templates/boutique/show_all.html:48
+#: boutique/templates/boutique/show_all.html:82
 msgid "more"
 msgstr "больше"
 
@@ -723,7 +747,7 @@ msgstr "Редактировать профиль"
 msgid "Please update your profile"
 msgstr "Пожалуйста обновите ваш профиль "
 
-#: users/views.py:83
+#: users/views.py:42
 msgid "Please complete your profile information"
 msgstr "Укажите персональную информацию"
 
@@ -765,9 +789,13 @@ msgstr "Пожалуйста, заполните анкету для разме�
 msgid "VIP Name"
 msgstr "Категория"
 
-#: vip/views.py:39
+#: vip/views.py:42
 msgid "Thanks for your purchase, we will contact you soon!"
 msgstr "Спасибо за покупку! Вы свяжемся с Вами в ближайшее время!"
+
+#: wishlist/templates/wishlist/wish_list.html:21
+msgid "wish list"
+msgstr "Мой лист желаний"
 
 #: wishlist/templates/wishlist/wish_list.html:44
 msgid "Please add more items to your wish list"
