@@ -63,16 +63,21 @@
                     <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
                 </div>
             </li>
+
+            <li class="nav-item align-self-center">
+                <a class="nav-link new btn wow swing ml-lg-3 py-0 px-3 text-center border rounded" data-wow-delay="0.5s"
+                    href="#">{% trans "New" %}</a>
+            </li>
         </ul>
         <!-- /Women/Men Category dropdown -->
 
         <!-- fa icons: instagram, whatsapp, email -->
         <ul
-            class="navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center">
+            class="navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center wow fadeInDown">
             <li class="nav-item"><a class="nav-link text-black-50 ml-3" href="#instagramModal" data-toggle="modal"><i
                         class="fab fa-instagram"></i></a>
             </li>
-            <li class="nav-item"><a class="nav-link text-black-50 px-5 px-lg-3" href="#whatsappModal"
+            <li class="nav-item"><a class="nav-link text-black-50 mx-5 mx-lg-3" href="#whatsappModal"
                     data-toggle="modal"><i class="fab fa-whatsapp"></i></a>
             </li>
             <li class="nav-item"><a class="nav-link text-black-50 mr-3" href="#contactModal" data-toggle="modal"><i

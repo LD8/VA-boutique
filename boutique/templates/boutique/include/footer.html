@@ -6,7 +6,8 @@
 
     <!-- Logo -->
     <div class="mt-4">
-        <a href="{% url 'boutique:index' %}"><img src="{% static 'boutique/img/logo-long-dark.png' %}" alt="VA Boutique Logo" height="55px"></a>
+        <a href="{% url 'boutique:index' %}"><img class="wow flipInX" data-wow-duration="0.8s" data-wow-delay="0.4s" 
+            src="{% static 'boutique/img/logo-long-dark.png' %}" alt="VA Boutique Logo" height="55px"></a>
     </div>
 
     <!-- About Us & Special Offer 2 columns in one row -->
@@ -14,8 +15,8 @@
         <div class="col-6 text-right">
             <h6 class="mb-2 border-bottom border-light">
                 {% comment %}Translators: footer, left column, title{% endcomment %}
-                {% trans "About Us" %}</h5>
-                <div class="col-12 px-0">
+                {% trans "About Us" %}</h6>
+                <div class="col-12 px-0 wow zoomInLeft" data-wow-duration="1.5s">
                     <p class="mb-sm-0 mb-1"><a href="#vaBoutiqueModal" data-toggle="modal" class="text-black-50">
                             {% comment %}Translators: footer, left column, popup window title{% endcomment %}
                             {% trans "VA Boutique" %}</a></p>
@@ -32,7 +33,7 @@
             <h6 class="mb-2 border-bottom border-light">
                 {% comment %}Translators: footer, right column, title{% endcomment %}
                 {% trans "Special Offers" %}</h6>
-            <div class="col-12 px-0">
+            <div class="col-12 px-0 wow zoomInRight" data-wow-duration="1.8s">
                 <p class="mb-sm-0 mb-1"><a href="#promotionModal" data-toggle="modal"
                         class="text-black-50">
                         {% comment %}Translators: footer, right column, popup window title{% endcomment %}
@@ -51,13 +52,13 @@
     <!-- / About Us & Special Offer -->
 
     <!-- Phone and Opening Hours -->
-    <div class="row mt-3 w-100">
+    <div class="row mt-3 w-100 wow fadeInUp">
         <div class="col-6 text-muted text-right">+7 (925) 519-62-42</div>
-        <div class="col-6 text-muted">{% trans "Opening hours: 24/7" %}</div>
+        <div class="col-6 text-muted wow">{% trans "Opening hours: 24/7" %}</div>
     </div>
 
     <!-- fa icons -->
-    <ul class="nav my-3 fa-2x">
+    <ul class="nav my-3 fa-2x wow fadeInUp" data-wow-duration="2s">
         <li class="nav-item"><a class="nav-link text-black-50" href="#instagramModal" data-toggle="modal"><i
                     class="fab fa-instagram"></i></a></li>
         <li class="nav-item"><a class="nav-link text-black-50" href="#whatsappModal" data-toggle="modal"><i
@@ -67,7 +68,7 @@
     </ul>
 
     <!-- Acknowledgement -->
-    <div class="mb-2 text-muted text-center px-2">
+    <div class="mb-2 text-muted text-center px-2 wow fadeIn">
         <p>
             <small>&copy; 2019 - 2020
                 <a href="{% url 'boutique:index' %}" class="text-muted border-bottom">

@@ -6,6 +6,13 @@
 
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override {
+  a.nav-link.new {
+    color: rgb(230, 154, 124) !important;
+  }
+  a.nav-link.new:hover {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(251, 193, 170);
+  }
   // make cursor become pointer on anchor tags
   a.cursor-pointer {
     cursor: pointer;
@@ -180,7 +187,7 @@ a.page-link {
   .font-bigger {
     font-size: 20px;
   }
-  
+
   .font-smaller {
     font-size: 17px;
   }

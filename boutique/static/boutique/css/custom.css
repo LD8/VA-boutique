@@ -1,6 +1,11 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Forum&display=swap");
 /* -------- overriding bootstrap styles -------- */
+#bootstrap-override a.nav-link.new {
+  color: #e69a7c !important; }
+#bootstrap-override a.nav-link.new:hover {
+  color: white !important;
+  background-color: #fbc1aa; }
 #bootstrap-override a.cursor-pointer {
   cursor: pointer; }
 #bootstrap-override div.sales-cover {

@@ -42,6 +42,14 @@
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 
+    <!-- animate css -->
+    <link rel="stylesheet" href="{% static 'boutique/css/animate.css' %}">
+    <!-- wow.js -->
+    <script src="{% static 'boutique/js/wow.min.js' %}"></script>
+    <script>
+    new WOW().init();
+    </script>
+
     <!-- customised css -->
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
     {% include 'boutique/include/modal_style.html' %}

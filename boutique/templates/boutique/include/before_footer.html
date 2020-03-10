@@ -11,7 +11,7 @@
                 </a>
             </div>
             <div id="collapseOne" class="collapse {% if filters %} show {% endif %}" aria-labelledby="headingOne" data-parent="#accordionPageMenu">
-                <div class="mt-2 mb-5">
+                <div class="mt-2 mb-5 wow fadeInLeft">
                     {% for category in categories %}
                     {% if category.gender == 1 %}
                     <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
@@ -35,7 +35,7 @@
                 </a>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionPageMenu">
-                <div class="mt-2 mb-5">
+                <div class="mt-2 mb-5 wow fadeInRight">
                     {% for category in categories %}
                     {% if category.gender == 2 %}
                     <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>

@@ -5,7 +5,7 @@
 
     {% if not item.in_stock %}
     <div class="ribbon-holder">
-        <div class="ribbon ribbon-holder"><span class="">{% trans "Sold Out" %}</span></div>
+        <div class="ribbon ribbon-holder wow fadeIn"><span class="">{% trans "Sold Out" %}</span></div>
         <!-- image anchor -->
         <a href="{{ item.get_item_url }}">
             <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
