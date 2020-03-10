@@ -1,3 +1,4 @@
+{% load i18n %}
 <div id="indexPageCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for carousel in carousels %}
@@ -24,7 +25,7 @@
                 {% if forloop.counter == 5 %}
                 
                 {% endif %}
-                "><img src="{{carousel.image.url}}" class="d-block w-100" alt="..."></a>
+                "><img src="{{carousel.image.url}}" class="d-block w-100" alt="{% trans 'Cover photo ' %}{{carousel.title}} - {{forloop.counter}}"></a>
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{carousel.title}}</h5>
                     <p>{{carousel.description}}</p>

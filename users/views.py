@@ -7,45 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from .models import Profile
-# from .forms import UserLoginForm
 from django.contrib.auth import login
-# from django.contrib.auth import authenticate
-# from .forms import UserRegisterForm
-# from django.contrib.auth import logout
-
-
-# def login_view(request):
-#     next = request.GET.get('next')
-#     form = UserLoginForm(request.POST or None)
-
-#     if form.is_valid():
-#         username = form.cleaned_data.get('username')
-#         password = form.cleaned_data.get('password')
-#         user = authenticate(username=username, password=password)
-#         login(request, user)
-#         if next:
-#             return redirect(next)
-#         return redirect('/')
-
-#     return render(request, 'registration/login.html', {'form': form})
-
-
-# def register_view(request):
-#     next = request.GET.get('next')
-#     form = UserRegisterForm(request.POST or None)
-
-#     if form.is_valid():
-#         new_user = form.save(commit=False)
-#         password = form.cleaned_data.get('password2')
-#         new_user.set_password(password)
-#         new_user.save()
-#         user = authenticate(username=new_user.username, password=password)
-#         login(request, user)
-#         if next:
-#             return redirect(next)
-#         return redirect('/')
-
-#     return render(request, 'registration/register.html', {'form': form})
 
 
 @method_decorator(login_required, name='dispatch')
@@ -60,10 +22,6 @@ class ProfileUpdateView(UpdateView):
     model = Profile
     fields = ['name', 'email', 'phone', 'address']
     template_name = 'users/profile_update.html'
-
-# def logout_view(request):
-#     logout(request)
-#     return redirect('/')
 
 
 class RegisterView(TemplateView):
@@ -80,9 +38,23 @@ class RegisterView(TemplateView):
         if self.form.is_valid():
             new_user = self.form.save()
             login(self.request, new_user)
-            messages.warning(self.request, _("Please complete your profile information"))
+            messages.warning(self.request, _(
+                "Please complete your profile information"))
             if next:
                 return redirect(next)
             return redirect('users:profile-update', new_user.profile.pk, new_user.profile.slug)
 
         return render(self.request, self.template_name, {'form': self.form})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['meta'] = {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        }
+        return context
+
+
+# def logout_view(request):
+#     logout(request)
+#     return redirect('/')

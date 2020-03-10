@@ -28,11 +28,11 @@
                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans "Women" %}
                 </a>
-                <div class="dropdown-menu border-white px-2 text-center shadow-sm dropdown-menu-lg-right"
+                <div class="dropdown-menu border-white px-2 text-center shadow-sm"
                     aria-labelledby="navbarDropdown">
                     {% for category in categories %}
                     {% if category.gender == 1 %}
-                    <a class="dropdown-item" href="{{ category.get_category_url }}">{{category.name|title}}</a>
+                    <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
                     {% for subcategory in category.subcategory_set.all %}
                     <a class="dropdown-item text-black-50 font-smaller"
                         href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
@@ -53,7 +53,7 @@
                     aria-labelledby="navbarDropdown">
                     {% for category in categories %}
                     {% if category.gender == 2 %}
-                    <a class="dropdown-item" href="{{ category.get_category_url }}">{{category.name|title}}</a>
+                    <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
                     {% for subcategory in category.subcategory_set.all %}
                     <a class="dropdown-item text-black-50 font-smaller"
                         href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>

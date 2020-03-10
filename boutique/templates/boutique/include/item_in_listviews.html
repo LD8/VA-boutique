@@ -8,13 +8,13 @@
         <div class="ribbon ribbon-holder"><span class="">{% trans "Sold Out" %}</span></div>
         <!-- image anchor -->
         <a href="{{ item.get_item_url }}">
-            <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+            <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
         <!-- /image anchor -->
     </div>
     {% else %}
     <!-- image anchor -->
     <a href="{{ item.get_item_url }}">
-        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
     <!-- /image anchor -->
     {% endif %}
 

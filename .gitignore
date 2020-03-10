@@ -3,8 +3,8 @@ images/
 media/
 
 # backups
-__copies__/
-__web_backup__/
+_copies/
+_backups/
 
 # misc
 fontawesome/

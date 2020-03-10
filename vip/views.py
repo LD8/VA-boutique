@@ -17,7 +17,10 @@ def vip_ref_number_generator():
 
 
 def create_vip_order(request, **kwargs):
+    """ Create a VIP order, taking in at least one image file """
+
     form = VipOrderForm(request.POST or None, request.FILES or None)
+
     if form.is_valid():
         new_vip_order = form.save(commit=False)
         new_vip_order.active = True
@@ -39,10 +42,24 @@ def create_vip_order(request, **kwargs):
             "Thanks for your purchase, we will contact you soon!"))
         return redirect('vip:vip-order', new_vip_order.ref_number)
    
-    return render(request, "vip/create_vip_order.html", {'form': form})
+    context = {
+        'form': form,
+        'meta': {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        },
+    }
+    return render(request, "vip/create_vip_order.html", context)
 
 
 def show_vip_order(request, ref):
     """ Display a VIP order """
     vip_order = get_object_or_404(VipOrder, ref_number=ref)
-    return render(request, 'vip/vip_order.html', {'vip_order': vip_order})
+    context = {
+        'vip_order': vip_order,
+        'meta': {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        },
+    }
+    return render(request, 'vip/vip_order.html', context)

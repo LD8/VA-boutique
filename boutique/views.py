@@ -25,6 +25,14 @@ class SalesListView(ListView):
             Q(tag__tag_discount_percentage__gt=0)
         ).order_by('-discount_percentage', '-tag__tag_discount_percentage')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['meta'] = {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        }
+        return context
+
 
 def show_all(request, gender):
     context = {
@@ -32,7 +40,11 @@ def show_all(request, gender):
         'brands': Brand.objects.annotate(
             brand_pk=F('pk'),
             brand_name=F('name')).values(
-            'brand_pk', 'brand_name').order_by('brand_name')
+            'brand_pk', 'brand_name').order_by('brand_name'),
+        'meta': {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        },
     }
     return render(request, 'boutique/show_all.html', context)
 
@@ -45,6 +57,10 @@ def show_category(request, pk):
         'filters': {'category': cat, },
         'brands': get_brands(cat.item_set),
         'show_all_cat_items_flag': True if cat.subcategory_set.count() == 0 else False,
+        'meta': {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        },
     }
     return render(request, 'boutique/show_all.html', context)
 
@@ -55,6 +71,10 @@ def show_subcategory(request, pk):
         'subcategories_shown': SubCategory.objects.filter(pk=pk).select_related('category'),
         'filters': {'subcategory': subcategory, },
         'brands': get_brands(subcategory.item_set.all()),
+        'meta': {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        },
     }
     return render(request, 'boutique/show_subcategory.html', context)
 
@@ -102,7 +122,8 @@ def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
         items = items.filter(brand__pk=brand_pk)
         if not sub_pk:
             # if user filtered from show-all page, no subcat selected
-            context['brand_selected_from_all'] = Brand.objects.get(pk=brand_pk).name
+            context['brand_selected_from_all'] = Brand.objects.get(
+                pk=brand_pk).name
 
     if min_price:
         if request.user.is_authenticated:
@@ -126,6 +147,14 @@ class ItemDetailView(DetailView):
     template_name = 'boutique/item.html'
     queryset = Item.objects.prefetch_related('itemimage_set')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['meta'] = {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        }
+        return context
+
 
 class SearchView(ListView):
     '''display search result from the search query input'''
@@ -143,4 +172,8 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['query'] = self.query
+        context['meta'] = {
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'title': "",
+        }
         return context

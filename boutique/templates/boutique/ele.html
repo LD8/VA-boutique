@@ -7,6 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="
+        {% if meta.content %}{{meta.content}}
+        {% else %}Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!
+        {% endif %}">
+    <meta name=”robots” content=”index”>
 
     <!-- title icon -->
     <link rel="icon" type="image/gif/png" href="{% static 'boutique/img/icon-bright.png' %}">
@@ -30,8 +35,12 @@
     <!-- customised css -->
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
     {% include 'boutique/include/modal_style.html' %}
-    
-    <title>VA Boutique</title>
+
+    <title>
+        {% if meta.title %}{{meta.title}}
+        {% else %}VA Boutique - Сумки | Бижутерия | Обувь
+        {% endif %}
+    </title>
 </head>
 
 <body id="bootstrap-override" class="d-flex flex-column">

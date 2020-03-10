@@ -62,6 +62,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+ARCHIVE_DIRECTORY = os.path.join(BASE_DIR, '_backups/_archives')
+ARCHIVE_FILENAME = '%Y-%m-%d'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -53,10 +53,10 @@
     .filter-icon {
       display: block;
     }
-    .dropdown-menu{
+    .dropdown-menu {
       max-height: 600px;
       overflow-y: scroll;
-   }
+    }
   }
 
   // breadcrumb and back button
@@ -87,14 +87,6 @@ nav,
 .container,
 div.modal {
   font-family: "Forum", sans-serif;
-}
-
-.font-bigger {
-  font-size: large;
-}
-
-.font-smaller {
-  font-size: 20px;
 }
 
 div.accordion a.dropdown-item {
@@ -162,6 +154,14 @@ a.page-link {
   border-radius: 50px;
 }
 
+.font-bigger {
+  font-size: 22px;
+}
+
+.font-smaller {
+  font-size: 20px;
+}
+
 // screen size < 1200px
 @media only screen and (max-width: 1200px) {
   #indexPageCarousel {
@@ -176,5 +176,12 @@ a.page-link {
 }
 
 // screen size < 800
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
+  .font-bigger {
+    font-size: 20px;
+  }
+  
+  .font-smaller {
+    font-size: 18px;
+  }
 }

@@ -41,7 +41,7 @@
             <!-- image anchor -->
             <a href="{{ item.item.get_item_url }}">
                 <img class="rounded-sm shadow-sm" src="{{item.item.itemimage_set.first.image.url}}" width="100%"
-                    alt=""></a>
+                    alt="{% trans 'An image of ' %}{{item.item.name}}"></a>
             <!-- /image anchor -->
         </div>
         <div class="col px-0 d-flex align-items-center ml-md-3" style="font-size: 15px;">

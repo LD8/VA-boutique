@@ -51,12 +51,6 @@ nav,
 div.modal {
   font-family: "Forum", sans-serif; }
 
-.font-bigger {
-  font-size: large; }
-
-.font-smaller {
-  font-size: 20px; }
-
 div.accordion a.dropdown-item {
   padding-left: 5px;
   padding-right: 5px; }
@@ -109,6 +103,12 @@ a.page-link {
   padding: 2px 30px;
   border-radius: 50px; }
 
+.font-bigger {
+  font-size: 22px; }
+
+.font-smaller {
+  font-size: 20px; }
+
 @media only screen and (max-width: 1200px) {
   #indexPageCarousel {
     width: 100vw;
@@ -117,5 +117,11 @@ a.page-link {
 
   footer {
     font-size: 16px; } }
+@media only screen and (max-width: 768px) {
+  .font-bigger {
+    font-size: 20px; }
+
+  .font-smaller {
+    font-size: 18px; } }
 
 /*# sourceMappingURL=custom.css.map */

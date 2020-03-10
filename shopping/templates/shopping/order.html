@@ -48,7 +48,7 @@
                     <!-- image anchor -->
                     <a href="{{ item.item.get_item_url }}" class="pb-1 col-4 col-md-2 px-0 pr-1 pr-md-2">
                         <img class="rounded-sm shadow-sm" src="{{item.item.itemimage_set.first.image.url}}" width="100%"
-                            alt="{{item.item.name}}"></a>
+                            alt="{% trans 'An image of ' %}{{item.item.name}}"></a>
                     <!-- /image anchor -->
                     {% endfor %}
                 </td>

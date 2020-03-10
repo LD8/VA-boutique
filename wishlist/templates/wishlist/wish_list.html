@@ -18,7 +18,7 @@
                 <div class="col-5">
                     <!-- image anchor -->
                     <a href="{{ item.get_item_url }}">
-                        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt=""></a>
+                        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of ' %}{{item.name}} - {% trans 'wish list' %}"></a>
                     <!-- /image anchor -->
                 </div>
                 <div class="col-5 d-flex flex-column px-0">
