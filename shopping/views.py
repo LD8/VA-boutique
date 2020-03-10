@@ -92,6 +92,7 @@ def handle_order(request, **kwargs):
         'new_order_ref_number': order.ref_number,
         'new_order_item_names': ", ".join([item.item.name for item in order.items.all()]),
         'customer_email': order.profile.email,
+        'customer_phone': order.profile.phone,
         'new_order_link': request.build_absolute_uri(
                 reverse('shopping:show-order', kwargs={'ref': order.ref_number})),
     }
@@ -124,10 +125,11 @@ def buy_now_unregistered(request, **kwargs):
 
             # send email to the customer
             kwargs = {
-                'new_order_username': 'Unregistered user {}'.format(new_order.customer_name.capitalize()),
+                'new_order_username': '{}'.format(new_order.customer_name.capitalize()),
                 'new_order_ref_number': new_order.ref_number,
                 'new_order_item_names': item_to_buy.name,
                 'customer_email': new_order.customer_email,
+                'customer_phone': new_order.customer_phone,
                 'new_order_link': request.build_absolute_uri(
                         reverse('shopping:show-unregistered-order', kwargs={'ref': new_order.ref_number})),
             }
@@ -188,6 +190,7 @@ def buy_now_registered(request, **kwargs):
                 'new_order_ref_number': new_order.ref_number,
                 'new_order_item_names': item_to_buy.name,
                 'customer_email': profile.email,
+                'customer_phone': profile.phone,
                 'new_order_link': request.build_absolute_uri(
                         reverse('shopping:show-order', kwargs={'ref': new_order.ref_number})),
             }

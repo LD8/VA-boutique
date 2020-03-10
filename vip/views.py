@@ -33,6 +33,7 @@ def create_vip_order(request, **kwargs):
             'new_order_ref_number': new_vip_order.ref_number,
             'new_order_item_names': new_vip_order.item_description,
             'customer_email': new_vip_order.email,
+            'customer_phone': new_vip_order.phone,
             'new_order_link': request.build_absolute_uri(
                     reverse('vip:vip-order', kwargs={'ref': new_vip_order.ref_number})),
         }

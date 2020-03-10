@@ -11,7 +11,7 @@ if not os.environ.get('USE_PROD_DB', None):
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = '&gfm96b4n&a8i@7io^zheq)kzjd3k@vd(#(mp-*vw_kg_fr_hy'
     ALLOWED_HOSTS = [
-        'localhost', 
+        'localhost',
         '5.63.152.4',
     ]
 
@@ -21,8 +21,8 @@ else:
 
     ALLOWED_HOSTS = [
         'va-boutique.com',
-        'www.va-boutique.com', 
-        '5.63.152.4', 
+        'www.va-boutique.com',
+        '5.63.152.4',
         'localhost',
     ]
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'mailer',
 
     # backup db and static and media folders
-    'django_archive', 
+    'django_archive',
 
     # django add-in
     'django.contrib.humanize',
@@ -104,25 +104,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'VA.wsgi.application'
 
 # Database settings
-if not os.environ.get('USE_PROD_DB', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'vadb',
+        'USER': 'va_db_admin',
+        'PASSWORD': os.environ.get('DB_PASSWD'),
+        'HOST': 'localhost',
+        'PORT': '',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'vadb',
-            'USER': 'va_db_admin',
-            'PASSWORD': os.environ.get('DB_PASSWD'),
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

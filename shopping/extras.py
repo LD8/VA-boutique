@@ -20,7 +20,7 @@ def ref_number_generator():
     return "VA{}-{}".format(date_str, random_str)
 
 
-def mail_order_detail(new_order_username, new_order_ref_number, new_order_link, new_order_item_names, customer_email):
+def mail_order_detail(new_order_username, new_order_ref_number, new_order_link, new_order_item_names, customer_email, customer_phone):
     va_email = settings.DEFAULT_FROM_EMAIL
     # msg_to_customer = 'Hi {username},\n\nThank you for the order. We will contact you shortly.\nYour order number is: {ref}\nCheckout your order: {order_link}\n\nYours, VA-Boutique\n'
     msg_to_customer = 'Здравствуйте {username},\n\nСпасибо за заказ! Наш менеджер свяжется с Вами в течении 24 часов.\nНомер Вашего заказа {ref}\nПосмотреть Ваш заказ: {order_link}\n\nВаш VA-Boutique\n'.format(
@@ -28,11 +28,12 @@ def mail_order_detail(new_order_username, new_order_ref_number, new_order_link, 
         ref=new_order_ref_number,
         order_link=new_order_link,
     )
-    msg_to_va = 'Order No.: {ref}\nUser: {username}\nOrdered Items: {itemname}\nOrder Link: {order_link}\n'.format(
+    msg_to_va = 'Order No.: {ref}\nUser: {username}\nUser Phone No.:{phone}\nOrdered Items: {itemname}\nOrder Link: {order_link}\n'.format(
         ref=new_order_ref_number,
         username=new_order_username,
         itemname=new_order_item_names,
         order_link=new_order_link,
+        phone=customer_phone
     )
 
     email_to_customer = (
