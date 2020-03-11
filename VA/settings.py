@@ -2,7 +2,7 @@ from django.contrib.messages import constants as messages
 import os
 
 # always False when pushing to Git
-DEBUG = True
+DEBUG = False
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -142,7 +142,6 @@ if not os.environ.get('USE_PROD_DB', None):
 else:
     LANGUAGE_CODE = 'ru'
 
-LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
@@ -184,3 +183,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# LANGUAGE_CODE = 'ru'
+# DEBUG = True
