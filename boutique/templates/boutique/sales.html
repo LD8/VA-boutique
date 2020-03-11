@@ -2,16 +2,8 @@
 {% load i18n %}
 
 {% block content %}
-<style>
-  div.sales-cover {
-    background-image: url("../img/sales-cover.jpg");
-  }
-  div.new-cover {
-    background-image: url("../img/new-cover.jpg");
-  }
-</style>
 
-<div class="sales-cover shadow-lg mb-4 mb-md-5 wow slideInDown"></div>
+<div class="sales-cover shadow-lg mb-4 mb-md-5 wow slideInDown"><img style="display: none;" src="../img/sales-cover.jpg" alt=""></div>
 <div class="container px-2">
     <div class="row">
         {% for item in items %}

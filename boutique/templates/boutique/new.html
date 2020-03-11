@@ -2,15 +2,8 @@
 {% load i18n %}
 
 {% block content %}
-<style>
-  div.sales-cover {
-    background-image: url("../img/sales-cover.jpg");
-  }
-  div.new-cover {
-    background-image: url("../img/new-cover.jpg");
-  }
-</style>
-<div class="new-cover shadow-lg mb-4 mb-md-5"></div>
+
+<div class="new-cover shadow-lg mb-4 mb-md-5"><img style="display: none;" src="../img/new-cover.jpg" alt=""></div>
 <div class="container px-2">
     <div class="row">
         {% for item in items %}
