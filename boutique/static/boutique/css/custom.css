@@ -20,10 +20,6 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw; }
-#bootstrap-override div.sales-cover {
-  background-image: url("../img/sales-cover.jpg"); }
-#bootstrap-override div.new-cover {
-  background-image: url("../img/new-cover.jpg"); }
 @media only screen and (min-width: 800px) {
   #bootstrap-override div.sales-cover,
   #bootstrap-override div.new-cover {
