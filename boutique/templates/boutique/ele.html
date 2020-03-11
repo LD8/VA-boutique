@@ -4,13 +4,12 @@
 <html lang="en">
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag - gtag.js - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160154550-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'UA-160154550-1');
     </script>
 
@@ -22,6 +21,15 @@
         {% else %}Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!
         {% endif %}">
     <meta name=”robots” content=”index”>
+
+    <!-- open graph tags for social media -->
+    <meta property="og:site_name" content="VA Boutique">
+    <meta property="og:title" content="VA Boutique - Сумки | Бижутерия | Обувь" />
+    <meta property="og:description" content="Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!" />
+    <meta property="og:image" itemprop="image" content="{% static 'boutique/img/icon-bright.png' %}">
+    <meta property="og:image:secure_url" itemprop="image" content="{% static 'boutique/img/icon-bright.png' %}">
+    <meta property="og:type" content="shop" />
+    <meta property="og:updated_time" content="1583934971" />
 
     <!-- title icon -->
     <link rel="icon" type="image/gif/png" href="{% static 'boutique/img/icon-bright.png' %}">

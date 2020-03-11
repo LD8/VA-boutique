@@ -50,4 +50,4 @@ def delete_image(sender, instance, **kwargs):
 
 
 post_delete.connect(delete_image, sender=IndexCarousel,
-                    dispatch_uid="delete_image_caroucel")
+                    dispatch_uid="delete_image_carousel")
