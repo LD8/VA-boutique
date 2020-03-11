@@ -130,7 +130,7 @@
                 </button>
                 <h5 class="mb-3 text-warning font-weight-light">{% trans "Promotion plans available soon..." %}</h5>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="{% url 'boutique:sales' %}" type="button"
+                <a target="_blank" href="{% url 'boutique:sales' %}" role="button"
                     class="btn btn-warning btn-sm align-self-end px-5">{% trans "Comming Soon" %}!</a>
             </div>
         </div>
@@ -148,7 +148,7 @@
                 </button>
                 <h5 class="mb-3 text-warning font-weight-light">{% trans "We are On Sale" %}!!</h5>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="{% url 'boutique:sales' %}" type="button"
+                <a target="_blank" href="{% url 'boutique:sales' %}" role="button"
                     class="btn btn-warning btn-sm align-self-end px-5">{% trans "Checkout Now" %}!</a>
             </div>
         </div>
@@ -167,7 +167,7 @@
                 <h5 class="mb-1 text-danger">- {% trans "Place a VIP order" %}! -</h5>
                 <h6 class="mb-3 text-danger">{% trans "We will search it for you" %}</h6>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="{% url 'vip:create-vip-order' %}" type="button"
+                <a target="_blank" href="{% url 'vip:create-vip-order' %}" role="button"
                     class="btn btn-danger btn-sm align-self-end px-4 px-md-5">
                     {% comment %}Translators: VIP modal popup, press 'go vip' button goes to vip order page{% endcomment %}
                     {% trans "Go VIP" %}!</a>

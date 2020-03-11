@@ -11,8 +11,8 @@
                 </button>
                 <h5 class="mb-3 text-warning font-weight-light">{% trans "Stay tuned with our Instagram!!" %}</h5>
                 <div style="height: 150px"></div>
-                <button class="btn btn-sm btn-warning text-danger font-weight-lighter align-self-end px-5">
-                    <a target="_blank" href="https://www.instagram.com/va_boutique_com/" class="text-danger text-decoration-none">{% trans "Follow Now!" %}</a></button>
+                <a target="_blank" href="https://www.instagram.com/va_boutique_com/" role="button"
+                    class="btn btn-sm btn-warning text-danger font-weight-lighter align-self-end px-5">{% trans "Follow Now!" %}</a>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                     {% comment %}Translators: text on email us{% endcomment %}
                     {% trans "Please email us for more information" %}</h5>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="mailto:va@va-boutique.com" type="button"
+                <a target="_blank" href="mailto:va@va-boutique.com" role="button"
                     class="mt-3 btn-sm font-weight-lighter px-3 btn btn-outline-info align-self-end">
                     va@va-boutique.com</a>
             </div>
@@ -78,7 +78,7 @@
                     <u>5%-10%</u>
                     {% trans "discount of this item and SO MUCH MORE!!!" %}</h5>
                 <div style="height: 160px;"></div>
-                <a target="_blank" href="{% url 'users:register' %}" type="button"
+                <a target="_blank" href="{% url 'users:register' %}" role="button"
                     class="btn btn-danger btn-sm align-self-end px-3">{% trans "Sign Up" %}</a>
             </div>
         </div>
