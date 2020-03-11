@@ -9,11 +9,12 @@
 #bootstrap-override a.cursor-pointer {
   cursor: pointer; }
 #bootstrap-override div.sales-cover,
-#bootstrap-override div.new-cover {
+#bootstrap-override div.new-cover,
+#bootstrap-override div.vip-cover {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 180px;
+  height: 200px;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -25,24 +26,12 @@
 #bootstrap-override div.new-cover {
   background-image: url("../img/new-cover.jpg"); }
 #bootstrap-override div.vip-cover {
-  background-image: url("../img/bg-viporder.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 190px;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw; }
-@media only screen and (min-width: 800px) {
+  background-image: url("../img/bg-viporder.jpg"); }
+@media only screen and (min-width: 768px) {
+  #bootstrap-override div.sales-cover,
+  #bootstrap-override div.new-cover,
   #bootstrap-override div.vip-cover {
     height: 320px; } }
-@media only screen and (min-width: 800px) {
-  #bootstrap-override div.sales-cover,
-  #bootstrap-override div.new-cover {
-    height: 300px; } }
 @media only screen and (max-width: 1200px) {
   #bootstrap-override nav.navbar a.nav-link {
     font-size: 18px; } }
