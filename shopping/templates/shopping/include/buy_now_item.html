@@ -4,7 +4,8 @@
     <div class="col-6 col-lg-3">
         <!-- image anchor -->
         <a href="{{ item.get_item_url }}">
-            <img class="rounded-sm mb-2" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of ' %}{{item.name}} - {% trans 'Buy Now' %}"></a>
+            <img class="rounded-sm mb-2" src="{{item.itemimage_set.first.image.url}}" width="100%"
+                alt="{% trans 'An image of ' %}{{item.name}} - {% trans 'Buy Now' %}"></a>
         <!-- /image anchor -->
 
         <!-- item price tag -->
@@ -13,7 +14,14 @@
                 <a href="{{ item.get_item_url }}" class="mb-2 text-black-50">{{item}}</a>
             </div>
             <div class=" text-black-50">
-                <p><span class="mr-1">&#8381;</span>{{ item.final_price|intcomma }}</p>
+                <p>
+                    <span class="mr-1"><i class="fas fa-ruble-sign fa-xs text-black-50"></i></span>
+                    {% if user.is_authenticated %}
+                        {{ item.final_price|intcomma }}
+                    {% else %}
+                        {{ item.discounted_price|intcomma }}
+                    {% endif %}
+                </p>
             </div>
         </div>
         <!-- /item price tag -->
