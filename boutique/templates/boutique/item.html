@@ -109,9 +109,7 @@
                     {% if user.is_authenticated %}
                     <a href="{% url 'wishlist:add-wish' item.pk %}"><i
                             class="far fa-heart fa-lg text-danger mt-1 wow pulse"
-                            data-wow-duration="2s" data-wow-delay="1s" data-wow-iteration="2"
-                            
-                            ></i></a>
+                            data-wow-duration="2s" data-wow-delay="1s" data-wow-iteration="2"></i></a>
                     {% else %}
                     <a href="#wishListSignUpModal" data-toggle="modal"><i
                             class="far fa-heart fa-lg text-danger mt-1 wow pulse"
@@ -133,27 +131,27 @@
         </div>
 
 
-        <!-- shopping bag sign, buy now button -->
+        <!-- buttons -->
         <div class="col-12 col-md-4 mt-2">
 
             {% if user.is_authenticated %}
             <a href="{% url 'shopping:add-to-bag' item.pk %}"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 wow fadeInRight" data-wow-delay="0s">{% trans "Add to Bag" %}</a>
             <a href="{% url 'shopping:buy-now-registered' item.pk %}"
-                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3 wow fadeInRight" data-wow-delay="0.2s">{% trans "Buy Now" %}</a>
             {% else %}
             <a href="#wishListSignUpModal" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3">{% trans "Add to Bag" %}</a>
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 wow fadeInRight" data-wow-delay="0s">{% trans "Add to Bag" %}</a>
             <a href="{% url 'shopping:buy-now-unregistered' item.pk %}"
-                class="btn btn-dark col-12 my-2 px-0 px-sm-3">{% trans "Buy Now" %}</a>
+                class="btn btn-dark col-12 my-2 px-0 px-sm-3 wow fadeInRight" data-wow-delay="0.2s">{% trans "Buy Now" %}</a>
             {% endif %}
 
             <a href="#policyModalScrollable" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0 wow fadeInRight" data-wow-delay="0.4s">
                 {% comment %}Translators: item detail page, button text below 'BUY NOW'{% endcomment %}
                 {% trans "Delivery Policy" %}</a>
             <a href="#whatsappModal" data-toggle="modal"
-                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0">
+                class="btn btn-outline-secondary col-12 my-2 px-0 px-sm-3 border-top-0 border-right-0 border-left-0 wow fadeInRight" data-wow-delay="0.6s">
                 {% comment %}Translators: item detail page, button text below 'Delivery Policy'{% endcomment %}
                 {% trans "Contact Directly" %}</a>
         </div>
