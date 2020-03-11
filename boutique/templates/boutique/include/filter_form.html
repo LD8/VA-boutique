@@ -10,7 +10,12 @@
         {% url 'boutique:filter-all' %}
     {% endif %}" method="GET">{% csrf_token%}
 
-    <div class="form-row px-0 mb-4 wow fadeIn" data-wow-delay="0.5s">
+    {% if filter %}
+    <div class="form-row px-0 mb-4 wow fadeIn" data-wow-delay="1s">
+    {% else %}
+    <!-- no fade in effect in small screen -->
+    <div class="form-row px-0 mb-4">
+    {% endif %}
         <!-- brand -->
         <div class="form-gourp col-12 col-sm mt-1 {{filter}} pl-lg-0">
             <select class="custom-select custom-select-sm" name="brand_pk">

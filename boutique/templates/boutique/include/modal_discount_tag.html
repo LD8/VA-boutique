@@ -1,0 +1,23 @@
+{% load i18n %}
+<!-- discountTagModal -->
+<div class="modal fade" id="item{{item.pk}}discountTagModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+        <div class="modal-content" style="height: 400px; max-width: 280px;">
+            <div class="modal-body text-center bg-discount-tag">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="mb-3 text-danger font-weight-light" style="line-height: 40px;">
+                    {% comment %}Translators: Join us NOW for extra ___blank percent discount of this iten...{% endcomment %}
+                    {% trans "Join us NOW for extra" %}
+                    <u>{{item.tag.tag_discount_percentage}}%</u> 
+                    {% trans "discount of this item and SO MUCH MORE!!!" %}</h5>
+                <div style="height: 160px;"></div>
+                <a target="_blank" href="{% url 'users:register' %}" type="button"
+                    class="btn btn-danger btn-sm align-self-end px-3">{% trans "Sign Up" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /discountTagModal -->

@@ -23,16 +23,13 @@
         <div class="mb-3">
             <h4 class="mb-1 pb-1 border-bottom border-dark font-weight-light">
                 {% if filters.category %}
-                <span class="text-black-50 wow fadeIn">{{category.name}}</span>
+                <span class="text-black-50 wow zoomIn">{{category.name}}</span>
                 {% else %}
                 <a class="text-dark wow fadeIn" href="{{category.get_category_url}}">{{category.name}}</a>
                 {% endif %}
             </h4>
-            <h6 class="mt-1 pb-2 font-weight-lighter text-dark wow bounceIn" data-wow-delay="0.3s">
+            <h6 class="mt-1 pb-2 font-weight-lighter text-dark wow bounceIn" data-wow-delay="0.4s">
                 <a class="text-dark border-bottom px-3" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
-            <!-- {% if subcategory.description %}
-                <p class="mt-n3 mb-4 px-3"><small class="font-weight-lighter">{{subcategory.description}}</small></p>
-                {% endif %} -->
         </div>
         <!-- / title block -->
         
@@ -58,7 +55,7 @@
     {% else %}
 
     <div class="container px-2">
-        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark wow fadeIn"
+        <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark wow zoomIn"
                 href="{{category.get_category_url}}">{{category.name}}</a></h4>
         <!-- show description if there is one -->
         <!-- {% if category.description %}

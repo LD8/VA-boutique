@@ -25,6 +25,7 @@
                 <span class="font-italic">{{brand_selected_from_all}}</span>
                 {% endif %}
 
+                <!-- pass in no filter class for the form so they can appear in small screen -->
                 {% include 'boutique/include/filter_form.html' with filter='' %}
 
             </div>
@@ -33,14 +34,14 @@
 </div>
 
 <!-- mini filter icon -->
-<div class="d-flex mt-2 wow fadeIn" data-wow-delay="0.5s">
+<div class="d-flex mt-2 wow fadeIn" data-wow-delay="1s">
     <div class="filter-icon mr-auto">
-        <a class="text-black-50 btn cursor-pointer" onclick="history.back()">
+        <a class="text-black-50 btn cursor-pointer px-0" onclick="history.back()">
             <i class="fas fa-angle-double-left mr-3"></i>{% trans "Go Back" %}</a>
     </div>
 
     <div class="filter-icon ml-auto">
-        <a class="btn text-black-50 cursor-pointer" data-target="#filterModal" data-toggle="modal">
+        <a class="btn text-black-50 cursor-pointer px-0" data-target="#filterModal" data-toggle="modal">
             {% trans "Filters" %}<i class="fa fa-filter ml-3"></i>
         </a>
     </div>

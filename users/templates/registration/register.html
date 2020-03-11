@@ -10,23 +10,23 @@
         background-size: cover;
     }
 </style>
-<form id="register-form" class="form bg-white p-3 p-sm-5 shadow-lg rounded mb-3" action="{% url 'users:register' %}"
+<form id="register-form" class="form bg-white p-3 p-sm-5 shadow-lg rounded mb-3 wow slideInDown" action="{% url 'users:register' %}"
     method="POST">
     <div class="my-3 my-sm-4 text-left font-weight-light text-black-50 border-bottom">
-        <h2 class="border-bottom pb-3 text-dark"
+        <h2 class="border-bottom pb-3 text-dark wow zoomInRight" data-wow-delay="0.1s"
             style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
             {% trans 'Join us for so much more!' %}</h2>
         <div class="mt-2 pt-2">
             <p class="row align-items-center">
-                <i class="col-1 fas fas fa-user text-secondary text-center"></i>
+                <i class="col-1 fas fas fa-user text-secondary text-center wow jackInTheBox" data-wow-delay="1s"></i>
                 <span class="col">{% trans " Get your own personal stylist!" %}</span>
             </p>
             <p class="row align-items-center">
-                <i class="col-1 fas fa-tags text-warning text-center"></i>
+                <i class="col-1 fas fa-tags text-warning text-center wow jackInTheBox" data-wow-delay="1.5s"></i>
                 <span class="col">{% trans " Enjoy special discount for ALL tagged items!" %}</span>
             </p>
             <p class="row align-items-center">
-                <i class="col-1 fas fa-heart text-danger text-center"></i>
+                <i class="col-1 fas fa-heart text-danger text-center wow jackInTheBox" data-wow-delay="2s"></i>
                 <span class="col">
                     {% trans " Have your own wish-list and shopping bag to track the items you are interested in!" %}
                 </span>
