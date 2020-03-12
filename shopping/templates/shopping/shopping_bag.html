@@ -26,17 +26,14 @@
     </div>
 </div>
 
-<div class="">
-    <!-- back button: only shown on small screen -->
-    <div class="pr-1 pr-sm-3 mt-3">
-        <a class="text-black-50 btn btn-sm btn-outline-secondary cursor-pointer" onclick="history.back()"><i
-                class="fas fa-angle-double-left mr-3"></i>{% trans "Go Back" %}</a>
-    </div>
-    <!-- /back button -->
-    <h3 class="text-black-50 border-bottom text-center mt-3 pb-2 mb-0">{% trans "My Shopping Bag" %}</h3>
+<div class="mx-2 mx-lg-3 my-4 my-lg-5 text-black-50">
+
+    {% include 'shopping/include/order_go_back.html' %}
+
+    <h3 class="text-black-50 border-bottom text-center mt-3 pb-2 mb-0 wow zoomIn">{% trans "My Shopping Bag" %}</h3>
 
     {% for item in shopping_bag.get_order_items %}
-    <div class="col-12 col-md-8 border-bottom mt-2 mt-md-3 pb-2 pb-md-3 d-flex align-items-center pl-0 mr-auto ml-auto">
+    <div class="col-12 col-md-8 border-bottom mt-2 mt-md-3 pb-2 pb-md-3 d-flex align-items-center pl-0 mr-auto ml-auto wow fadeInup" data-wow-delay="0.3s">
         <div class="col-4 col-md-2 pl-0">
             <!-- image anchor -->
             <a href="{{ item.item.get_item_url }}">
@@ -65,7 +62,7 @@
 
     <!-- Total Price and checkout -->
     {% if shopping_bag.items.count > 0 %}
-    <div class="border-bottom pb-3">
+    <div class="border-bottom pb-3 wow fadeInUp" data-wow-delay="0.3s">
         <div class="d-flex col-8 ml-auto mr-auto">
             <p class="ml-auto my-4">{% trans "Total Price" %}: <span
                     class="mx-1">&#8381;</span>{{ shopping_bag.order_total|intcomma }}</p>
@@ -77,13 +74,13 @@
     {% endif %}
     <!-- /Total Price -->
 
-    <div class="mt-3 mt-lg-5 mx-0 row">
-        <a href="{{user.profile.get_absolute_url}}"
+    <div class="mt-3 mt-lg-5 mx-0 row wow fadeInUp" data-wow-delay="0.5s">
+        <a href="{{user.profile.get_absolute_url}}" role="button"
             class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-primary border-top-0 border-right-0 border-left-0"> {% trans "My Profile" %}</span> </a>
-        <a href="{{user.profile.wishlist.get_absolute_url}}"
+        <a href="{{user.profile.wishlist.get_absolute_url}}" role="button"
             class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">{% trans "My Wish List" %}</a>
-        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-dark disabled">{% trans "My Shopping Bag" %}</a>
-        <a href="{% url 'shopping:show-orders' %}"
+        <a href="" role="button" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-dark disabled">{% trans "My Shopping Bag" %}</a>
+        <a href="{% url 'shopping:show-orders' %}" role="button"
             class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">{% trans "My Orders" %}</a>
     </div>
 </div>

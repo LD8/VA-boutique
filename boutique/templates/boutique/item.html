@@ -174,14 +174,14 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="mb-3 text-danger font-weight-light">
+                <h5 class="mb-3 text-danger font-weight-light">
                     {% comment %}Translators: popup window text when people try to click the heart(wish-list)
                     button{% endcomment %}
                     {% trans "Sign up to enjoy more discount and have your own Wish List, Shopping Bag, manage all of your orders! And So Much more..." %}
-                </h4>
+                </h5>
                 <div style="height: 150px"></div>
-                <a target="_blank" href="{% url 'users:register' %}" type="button"
-                    class="btn btn-danger font-weight-lighter align-self-end px-5">{% trans "Sign Up" %}</a>
+                <a target="_blank" href="{% url 'users:register' %}" role="button"
+                    class="btn btn-sm btn-danger font-weight-lighter align-self-end px-2">{% trans "Sign Up" %}</a>
             </div>
         </div>
     </div>

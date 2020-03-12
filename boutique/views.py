@@ -49,8 +49,8 @@ class SalesListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'content': "Сумки со скидкой. Недорогие качественные копии брендов купить онлайн. Реплики обуви известных марок Москва. Распродажа сумок. Обувь известных брендов.",
+            'title': "Реплики Кроссовки Ремни Кошельки Очки Палантины в продаже",
         }
         return context
 
@@ -62,10 +62,14 @@ def show_all(request, gender):
             brand_pk=F('pk'),
             brand_name=F('name')).values(
             'brand_pk', 'brand_name').order_by('brand_name'),
-        'meta': {
-            'content': "Купить реплики модных сумок, аксессуаров и обуви. Качественные женские сумки и обувь известных брендов Интернет магазин брендовых сумок и аксессуаров.",
-            'title': "VA Реплики Сумки | Бижутерия | Обувь | Ремни | Очки",
-        },
+    }
+    if gender == 'men':
+        for_men_or_women = 'для мужчин'
+    if gender == 'women':
+        for_men_or_women = 'для женщин'
+    context['meta'] = {
+        'content': f"Купить реплики модных сумок , аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women}. Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
+        'title': f"Реплики {for_men_or_women} Сумки | Обувь | Ремни | Очки {for_men_or_women}",
     }
     return render(request, 'boutique/show_all.html', context)
 
@@ -79,8 +83,8 @@ def show_category(request, pk):
         'brands': get_brands(cat.item_set),
         'show_all_cat_items_flag': True if cat.subcategory_set.count() == 0 else False,
         'meta': {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'content': f"Kупить реплики брендовых {cat.name} недорого. Качественные реплики {cat.name} и {cat.name} Москва. Интернет магазин брендовых {cat.name}. Стильные {cat.name}",
+            'title': f"Копии {cat.name} Реплики {cat.name} недорого Купить {cat.name}",
         },
     }
     return render(request, 'boutique/show_all.html', context)
@@ -93,8 +97,8 @@ def show_subcategory(request, pk):
         'filters': {'subcategory': subcategory, },
         'brands': get_brands(subcategory.item_set.all()),
         'meta': {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'content': f"Купить брендовые {subcategory.name}. Копии брендовых {subcategory.name} купить онлайн. Качественные {subcategory.name} известных брендов. Модные {subcategory.name}. Брендовые {subcategory.name}",
+            'title': f"Качественные {subcategory.name} Купить копии {subcategory.name} онлайн",
         },
     }
     return render(request, 'boutique/show_subcategory.html', context)
@@ -124,17 +128,24 @@ def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
         'max_price': max_price,
     }
 
+    # meta title generator
+    filter_content = ""
+    meta_title = f"Ваш результат поиска{filter_content}"
+
     # initialise queryset: items
     if sub_pk:
         subcategory = get_object_or_404(SubCategory, pk=sub_pk)
         context['filters']['subcategory'] = subcategory
         items = subcategory.item_set.select_related('brand')
+        filter_content = f": {subcategory.name}"
     elif cat_pk:
         category = get_object_or_404(Category, pk=cat_pk)
         context['filters']['category'] = category
         items = category.item_set.select_related('brand')
+        filter_content = f": {category.name}"
     else:
         items = Item.objects.select_related('brand')
+        filter_content = f": все категории"
 
     # It's important to insert 'brands' in context now to get all brands
     context['brands'] = get_brands(items)
@@ -159,6 +170,10 @@ def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
             items = items.filter(discounted_price__lte=max_price)
 
     context['items'] = items
+    context['meta'] = {
+        'content': "Ваш результат поиска Качественные сумки для копирования | Ювелирные изделия | Обувь | Ремни.",
+        'title': meta_title,
+    }
     return render(request, 'boutique/filtered_items.html', context)
 
 
@@ -170,9 +185,10 @@ class ItemDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        item_name = context['item'].name
         context['meta'] = {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'content': f"купить {item_name}  Реплика {item_name} Модные {item_name} Качественная брендовая {item_name}  Купить {item_name} недорого  Купить {item_name} копию онлайн",
+            'title': f"Качественная {item_name}. Купить копию {item_name}",
         }
         return context
 
@@ -194,7 +210,7 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.query
         context['meta'] = {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'content': "Магазин модных аксессуаров для женщин. Сумка Chanel. Кроссовки Gucci Очки Луи Виттон",
+            'title': "Сумки Обувь Очки Ремни Платки Шарфы Палантины",
         }
         return context

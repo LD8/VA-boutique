@@ -49,8 +49,8 @@ class RegisterView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'content': "Реплики сумок и брендовой одежды недорого. Натуральная кожа. Купить реплики сумок Chanel. Купить реплики сумок Луи Виттон недорого Москва.",
+            'title': "Стильная обувь.Реплики ремней. Качественные вещи",
         }
         return context
 

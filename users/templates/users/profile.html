@@ -3,8 +3,8 @@
 
 {% block content %}
 <div class="mx-2 mx-lg-3 my-4 my-lg-5 text-black-50">
-    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50">{% trans "Welcome back" %}{{ profile.user.username|title }}!</h3>
-    <div class="pt-2 px-2 row">
+    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50 wow flipInX">{% trans "Welcome back" %}{{ profile.user.username|title }}!</h3>
+    <div class="pt-2 px-2 row wow fadeIn" data-wow-delay="0.4s">
         <div class="col-12 col-lg-6">
             {% comment %} Translators: displaying profile 'My Name' {% endcomment %}
             <p>{% trans "My Name" %}: {{ profile.name }}</p>
@@ -16,15 +16,15 @@
         </div>
     </div>
 
-    <div class="d-md-flex justify-content-end">
-        <a href="{% url 'users:profile-update' profile.pk profile.slug %}" class="col-12 col-md-3 mx-1 btn btn-sm btn-outline-secondary mb-2 border-top-0 border-right-0 border-left-0">{% trans "Edit Profile" %}</a>
+    <div class="d-md-flex justify-content-end wow fadeIn" data-wow-delay="1s">
+        <a href="{% url 'users:profile-update' profile.pk profile.slug %}" role="button" class="col-12 col-md-3 mx-1 btn btn-sm btn-outline-secondary mb-2 border-top-0 border-right-0 border-left-0">{% trans "Edit Profile" %}</a>
     </div>
 
-    <div class="mt-3 mt-lg-5 mx-0 row">
-        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-primary disabled"> {% trans "My Profile" %}</span> </a>
-        <a href="{{user.profile.wishlist.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0">{% trans "My Wish List" %}</a>
-        <a href="{% url 'shopping:shopping-bag' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-dark border-top-0 border-right-0 border-left-0">{% trans "My Shopping Bag" %}</a>
-        <a href="{% url 'shopping:show-orders' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0">{% trans "My Orders" %}</a>
+    <div class="mt-3 mt-lg-5 mx-0 row wow fadeInUp" data-wow-delay="0.5s">
+        <a href="" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-primary disabled" role="button" > {% trans "My Profile" %}</span> </a>
+        <a href="{{user.profile.wishlist.get_absolute_url}}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-danger border-top-0 border-right-0 border-left-0" role="button" >{% trans "My Wish List" %}</a>
+        <a href="{% url 'shopping:shopping-bag' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-dark border-top-0 border-right-0 border-left-0" role="button" >{% trans "My Shopping Bag" %}</a>
+        <a href="{% url 'shopping:show-orders' %}" class="col-12 col-md mx-1 mb-2 btn btn-sm btn-outline-info border-top-0 border-right-0 border-left-0" role="button" >{% trans "My Orders" %}</a>
     </div>
 
 </div>

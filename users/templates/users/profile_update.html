@@ -4,8 +4,8 @@
 {% block content %}
 
 <div class="mx-2 mx-lg-3 my-4 my-lg-5 text-black-50">
-    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50">{% trans "Please update your profile" %}!</h3>
-    <form action="{% url 'users:profile-update' profile.pk profile.slug %}" method="POST">
+    <h3 class="font-weight-light text-center border-bottom pb-2 text-black-50 wow flipInX">{% trans "Please update your profile" %}!</h3>
+    <form action="{% url 'users:profile-update' profile.pk profile.slug %}" class="wow fadeInUp" method="POST">
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="d-flex align-items-center my-5">
