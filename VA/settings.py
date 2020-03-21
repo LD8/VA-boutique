@@ -184,5 +184,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-LANGUAGE_CODE = 'ru'
-DEBUG = True
+# LANGUAGE_CODE = 'ru'
+# DEBUG = True
