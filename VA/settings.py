@@ -12,7 +12,6 @@ if not os.environ.get('USE_PROD_DB', None):
     SECRET_KEY = '&gfm96b4n&a8i@7io^zheq)kzjd3k@vd(#(mp-*vw_kg_fr_hy'
     ALLOWED_HOSTS = [
         'localhost',
-        '5.63.152.4',
     ]
 
 # server/prod setting
