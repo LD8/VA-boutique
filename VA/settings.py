@@ -12,6 +12,7 @@ if not os.environ.get('USE_PROD_DB', None):
     SECRET_KEY = '&gfm96b4n&a8i@7io^zheq)kzjd3k@vd(#(mp-*vw_kg_fr_hy'
     ALLOWED_HOSTS = [
         'localhost',
+        '127.0.0.1',
     ]
 
 # server/prod setting
@@ -183,5 +184,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-# LANGUAGE_CODE = 'ru'
-# DEBUG = True
+LANGUAGE_CODE = 'ru'
+DEBUG = True
