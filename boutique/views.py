@@ -68,8 +68,8 @@ def show_all(request, gender):
     if gender == 'women':
         for_men_or_women = 'для женщин'
     context['meta'] = {
-        'content': f"Купить реплики модных сумок , аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women}. Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
-        'title': f"Реплики {for_men_or_women} Сумки | Обувь | Ремни | Очки {for_men_or_women}",
+        'content': f"Купить реплики модных сумок, аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women} Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
+        'title': f"Копии сумок известных брендов / Купить реплики брендовой обуви в Москве - Интернет-магазин VA",
     }
     return render(request, 'boutique/show_all.html', context)
 
@@ -83,8 +83,8 @@ def show_category(request, pk):
         'brands': get_brands(cat.item_set),
         'show_all_cat_items_flag': True if cat.subcategory_set.count() == 0 else False,
         'meta': {
-            'content': f"Kупить реплики брендовых {cat.name} недорого. Качественные реплики {cat.name} и {cat.name} Москва. Интернет магазин брендовых {cat.name}. Стильные {cat.name}",
-            'title': f"Копии {cat.name} Реплики {cat.name} недорого Купить {cat.name}",
+            'content': cat.meta_content,
+            'title': cat.meta_title,
         },
     }
     return render(request, 'boutique/show_all.html', context)
@@ -97,8 +97,10 @@ def show_subcategory(request, pk):
         'filters': {'subcategory': subcategory, },
         'brands': get_brands(subcategory.item_set.all()),
         'meta': {
-            'content': f"Купить брендовые {subcategory.name}. Копии брендовых {subcategory.name} купить онлайн. Качественные {subcategory.name} известных брендов. Модные {subcategory.name}. Брендовые {subcategory.name}",
-            'title': f"Качественные {subcategory.name} Купить копии {subcategory.name} онлайн",
+            # 'content': f"Купить брендовые {subcategory.name}. Копии брендовых {subcategory.name} купить онлайн. Качественные {subcategory.name} известных брендов. Модные {subcategory.name}. Брендовые {subcategory.name}",
+            # 'title': f"Качественные {subcategory.name} Купить копии {subcategory.name} онлайн",
+            'content': subcategory.meta_content,
+            'title': subcategory.meta_title,
         },
     }
     return render(request, 'boutique/show_subcategory.html', context)
@@ -187,8 +189,8 @@ class ItemDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         item_name = context['item'].name
         context['meta'] = {
-            'content': f"купить {item_name}  Реплика {item_name} Модные {item_name} Качественная брендовая {item_name}  Купить {item_name} недорого  Купить {item_name} копию онлайн",
-            'title': f"Качественная {item_name}. Купить копию {item_name}",
+            'content': f"{item_name} копия купить | {item_name} pеплика {item_name} премиум качество | Качественная брендовая oбувь｜{item_name} купить недорого | {item_name} купить копию онлайн",
+            'title': f"{item_name} купить копию в Москве - Интернет-магазин VA boutique",
         }
         return context
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-11 22:02+0800\n"
+"POT-Creation-Date: 2020-03-22 12:38+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -117,8 +117,10 @@ msgid "Carousel Text"
 msgstr "Текст"
 
 #: boutique/models.py:247
-msgid "Image (Size: 2100 x 1400 px)"
-msgstr "Изображение (2100px x 1400px)"
+#, fuzzy
+#| msgid "Image (Size: 2100 x 1400 px)"
+msgid "Image (Size: 1200 x 800 px)"
+msgstr "Изображение (1200px x 800px)"
 
 #: boutique/models.py:254
 msgid "Index Carousel"
@@ -185,9 +187,8 @@ msgstr "Фильтр"
 
 #: boutique/templates/boutique/include/filter_icon.html:40
 #: boutique/templates/boutique/item.html:13
-#: shopping/templates/shopping/shopping_bag.html:33
+#: shopping/templates/shopping/include/order_go_back.html:5
 #: users/templates/users/profile_update.html:13
-#: wishlist/templates/wishlist/wish_list.html:10
 msgid "Go Back"
 msgstr "Назад"
 
@@ -250,40 +251,40 @@ msgstr ""
 
 #: boutique/templates/boutique/include/header.html:101
 #: shopping/templates/shopping/order.html:71
-#: shopping/templates/shopping/orders.html:57
-#: shopping/templates/shopping/shopping_bag.html:82
+#: shopping/templates/shopping/orders.html:60
+#: shopping/templates/shopping/shopping_bag.html:79
 #: users/templates/users/profile.html:24
-#: wishlist/templates/wishlist/wish_list.html:50
+#: wishlist/templates/wishlist/wish_list.html:47
 msgid "My Profile"
 msgstr "Мой профиль"
 
 #: boutique/templates/boutique/include/header.html:105
 #: shopping/templates/shopping/order.html:73
-#: shopping/templates/shopping/orders.html:59
-#: shopping/templates/shopping/shopping_bag.html:84
+#: shopping/templates/shopping/orders.html:62
+#: shopping/templates/shopping/shopping_bag.html:81
 #: users/templates/users/profile.html:25
-#: wishlist/templates/wishlist/wish_list.html:13
-#: wishlist/templates/wishlist/wish_list.html:51
+#: wishlist/templates/wishlist/wish_list.html:10
+#: wishlist/templates/wishlist/wish_list.html:48
 msgid "My Wish List"
 msgstr "Мой лист желаний"
 
 #: boutique/templates/boutique/include/header.html:109
 #: shopping/templates/shopping/order.html:75
-#: shopping/templates/shopping/orders.html:61
-#: shopping/templates/shopping/shopping_bag.html:36
-#: shopping/templates/shopping/shopping_bag.html:85
+#: shopping/templates/shopping/orders.html:64
+#: shopping/templates/shopping/shopping_bag.html:33
+#: shopping/templates/shopping/shopping_bag.html:82
 #: users/templates/users/profile.html:26
-#: wishlist/templates/wishlist/wish_list.html:52
+#: wishlist/templates/wishlist/wish_list.html:49
 msgid "My Shopping Bag"
 msgstr "Моя корзина"
 
 #: boutique/templates/boutique/include/header.html:113
 #: shopping/templates/shopping/order.html:77
-#: shopping/templates/shopping/orders.html:6
-#: shopping/templates/shopping/orders.html:62
-#: shopping/templates/shopping/shopping_bag.html:87
+#: shopping/templates/shopping/orders.html:8
+#: shopping/templates/shopping/orders.html:65
+#: shopping/templates/shopping/shopping_bag.html:84
 #: users/templates/users/profile.html:27
-#: wishlist/templates/wishlist/wish_list.html:53
+#: wishlist/templates/wishlist/wish_list.html:50
 msgid "My Orders"
 msgstr "Мои заказы"
 
@@ -392,12 +393,12 @@ msgid ""
 msgstr "Данный товар распродан. Вы можете купить его под заказ со скидкой 15%"
 
 #: boutique/templates/boutique/item.html:56
-#: shopping/templates/shopping/include/buy_now_item.html:7
+#: shopping/templates/shopping/include/buy_now_item.html:8
 #: shopping/templates/shopping/order.html:51
-#: shopping/templates/shopping/orders.html:38
-#: shopping/templates/shopping/shopping_bag.html:44
+#: shopping/templates/shopping/orders.html:41
+#: shopping/templates/shopping/shopping_bag.html:41
 #: shopping/templates/shopping/unregistered_order.html:49
-#: wishlist/templates/wishlist/wish_list.html:21
+#: wishlist/templates/wishlist/wish_list.html:18
 msgid "An image of "
 msgstr "Изображение"
 
@@ -412,7 +413,7 @@ msgstr "Добавить в корзину"
 
 #: boutique/templates/boutique/item.html:141
 #: boutique/templates/boutique/item.html:146
-#: shopping/templates/shopping/include/buy_now_item.html:7
+#: shopping/templates/shopping/include/buy_now_item.html:8
 msgid "Buy Now"
 msgstr "Купить сейчас"
 
@@ -545,7 +546,7 @@ msgstr "Заказ"
 
 #. Translators: Order table header, showing the status of the order
 #: shopping/templates/shopping/order.html:15
-#: shopping/templates/shopping/orders.html:10
+#: shopping/templates/shopping/orders.html:12
 #: shopping/templates/shopping/unregistered_order.html:15
 msgid "Status"
 msgstr "Статус заказа"
@@ -578,7 +579,7 @@ msgstr "Дата"
 #. Translators: Order table header, showing the 'items' of the order
 #.
 #: shopping/templates/shopping/order.html:45
-#: shopping/templates/shopping/orders.html:12
+#: shopping/templates/shopping/orders.html:14
 #: shopping/templates/shopping/unregistered_order.html:45
 msgid "Items"
 msgstr "Товары"
@@ -590,11 +591,11 @@ msgstr "Товары"
 msgid "Cost"
 msgstr "Итого"
 
-#: shopping/templates/shopping/orders.html:11
+#: shopping/templates/shopping/orders.html:13
 msgid "Ref No"
 msgstr "Номер заказа"
 
-#: shopping/templates/shopping/orders.html:47
+#: shopping/templates/shopping/orders.html:50
 msgid "Please place an order first..."
 msgstr "Выберите товар"
 
@@ -615,15 +616,15 @@ msgstr ""
 msgid "Confirm Order"
 msgstr "Подтвердите покупку"
 
-#: shopping/templates/shopping/shopping_bag.html:63 shopping/views.py:83
+#: shopping/templates/shopping/shopping_bag.html:60 shopping/views.py:83
 msgid "Please add more items to your shpping bag"
 msgstr "Добавьте больше товаров в корзину"
 
-#: shopping/templates/shopping/shopping_bag.html:70
+#: shopping/templates/shopping/shopping_bag.html:67
 msgid "Total Price"
 msgstr "Итоговая цена"
 
-#: shopping/templates/shopping/shopping_bag.html:74
+#: shopping/templates/shopping/shopping_bag.html:71
 msgid "Checkout"
 msgstr "Купить"
 
@@ -797,11 +798,11 @@ msgstr "Категория"
 msgid "Thanks for your purchase, we will contact you soon!"
 msgstr "Спасибо за покупку! Вы свяжемся с Вами в ближайшее время!"
 
-#: wishlist/templates/wishlist/wish_list.html:21
+#: wishlist/templates/wishlist/wish_list.html:18
 msgid "wish list"
 msgstr "Мой лист желаний"
 
-#: wishlist/templates/wishlist/wish_list.html:44
+#: wishlist/templates/wishlist/wish_list.html:41
 msgid "Please add more items to your wish list"
 msgstr "Добавь товары в список желаний"
 

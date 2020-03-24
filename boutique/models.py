@@ -68,6 +68,9 @@ class Category(models.Model):
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
+    meta_content = models.CharField(max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
+    meta_title = models.CharField(max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
+
     objects = CategoryManager()
 
     class Meta():
@@ -113,6 +116,9 @@ class SubCategory(models.Model):
         max_length=300, blank=True, verbose_name=_('Sub-category Description'))
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
+
+    meta_content = models.CharField(max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
+    meta_title = models.CharField(max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
 
     objects = SubCategoryManager()
 
@@ -244,7 +250,7 @@ class IndexCarousel(models.Model):
     title = models.CharField(max_length=100, verbose_name=_('Carousel Title'))
     description = models.TextField(verbose_name=_('Carousel Text'))
     image = models.ImageField(
-        upload_to='index_carousel_images', verbose_name=_('Image (Size: 2100 x 1400 px)'))
+        upload_to='index_carousel_images', verbose_name=_('Image (Size: 1200 x 800 px)'))
     uploaded_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
