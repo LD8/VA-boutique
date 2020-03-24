@@ -30,7 +30,7 @@ class NewListView(ListView):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
             'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
-            'title': "",
+            'title': "Новинки в VA boutique!",
         }
         return context
 
@@ -50,7 +50,7 @@ class SalesListView(ListView):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
             'content': "Сумки со скидкой. Недорогие качественные копии брендов купить онлайн. Реплики обуви известных марок Москва. Распродажа сумок. Обувь известных брендов.",
-            'title': "Реплики Кроссовки Ремни Кошельки Очки Палантины в продаже",
+            'title': "Купить копии сумок, обуви и аксессуаров премиум качества",
         }
         return context
 
@@ -67,6 +67,8 @@ def show_all(request, gender):
         for_men_or_women = 'для мужчин'
     if gender == 'women':
         for_men_or_women = 'для женщин'
+    else:
+        raise Http404
     context['meta'] = {
         'content': f"Купить реплики модных сумок, аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women} Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
         'title': f"Копии сумок известных брендов / Купить реплики брендовой обуви в Москве - Интернет-магазин VA",
