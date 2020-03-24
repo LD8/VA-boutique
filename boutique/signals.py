@@ -46,7 +46,6 @@ def delete_image(sender, instance, **kwargs):
             os.path.dirname(os.path.abspath(__file__)))
         fullpath = BASE_DIR + instance.image.url
         os.remove(fullpath)
-        print(fullpath, 'file removed')
 
 
 post_delete.connect(delete_image, sender=IndexCarousel,
