@@ -21,6 +21,12 @@
         {% endif %}">
     <meta name=”robots” content=”index”>
 
+    <title>
+        {% if meta.title %}{{meta.title}}
+        {% else %}Люкс копии сумок и обуви известных брендов | интернет-магазин VA
+        {% endif %}
+    </title>
+    
     <!-- open graph tags for social media -->
     <meta property="og:site_name" content="VA Boutique">
     <meta property="og:title" content="VA Boutique - Сумки | Бижутерия | Обувь" />
@@ -67,11 +73,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
     {% include 'boutique/include/modal_style.html' %}
 
-    <title>
-        {% if meta.title %}{{meta.title}}
-        {% else %}Люкс копии сумок и обуви известных брендов | интернет-магазин VA
-        {% endif %}
-    </title>
 </head>
 
 <body id="bootstrap-override" class="d-flex flex-column">
