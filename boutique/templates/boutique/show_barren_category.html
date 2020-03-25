@@ -1,0 +1,28 @@
+{% extends 'boutique/base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+{% include 'boutique/include/show_category_header.html' %}
+
+<!-- wrapper for category -->
+<div class="mt-4 mt-lg-5 text-center mb-3 mb-md-5">
+
+    <div class="container px-2">
+
+        <div class="row mb-5 wow fadeIn" data-wow-delay="0.7s">
+
+            {% for item in cat.item_set.all %}
+            {% include 'boutique/include/item_in_listviews.html' %}
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+{% include 'boutique/include/to_top_btn.html' %}
+
+{% include 'boutique/include/before_before_footer.html' %}
+
+{% endblock content %}

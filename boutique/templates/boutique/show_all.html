@@ -8,6 +8,10 @@
     {% include 'boutique/include/filter_form.html' with filter='filter' %}
 </div>
 
+<div class="container">
+    <h1 class="h1-title-text">{{ h1_title_text }}</h1>
+</div>
+
 {% for category in categories_shown %}
 <!-- wrapper for each category -->
 <div class="mt-4 mt-lg-5 text-center mb-3 mb-md-5">
@@ -22,14 +26,10 @@
         <!-- title block -->
         <div class="mb-3">
             <h2 class="mb-1 pb-1 border-bottom border-dark font-weight-light">
-                {% if filters.category %}
-                <span class="text-black-50 wow zoomIn">{{category.name}}</span>
-                {% else %}
                 <a class="text-dark wow fadeIn" href="{{category.get_category_url}}">{{category.name}}</a>
-                {% endif %}
             </h2>
-            <h6 class="mt-1 pb-2 font-weight-lighter text-dark wow bounceIn" data-wow-delay="0.4s">
-                <a class="text-dark border-bottom px-3" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h6>
+            <h5 class="mt-1 pb-2 font-weight-lighter wow bounceIn" data-wow-delay="0.4s">
+                <a class="text-dark border-bottom" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h5>
         </div>
         <!-- / title block -->
         
@@ -57,18 +57,13 @@
     <div class="container px-2">
         <h4 class="mb-3 pb-1 border-bottom font-weight-light"><a class="text-dark wow zoomIn"
                 href="{{category.get_category_url}}">{{category.name}}</a></h4>
+
         <!-- show description if there is one -->
-        <!-- {% if category.description %}
-        <p class="mt-n2 mb-4 px-3"><small class="font-weight-lighter">{{category.description}}</small></p>
-        {% endif %} -->
+        {% if category.description %}
+        <p class="mt-n2 mb-4 wow zoomIn"><small class="font-weight-lighter">{{category.description}}</small></p>
+        {% endif %}
+
         <div class="row mb-5 wow fadeIn" data-wow-delay="0.7s">
-            {% if show_all_cat_items_flag %}
-
-            {% for item in category.item_set.all %}
-            {% include 'boutique/include/item_in_listviews.html' %}
-            {% endfor %}
-
-            {% else %}
 
             {% for item in category.item_set.all|slice:":8" %}
             {% include 'boutique/include/item_in_listviews.html' %}
@@ -79,7 +74,6 @@
                 »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
             {% endif %}
 
-            {% endif %}
         </div>
     </div>
 

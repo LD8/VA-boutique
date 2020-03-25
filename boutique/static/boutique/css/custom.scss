@@ -6,17 +6,29 @@
 
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override {
+  body {
+    color: rgb(36, 36, 36);
+  }
+  h1.h1-title-text {
+    font-size: 20px;
+    text-align: center;
+    color: rgb(74, 74, 74);
+  }
+
   a.nav-link.new {
     color: rgb(230, 154, 124) !important;
   }
+
   a.nav-link.new:hover {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(251, 193, 170);
   }
+
   // make cursor become pointer on anchor tags
   a.cursor-pointer {
     cursor: pointer;
   }
+
   // sales page
   // new items cover
   div.sales-cover,
@@ -34,17 +46,21 @@
     margin-left: -50vw;
     margin-right: -50vw;
   }
+
   div.sales-cover {
     background-image: url("../img/sales-cover.jpg");
   }
+
   div.new-cover {
     background-image: url("../img/new-cover.jpg");
   }
+
   div.vip-cover {
     background-image: url("../img/bg-viporder.jpg");
   }
 
   @media only screen and (min-width: 768px) {
+
     div.sales-cover,
     div.new-cover,
     div.vip-cover {
@@ -62,6 +78,7 @@
   .filter {
     display: block;
   }
+
   .filter-icon {
     display: none;
   }
@@ -70,12 +87,18 @@
     .filter {
       display: none;
     }
+
     .filter-icon {
       display: block;
     }
+
     .dropdown-menu {
       max-height: 600px;
       overflow-y: scroll;
+    }
+
+    h1.h1-title-text {
+      font-size: 16px;
     }
   }
 
@@ -87,7 +110,8 @@
   .back-button {
     display: block;
   }
-  .breadcrumb-item + .breadcrumb-item::before {
+
+  .breadcrumb-item+.breadcrumb-item::before {
     content: "»";
   }
 
@@ -101,6 +125,7 @@
     }
   }
 }
+
 /* -------- end overriding bootstrap styles -------- */
 
 nav,
@@ -140,6 +165,7 @@ footer {
 
 img {
   transition: filter 1s;
+
   &:hover {
     filter: brightness(80%);
   }
@@ -160,7 +186,7 @@ img {
   padding-left: 25px;
 }
 
-ul.pagination > li.active > a.page-link {
+ul.pagination>li.active>a.page-link {
   background-color: rgb(248, 157, 157);
   color: rgb(247, 247, 247);
   border: none;

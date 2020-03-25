@@ -21,7 +21,8 @@ class NewListView(ListView):
     context_object_name = 'items'
 
     def get_queryset(self):
-        qs = Item.objects.filter(uploaded_date__lte=datetime.now()-timedelta(days=30)).order_by('-uploaded_date')[:31]
+        qs = Item.objects.filter(uploaded_date__lte=datetime.now(
+        )-timedelta(days=30)).order_by('-uploaded_date')[:31]
         if qs.count() < 30:
             qs = Item.objects.all()[:31]
         return qs
@@ -65,8 +66,10 @@ def show_all(request, gender):
     }
     if gender == 'men':
         for_men_or_women = 'для мужчин'
+        context['h1_title_text'] = 'Купить реплики модных сумок, аксессуаров и обув'
     if gender == 'women':
         for_men_or_women = 'для женщин'
+        context['h1_title_text'] = 'Купить реплики модных сумок, аксессуаров и обув'
     else:
         raise Http404
     context['meta'] = {
@@ -77,19 +80,24 @@ def show_all(request, gender):
 
 
 def show_category(request, pk):
-    cat_queryset = Category.objects.filter(pk=pk)
+    cat_queryset = Category.objects.filter(pk=pk).prefetch_related(
+        'subcategory_set__item_set')
     cat = cat_queryset.first()
+
     context = {
-        'categories_shown': cat_queryset.prefetch_related('subcategory_set__item_set'),
+        'cat': cat,
         'filters': {'category': cat, },
         'brands': get_brands(cat.item_set),
-        'show_all_cat_items_flag': True if cat.subcategory_set.count() == 0 else False,
         'meta': {
             'content': cat.meta_content,
             'title': cat.meta_title,
         },
     }
-    return render(request, 'boutique/show_all.html', context)
+
+    if cat.subcategory_set.count() == 0:
+        return render(request, 'boutique/show_barren_category.html', context)
+    else:
+        return render(request, 'boutique/show_fertile_category.html', context)
 
 
 def show_subcategory(request, pk):
@@ -134,7 +142,7 @@ def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
 
     # meta title generator
     filter_content = ""
-    meta_title = f"Ваш результат поиска{filter_content}"
+    meta_title = f"Ваш результат поиска {filter_content}"
 
     # initialise queryset: items
     if sub_pk:
