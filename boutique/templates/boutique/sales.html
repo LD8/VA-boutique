@@ -3,13 +3,15 @@
 
 {% block content %}
 
-<div class="sales-cover shadow-lg mb-4 mb-md-5 wow slideInDown"><img style="display: none;" src="../img/sales-cover.jpg" alt=""></div>
-<div class="text-center mb-lg-4">
-    <h1 class="border-bottom border-dark">Скидки в VA</h1>
-    <p>Сумки, обувь и аксессуары превосходного качества!</p>
+<div class="sales-cover shadow-lg mb-4 mb-md-5 wow slideInDown" data-wow-delay="0.4s"><img style="display: none;" src="../img/sales-cover.jpg" alt=""></div>
+
+<div class="text-center mb-lg-4 px-1">
+    <h2 class="border-bottom border-dark wow fadeInDown">Скидки в VA</h2>
+    <h1 class="h1-title-text mb-4 wow fadeInUp">Сумки, обувь и аксессуары превосходного качества!</h1>
 </div>
-<div class="container px-2">
-    <div class="row">
+
+<div>
+    <div class="container p-0 m-0 row">
         {% for item in items %}
 
         {% include 'boutique/include/item_in_listviews.html' %}

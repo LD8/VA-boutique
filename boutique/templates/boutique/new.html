@@ -3,13 +3,15 @@
 
 {% block content %}
 
-<div class="new-cover shadow-lg mb-4 mb-md-5 wow slideInDown"><img style="display: none;" src="../img/new-cover.jpg" alt=""></div>
-<div class="text-center mb-lg-4">
-    <h1 class="border-bottom border-dark">Новинки VA</h1>
-    <p>Новые товары премиум качества каждую неделю! Бесплатная доставка по России.</p>
+<div class="new-cover shadow-lg mb-4 mb-md-5 wow slideInDown" data-wow-delay="0.4s"><img style="display: none;" src="../img/new-cover.jpg" alt=""></div>
+
+<div class="text-center mb-lg-4 px-1">
+    <h2 class="border-bottom border-dark wow fadeInDown">Новинки VA</h2>
+    <h1 class="h1-title-text mb-4 wow fadeInUp">Новые товары премиум качества каждую неделю! Бесплатная доставка по России.</h1 class="h1-title-text">
 </div>
-<div class="container px-2">
-    <div class="row">
+
+<div>
+    <div class="container p-0 m-0 row">
         {% for item in items %}
 
         {% include 'boutique/include/item_in_listviews.html' %}
