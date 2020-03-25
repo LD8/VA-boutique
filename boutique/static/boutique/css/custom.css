@@ -4,9 +4,9 @@
 #bootstrap-override {
   color: #242424; }
   #bootstrap-override h1.h1-title-text {
-    font-size: 20px;
-    text-align: center;
-    color: #4a4a4a; }
+    font-size: 20px !important;
+    text-align: center !important;
+    color: #4a4a4a !important; }
   #bootstrap-override a.nav-link.new {
     color: #e69a7c !important; }
   #bootstrap-override a.nav-link.new:hover {
@@ -54,7 +54,7 @@
       max-height: 600px;
       overflow-y: scroll; }
     #bootstrap-override h1.h1-title-text {
-      font-size: 16px; } }
+      font-size: 16px !important; } }
   #bootstrap-override .breadcrumb {
     background-color: transparent; }
   #bootstrap-override .back-button {
