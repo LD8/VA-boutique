@@ -162,6 +162,11 @@ footer {
   background-color: rgb(241, 240, 240);
 }
 
+// images
+img {
+  box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+}
+
 .dim-img-70 {
   transition: filter 1s;
   &:hover {

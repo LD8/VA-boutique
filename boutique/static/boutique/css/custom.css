@@ -96,6 +96,9 @@ footer {
   top: 100%;
   background-color: #f1f0f0; }
 
+img {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
+
 .dim-img-70 {
   transition: filter 1s; }
   .dim-img-70:hover {
