@@ -163,8 +163,10 @@ footer {
 }
 
 // images
-img {
-  box-shadow: 0 0 10px 0 rgba(#000, 0.1);
+.img-placeholder {
+  background-image: url('../img/img_placeholder.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .dim-img-70 {
