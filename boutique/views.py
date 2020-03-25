@@ -66,10 +66,12 @@ def show_all(request, gender):
     }
     if gender == 'men':
         for_men_or_women = 'для мужчин'
-        context['h1_title_text'] = 'Купить реплики модных сумок, аксессуаров и обув'
+        # h1 title shown on 'show men all' page
+        context['h1_title_text'] = ''
     if gender == 'women':
         for_men_or_women = 'для женщин'
-        context['h1_title_text'] = 'Купить реплики модных сумок, аксессуаров и обув'
+        # h1 title shown on 'show women all' page
+        context['h1_title_text'] = ''
     else:
         raise Http404
     context['meta'] = {
