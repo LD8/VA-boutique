@@ -5,9 +5,7 @@
     {% include 'boutique/include/filter_form.html' with filter='filter' %}
 </div>
 
-<div class="px-1 wow zoomIn text-center">
-    <h2 class="mb-1 pb-1 border-bottom border-dark font-weight-light">
-        <span class="">{{cat.name}}</span>
-    </h2>
-    <h1 class="h1-title-text">{{ cat.description }}</h1>
+<div class="px-1 text-center">
+    <h2 class="mb-1 pb-1 border-bottom border-dark font-weight-light wow fadeInDown">{{cat.name}}</h2>
+    <h1 class="h1-title-text wow fadeInUp">{{ cat.description }}</h1>
 </div>

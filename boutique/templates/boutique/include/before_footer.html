@@ -1,5 +1,9 @@
 {% load i18n %}
 
+{% if index_h1_title_text %}
+<!-- <h1 class="h1-title-text px-2 mt-3 mt-md-4 pb-3 wow fadeInDown border-bottom">{{ index_h1_title_text }}</h1> -->
+{% endif %}
+
 <div class="pre-footer my-4">
     <div class="accordion d-flex justify-content-center text-center mb-3 wow pulse" id="accordionPageMenu">
 
@@ -58,4 +62,10 @@
         <input name="query" class="form-control mr-sm-2 w-100 border-white text-center" type="text" placeholder="{% trans 'Search' %}"
             aria-label="Search">
     </form>
+
+    {% if index_h1_title_text %}
+    <h1 class="h1-title-text px-2 pt-2 mt-2 wow fadeInDown">{{ index_h1_title_text }}</h1>
+    {% else %}
+    <p class="text-center font-smaller mt-2 wow fadeInDown text-muted">Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!</p>
+    {% endif %}
 </div>

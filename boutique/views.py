@@ -12,6 +12,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['carousels'] = IndexCarousel.objects.all()
+        context['index_h1_title_text'] = 'Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!'
         return context
 
 
@@ -57,6 +58,7 @@ class SalesListView(ListView):
 
 
 def show_all(request, gender):
+    """ Display categories and subcategories by gender """
     context = {
         'categories_shown': Category.objects.get_categories_by_gender(gender).get_categories_with_item().prefetch_related('subcategory_set__item_set'),
         'brands': Brand.objects.annotate(
@@ -64,24 +66,28 @@ def show_all(request, gender):
             brand_name=F('name')).values(
             'brand_pk', 'brand_name').order_by('brand_name'),
     }
+    
     if gender == 'men':
         for_men_or_women = 'для мужчин'
-        # h1 title shown on 'show men all' page
-        context['h1_title_text'] = ''
-    if gender == 'women':
+        # h1 title shown on 'show all men items' page
+        context['h1_title_text'] = 'Стильные мужские сумки и аксессуары премиум качества в VA boutique!'
+    elif gender == 'women':
         for_men_or_women = 'для женщин'
-        # h1 title shown on 'show women all' page
-        context['h1_title_text'] = ''
+        # h1 title shown on 'show all women items' page
+        context['h1_title_text'] = 'Реплики модных сумок, аксессуаров и обуви премиум качества по доступным ценам! Бесплатная доставка по России!'
     else:
         raise Http404
+    
     context['meta'] = {
         'content': f"Купить реплики модных сумок, аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women} Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
         'title': f"Копии сумок известных брендов / Купить реплики брендовой обуви в Москве - Интернет-магазин VA",
     }
+
     return render(request, 'boutique/show_all.html', context)
 
 
 def show_category(request, pk):
+    """ Display a category and its subcategories """
     cat_queryset = Category.objects.filter(pk=pk).prefetch_related(
         'subcategory_set__item_set')
     cat = cat_queryset.first()
@@ -103,14 +109,13 @@ def show_category(request, pk):
 
 
 def show_subcategory(request, pk):
+    """ Display a subcategory """
     subcategory = get_object_or_404(SubCategory, pk=pk)
     context = {
         'subcategories_shown': SubCategory.objects.filter(pk=pk).select_related('category'),
         'filters': {'subcategory': subcategory, },
         'brands': get_brands(subcategory.item_set.all()),
         'meta': {
-            # 'content': f"Купить брендовые {subcategory.name}. Копии брендовых {subcategory.name} купить онлайн. Качественные {subcategory.name} известных брендов. Модные {subcategory.name}. Брендовые {subcategory.name}",
-            # 'title': f"Качественные {subcategory.name} Купить копии {subcategory.name} онлайн",
             'content': subcategory.meta_content,
             'title': subcategory.meta_title,
         },
