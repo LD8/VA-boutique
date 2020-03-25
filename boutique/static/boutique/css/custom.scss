@@ -24,7 +24,7 @@
   }
 
   // make cursor become pointer on anchor tags
-  a.cursor-pointer {
+  .cursor-pointer {
     cursor: pointer;
   }
 
@@ -162,13 +162,29 @@ footer {
   background-color: rgb(241, 240, 240);
 }
 
-img {
+.dim-img-70 {
   transition: filter 1s;
+  &:hover {
+    filter: brightness(70%);
+  }
+}
 
+.dim-img-80 {
+  transition: filter 0.5s;
   &:hover {
     filter: brightness(80%);
   }
 }
+
+.enlarge {
+  transition: all 0.5s;
+  &:hover {
+    filter: brightness(110%);
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px grey;
+  }
+}
+
 
 // pagination
 .page-item:first-child .page-link {

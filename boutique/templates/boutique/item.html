@@ -84,7 +84,7 @@
             col-sm-8 
             {% endif %} 
             mt-2 px-1 mt-sm-0 pb-sm-2 pt-sm-0 mb-0">
-                <img src="{{image.image.url}}" alt="{% trans 'An image thumbnail of ' %}{{item.name}} - {{forloop.counter}}" class="col-12 p-0 rounded-sm shadow-sm"
+                <img src="{{image.image.url}}" alt="{% trans 'An image thumbnail of ' %}{{item.name}} - {{forloop.counter}}" class="col-12 p-0 rounded-sm shadow-sm dim-img-80 cursor-pointer"
                     data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}">
             </div>
             {% endfor %}

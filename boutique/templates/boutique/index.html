@@ -13,23 +13,32 @@
     <div class="carousel-inner" >
         {% for carousel in carousels %}
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                
+                <!-- carousel link setup -->
                 <a href="
                 {% if forloop.counter == 1 %}
                 {% url 'boutique:show-all' 'women' %}
-                {% endif %}
-                {% if forloop.counter == 2 %}
+
+                {% elif forloop.counter == 2 %}
                 {% url 'boutique:sales' %}
-                {% endif %}
-                {% if forloop.counter == 3 %}
+
+                {% elif forloop.counter == 3 %}
+                
+
+                {% elif forloop.counter == 4 %}
+                
+
+                {% elif forloop.counter == 5 %}
+                
                 
                 {% endif %}
-                {% if forloop.counter == 4 %}
-                
-                {% endif %}
-                {% if forloop.counter == 5 %}
-                
-                {% endif %}
-                "><img src="{{carousel.image.url}}" class="d-block w-100" alt="{% trans 'Cover photo ' %}{{carousel.title}} - {{forloop.counter}}"></a>
+                ">
+                <img src="{{carousel.image.url}}" 
+                    class="dim-img-70 d-block w-100" 
+                    alt="{% trans 'Cover photo ' %}{{carousel.title}} - {{forloop.counter}}">
+                </a>
+                <!-- / carousel link setup -->
+
                 <div class="carousel-caption d-none d-md-block">
                     <h5>{{carousel.title}}</h5>
                     <p>{{carousel.description}}</p>

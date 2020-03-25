@@ -12,7 +12,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['carousels'] = IndexCarousel.objects.all()
-        context['index_h1_title_text'] = 'Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!'
+        context['index_h1_title_text'] = 'Онлайн бутик VA это стильная одежда и аксессуары премиум качества по доступным ценам! Бесплатная доставка по России!'
         return context
 
 
@@ -31,7 +31,7 @@ class NewListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качество по доступным ценам! Бесплатная доставка по России!",
+            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качества по доступным ценам! Бесплатная доставка по России!",
             'title': "Новинки в VA boutique!",
         }
         return context

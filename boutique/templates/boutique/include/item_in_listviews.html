@@ -4,24 +4,24 @@
 <div class="col-6 col-md-4 col-lg-3 px-1 px-sm-2 d-flex flex-column wow fadeInUp" data-wow-duration="0.8s">
 
     {% if not item.in_stock %}
-    <div class="ribbon-holder">
+    <div class="enlarge ribbon-holder">
         <div class="ribbon ribbon-holder wow fadeIn" data-wow-delay="1s"><span>{% trans "Sold Out" %}</span></div>
         <!-- image anchor -->
         <a href="{{ item.get_item_url }}">
             <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
         <!-- /image anchor -->
     </div>
+
     {% else %}
     <!-- image anchor -->
     <a href="{{ item.get_item_url }}">
-        <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
+        <img class="enlarge rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
     <!-- /image anchor -->
     {% endif %}
 
     <!-- item price tag -->
     <div class="text-left p-1 mb-auto" style="font-size: 16px;">
         <div class="font-weight-light pt-2">
-            <!-- no brand is displayed anymore -->
             <a href="{{ item.get_item_url }}" class="text-dark mb-1">{{item}}</a>
         </div>
 
