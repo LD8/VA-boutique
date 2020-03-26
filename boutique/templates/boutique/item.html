@@ -45,7 +45,7 @@
                 <ol class="carousel-indicators">
                     {% for image in item.itemimage_set.all %}
                     <li data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}"
-                        {% if forloop.first %} class="active" {% endif %}></li>
+                    class="{% if forloop.first %} active {% endif %}"></li>
                     {% endfor %}
                 </ol>
 
@@ -53,7 +53,7 @@
 
                     {% for image in item.itemimage_set.all %}
                     <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                        <img src="{{image.image.url}}" class="d-block w-100" alt="{% trans 'An image of ' %}{{item.name}} - {{forloop.counter}}">
+                        <img src="{{image.image.url}}" class="d-block w-100 loading" alt="{% trans 'An image of ' %}{{item.name}} - {{forloop.counter}}">
                     </div>
                     {% endfor %}
 
@@ -84,7 +84,7 @@
             col-sm-8 
             {% endif %} 
             mt-2 px-1 mt-sm-0 pb-sm-2 pt-sm-0 mb-0">
-                <img src="{{image.image.url}}" alt="{% trans 'An image thumbnail of ' %}{{item.name}} - {{forloop.counter}}" class="col-12 p-0 rounded-sm shadow-sm dim-img-80 cursor-pointer"
+                <img src="{{image.image.url}}" alt="{% trans 'An image thumbnail of ' %}{{item.name}} - {{forloop.counter}}" class="col-12 p-0 rounded-sm shadow-sm dim-img-80 cursor-pointer loading"
                     data-target="#item{{item.pk}}Carousel" data-slide-to="{{forloop.counter0}}">
             </div>
             {% endfor %}
