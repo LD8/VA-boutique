@@ -96,10 +96,8 @@ footer {
   top: 100%;
   background-color: #f1f0f0; }
 
-.img-placeholder {
-  background-image: url("../img/img_placeholder.svg");
-  background-size: contain;
-  background-repeat: no-repeat; }
+.loading {
+  background: transparent url("../img/img-placeholder.gif") center no-repeat; }
 
 .dim-img-70 {
   transition: filter 1s; }

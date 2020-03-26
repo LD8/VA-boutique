@@ -8,7 +8,7 @@
         <div class="ribbon ribbon-holder wow fadeIn" data-wow-delay="1s"><span>{% trans "Sold Out" %}</span></div>
         <!-- image anchor -->
         <a href="{{ item.get_item_url }}">
-            <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
+            <img class="rounded-sm loading" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
         <!-- /image anchor -->
     </div>
 
@@ -16,11 +16,11 @@
     <div class="enlarge img-placeholder">
         <!-- image anchor -->
         <a href="{{ item.get_item_url }}">
-            <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
+            <img class="rounded-sm loading" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of and a link to ' %}{{item.name}}"></a>
         <!-- /image anchor -->
     </div>
     {% endif %}
-
+    
     <!-- item price tag -->
     <div class="text-left p-1 mb-auto" style="font-size: 16px;">
         <div class="font-weight-light pt-2">
