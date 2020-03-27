@@ -1,146 +1,151 @@
 {% load static i18n %}
 
-{% include 'boutique/include/modal_in_nav.html' %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg sticky-top">
+<header>
 
-    <!-- Site Icon -->
-    <a class="navbar-brand mr-2" href="{% url 'boutique:index' %}">
-        <img src="{% static 'boutique/img/logo-nav-dark.png' %}" height="40" alt="site-icon">
-    </a>
+    {% include 'boutique/include/modal_in_nav.html' %}
 
-    <!-- Nav Button: appear on small screen -->
-    <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- /Nav Button -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg sticky-top">
 
-    <!-- Nav Elements: hidden on small screen -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Site Icon -->
+        <a class="navbar-brand mr-2" href="{% url 'boutique:index' %}">
+            <img src="{% static 'boutique/img/logo-nav-dark.png' %}" height="40" alt="site-icon">
+        </a>
 
-        <!-- Women/Men Category dropdown -->
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b class="font-bigger">{% trans "Women" %}</b>
-                </a>
-                <div class="dropdown-menu border-white px-2 text-center shadow-sm"
-                    aria-labelledby="navbarDropdown">
-                    {% for category in categories %}
-                    {% if category.gender == 1 %}
-                    <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
-                    {% for subcategory in category.subcategory_set.all %}
-                    <a class="dropdown-item text-black-50 font-smaller"
-                        href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
-                    {% endfor %}
-                    <div class="dropdown-divider"></div>
-                    {% endif %}
-                    {% endfor %}
-                    <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'women' %}">{% trans "Show All" %}</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b class="font-bigger">{% trans "Men" %}</b>
-                </a>
-                <div class="dropdown-menu border-white px-2 text-center shadow-sm"
-                    aria-labelledby="navbarDropdown">
-                    {% for category in categories %}
-                    {% if category.gender == 2 %}
-                    <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
-                    {% for subcategory in category.subcategory_set.all %}
-                    <a class="dropdown-item text-black-50 font-smaller"
-                        href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
-                    {% endfor %}
-                    <div class="dropdown-divider"></div>
-                    {% endif %}
-                    {% endfor %}
-                    <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
-                </div>
-            </li>
+        <!-- Nav Button: appear on small screen -->
+        <button class="navbar-toggler btn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- /Nav Button -->
 
-            <li class="nav-item align-self-center">
-                <a target="_blank" class="nav-link new btn wow swing ml-lg-2 py-0 px-3 text-center border rounded" data-wow-delay="0.5s"
-                    href="{% url 'boutique:new' %}"><b class="font-bigger">{% trans "New" %}</b></a>
-            </li>
-        </ul>
-        <!-- /Women/Men Category dropdown -->
+        <!-- Nav Elements: hidden on small screen -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <!-- fa icons: instagram, whatsapp, email -->
-        <ul
-            class="navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center wow fadeInDown">
-            <li class="nav-item"><a class="nav-link text-black-50 ml-3" href="#instagramModal" data-toggle="modal"><i
-                        class="fab fa-instagram"></i></a>
-            </li>
-            <li class="nav-item"><a class="nav-link text-black-50 mx-5 mx-lg-3" href="#whatsappModal"
-                    data-toggle="modal"><i class="fab fa-whatsapp"></i></a>
-            </li>
-            <li class="nav-item"><a class="nav-link text-black-50 mr-3" href="#contactModal" data-toggle="modal"><i
-                        class="far fa-envelope"></i></a>
-            </li>
-        </ul>
-        <!-- /fa icons -->
+            <!-- Women/Men Category dropdown -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b class="font-bigger">{% trans "Women" %}</b>
+                    </a>
+                    <div class="dropdown-menu border-white px-2 text-center shadow-sm"
+                        aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                        {% if category.gender == 1 %}
+                        <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
+                        {% for subcategory in category.subcategory_set.all %}
+                        <a class="dropdown-item text-black-50 font-smaller"
+                            href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        {% endif %}
+                        {% endfor %}
+                        <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'women' %}">{% trans "Show All" %}</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b class="font-bigger">{% trans "Men" %}</b>
+                    </a>
+                    <div class="dropdown-menu border-white px-2 text-center shadow-sm"
+                        aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                        {% if category.gender == 2 %}
+                        <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
+                        {% for subcategory in category.subcategory_set.all %}
+                        <a class="dropdown-item text-black-50 font-smaller"
+                            href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        {% endif %}
+                        {% endfor %}
+                        <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
+                    </div>
+                </li>
 
-        <!-- Log in/Profile: dropdown if logged in -->
-        <ul class="navbar-nav ml-auto">
+                <li class="nav-item align-self-center">
+                    <a target="_blank" class="nav-link new btn wow swing ml-lg-2 py-0 px-3 text-center border rounded" data-wow-delay="0.5s"
+                        href="{% url 'boutique:new' %}"><b class="font-bigger">{% trans "New" %}</b></a>
+                </li>
+            </ul>
+            <!-- /Women/Men Category dropdown -->
 
-            {% if user.is_authenticated %}
+            <!-- fa icons: instagram, whatsapp, email -->
+            <ul
+                class="navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center wow fadeInDown">
+                <li class="nav-item"><a class="nav-link text-black-50 ml-3" href="#instagramModal" data-toggle="modal"><i
+                            class="fab fa-instagram"></i></a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-black-50 mx-5 mx-lg-3" href="#whatsappModal"
+                        data-toggle="modal"><i class="fab fa-whatsapp"></i></a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-black-50 mr-3" href="#contactModal" data-toggle="modal"><i
+                            class="far fa-envelope"></i></a>
+                </li>
+            </ul>
+            <!-- /fa icons -->
 
-            <li class="nav-item dropdown">
+            <!-- Log in/Profile: dropdown if logged in -->
+            <ul class="navbar-nav ml-auto">
 
-                <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
-                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user fa-sm"></i>
-                    <span class="pl-1">{{user.username|title}}</span></a>
-                <div class="dropdown-menu dropdown-menu-right border-white px-2 shadow-sm" aria-labelledby="navbarDropdown">
-                    
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{{user.profile.get_absolute_url}}">
-                        <i class="fas fa-user col-2"></i>
-                        <span class="font-smaller col"> {% trans "My Profile" %}</span></a>
+                {% if user.is_authenticated %}
 
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{{user.profile.wishlist.get_absolute_url}}">
-                        <i class="fas fa-heart col-2 text-danger"></i>
-                        <span class="font-smaller col">{% trans "My Wish List" %}</span></a>
+                <li class="nav-item dropdown">
 
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{% url 'shopping:shopping-bag' %}">
-                        <i class="fas fa-shopping-bag col-2 text-primary"></i>
-                        <span class="font-smaller col ">{% trans "My Shopping Bag" %}</span></a>
+                    <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user fa-sm"></i>
+                        <span class="pl-1">{{user.username|title}}</span></a>
+                    <div class="dropdown-menu dropdown-menu-right border-white px-2 shadow-sm" aria-labelledby="navbarDropdown">
+                        
+                        <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{{user.profile.get_absolute_url}}">
+                            <i class="fas fa-user col-2"></i>
+                            <span class="font-smaller col"> {% trans "My Profile" %}</span></a>
 
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{% url 'shopping:show-orders' %}">
-                        <i class="fas fa-dolly col-2 text-info"></i>
-                        <span class="font-smaller col">{% trans "My Orders" %}</span></a>
+                        <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{{user.profile.wishlist.get_absolute_url}}">
+                            <i class="fas fa-heart col-2 text-danger"></i>
+                            <span class="font-smaller col">{% trans "My Wish List" %}</span></a>
 
-                    <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{% url 'shopping:shopping-bag' %}">
+                            <i class="fas fa-shopping-bag col-2 text-primary"></i>
+                            <span class="font-smaller col ">{% trans "My Shopping Bag" %}</span></a>
 
-                    <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{% url 'users:logout' %}">
-                        <i class="fas fa-sign-out-alt col-2 text-muted"></i>
-                        <span class="font-smaller col ">{% trans "Log Out" %}</span></a>
+                        <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{% url 'shopping:show-orders' %}">
+                            <i class="fas fa-dolly col-2 text-info"></i>
+                            <span class="font-smaller col">{% trans "My Orders" %}</span></a>
 
-                </div>
+                        <div class="dropdown-divider"></div>
 
-            </li>
+                        <a class="dropdown-item text-black-50 px-3 px-sm-1 row m-0" href="{% url 'users:logout' %}">
+                            <i class="fas fa-sign-out-alt col-2 text-muted"></i>
+                            <span class="font-smaller col ">{% trans "Log Out" %}</span></a>
 
-            <!-- No user logged in -->
-            {% else %}
+                    </div>
 
-            <li class="nav-item">
-                <a class="nav-link text-black-50 text-black-50 btn"
-                    href="{% url 'users:login' %}">{% trans "Log In" %}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-black-50 text-black-50 btn"
-                    href="{% url 'users:register' %}">{% trans "Sign Up" %}</a>
-            </li>
+                </li>
 
-            {% endif %}
-            <!-- /author is/not authenticated -->
+                <!-- No user logged in -->
+                {% else %}
 
-        </ul>
-        <!-- /Log in dropdown -->
+                <li class="nav-item">
+                    <a class="nav-link text-black-50 text-black-50 btn"
+                        href="{% url 'users:login' %}">{% trans "Log In" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black-50 text-black-50 btn"
+                        href="{% url 'users:register' %}">{% trans "Sign Up" %}</a>
+                </li>
 
-    </div>
-    <!-- /Nav Elements: hidden on small screen -->
+                {% endif %}
+                <!-- /author is/not authenticated -->
 
-</nav>
+            </ul>
+            <!-- /Log in dropdown -->
+
+        </div>
+        <!-- /Nav Elements: hidden on small screen -->
+
+    </nav>
+    
+</header>
