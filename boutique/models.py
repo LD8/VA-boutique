@@ -257,11 +257,12 @@ class IndexCarousel(models.Model):
         max_length=100,
         choices=[
             ('white', _('White')),
-            ('lightgrey', _('Lightgrey')),
             ('khaki', _('Khaki')),
             ('lightseagreen', _('Light Sea Green')),
             ('orange', _('Orange')),
             ('maroon', _('Maroon')),
+            ('lightgrey', _('Lightgrey')),
+            ('rgba(30, 30, 30, 0.9)', _('bizdiz Darkgrey')),
             ('darkgrey', _('Darkgrey')),
             ('black', _('Black')),
         ], default='white')
