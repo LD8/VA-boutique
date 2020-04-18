@@ -68,8 +68,10 @@ class Category(models.Model):
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
-    meta_content = models.CharField(max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
-    meta_title = models.CharField(max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
+    meta_content = models.CharField(
+        max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
+    meta_title = models.CharField(
+        max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
 
     objects = CategoryManager()
 
@@ -117,8 +119,10 @@ class SubCategory(models.Model):
     uploaded_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
-    meta_content = models.CharField(max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
-    meta_title = models.CharField(max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
+    meta_content = models.CharField(
+        max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
+    meta_title = models.CharField(
+        max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
 
     objects = SubCategoryManager()
 
@@ -249,6 +253,18 @@ class Item(models.Model):
 class IndexCarousel(models.Model):
     title = models.CharField(max_length=100, verbose_name=_('Carousel Title'))
     description = models.TextField(verbose_name=_('Carousel Text'))
+    text_colour = models.CharField(
+        max_length=100,
+        choices=[
+            ('white', _('White')),
+            ('lightgrey', _('Lightgrey')),
+            ('khaki', _('Khaki')),
+            ('lightseagreen', _('Light Sea Green')),
+            ('orange', _('Orange')),
+            ('maroon', _('Maroon')),
+            ('darkgrey', _('Darkgrey')),
+            ('black', _('Black')),
+        ], default='white')
     image = models.ImageField(
         upload_to='index_carousel_images', verbose_name=_('Image (Size: 1200 x 800 px)'))
     uploaded_date = models.DateTimeField(auto_now_add=True)
