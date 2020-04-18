@@ -2,8 +2,6 @@ from django.shortcuts import render, get_object_or_404, Http404
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import Category, Item, SubCategory, IndexCarousel, Brand
 from django.db.models import F, Q, Count
-from datetime import datetime, timedelta
-
 
 class IndexView(TemplateView):
     '''landing page'''
@@ -22,11 +20,7 @@ class NewListView(ListView):
     context_object_name = 'items'
 
     def get_queryset(self):
-        qs = Item.objects.filter(uploaded_date__lte=datetime.now(
-        )-timedelta(days=30)).order_by('-uploaded_date')[:31]
-        if qs.count() < 30:
-            qs = Item.objects.all()[:31]
-        return qs
+        return Item.objects.all()[:40]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,7 +60,7 @@ def show_all(request, gender):
             brand_name=F('name')).values(
             'brand_pk', 'brand_name').order_by('brand_name'),
     }
-    
+
     if gender == 'men':
         for_men_or_women = 'для мужчин'
         # h1 title shown on 'show all men items' page
@@ -77,7 +71,7 @@ def show_all(request, gender):
         context['h1_title_text'] = 'Реплики модных сумок, аксессуаров и обуви премиум качества по доступным ценам! Бесплатная доставка по России!'
     else:
         raise Http404
-    
+
     context['meta'] = {
         'content': f"Купить реплики модных сумок, аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women} Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
         'title': f"Копии сумок известных брендов / Купить реплики брендовой обуви в Москве - Интернет-магазин VA",
