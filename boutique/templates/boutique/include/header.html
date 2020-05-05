@@ -3,6 +3,7 @@
 <header>
 
     {% include 'boutique/include/modal_in_nav.html' %}
+    {% include 'boutique/include/modal_in_footer.html' %}
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg sticky-top">
 
@@ -31,7 +32,7 @@
                     <div class="dropdown-menu border-white px-2 text-center shadow-sm"
                         aria-labelledby="navbarDropdown">
                         {% for category in categories %}
-                        {% if category.gender == 1 %}
+                        {% if category.gender == 1 and category.pk != 6 %}
                         <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
                         {% for subcategory in category.subcategory_set.all %}
                         <a class="dropdown-item text-black-50 font-smaller"
@@ -63,9 +64,29 @@
                         <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle btn text-black-50" href="#" id="navbarDropdown"
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b class="font-bigger">{% trans "Cosmetics" %}</b>
+                    </a>
+                    <div class="dropdown-menu border-white px-2 text-center shadow-sm"
+                        aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                        {% if category.pk == 6 %}
+                        <a class="dropdown-item font-bigger" href="{{ category.get_category_url }}">{{category.name|title}}</a>
+                        {% for subcategory in category.subcategory_set.all %}
+                        <a class="dropdown-item text-black-50 font-smaller"
+                            href="{{ subcategory.get_subcategory_url }}">{{subcategory.name|title}}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        {% endif %}
+                        {% endfor %}
+                        <a class="dropdown-item px-3 font-bigger" href="{% url 'boutique:show-all' 'men' %}">{% trans "Show All" %}</a>
+                    </div>
+                </li>
 
                 <li class="nav-item align-self-center">
-                    <a target="_blank" class="nav-link new btn wow swing ml-lg-2 py-0 px-3 text-center border rounded" data-wow-delay="0.5s"
+                    <a target="_blank" class="nav-link new btn wow swing mx-lg-2 py-0 px-3 text-center border rounded" data-wow-delay="0.5s"
                         href="{% url 'boutique:new' %}"><b class="font-bigger">{% trans "New" %}</b></a>
                 </li>
             </ul>
@@ -73,14 +94,14 @@
 
             <!-- fa icons: instagram, whatsapp, email -->
             <ul
-                class="navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center wow fadeInDown">
-                <li class="nav-item"><a class="nav-link text-black-50 ml-3" href="#instagramModal" data-toggle="modal"><i
+                class="nav-icon-ul navbar-nav border-left border-right fa-lg my-3 mb-3 my-lg-0 d-flex flex-row justify-content-center align-items-center wow fadeInDown">
+                <li class="nav-item"><a class="nav-link text-black-50 ml-2" href="#instagramModal" data-toggle="modal"><i
                             class="fab fa-instagram"></i></a>
                 </li>
                 <li class="nav-item"><a class="nav-link text-black-50 mx-5 mx-lg-3" href="#whatsappModal"
                         data-toggle="modal"><i class="fab fa-whatsapp"></i></a>
                 </li>
-                <li class="nav-item"><a class="nav-link text-black-50 mr-3" href="#contactModal" data-toggle="modal"><i
+                <li class="nav-item"><a class="nav-link text-black-50 mr-2" href="#contactModal" data-toggle="modal"><i
                             class="far fa-envelope"></i></a>
                 </li>
             </ul>

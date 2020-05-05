@@ -3,6 +3,8 @@
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override {
   color: #242424; }
+  #bootstrap-override header nav {
+    overflow: hidden; }
   #bootstrap-override h1.h1-title-text {
     font-size: 22px !important;
     text-align: center !important;
@@ -27,20 +29,22 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw; }
+    @media only screen and (min-width: 768px) {
+      #bootstrap-override div.sales-cover,
+      #bootstrap-override div.new-cover,
+      #bootstrap-override div.vip-cover {
+        height: 320px; } }
   #bootstrap-override div.sales-cover {
     background-image: url("../img/sales-cover.jpg"); }
   #bootstrap-override div.new-cover {
     background-image: url("../img/new-cover.jpg"); }
   #bootstrap-override div.vip-cover {
     background-image: url("../img/bg-viporder.jpg"); }
-  @media only screen and (min-width: 768px) {
-    #bootstrap-override div.sales-cover,
-    #bootstrap-override div.new-cover,
-    #bootstrap-override div.vip-cover {
-      height: 320px; } }
   @media only screen and (max-width: 1200px) {
     #bootstrap-override nav.navbar a.nav-link {
-      font-size: 18px; } }
+      font-size: 18px; }
+    #bootstrap-override .nav-icon-ul {
+      display: none !important; } }
   #bootstrap-override .filter {
     display: block; }
   #bootstrap-override .filter-icon {

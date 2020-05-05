@@ -8,6 +8,10 @@
 #bootstrap-override {
   color: rgb(36, 36, 36);
 
+  header nav {
+    overflow: hidden;
+  }
+
   h1.h1-title-text {
     font-size: 22px !important;
     text-align: center !important;
@@ -44,6 +48,10 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+
+    @media only screen and (min-width: 768px) {
+      height: 320px;
+    }
   }
 
   div.sales-cover {
@@ -58,18 +66,14 @@
     background-image: url("../img/bg-viporder.jpg");
   }
 
-  @media only screen and (min-width: 768px) {
-
-    div.sales-cover,
-    div.new-cover,
-    div.vip-cover {
-      height: 320px;
-    }
-  }
 
   @media only screen and (max-width: 1200px) {
     nav.navbar a.nav-link {
       font-size: 18px;
+    }
+
+    .nav-icon-ul {
+      display: none !important;
     }
   }
 
@@ -169,6 +173,7 @@ footer {
 
 .dim-img-70 {
   transition: filter 1s;
+
   &:hover {
     filter: brightness(70%);
   }
@@ -176,6 +181,7 @@ footer {
 
 .dim-img-80 {
   transition: filter 0.5s;
+
   &:hover {
     filter: brightness(80%);
   }
@@ -183,6 +189,7 @@ footer {
 
 .enlarge {
   transition: all 0.5s;
+
   &:hover {
     filter: brightness(110%);
     transform: scale(1.1);
