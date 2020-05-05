@@ -3,8 +3,6 @@
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override {
   color: #242424; }
-  #bootstrap-override header nav {
-    overflow: hidden; }
   #bootstrap-override h1.h1-title-text {
     font-size: 22px !important;
     text-align: center !important;
