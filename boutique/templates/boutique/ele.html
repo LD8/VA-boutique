@@ -1,4 +1,4 @@
-{% load bootstrap4 static i18n %}
+{% load bootstrap4 static i18n yandex_metrica %}
 
 <html lang="ru">
 
@@ -74,12 +74,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'boutique/css/custom.css' %}">
     {% include 'boutique/include/modal_style.html' %}
 
+    <!-- Yandex.Metrica – traffic analysis -->
+    {% yandex_metrica %}
 </head>
 
 <body id="bootstrap-override" class="d-flex flex-column">
-    
-    {% block ele %}{% endblock ele %}
 
+    {% block ele %}{% endblock ele %}
+    
 </body>
 
 </html>

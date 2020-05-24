@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'bootstrap4',
     'mailer',
 
+    # django-analytical
+    'analytical',
+
     # backup db and static and media folders
     'django_archive',
 
@@ -183,6 +186,10 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# django-analytical: Yandex.Metrica – traffic analysis 
+# https://django-analytical.readthedocs.io/en/latest/services/yandex_metrica.html 
+YANDEX_METRICA_COUNTER_ID = '62990281'
 
 # LANGUAGE_CODE = 'ru'
 # DEBUG = True
