@@ -3,6 +3,10 @@
 /* -------- overriding bootstrap styles -------- */
 #bootstrap-override {
   color: #242424; }
+  #bootstrap-override h1.h1-for-item {
+    font-size: 22px !important;
+    text-align: left !important;
+    color: #4a4a4a !important; }
   #bootstrap-override h1.h1-title-text {
     font-size: 22px !important;
     text-align: center !important;
@@ -55,6 +59,8 @@
     #bootstrap-override .dropdown-menu {
       max-height: 600px;
       overflow-y: scroll; }
+    #bootstrap-override h1.h1-for-item {
+      font-size: 18px !important; }
     #bootstrap-override h1.h1-title-text {
       font-size: 18px !important; } }
   #bootstrap-override .breadcrumb {
