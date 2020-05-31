@@ -70,6 +70,8 @@ class Category(models.Model):
 
     meta_content = models.CharField(
         max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
+    meta_keywords = models.CharField(
+        max_length=155, verbose_name='Meta keywords (Max: 155 characters)', blank=True)
     meta_title = models.CharField(
         max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
 
@@ -121,6 +123,8 @@ class SubCategory(models.Model):
 
     meta_content = models.CharField(
         max_length=155, verbose_name='Meta Content (Max: 155 characters)', blank=True)
+    meta_keywords = models.CharField(
+        max_length=155, verbose_name='Meta keywords (Max: 155 characters)', blank=True)
     meta_title = models.CharField(
         max_length=55, verbose_name='Meta Title (Max: 55 characters)', blank=True)
 

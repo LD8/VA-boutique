@@ -15,13 +15,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="keywords" content="
+        {% if meta.keywords %}{{meta.keywords}}
+        {% else %}Купить копии брендовой  обуви, сумок и аксессуаров  премиум качества по доступным ценам с бесплатной доставкой.
+        {% endif %}" />
     <meta name="description" content="
         {% if meta.content %}{{meta.content}}
         {% else %}Купить копии брендовой  обуви, сумок и аксессуаров  премиум качества по доступным ценам с бесплатной доставкой.
         {% endif %}">
     <meta name=”robots” content=”index”>
     <meta name="yandex-verification" content="f60c7260a35fc2ab" />
-
+    
     <title>
         {% if meta.title %}{{meta.title}}
         {% else %}Люкс копии сумок и обуви известных брендов | интернет-магазин VA
@@ -32,7 +37,10 @@
     <meta property="og:site_name" content="VA Boutique">
     <meta property="og:title" content="VA Boutique - Сумки | Бижутерия | Обувь" />
     <meta property="og:description"
-        content="Купить копии брендовой  обуви, сумок и аксессуаров  премиум качества по доступным ценам с бесплатной доставкой." />
+        content="
+        {% if meta.content %}{{meta.content}}
+        {% else %}Купить копии брендовой  обуви, сумок и аксессуаров  премиум качества по доступным ценам с бесплатной доставкой.
+        {% endif %}" />
     <meta property="og:image" itemprop="image" content="http://va-boutique.com/static/boutique/img/icon-bg-white.png">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="600">

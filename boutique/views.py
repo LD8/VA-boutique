@@ -92,6 +92,7 @@ def show_category(request, pk):
         'brands': get_brands(cat.item_set),
         'meta': {
             'content': cat.meta_content,
+            'keywords': cat.meta_keywords,
             'title': cat.meta_title,
         },
     }
@@ -111,6 +112,7 @@ def show_subcategory(request, pk):
         'brands': get_brands(subcategory.item_set.all()),
         'meta': {
             'content': subcategory.meta_content,
+            'keywords': subcategory.meta_keywords,
             'title': subcategory.meta_title,
         },
     }
@@ -201,6 +203,7 @@ class ItemDetailView(DetailView):
         item_name = context['item'].name
         context['meta'] = {
             'content': f"{item_name} копия купить | {item_name} pеплика {item_name} премиум качество | Качественная брендовая oбувь｜{item_name} купить недорого | {item_name} купить копию онлайн",
+            'keywords': f"{item_name} копия купить | {item_name} pеплика {item_name} премиум качество | Качественная брендовая oбувь｜{item_name} купить недорого | {item_name} купить копию онлайн",
             'title': f"{item_name} купить копию в Москве - Интернет-магазин VA boutique",
         }
         return context
