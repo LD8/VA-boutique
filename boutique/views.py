@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from .models import Category, Item, SubCategory, IndexCarousel, Brand
 from django.db.models import F, Q, Count
 
+
 class IndexView(TemplateView):
     '''landing page'''
     template_name = 'boutique/index.html'
@@ -10,7 +11,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['carousels'] = IndexCarousel.objects.all()
-        context['index_h1_title_text'] = 'Онлайн бутик VA это стильная одежда и аксессуары премиум качества по доступным ценам! Бесплатная доставка по России!'
+        context['index_h1_title_text'] = 'Качественные копии/реплики брендов в интернет магазине VA boutique. Cтильная одежда и аксессуары премиум качества по доступным ценам! Бесплатная доставка по России!'
         return context
 
 
@@ -25,8 +26,9 @@ class NewListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
-            'content': "Онлайн бутик VA это стильная одежда и аксессуары премиум качества по доступным ценам! Бесплатная доставка по России!",
-            'title': "Новинки в VA boutique!",
+            'content': "Купить копии брендовой одежды, обуви, сумок высочайшего качества, а также по доступным ценам с доставкой по всему миру!",
+            'keywords': "реплика одежды, брендовая одежда копии брендов, люкс копии брендовой одежды и аксессуаров",
+            'title': "Купить копии / реплики брендовой одежды с бесплатной доставкой по всей России",
         }
         return context
 
@@ -45,8 +47,9 @@ class SalesListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['meta'] = {
-            'content': "Сумки со скидкой. Недорогие качественные копии брендов купить онлайн. Реплики обуви известных марок Москва. Распродажа сумок. Обувь известных брендов.",
-            'title': "Купить копии сумок, обуви и аксессуаров премиум качества",
+            'content': "Купить копии брендовой одежды, обуви, сумок высочайшего качества, а также по доступным ценам с доставкой по всему миру!",
+            'keywords': "реплика одежда, копии брендов интернет магазин",
+            'title': "Купить копии / реплики брендовой одежды и аксессуаров со скидкой",
         }
         return context
 
@@ -73,8 +76,9 @@ def show_all(request, gender):
         raise Http404
 
     context['meta'] = {
-        'content': f"Купить реплики модных сумок, аксессуаров и обуви {for_men_or_women}. Качественные сумки и обувь известных брендов {for_men_or_women} Интернет магазин брендовых сумок и аксессуаров {for_men_or_women}.",
-        'title': f"Копии сумок известных брендов / Купить реплики брендовой обуви в Москве - Интернет-магазин VA",
+        'content': "Купить реплики / копии брендов, сумок и аксессуаров премиум качества по доступным ценам с бесплатной доставкой.",
+        'keywords': "Копии мужской и женской брендовой одежды",
+        'title': "Копии мужской и женской брендовой одежды в интернет магазине VA boutique",
     }
 
     return render(request, 'boutique/show_all.html', context)
@@ -144,23 +148,23 @@ def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
     }
 
     # meta title generator
-    filter_content = ""
-    meta_title = f"Ваш результат поиска {filter_content}"
+    # filter_content = ""
+    # meta_title = f"Ваш результат поиска {filter_content}"
 
     # initialise queryset: items
     if sub_pk:
         subcategory = get_object_or_404(SubCategory, pk=sub_pk)
         context['filters']['subcategory'] = subcategory
         items = subcategory.item_set.select_related('brand')
-        filter_content = f": {subcategory.name}"
+        # filter_content = f": {subcategory.name}"
     elif cat_pk:
         category = get_object_or_404(Category, pk=cat_pk)
         context['filters']['category'] = category
         items = category.item_set.select_related('brand')
-        filter_content = f": {category.name}"
+        # filter_content = f": {category.name}"
     else:
         items = Item.objects.select_related('brand')
-        filter_content = f": все категории"
+        # filter_content = f": все категории"
 
     # It's important to insert 'brands' in context now to get all brands
     context['brands'] = get_brands(items)
@@ -186,8 +190,9 @@ def filter_item(request, sub_pk=None, cat_pk=None, **kwargs):
 
     context['items'] = items
     context['meta'] = {
-        'content': "Ваш результат поиска Качественные сумки для копирования | Ювелирные изделия | Обувь | Ремни.",
-        'title': meta_title,
+        'content': "Купить реплики / копии брендов, сумок и аксессуаров премиум качества по доступным ценам с бесплатной доставкой.",
+        'keywords': "Реплики  брендов, Копии брендов, Купить реплику сумки, Купить копию сумки, Интернет-магазин реплик сумок, Сумки реплики брендов, Копии сумок известных брендов, Сумки копии брендов интернет магазин",
+        'title': "Копии известных брендов / Купить реплики брендов в Москве - Интернет-магазин VA boutique",
     }
     return render(request, 'boutique/filtered_items.html', context)
 
@@ -201,11 +206,21 @@ class ItemDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         item_name = context['item'].name
-        context['meta'] = {
-            'content': f"{item_name} копия купить | {item_name} pеплика {item_name} премиум качество | Качественная брендовая oбувь｜{item_name} купить недорого | {item_name} купить копию онлайн",
-            'keywords': f"{item_name} копия купить | {item_name} pеплика {item_name} премиум качество | Качественная брендовая oбувь｜{item_name} купить недорого | {item_name} купить копию онлайн",
-            'title': f"{item_name} купить копию в Москве - Интернет-магазин VA boutique",
-        }
+        item_cat_pk = context['item'].category.pk
+        # if the item belongs to cosmetic category:
+        if item_cat_pk == 6:
+            context['is_cosmetics'] = True
+            context['meta'] = {
+                'content': "Интернет магазин Китайской и Корейской костетики",
+                'keywords': "китайская косметика, корейская косметика, недорого, бесплатная доставка",
+                'title': f"купить {item_name}",
+            }
+        else:
+            context['meta'] = {
+                'content': f"Интернет-магазин  VA boutique представляет копию {item_name}. Данная модель произведена из материалов высокого качества. Купить этот и другие товары Вы можете в Москве или оформив доставку в любой другой город России.",
+                'keywords': f"Копия {item_name}, Купить копию item name, Реплика item name в Москве",
+                'title': f"Купить копию {item_name} в Москве - Интернет-магазин  VA boutique",
+            }
         return context
 
 
@@ -226,7 +241,8 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         context['query'] = self.query
         context['meta'] = {
-            'content': "Магазин модных аксессуаров для женщин. Сумка Chanel. Кроссовки Gucci Очки Луи Виттон",
-            'title': "Сумки Обувь Очки Ремни Платки Шарфы Палантины",
+            'content': "Купить реплики / копии брендов, сумок и аксессуаров премиум качества по доступным ценам с бесплатной доставкой.",
+            'keywords': "Реплики  брендов, Копии брендов, Купить реплику сумки, Купить копию сумки, Интернет-магазин реплик сумок, Сумки реплики брендов, Копии сумок известных брендов, Сумки копии брендов интернет магазин",
+            'title': "Копии известных брендов / Купить реплики брендов в Москве - Интернет-магазин VA boutique",
         }
         return context
