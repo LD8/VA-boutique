@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-5">
                     <!-- image anchor -->
-                    <a href="{{ item.get_item_url }}">
+                    <a href="{{ item.get_absolute_url }}">
                         <img class="rounded-sm" src="{{item.itemimage_set.first.image.url}}" width="100%" alt="{% trans 'An image of ' %}{{item.name}} - {% trans 'wish list' %}"></a>
                     <!-- /image anchor -->
                 </div>
@@ -22,7 +22,7 @@
                     <!-- item price tag -->
                     <div class="text-left " style="font-size: 15px;">
                         <div>
-                            <a href="{{ item.get_item_url }}" class="text-dark">{{item}}</a>
+                            <a href="{{ item.get_absolute_url }}" class="text-dark">{{item}}</a>
                         </div>
                         <div class="">
                             {% include 'boutique/include/item_price.html' %}

@@ -30,10 +30,10 @@
         <!-- title block -->
         <div class="mb-3 px-1">
             <h2 class="mb-1 pb-1 border-bottom border-dark font-weight-light wow fadeInDown" data-wow-delay="0.2s">
-                <a class="text-dark" href="{{category.get_category_url}}">{{category.name}}</a>
+                <a class="text-dark" href="{{category.get_absolute_url}}">{{category.name}}</a>
             </h2>
             <h5 class="mt-1 pb-2 font-weight-lighter wow bounceIn" data-wow-delay="0.4s">
-                <a class="text-dark border-bottom" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h5>
+                <a class="text-dark border-bottom" href="{{subcategory.get_absolute_url}}">{{subcategory.name}}</a></h5>
         </div>
         <!-- / title block -->
         
@@ -44,7 +44,7 @@
             {% endfor %}
 
             {% if subcategory.item_set.count > 8 %}
-            <a href="{{subcategory.get_subcategory_url}}"
+            <a href="{{subcategory.get_absolute_url}}"
                 class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
                 »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
             {% endif %}
@@ -61,7 +61,7 @@
     <div>
         <div class="text-center">
             <h2 class="mb-3 pb-1 border-bottom font-weight-light wow fadeInDown">
-                <a class="text-dark" href="{{category.get_category_url}}">{{category.name}}</a>
+                <a class="text-dark" href="{{category.get_absolute_url}}">{{category.name}}</a>
             </h2>
 
             <!-- show description if there is one -->
@@ -77,7 +77,7 @@
             {% endfor %}
 
             {% if category.item_set.count > 8 %}
-            <a href="{{category.get_category_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
+            <a href="{{category.get_absolute_url}}" class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
                 »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
             {% endif %}
 

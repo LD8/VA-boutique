@@ -47,8 +47,11 @@ INSTALLED_APPS = [
     'bootstrap4',
     'mailer',
 
+    # SEO
     # django-analytical
     'analytical',
+    # django-robots
+    'robots',
 
     # backup db and static and media folders
     'django_archive',
@@ -63,7 +66,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
+
+SITE_ID = 1
 
 ARCHIVE_DIRECTORY = os.path.join(BASE_DIR, '_backups/_archives')
 ARCHIVE_FILENAME = '%Y-%m-%d'
@@ -187,8 +194,8 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-# django-analytical: Yandex.Metrica – traffic analysis 
-# https://django-analytical.readthedocs.io/en/latest/services/yandex_metrica.html 
+# django-analytical: Yandex.Metrica – traffic analysis
+# https://django-analytical.readthedocs.io/en/latest/services/yandex_metrica.html
 YANDEX_METRICA_COUNTER_ID = '62990281'
 
 # LANGUAGE_CODE = 'ru'

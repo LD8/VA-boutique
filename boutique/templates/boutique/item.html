@@ -18,10 +18,10 @@
         <nav aria-label="breadcrumb" class="pl-3 ml-1">
             <ol class="breadcrumb px-1 mb-0 font-weight-light border-bottom border-light">
                 <li class="breadcrumb-item"><a class="border-bottom text-black-50 text-decoration-none"
-                        href="{{item.category.get_category_url}}">{{item.category.name}}</a></li>
+                        href="{{item.category.get_absolute_url}}">{{item.category.name}}</a></li>
                 {% if item.subcategory %}
                 <li class="breadcrumb-item"><a class="border-bottom text-black-50 text-decoration-none"
-                        href="{{item.subcategory.get_subcategory_url}}">{{item.subcategory.name}}</a></li>
+                        href="{{item.subcategory.get_absolute_url}}">{{item.subcategory.name}}</a></li>
                 {% endif %}
                 <li class="breadcrumb-item active" aria-current="page">{{item.name}}</li>
             </ol>

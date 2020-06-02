@@ -13,14 +13,14 @@
                 {% comment %}Translators: title of filtered result page, following by the category/subcategory name{% endcomment %}
                 {% trans "Filtered " %}
                 <a class="text-black-50 font-italic border-bottom"
-                    href="{{filters.subcategory.get_subcategory_url}}">{{filters.subcategory.name}}</a>
+                    href="{{filters.subcategory.get_absolute_url}}">{{filters.subcategory.name}}</a>
             </h4>
 
             {% elif filters.category %}
             <h4 class="mt-5 font-weight-lighter wow fadeInDown">
                 {% trans "Filtered " %}
                 <a class="text-black-50 font-italic border-bottom"
-                    href="{{filters.category.get_subcategory_url}}">{{filters.category.name}}</a>
+                    href="{{filters.category.get_absolute_url}}">{{filters.category.name}}</a>
             </h4>
 
             {% else %}

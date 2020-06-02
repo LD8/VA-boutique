@@ -15,7 +15,7 @@
         <!-- title block -->
         <div class="mb-3 wow bounceIn" data-wow-delay="0.4s">
             <h3 class="mt-1 pb-2 font-weight-lighter">
-                <a class="text-dark border-bottom" href="{{subcategory.get_subcategory_url}}">{{subcategory.name}}</a></h3>
+                <a class="text-dark border-bottom" href="{{subcategory.get_absolute_url}}">{{subcategory.name}}</a></h3>
             <!-- show description if there is one -->
             <!-- {% if subcategory.description %}
                 <p class="mt-n2 mb-4"><small class="font-weight-lighter">{{subcategory.description}}</small></p>
@@ -30,7 +30,7 @@
             {% endfor %}
 
             {% if subcategory.item_set.count > 8 %}
-            <a href="{{subcategory.get_subcategory_url}}"
+            <a href="{{subcategory.get_absolute_url}}"
                 class="btn btn-sm btn-outline-dark w-100 mt-1 mb-5 py-0 shadow-sm wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.6s">
                 »»» <span class="px-3 px-lg-5">{% trans "more" %}</span> «««</a>
             {% endif %}

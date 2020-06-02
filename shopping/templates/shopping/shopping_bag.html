@@ -36,7 +36,7 @@
     <div class="col-12 col-md-8 border-bottom mt-2 mt-md-3 pb-2 pb-md-3 d-flex align-items-center pl-0 mr-auto ml-auto wow fadeInup" data-wow-delay="0.3s">
         <div class="col-4 col-md-2 pl-0">
             <!-- image anchor -->
-            <a href="{{ item.item.get_item_url }}">
+            <a href="{{ item.item.get_absolute_url }}">
                 <img class="rounded-sm shadow-sm" src="{{item.item.itemimage_set.first.image.url}}" width="100%"
                     alt="{% trans 'An image of ' %}{{item.item.name}}"></a>
             <!-- /image anchor -->
@@ -44,7 +44,7 @@
         <div class="col px-0 d-flex align-items-center ml-md-3" style="font-size: 15px;">
             <!-- item price tag -->
             <div class="col-6 px-0">
-                <a href="{{ item.item.get_item_url }}" class="text-black-50">{{item.item}}</a>
+                <a href="{{ item.item.get_absolute_url }}" class="text-black-50">{{item.item}}</a>
             </div>
             <div class="col-6">
                 <p class="mt-auto mb-auto"><span class="mr-1">&#8381;</span>{{ item.item.final_price|intcomma }}</p>

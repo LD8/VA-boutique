@@ -44,7 +44,7 @@
                     {% endcomment %}
                     {% trans "Items" %}</th>
                 <td class="d-flex flex-wrap">
-                    <a href="{{ order.item.get_item_url }}" class="pb-1 col-4 col-md-2 px-0 pr-1 pr-md-2">
+                    <a href="{{ order.item.get_absolute_url }}" class="pb-1 col-4 col-md-2 px-0 pr-1 pr-md-2">
                         <img class="rounded-sm shadow-sm" src="{{order.item.itemimage_set.first.image.url}}" width="100%"
                             alt="{% trans 'An image of ' %}{{order.item.name}}"></a>
                 </td>

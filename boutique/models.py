@@ -85,7 +85,7 @@ class Category(models.Model):
     def __str__(self):
         return '{} for {}'.format(self.name, self.get_gender_display())
 
-    def get_category_url(self):
+    def get_absolute_url(self):
         return reverse('boutique:show-category', kwargs={'pk': self.pk})
         # return reverse('boutique:show-category', kwargs={'gender': self.get_gender_display(), 'category_pk': self.pk})
 
@@ -138,7 +138,7 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.category.get_gender_display() + ' ' + self.name
 
-    def get_subcategory_url(self):
+    def get_absolute_url(self):
         return reverse('boutique:show-subcategory', kwargs={'pk': self.pk})
 
 
@@ -250,7 +250,7 @@ class Item(models.Model):
                                ) if self.tag else self.discounted_price
         super().save(*args, **kwargs)
 
-    def get_item_url(self):
+    def get_absolute_url(self):
         return reverse('boutique:item', kwargs={'pk': self.pk})
 
 
