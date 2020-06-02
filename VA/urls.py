@@ -15,16 +15,16 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # SEO
+    path('robots.txt', include('robots.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
+
     path('', include('boutique.urls')),
     path('users/', include('users.urls')),
     path('shopping/', include('shopping.urls')),
     path('wishlist/', include('wishlist.urls')),
     path('vip/', include('vip.urls')),
-
-    # SEO
-    path('robots.txt', include('robots.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 # make sure static files can be loaded locally

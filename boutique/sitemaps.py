@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.shortcuts import reverse
-from .models import Category, SubCategory
+from .models import Category, SubCategory, Item
 
 
 class StaticViewSitemap(Sitemap):
@@ -8,7 +8,7 @@ class StaticViewSitemap(Sitemap):
     changefreq = 'monthly'
 
     def items(self):
-        return ['index', 'sales', 'new', 'women', 'men']
+        return ['boutique:index', 'boutique:sales', 'boutique:new']
 
     def location(self, item):
         return reverse(item)
