@@ -66,9 +66,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.sitemaps',
 ]
 
+SITE_ID = 1
 
 ARCHIVE_DIRECTORY = os.path.join(BASE_DIR, '_backups/_archives')
 ARCHIVE_FILENAME = '%Y-%m-%d'
