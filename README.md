@@ -1,4 +1,4 @@
-# [VA-boutique.com](https://va-boutique.com)
+# [VA-boutique.com](https://va-boutique.com) (no longer maintained)
 An e-commerce website for VA-boutique, built solely with Django Framework.
 
 ## About this project
